@@ -62,13 +62,13 @@
 
 2) Strike system infractions:
 
-3) Missing a team meeting (outside of class)
+   1) Missing a team meeting (outside of class)
 
-4) Not communicating with the team for more than 24 hours 
+   2) Not communicating with the team for more than 24 hours 
 
-5) Not having anything prepared for the team meetings (ie: status check) 
+   3) Not having anything prepared for the team meetings (ie: status check) 
 
-6) Being more than 15 minutes late for a meeting without reaching out to the group beforehand
+   4) Being more than 15 minutes late for a meeting without reaching out to the group beforehand
 
 **Once a team member reaches 3 strikes we will need to reach out to Dr. Buzard or Ryan for help with proceeding, and/or any other necessary punishment will be decided upon by the entire team.**
 
@@ -97,6 +97,11 @@
 # Signatures
 
 
-**Timekeeper: Weston Maechling	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Secretary: Leo Gershman**
+| Role          | Name          | Contact  |
+| ------------- |:-------------:| -----:|
+| Mediator    | Sophia Ortiz-Heaney | 914-715-4369 |
+| Secretary      | Leo Gershman      |   305-619-9434 |
+| Timekeeper | Weston Maechling      |   312-637-0168 |
+| Communicator | Rachel Gaudreau | 248-678-8080 |
 
-**Mediator: Sophia Ortiz-Heaney	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	Communicator: Rachel Gaudreau** 
+
