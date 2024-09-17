@@ -70,7 +70,7 @@
 
    4) Being more than 15 minutes late for a meeting without reaching out to the group beforehand
 
-**Once a team member reaches 3 strikes we will need to reach out to Dr. Buzard or Ryan for help with proceeding, and/or any other necessary punishment will be decided upon by the entire team.**
+**Once a team member reaches 3 strikes we will need to reach out to Dr. Buzard or Ryan for help with proceeding, and/or any other necessary punishment will be decided upon by the other 3 team members.**
 
 ---
 
