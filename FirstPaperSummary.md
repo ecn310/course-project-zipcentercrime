@@ -23,4 +23,4 @@ How we Found it: Professor Deza suggested it to us
 
 Big Picture Question: Does having access to office-based mental healthcare reduce crime in the area? Can policymakers reduce crime rates by making office-based mental healthcare more accessible? 
 
-Theory / Conceptual Framework and Research Hypotheses:
+Theory / Conceptual Framework and Research Hypotheses: Based on the literature, we hypothesize that as the number of mental healthcare offices increases within a county, crime rates will decline and improved mental health will be the channel through which crime is reduced. Any observed reductions in crime may be attributable to a reduced propensity to commit a crime or to be a crime victim. 
