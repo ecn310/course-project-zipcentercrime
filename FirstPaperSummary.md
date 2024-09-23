@@ -17,7 +17,7 @@ For your first paper summary:
 
 
 
-Citation: 
+Citation (chicago style): Deza, Monica, Johanna Catherine Maclean, and Keisha Solomon. "Local access to mental healthcare and crime." Journal of Urban Economics 129 (2022): 103410.
 
 How we Found it: Professor Deza suggested it to us 
 
