@@ -1,4 +1,4 @@
-# Second Page Summary
+# Second Paper Summary
 ___
 
 - Citation: Bondurant, Samuel R., Jason M. Lindo, and Isaac D. Swensen. "Substance abuse treatment centers and local crime." Journal of Urban Economics 104 (2018): 124-133.
