@@ -19,6 +19,10 @@ ___
 - Theory / Conceptual Framework: Access to SAT could reduce violence due to a) reducing drug usage, reducing aggressive behavior from drug use b) reducing crimes motivated by obtaining money for drugs c) reducing violence among those in the drug trade. SAT could also reduce violence induced by mental health problems, as large majority drug users have mental health problems. They use annual county-level data on the number of SAT facilities to evaluate the degree to which crime rates change when SAT facilities open and close. 
 - Research Hypothesis: Expanding access to SAT facilities will reduce local crime, specfically for seriously violent and finanically motivated crimes. 
 
+### Causal Diagram
+   - Hypothesis: Expanding access to SAT facilities will reduce local crime, specfically for seriously violent and finanically motivated crimes.
+      - Theory that supports this hypothesis: Access to SAT (Substance Abuse Treatment) could reduce violence due to a) reducing drug usage, reducing aggressive behavior from drug use b) reducing crimes motivated by obtaining money for drugs c) reducing violence among those in the drug trade. SAT could also reduce violence induced by mental health problems, as large majority drug users have mental health problems. They use annual county-level data on the number of SAT facilities to evaluate the degree to which crime rates change when SAT facilities open and close.
+      
 ```mermaid
 ---
 title: SAT Access and Crime Rate
