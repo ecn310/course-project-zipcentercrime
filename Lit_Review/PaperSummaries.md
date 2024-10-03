@@ -74,6 +74,7 @@ B --(#43;)-->D
 
 
 # Fourth Paper Summary 
-
+- Citation: Messel, Matt, Isaac Swensen, and Carly Urban. "The effects of expanding access to mental health services on SS (D) I applications and awards." Labour Economics 81 (2023): 102339.  
 
 # Fifth Paper Summary 
+- Citation: Bandara S, Byrne L, Berman V, et al. Harm Reduction and Treatment Among People at High Risk of Overdose. JAMA Netw Open. 2024;7(8):e2427241. doi:10.1001/jamanetworkopen.2024.27241
