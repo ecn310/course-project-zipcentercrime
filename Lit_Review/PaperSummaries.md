@@ -51,8 +51,8 @@ B --(#43;)-->D
 # Third Paper Summary 
 ___
 
-- Citation:
-- How we found it:
+- Citation: National Institute of Drug Abuse (2024). Wayne County (Detroit Area) Sentinel Community Site (SCS) Drug Use Patterns and Trends, 2020. Retrieved from: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://ndews.org/wordpress/files/2020/08/SCS-Report-2020-Detroit-FINAL.pdf
+- How we found it: We looked through google scholar to find papers that dealt with the types of drugs people used in detroit and how that changed over time along with where the reports came in. In the references for one of the papers we found, we found the citation for the version of this paper from 2016 that brought us to its most recent and relevent version: 2016
 - Big Picture Question:
 - Theory / Conceptual Framework: 
 - Research Hypothesis:
@@ -66,8 +66,8 @@ ___
 title: SAT Access and Crime Rate
 ---
 flowchart LR
- A["number of SAT facitilities "] --(#45;)--> B["drug usage"]
- D["crimes motivated by money for drugs"]--(#43;)--> C["Crime Rate"]
+ A[""] --(#45;)--> B[""]
+ D[""]--(#43;)--> C[""]
 B --(#43;)-->D
 ```
 
