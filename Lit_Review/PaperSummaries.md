@@ -45,3 +45,13 @@ flowchart LR
  D["crimes motivated by money for drugs"]--(#43;)--> C["Crime Rate"]
 B --(#43;)-->D
 ```
+
+
+
+# Third Paper Summary 
+
+
+# Fourth Paper Summary 
+
+
+# Fifth Paper Summary 
