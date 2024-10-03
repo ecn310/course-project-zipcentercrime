@@ -1,5 +1,5 @@
 Research Question: "Does having a substance abuse center in your zip code affects which types of crime or crime at all, as measured by 911 calls in Detroit?"
-### Genera Questions about the topic and research
+### General Questions about the topic and research
 - Why are you interested in this research question?
 - Is there any general background information we might need when studying this topic or Economics of Crime in general?
 - Did you have an expectation of what the findings might look like, or any expectations where this might lead?
