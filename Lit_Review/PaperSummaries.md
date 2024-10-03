@@ -49,6 +49,28 @@ B --(#43;)-->D
 
 
 # Third Paper Summary 
+___
+
+- Citation:
+- How we found it:
+- Big Picture Question:
+- Theory / Conceptual Framework: 
+- Research Hypothesis:
+
+### Causal Diagram
+   - Hypothesis:
+      - Theory that supports this hypothesis: 
+      
+```mermaid
+---
+title: SAT Access and Crime Rate
+---
+flowchart LR
+ A["number of SAT facitilities "] --(#45;)--> B["drug usage"]
+ D["crimes motivated by money for drugs"]--(#43;)--> C["Crime Rate"]
+B --(#43;)-->D
+```
+
 
 
 # Fourth Paper Summary 
