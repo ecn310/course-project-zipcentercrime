@@ -9,3 +9,4 @@ Research Question: "Does having a substance abuse center in your zip code affect
 - Where did you get the "calls_final" data from? (We need the origin information)
 - Do you have compiled data on substance abuse center locations? (We also need this datas origin)
 - The calls_final data set includes a lot of observations outside of Detroit city limits. Do you have a reccommendation for how far the geographical area that we are looking at should exten? (we are currently thinking Detroit, Highland Park, and Hamtramck)
+- We're looking at the crime and call data based on zipcode. The calls final data also contains data from 2016 - 2022. Should we isolate the data into a shorter time frame and compare across zipcodes?
