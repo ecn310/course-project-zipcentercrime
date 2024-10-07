@@ -17,7 +17,7 @@ ___
 title: Mental Healthcare and Crime Rate 
 ---
 flowchart LR
- A["Number of Mental Healhcare Facilities "] --(#43;)--> B["improved mental health"]--(#45;)--> C["Crime Rate"]
+ A["Number of Mental Healhcare Facilities "] --(#43;)--> B["mental health"]--(#45;)--> C["Crime Rate"]
 
 ```
 
