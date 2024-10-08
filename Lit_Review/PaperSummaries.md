@@ -53,8 +53,8 @@ ___
 - Citation: Messel, Matt, Isaac Swensen, and Carly Urban. "The effects of expanding access to mental health services on SS (D) I applications and awards." Labour Economics 81 (2023): 102339. https://doi.org/10.1016/j.labeco.2023.102339 
 - How we found it: Professor Deza recommended it to us, found on the "Information from Professor Deza" discussion tab.
 - Big Picture Question: How does access to mental health treament services effect people's access to social safety nets, like Supplemental Security Income and the Social Security Disability Insurance (SS(D)I) programs?
-- Theory / Conceptual Framework: 
-- Research Hypothesis: 
+- Theory / Conceptual Framework: This paper builds on the relationship between mental health and labor market participation, and mental health services and participation in government disability programs. Firstly, easier access to mental health faciliites may increase the likelihood of proper diagnoses of SMI, which would likely increase the take-up of disability programs. Alternaltively, increased mental health help might help individuals obtain and maintain a job, increasing labor market paritcipation and decreseaing participation in disability programs. 
+- Research Hypothesis: An increase in accessibility to mental health facilities should increase participation in disability programs. 
 
 ### Causal Diagram
    - Hypothesis:
