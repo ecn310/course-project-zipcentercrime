@@ -4,9 +4,9 @@ gen year = call_timestamp
 replace year = substr(year, 1, 4)
 
 
-cd "C:\Users\regaudre\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime"
-save "Data by year\911 call data by year\2019_911_call_data", replace
+cd "C:\Users\regaudre\OneDrive - Syracuse University\Documents"
+save "2019_911_call_data", replace
 
 keep if year == "2019"
 
-save "Data by year\911 call data by year\2019_911_call_data", replace
+save "2019_911_call_data", replace
