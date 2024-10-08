@@ -50,12 +50,11 @@ B --(#43;)-->D
 
 # Third Paper Summary 
 ___
-
-- Citation: National Institute of Drug Abuse (2024). Wayne County (Detroit Area) Sentinel Community Site (SCS) Drug Use Patterns and Trends, 2020. Retrieved from: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://ndews.org/wordpress/files/2020/08/SCS-Report-2020-Detroit-FINAL.pdf
-- How we found it: We looked through google scholar to find papers that dealt with the types of drugs people used in detroit and how that changed over time along with where the reports came in. In the references for one of the papers we found, we found the citation for the version of this paper from 2016 that brought us to its most recent and relevent version: 2016
-- Big Picture Question:
+- Citation: Messel, Matt, Isaac Swensen, and Carly Urban. "The effects of expanding access to mental health services on SS (D) I applications and awards." Labour Economics 81 (2023): 102339. https://doi.org/10.1016/j.labeco.2023.102339 
+- How we found it: Professor Deza recommended it to us, found on the "Information from Professor Deza" discussion tab.
+- Big Picture Question: How does access to mental health treament services effect people's access to social safety nets, like Supplemental Security Income and the Social Security Disability Insurance (SS(D)I) programs?
 - Theory / Conceptual Framework: 
-- Research Hypothesis:
+- Research Hypothesis: 
 
 ### Causal Diagram
    - Hypothesis:
@@ -77,3 +76,5 @@ ___
 - Big Picture Question:
 - Theory/Conceptual Framework:
 - Research Hypothesis:
+
+Additional resources for contextualization:National Institute of Drug Abuse (2024). Wayne County (Detroit Area) Sentinel Community Site (SCS) Drug Use Patterns and Trends, 2020. Retrieved from: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://ndews.org/wordpress/files/2020/08/SCS-Report-2020-Detroit-FINAL.pdf
