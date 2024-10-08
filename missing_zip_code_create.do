@@ -67,3 +67,8 @@ drop if zip_code == "48239"
 drop if zip_code == "48240"
 drop if zip_code == "48243"
 drop if zip_code == "48336"
+
+* Replace any zip codes listed as "0" as missing 
+replace zip_code = "" if trim(zip_code) == "0"
+
+save "C:\Users\regaudre\OneDrive - Syracuse University\missing_zip_code_calls", replace
