@@ -62,10 +62,10 @@ ___
       
 ```mermaid
 ---
-title: Access to Mental Health Treatment and Social Safety Nets
+title: Access to Mental Health Treatment and Disability Program Participation
 ---
 flowchart LR
- A["Increased Access to Mental Health Treatment "] --(#45;)--> B["Mental Health Issues"] --(#43;)--> C["More people qualified and Willing to Use Social Safety Nets"] --(#43;)--> D("More ability to use Social Safety Nets")
+ A["Increased Access to Mental Health Treatments"] --(#43;)--> B["Mental Health Diagnoses"] --(#43;)--> C["More people qualified and willing to use government disability programs"] --(#43;)--> D("Increased participation in SS(D)I and SSI")
 ```
 
 
