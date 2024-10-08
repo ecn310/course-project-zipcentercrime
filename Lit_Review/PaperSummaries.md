@@ -71,7 +71,7 @@ ___
   
 
 # Fifth Paper Summary 
-- Citation: Altay, Osman. "Financial Evaluation of Drug Addiction Rehabilitation Services with Respect to the Health Economics." ON EURASIAN ECONOMIES 2020 (2020): 16.
+- Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218.
 - How we found it: Found through ScienceDirect to get a paper that focused more on the science behind why rehab centers are important in relation to urban economics
 - Big Picture Question:
 - Theory/Conceptual Framework:
