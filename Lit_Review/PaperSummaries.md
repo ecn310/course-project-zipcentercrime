@@ -61,20 +61,19 @@ ___
    - Hypothesis:
       - Theory that supports this hypothesis: 
       
-```mermaid
----
-title: SAT Access and Crime Rate
----
-flowchart LR
- A[""] --(#45;)--> B[""]
- D[""]--(#43;)--> C[""]
-B --(#43;)-->D
-```
-
 
 
 # Fourth Paper Summary 
-- Citation: Messel, Matt, Isaac Swensen, and Carly Urban. "The effects of expanding access to mental health services on SS (D) I applications and awards." Labour Economics 81 (2023): 102339.  
+- Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972.
+- How we found it: google scholar after failing to find anything through the American Economic Association
+- Big Picture Question:
+- Theory/Conceptual Framework:
+- Research Hypothesis:
+  
 
 # Fifth Paper Summary 
-- Citation: Bandara S, Byrne L, Berman V, et al. Harm Reduction and Treatment Among People at High Risk of Overdose. JAMA Netw Open. 2024;7(8):e2427241. doi:10.1001/jamanetworkopen.2024.27241
+- Citation: Altay, Osman. "Financial Evaluation of Drug Addiction Rehabilitation Services with Respect to the Health Economics." ON EURASIAN ECONOMIES 2020 (2020): 16.
+- How we found it: Found through ScienceDirect to get a paper that focused more on the science behind why rehab centers are important in relation to urban economics
+- Big Picture Question:
+- Theory/Conceptual Framework:
+- Research Hypothesis:
