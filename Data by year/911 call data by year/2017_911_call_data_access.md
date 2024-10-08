@@ -1,0 +1,1 @@
+Since the data set is to large to directly upload to stata, follow this [link](https://sumailsyr-my.sharepoint.com/:u:/g/personal/regaudre_syr_edu/EROH8QM2dk5OpOlHqgCl2-sBonjqD8zUs8qM0uuewBWT6Q?e=b52WF5) to access the data set "2017_911_call_data".
