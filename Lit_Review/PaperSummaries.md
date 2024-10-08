@@ -60,6 +60,13 @@ ___
    - Hypothesis:
       - Theory that supports this hypothesis: 
       
+```mermaid
+---
+title: Access to Mental Health Treatment and Social Safety Nets
+---
+flowchart LR
+ A["Increased Access to Mental Health Treatment "] --(#45;)--> B["Mental Health Issues"] --(#43;)--> C["More people qualified and Willing to Use Social Safety Nets"] --(#43;)--> D("More ability to use Social Safety Nets")
+```
 
 
 # Fourth Paper Summary 
