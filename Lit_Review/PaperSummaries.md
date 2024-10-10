@@ -63,10 +63,19 @@ flowchart LR
 # Fourth Paper Summary 
 - Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972.
 - How we found it: google scholar after failing to find anything through the American Economic Association
-- Big Picture Question:
-- Theory/Conceptual Framework:
-- Research Hypothesis:
-  
+- Big Picture Question: Does making drug rehabilitation and other preventative medicine centers more afforadable through government subsidies like medicare help the economy in the long run through a healthier workforce?
+- Theory/Conceptual Framework: This paper builds on the relationship between heroin users and their willingness to get/ follow through on treatment compared to how effective they know it can be and how expensive it will be
+- Research Hypothesis: Are clients willing pay more for higher rates of treatment success and for the presence of case management?
+
+
+```mermaid
+---
+title: Cost/Benefit Analysis for heroin users seeking recovery
+---
+flowchart LR
+A["Lower Cost/Higher Proven Effectiveness of Treatment"] --(#45;)--> B["Number of Heroin Users"] --(#43;)--> C["Amount of People in the Workforce"] --(#43;)--> D["Increased Economic Production"]
+```
+
 
 # Fifth Paper Summary 
 - Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218.
