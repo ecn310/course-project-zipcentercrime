@@ -63,9 +63,9 @@ flowchart LR
 # Fourth Paper Summary 
 - Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972.
 - How we found it: google scholar after failing to find anything through the American Economic Association
-- Big Picture Question: Does making drug rehabilitation and other preventative medicine centers more afforadable through government subsidies like medicare help the economy in the long run through a healthier workforce?
+- Big Picture Question: Does making drug rehabilitation and other preventative medicine centers more afforadable through government subsidies like medicare help the economy in the long run through a healthier workforce? - Research Hypothesis: Are clients willing pay more for higher rates of treatment success and for the presence of case management?
 - Theory/Conceptual Framework: This paper builds on the relationship between heroin users and their willingness to get/ follow through on treatment compared to how effective they know it can be and how expensive it will be
-- Research Hypothesis: Are clients willing pay more for higher rates of treatment success and for the presence of case management?
+
 
 
 ```mermaid
@@ -82,8 +82,9 @@ A["Lower Cost of Treatment"] --(#45;)--> B["Number of Heroin Users"] --(#45;)-->
 - Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218.
 - How we found it: Found through Google Scholar in an effort to find a paper that focused more on the urban economics of the relationship between drug abuse and crime
 - Big Picture Question: Does Drug Abuse Cause Crime or Vice Versa and to what extent do they cause one another
-- Theory/Conceptual Framework: The literature believes that without government/ outside intervention, drug use in an area causes crime in an area to increase and standards on living to decrease
 - Research Hypothesis: Is the Association Between Drug Use, Crime, and Standards of Living Causal?
+- Theory/Conceptual Framework: The literature believes that without government/ outside intervention, drug use in an area causes crime in an area to increase and standards on living to decrease
+
 
 
 ```mermaid
