@@ -73,15 +73,27 @@ flowchart LR
 title: Cost/Benefit Analysis for heroin users seeking recovery
 ---
 flowchart LR
-A["Lower Cost/Higher Proven Effectiveness of Treatment"] --(#45;)--> B["Number of Heroin Users"] --(#43;)--> C["Amount of People in the Workforce"] --(#43;)--> D["Economic Production"]
+A["Lower Cost of Treatment"] --(#45;)--> B["Number of Heroin Users"] --(#45;)--> C["Amount of People in the Workforce"] --(#43;)--> D["Increased Economic Production"]
 ```
+
 
 
 # Fifth Paper Summary 
 - Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218.
-- How we found it: Found through ScienceDirect to get a paper that focused more on the science behind why rehab centers are important in relation to urban economics
-- Big Picture Question:
-- Theory/Conceptual Framework:
-- Research Hypothesis:
+- How we found it: Found through Google Scholar in an effort to find a paper that focused more on the urban economics of the relationship between drug abuse and crime
+- Big Picture Question: Does Drug Abuse Cause Crime or Vice Versa and to what extent do they cause one another
+- Theory/Conceptual Framework: The literature believes that without government/ outside intervention, drug use in an area causes crime in an area to increase and standards on living to decrease
+- Research Hypothesis: Is the Association Between Drug Use, Crime, and Standards of Living Causal?
+
+
+```mermaid
+---
+title: Effects on Drug use on a Community
+---
+flowchart LR
+A["Drug Use in an Area"] --(#43;)--> B["Crime in an Area"]
+A --(#45;)--> C["Standards of Living in an Area"] 
+```
+
 
 Additional resources for contextualization:National Institute of Drug Abuse (2024). Wayne County (Detroit Area) Sentinel Community Site (SCS) Drug Use Patterns and Trends, 2020. Retrieved from: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://ndews.org/wordpress/files/2020/08/SCS-Report-2020-Detroit-FINAL.pdf
