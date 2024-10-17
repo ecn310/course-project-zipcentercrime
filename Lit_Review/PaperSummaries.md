@@ -94,7 +94,7 @@ title: Effects on Drug use on a Community
 ---
 flowchart LR
 A["Drug Use in an Area"] --(#43;)--> B["Crime in an Area"]
-A --(#45;)--> C["Standards of Living in an Area"] 
+B --(#45;)--> C["Standards of Living in an Area"] --(#43;)--> A
 ```
 
 
