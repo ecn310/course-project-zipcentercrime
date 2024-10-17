@@ -74,7 +74,7 @@ flowchart LR
 title: Cost/Benefit Analysis for heroin users seeking recovery
 ---
 flowchart LR
-A["Lower Cost of Treatment"] --(#45;)--> B["Number of Heroin Users"] --(#45;)--> C["Amount of People in the Workforce"] --(#43;)--> D["Increased Economic Production"]
+A["Cost of Treatment"] --(#45;)--> B["Heroin Users"] --(#45;)--> C["People in the Workforce"] --(#43;)--> D["Economic Production"]
 ```
 
 
