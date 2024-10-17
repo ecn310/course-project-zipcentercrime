@@ -83,8 +83,8 @@ A["Cost of Treatment"] --(#45;)--> B["Patients Admited"] --(#45;)--> C["Drug Usa
 - Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218.
 - How we found it: Found through Google Scholar in an effort to find a paper that focused more on the urban economics of the relationship between drug abuse and crime
 - Big Picture Question: Does Drug Abuse Cause Crime or Vice Versa and to what extent do they cause one another
-- Research Hypothesis: Is the Association Between Drug Use, Crime, and Standards of Living Causal?
-- Theory/Conceptual Framework: The literature believes that without government/ outside intervention, drug use in an area causes crime in an area to increase and standards on living to decrease
+- Research Hypothesis: There is a positive feedback loop between higher drug use, higher crime, and lower standards of living in an area.
+- Theory/Conceptual Framework: Higher crime in an area causes higher crime and lower standards of living because of the addictive properties of drugs and the numbing of decision making that occurs when someone is on opiods, weed, or psychadelics. When these people are in a state of poor decision making they are more willing to commit illegal activities and take from their communities to fuel their addictions. Furthermore, the paper states that in areas of higher crime and lower standards of living people have a higher tendency to use drugs as a means to escape from their situation. 
 
 
 
