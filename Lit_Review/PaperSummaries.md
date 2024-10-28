@@ -99,3 +99,19 @@ B --(#45;)--> C["Standards of Living in an Area"] --(#45;)--> A
 
 
 Additional resources for contextualization:National Institute of Drug Abuse (2024). Wayne County (Detroit Area) Sentinel Community Site (SCS) Drug Use Patterns and Trends, 2020. Retrieved from: chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://ndews.org/wordpress/files/2020/08/SCS-Report-2020-Detroit-FINAL.pdf
+
+# Sixth Paper Summary 
+- Citation: Hoeboer, C.M., Kitselaar, W.M., Henrich, J.F. et al. The Impact of COVID-19 on Crime: a Systematic Review. Am J Crim Just 49, 274–303 (2024). https://doi.org/10.1007/s12103-023-09746-4
+- How we found it: Sophia went to the American Journal of Criminal Justice and looked for a research paper ananlyzing the relationship between crime rates and COVID-19.
+- Big Picture Question: How did COVID-19 impact crime rates of different types of crime during it's initial period?
+- Research Hypothesis: The social impact of COVID-19 will reduce crime rates since more people were confined to their homes.
+- Theory/Conceptual Framework: COVID-19 increased the amount of time people spent in privately occupied places, which will decrease the amount of crimes commited in public settings, like robbery, homicide, pysical violence, etc. Alernatively, crimes commited in private settings like domestic violence will increase as people spend more time in private settings.
+
+
+```mermaid
+---
+title: Effects of COVID-19 on crime rates
+---
+flowchart LR
+A["COVID-19"]--(#43;)-->B["Time spent at home/private settings"]--(#45;)-->C["Crimes commited in public settings"]
+B["Time spent at home/private settings"]--(#43;)-->D["Crimes commited in private settings"]
