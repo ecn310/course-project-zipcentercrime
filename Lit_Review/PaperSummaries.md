@@ -115,3 +115,22 @@ title: Effects of COVID-19 on crime rates
 flowchart LR
 A["COVID-19"]--(#43;)-->B["Time spent at home/private settings"]--(#45;)-->C["Crimes commited in public settings"]
 B["Time spent at home/private settings"]--(#43;)-->D["Crimes commited in private settings"]
+```
+
+# Seventh Paper Summary 
+- Citation: Contreras, Christopher, and John R. Hipp. "Drugs, crime, space, and time: A spatiotemporal examination of drug activity and crime rates." Justice Quarterly 37, no. 2 (2020): 187-209.
+- How we found it: Found through Google Scholar in an effort to find a paper that focused more on the connection between drug usage and crimes related to drugs within neighborhoods 
+- Big Picture Question: Does the drug activity on a city block impact the crime rate in that location through violence 
+- Research Hypothesis: Excess crime in different blocks of Miami-Dade County, FLorida is caused by the rise in violence due to drug activity
+- Theory/Conceptual Framework: When there is a rise is the sale or use of narcotics within a block radius in Miami-Dade County there will shortly be an increase in the amount of assultive violence which will cause an increase in the crime rate in those areas.
+
+
+
+```mermaid
+---
+title: Effects of Drug use on Crime Rate
+---
+flowchart LR
+A["Drug Use and Sale on a Block"] --(#43;)--> B["Assultive Violence"]
+B --(#43;)--> C["Crime Rate"] 
+```
