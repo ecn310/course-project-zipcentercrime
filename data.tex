@@ -1,0 +1,114 @@
+\documentclass[12pt]{article}
+
+% set margins and spacing
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\linespread{1.0}
+
+% load miscellaneous packages
+\usepackage{csquotes}
+\usepackage[american]{babel}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
+
+% enable hyperlinks and table of contents
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true,hyperfootnotes=false]{hyperref}
+
+
+
+\begin{document}
+\title{Insert group name here}
+% add a fourth name if you have four team members; fill in at least first names below
+\author{Name 1\thanks{Syracuse University, Economics Department. Email: } \and Name 2 \thanks{abc} \and Name 3\thanks{abc}}
+\date{\vskip-.1in \today}
+\maketitle
+
+\vskip.3in
+
+\section{Research Question} \label{sec:question}
+
+State the current version of your research question.
+
+\section{Data Overview} \label{sec:literature}
+
+Write a short description of each  data set. Use subsections as demonstrated below if you have more than one data set.
+
+\subsection{Data Set 1 (insert a descriptive title)}
+\begin{itemize}
+  \item What is the source of the data?
+  \item How was it generated? Some possibilities: Did someone do a survey? Do people submit their own information? Did an organization compile it from public reports? 
+  \item What is the coverage of the data?
+    \begin{itemize}
+        \item What years?
+        \item What kind of observations (countries? individual survey respondents? etc)
+        \item Scope (e.g., if countries, only developed countries?)
+    \end{itemize}
+  \item Number of variables
+    \begin{itemize}
+        \item Types of variables,  (is this dataset giving mainly economic indicators for a country? Is it reporting details about 911 calls?
+    \end{itemize}
+  \item How many observations total? (e.g., 20 countries with 10 variables each, for a total of 100 observations)
+\end{itemize}
+
+\subsection{Data Set 2 (insert a descriptive title)}
+
+Answer all the same questions as in the previous subsection. \\
+
+\noindent Add additional subsections if you have more than two data sets.
+
+
+\section{Data Acquisition}
+\label{sec:theory}
+
+Explain how someone can acquire each dataset (you may need to use subsections again).
+\begin{itemize}
+    \item This should be in EXCRUCIATING detail: every click someone has to execute to get the dataset as you have it
+\end{itemize}
+
+\noindent Where have YOU stored the data? Include link(s).
+\begin{itemize}
+    \item Example of how to make a url into an explicit link: \url{https://github.com/ecn310/course-project-zipcentercrime/tree/main/ArcGIS%20files}
+    \item Example of how to make a piece of text into a hyperlink: \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/ArcGIS%20files}{ArcGIS files}
+    \item If your code and documentation is in a different location, where is it?
+\end{itemize}
+
+
+\section{Data Manipulation}
+\label{sec:data}
+
+What steps have you taken / do you plan to take to get the data ready for analysis? 
+\begin{itemize}
+    \item Examples: checking for outliers; dropping some observations you don't need; investigating something you've already noticed that doesn't make sense.
+    \item If you've already done some work, where are the files and documentation for that work?
+\end{itemize}
+
+\section{Linking Datasets}
+\label{sec:discussion}
+
+How you will link different data sets together (if you'll need to)
+\begin{itemize}
+    \item What variable(s) in each dataset will you use to merge the datasets together?
+    \item Example: We will merge Dataset A with GDP for each country with Dataset B that has manufacturing employment for each country across years. In Dataset A, these variables are called \textit{year} and \emph{country}; Dataset B calls the year variable \emph{yr} and the country variable \emph{name}.
+\end{itemize}
+
+
+\section{Key Variables}
+\label{sec:result}
+
+List of key variables you may use for testing your hypothesis, separately for each dataset
+
+
+
+
+
+\end{document}

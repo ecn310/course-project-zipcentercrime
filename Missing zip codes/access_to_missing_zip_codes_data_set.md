@@ -1,0 +1,1 @@
+Since the data set is to large to directly upload to stata, follow this [link](https://sumailsyr-my.sharepoint.com/:u:/g/personal/regaudre_syr_edu/EeydQLI5xh5Dhn4XQvt73mABAI2tXKUgRYISzaKodYLZ0g?e=qgDmg7) to access the data set of the 911 calls with missing zip codes.
