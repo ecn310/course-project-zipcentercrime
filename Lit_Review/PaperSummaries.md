@@ -134,3 +134,20 @@ flowchart LR
 A["Drug Use and Sale on a Block"] --(#43;)--> B["Assultive Violence"]
 B --(#43;)--> C["Crime Rate"] 
 ```
+
+# Eighth Paper Summary 
+- Citation: Review, Harvard Economics. 2020. “Supervision and Crime Rates.” Harvard Econ Review. September 5, 2020. https://www.economicsreview.org/post/supervision-and-crime-rates.
+- How we found it: Found while looking through Harvard's Economic Review Journal
+- Big Picture Question: How does the offer of guilt free help and providing sterile injection equipment for drug users affect crime and drug rates?
+- Research Hypothesis: How does the establishment of supervised injection sites (SIS) affect community safety and crime rates?
+- Theory/Conceptual Framework: As the opioid epidemic reached its peak in the United States, questions about the best response were raised. Debates soon turned to supervised injection sites (SIS). Already operating in Canada, parts of Europe, and Australia, there exists a large literature base concerning the safety and efficacy of these facilities. Several major cities in the United States are considering opening facilities in order to better address the drug problem. However, questions regarding the effect on drug use patterns, relapse rates, and crime rates have risen.
+
+
+```mermaid
+---
+title: How does the establishment of supervised injection sites affect communitiy safety?
+---
+flowchart LR
+A["Amount of SIS sites"] --(#45;)--> B["Drug Usage"] --(#45;)--> D["Community Safety"]
+A --(#45;)--> C["Amount of Crime"]--(#45;)-->D
+```
