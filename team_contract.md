@@ -52,7 +52,7 @@
 
 2) Meetings will begin 5 minutes after start time. 
 
-3) Meetings will be held every Monday from 5:00pm \- 6:00pm, first floor at Bird Library unless group unanimously agrees otherwise. 
+3) Meetings will be held every Friday from 1:30-2:30, in Eggars 040, unless group unanimously agrees otherwise. 
 
    ---
 
@@ -94,14 +94,49 @@
 
 ---
 
+   # Team Project Plan (Dates and Assignments)
+   | Task | Target Date | Completed Date | Assignee | Notes |
+|---|---|---|---|---|
+| Working hypothesis w/data needs | Oct. 31 | Oct. 31 | Leo, Sophia, Wes, and Rachel | |
+| Data manipulation | Nov. 8  | | Leo, Sophia, Wes, and Rachel | [Add all necessary tasks above to get data ready for analysis] |
+| Data analysis | Nov. 13 | | Leo, Sophia, Wes, and Rachel | [Add all necessary tasks above to get data ready for analysis] |
+| Preliminary replication package plan | Nov. 13 | | Wes | Where to store this on repo?|
+| First draft of data section of paper | Nov. 14 | | Sophia | Pre-work in data.tex |
+| First draft of data portion of replication package | Nov. 14 | | Rachel | Pre-work in data.tex |
+| Present preliminary analysis results in class for feedback | Nov. 14 | | Rachel | |
+| First draft of results / discussion section(s) | Nov. 19 |  | Leo | all figures/tables need to be done |
+| Finalize replication package plan | Nov. 20  | | Wes | |
+| Revise analysis section | Nov. 20 |  | Sophia | |
+| Present analysis results w/theory in class for feedback | Nov. 19 | | Leo, Sophia, Wes, and Rachel | |
+| Present full project in class for feedback | Nov. 21 | | Leo, Sophia, Wes, and Rachel | |
+| Finalize analysis section | Nov. 29 | | Sophia | |
+| Finalize data section | Dec. 1 | | Rachel | |
+| Finalize hypothesis/theory section | Dec. 1 | | Leo | |
+| Finalize lit review and references | Dec. 1 | | Rachel | |
+| Finalize discussion / conclusion | Dec. 1| | Sophia | |
+| Finalize abstract / intro | Dec. 1 | | Leo | |
+| Execute replication package plan | Dec. 1| | Wes | |
+| First draft of report | Dec. 1 | | Leo, Sophia, Wes, and Rachel | |
+| Revise replication package | Dec. 3 | | Rachel  | |
+| Finalize replication package for testing | Dec. 4 | | Wes | |
+| Revise report | Dec. 4 | | Leo | |
+| Deliver report to outside reader | Dec. 4| | Leo | Who will this be? Does this date work for them? |
+| Replication package testing by insider | Dec. 6 | | Sophia | |
+| Preliminary replication package testing by outsider | Dec. 9 | | Leo and his friend | |
+| Edit report /  incorporate feedback from outsider reader | Dec. 10 | | Sophia | |
+| Final replication package testing by outsider | Dec. 11 | | Sophia and her friend | |
+| Final proofread of replication package | Dec. 13 | | Leo, Sophia, Wes, and Rachel | Will use grammarly (or the writing center) |
+| Final proofread of report | Dec. 13 | | Leo, Sophia, Wes, and Rachel | Will use grammarly (or the writing center) |
+| Submit whole package | Dec. 13 |  | Leo, Sophia, Wes, and Rachel |  |
+
 # Signatures
 
 
-| Role          | Name          | Contact  |
-| ------------- |:-------------:| -----:|
-| Mediator    | Sophia Ortiz-Heaney | 914-715-4369 |
+| Role          | Name          | Contact  | Time of Change|
+| ------------- |:-------------:| -----:|----|
+| Mediator    | Sophia Ortiz-Heaney | 914-715-4369 | 
 | Secretary      | Leo Gershman      |   305-619-9434 |
-| Timekeeper | Weston Maechling      |   312-637-0168 |
+| Timekeeper | Weston Maechling      |   312-637-0168 | 11/01/2024 1:39PM |
 | Communicator | Rachel Gaudreau | 248-678-8080 |
 
 
