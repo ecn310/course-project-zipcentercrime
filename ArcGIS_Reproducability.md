@@ -6,6 +6,8 @@
 - Once opened in Stata, select file, export, Text Data.
 - In the box under "Write to the File" select save as, and save to your prefered file location, leave all other boxes blank and select OK
 - Repeat the same steps with the second dataset
+- If this does not work, use the export delimited command in stata to manually save it to a csv. Directions on this [do file](https://sumailsyr-my.sharepoint.com/:u:/r/personal/sgortizh_syr_edu/Documents/Intro%20to%20Econ%20Research/GitHub/course-project-zipcentercrime/Data%20by%20year/Convert_datasets_to_csv.do?csf=1&web=1&e=8ODvER)
+
 ### Step 2.
 - Open ArcGIS and create a new project with the map option as your base template.
 - Select the Map option from the toolbar.
