@@ -17,3 +17,8 @@
 - *Select Create Points from Table, then select XY Table to Point
 - *Make sure X Field is set to longitude, Y Field is set to latitude, and the Coordinate System is set to GCS_WGS_1984, the select ok.
 - Repeat steps with a * for the second data set
+
+### Step 3. 
+- Right click on the red dot underneath the treatment center map layer and convert color to green
+- Right click on treatment center layer and select attribute table
+- Right click on 911 calls layer and select attribute table
