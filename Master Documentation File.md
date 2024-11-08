@@ -21,9 +21,11 @@ The general tracking of our total progress on the project can be found in in the
   - *Drug treatment center dataset originated from **SAMHSA** (Substance Abuse and Mental Health Services Administration). Request a data set within these parameters: **a)** drugtreatment centers in Detroit, MI metropolitan area **b)** between the yeras of 2015 and 2021. We are only using 2017 data*
   -  [SAMHSA Facility Code Key](https://github.com/ecn310/course-project-zipcentercrime/blob/main/samhsa_services.pdf)
   - [drug treatment center_raw_data](https://github.com/ecn310/course-project-zipcentercrime/blob/main/detroit_samhsa_sud_2015_2021.dta) | stata file
+  - [Do file to isolate the 2017 data](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/911%20call%20data%20by%20year/do%20files/Create_2017_911_call_data.do)
 
 ### 911 Calls 
   - *911 calls dataset origniatefd from the City of Detroit Open Data Portal's Police Serviced 911 Calls. Dataset avaible online at this [link](https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about) and starts from year 2016. We are only using 2017 data*
   -   [911 calls raw data](https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&dl=0)
   -   [attribute table information](https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about)
+  -   [Do file to isolate the 2017 data](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/Treatment%20center%20data%20by%20year/do%20files/create_2017_treatment_center_data.do)
 
