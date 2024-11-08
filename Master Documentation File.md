@@ -2,17 +2,17 @@
 The general tracking of our total progress on the project can be found in in the [Group Log](https://github.com/ecn310/course-project-zipcentercrime/issues/2) issue.  For more detailed description on work done on each problem and task that has arised please conisder our list of issues.
 ### Issues
   - **#2** [**Group Log**](https://github.com/ecn310/course-project-zipcentercrime/issues/2)
-  - *#16* [Data Manipulation](https://github.com/ecn310/course-project-zipcentercrime/issues/16)
-  - *#10* [Data Documentation](https://github.com/ecn310/course-project-zipcentercrime/issues/10)
-  - *#14* [Outliers in 911 Call Data](https://github.com/ecn310/course-project-zipcentercrime/issues/14)
-  - *#12* [Data Analysis in ArcGIS/Documentation](https://github.com/ecn310/course-project-zipcentercrime/issues/12)
+  - *#16* [Data Manipulation](https://github.com/ecn310/course-project-zipcentercrime/issues/16) | As of 11/8, refer to do files of 2017 data isolation and arcGIS do file to see current data manipulation progress
+  - *#10* [Data Documentation](https://github.com/ecn310/course-project-zipcentercrime/issues/10) | As of 11/8, refer to do files of 2017 data isolation and arcGIS do file to see current data documentation progress
+  - *#14* [Outliers in 911 Call Data](https://github.com/ecn310/course-project-zipcentercrime/issues/14) | As of 11/8 not needed, can ignore
+  - *#12* [Data Analysis in ArcGIS/Documentation](https://github.com/ecn310/course-project-zipcentercrime/issues/12) | as of 11/8 not filled in yet, refer to arcGIS reproducibility file for arcGIS current progress
   - *#8* [Substance Abuse Treatment Center Variable](https://github.com/ecn310/course-project-zipcentercrime/issues/8)
 
 ### File Locations 
   - [Data by Year](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Data%20by%20year) | Includes 911 call data set and drug treatment center data set, both seperated by year
   - [**Team Contract**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/team_contract.md) 
   - [Literature Review](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Lit_Review) | Includes initial lit review paper summarys
-  - [ArcGIS files](https://github.com/ecn310/course-project-zipcentercrime/tree/main/ArcGIS%20files) | our final arcGIS files will go here 
+  - [**ArcGIS Reproducibility**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md)
   - [.github](https://github.com/ecn310/course-project-zipcentercrime/tree/main/.github) | Includes the raw dataset for the 911 calls
   - [data.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project documents updates from overleaf
   - [projecttemplate.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project template from overleaf
