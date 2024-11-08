@@ -22,3 +22,18 @@
 - Right click on the red dot underneath the treatment center map layer and convert color to green
 - Right click on treatment center layer and select attribute table
 - Right click on 911 calls layer and select attribute table
+
+### Step 4.
+- Select the Tools option under the analysis page
+- Select the Near tool
+- Your parameters should be set to the following. Input Features will be the layer of plotted 911 call data. Your Near Features will be the layer of plotted treatment centers. Search radius will be ___. Method will be Geodesic, and all of your distances will be set to meters.
+- Hit Run
+- Check the attribute table for 911 Call Data to confirm the new variables have been created
+
+### Step 5
+- Right click on the layer for your 911 Call Data points
+- Select Data
+- Select Export Table
+- Choose your prefered location to save the file
+- When naming the file end it with .csv so that it is able to export as a text doccument
+
