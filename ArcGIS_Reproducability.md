@@ -26,7 +26,7 @@
 ### Step 4.
 - Select the Tools option under the analysis page
 - Select the Near tool
-- Your parameters should be set to the following. Input Features will be the layer of plotted 911 call data. Your Near Features will be the layer of plotted treatment centers. Search radius will be ___. Method will be Geodesic, and all of your distances will be set to meters.
+- Your parameters should be set to the following. Input Features will be the layer of plotted 911 call data. Your Near Features will be the layer of plotted treatment centers. Search radius will be 2500 meters. Method will be Geodesic, and all of your distances will be set to meters.
 - Hit Run
 - Check the attribute table for 911 Call Data to confirm the new variables have been created
 
