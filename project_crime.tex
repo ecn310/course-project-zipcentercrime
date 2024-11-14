@@ -82,8 +82,42 @@ Variables Used:
     \item Year
 \end{itemize}
 
+\subsubsection{Substance Abuse Treatment Centers in Detroit Area}
+This data is from the Substance Abuse and Mental Health Services Administration (SAMHSA). Data is generated through the National Survey of Substance Abuse Treatment Services \href{https://www.samhsa.gov/data/data-we-collect/n-ssats-national-survey-substance-abuse-treatment-services}{N-SSATS} an annual survey of all known public and private substance abuse treatment services in the United States. SAMHSA conducts this survey annually. This data covers the names and addresses of substance abuse treatment services in operation in the Detroit Metropolitan area between the years 2015 to 2021. There are 55 variables in total. There are 333 observations in total. There are 44 substance abuse treatment centers open in 2017.
+\textit{Make sure to add the codebook}
+Variables used:
+\begin{itemize}
+    \item Longitude (per center per year)
+    \item Latitude (per center per year)
+    \item Year
+\end{itemize}
+
+\subsubsection{ArcGISPro}
+We used the ArcGISPro application to geocode observations from both datasets and overlap them. Using the latitude and longitude coordinates of each point, we created two new variables:
+\begin{itemize}
+    \item near\textunderscore\ fid: The closest drug treatment center a 911 call observation is to
+    \item near \textunderscore\ dist: The distance in meters a 911 call from the closest drug treatment center
+\end{itemize}
+\textit{If an observation of near \textunderscore\ dist is "-1", then that observation is }
+
 \subsection{Data Acquisition}
+\subsubsection{911 Calls Data}
+Use this \href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{link} to get to the City of Detroit Open Data Portal Police Serviced 911 Calls. Request data set between years of 2016 to 2022. The raw dataset should be this \href{https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&e=1&dl=0}{file}.
+\subsubsection{Substance Abuse Treatment Centers}
+Use this \href{https://www.samhsa.gov/data/data-we-collect/n-ssats-national-survey-substance-abuse-treatment-services}{link} to get to SAMHSA's National Survey of Substance Abuse Treatment Services (N-SSATS). Then, request a data set for the Detroit area between 2015 and 2021. The data set should be reflective of this \href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/detroit_samhsa_sud_2015_2021.dta}{file}.
+
 \subsection{Data Manipulation}
+\begin{enumerate}
+    \item Download raw datasets of " "and " ". Make sure both datasets are saved as ".csv" files. (comma delimited)
+    \item Open Stata (version unkown rn) and import the raw datasets. Follow this do file to isolate the observations to 2017.
+    \item Upload these datasets into ArcGISPro and create XY tables for both datasets. Follow this replication file here " "
+    \item Use the "near" tool in ArcGISPro to create two new variables, near\textunderscore\ fid and near \textunderscore\ dist. It will add these columns/observations to the 911 calls dataset. 
+    \item Export this updated dataset as a csv file. 
+    \item Open that dataset into Stata and follow this do file \href{C:\Users\sorti\OneDrive\Desktop\ArcDataDo.do.txt}{ArcData Do File}
+    \item Create distance rings per distance (in meters) radius of the treatment center. The distance rings/parameters should be 50, 100, 250, 500, 750, 1000, 1250, 1500, 1750. These will become new observations in the dataset. 
+    \item perform a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
+\end{enumerate}
+Follow the master do-file/replication file here: 
 \subsubsection{ArcGIS}
 \subsubsection{Stata}
 
