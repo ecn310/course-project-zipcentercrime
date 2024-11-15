@@ -98,18 +98,61 @@ Since every 911 call (observation) is associated with only one SATC, no 911 call
 
 \subsection{Data Manipulation}
 \begin{enumerate}
-    \item Download raw datasets of " "and " ". Make sure both datasets are saved as ".csv" files. (comma delimited)
-    \item Open Stata (version unkown rn) and import the raw datasets. Follow this do file to isolate the observations to 2017.
-    \item Upload these datasets into ArcGISPro and create XY tables for both datasets. Follow this replication file here " "
+    \item Download raw datasets of "\href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{911 Calls}"and "\href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/detroit_samhsa_sud_2015_2021.dta}{SATC} ". Make sure both datasets are saved as ".csv" files. (comma delimited)
+    \item Open Stata/MP 18.0 and import the raw datasets. Follow this do file to isolate the observations to 2017.
+\subsubsection{ArcGIS}
+    \item Upload these datasets into ArcGISPro and create XY tables for both datasets. Follow this replication file here "\href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md}{ArcGISPro Reproducibility File} "
     \item Use the "near" tool in ArcGISPro to create two new variables, near\textunderscore\ fid and near \textunderscore\ dist. It will add these columns/observations to the 911 calls dataset. 
     \item Export this updated dataset as a csv file. 
+    \subsubsection{Stata}
     \item Open that dataset into Stata and follow this do file \href{C:\Users\sorti\OneDrive\Desktop\ArcDataDo.do.txt}{ArcData Do File}
     \item Create distance rings per distance (in meters) radius of the treatment center. The distance rings/parameters should be 50, 100, 250, 500, 750, 1000, 1250, 1500, 1750. These will become new observations in the dataset. 
-    \item perform a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
+    \item Perform a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
 \end{enumerate}
-Follow the master do-file/replication file here: 
-\subsubsection{ArcGIS}
-\subsubsection{Stata}
+
+\subsection{Summary Statistics}
+ summarize
+
+    Variable |        Obs        Mean    Std. dev.       Min        Max
+-------------+---------------------------------------------------------
+    near_fid |         44        22.5    12.84523          1         44
+dist_gro~_50 |         44    28.84091    66.19771          0        376
+dist_gro~100 |         44    60.34091    77.67582          0        326
+dist_gr~_250 |         44    308.4318    314.5254          0       1434
+dist_gr~_500 |         44    989.8409    1014.308          0       4174
+-------------+---------------------------------------------------------
+dist_gr~_750 |         44    1049.955    698.9852          0       2645
+dist_gr~1000 |         44    1346.773    943.0601          0       3742
+dist_gr~1250 |         44    1455.886    1202.573          0       5552
+dist_gr~1500 |         44    1217.795    1222.337          0       5014
+dist_gr~1750 |         44    1054.182    1104.161          0       4129
+-------------+---------------------------------------------------------
+dist_gr~2000 |         44    731.1591    824.6483          0       2816
+ratio dist_group_100/dist_group_50
+
+Ratio estimation                            Number of obs = 44
+
+     _ratio_1: dist_group_100/dist_group_50
+
+--------------------------------------------------------------
+             |             Linearized
+             |      Ratio   std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+    _ratio_1 |   2.092199   .8721967      .3332463    3.851151
+--------------------------------------------------------------
+
+Ratio estimation                            Number of obs = 44
+
+     _ratio_1: dist_group_250/dist_group_100
+
+--------------------------------------------------------------
+             |             Linearized
+             |      Ratio   std. err.     [95% conf. interval]
+-------------+------------------------------------------------
+    _ratio_1 |   5.111488   1.337423      2.414317    7.808659
+--------------------------------------------------------------
+
+. ratio dist_group_50/dist_group_100
 
 %Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
 %In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
@@ -128,9 +171,53 @@ Follow the master do-file/replication file here:
 \label{sec:result}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
-Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
+%Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
 
+    For the research question on "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the more  likely that 911 would be called with a drug related inquiry. Our null hypothesis in this case would then be that there is no relation between distance to a drug treatment center and likelihood to call 911. 
+    Our current research so far shows that the likelihood of a 911 call increases the closer someone is to a drug treatment center, at least within 1250 meters. 
 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image50-100.png}
+        \caption{Enter Caption}
+        \label{fig:enter-label}
+    \end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image100-250.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image250-500.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image500-750.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image750-1000.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image1000-1250.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{image1250-1500.png}
+    \caption{Enter Caption}
+    \label{fig:enter-label}
+\end{figure}
 
 
 \section{Discussion}
