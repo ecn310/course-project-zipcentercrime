@@ -8,7 +8,7 @@ The general tracking of our total progress on the project can be found in in the
   - [**Reproducibility Package**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Replication_Package.md) | Has links to all datasets used (fromn raw datasets to manipulated ones)
   - [**ArcGIS Reproducibility**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md) | 
   - [.github](https://github.com/ecn310/course-project-zipcentercrime/tree/main/.github) | Includes the raw dataset for the 911 calls
-  - [project_crime.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/project_crime.tex) | the github viewing window of the research paper written in overleaf
+  - [**project_crime.tex**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/project_crime.tex) | the github viewing window of the research paper written in overleaf
   - [data.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project documents updates from overleaf
   - [projecttemplate.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project template from overleaf
 
