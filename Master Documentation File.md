@@ -7,7 +7,7 @@ The general tracking of our total progress on the project can be found in in the
   - [Literature Review](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Lit_Review) | Includes initial lit review paper summarys
   - [**Reproducibility Package**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Replication_Package.md) | Has links to all datasets used (fromn raw datasets to manipulated ones)
   - [**ArcGIS Reproducibility**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md) |
-  - [Visual Graphics}(https://github.com/ecn310/course-project-zipcentercrime/tree/main/Visual%20Graphics) | Currently has the .pngs of each two sample t-test performed
+  - [Visual Graphics](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Visual%20Graphics) | Currently has the .pngs of each two sample t-test performed
   - [.github](https://github.com/ecn310/course-project-zipcentercrime/tree/main/.github) | Includes the raw dataset for the 911 calls
   - [**project_crime.tex**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/project_crime.tex) | the github viewing window of the research paper written in overleaf
   - [data.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project documents updates from overleaf
