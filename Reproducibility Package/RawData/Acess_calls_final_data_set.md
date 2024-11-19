@@ -1,0 +1,1 @@
+The data set is to large to directly upload to GitHub. Please follow this [link]([url](https://sumailsyr-my.sharepoint.com/my?id=%2Fpersonal%2Fregaudre%5Fsyr%5Fedu%2FDocuments%2FECN%20310%20%2D%20Zip%20Center%20Crime%20data) to access the calls_final.csv file from OneDrive which is the raw 911 call data.
