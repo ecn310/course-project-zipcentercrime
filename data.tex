@@ -34,12 +34,18 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \maketitle
 
 \vskip.3in
+\begin{abstract}
+Here is where I put in information for the abstract
+\end{abstract}
 
-\section{Research Question} \label{sec:question}
+\section{Introduction} \label{sec:question}
 
 How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?
 
-\section{Data Overview} \label{sec:literature}
+\section{Literature Review}
+
+
+\section{Data} \label{sec:literature}
 
 Our first dataset consists of 911 call data complied by the Detroit, MI police. This data includes the time and date of the call, the coordinate location of the incident, the zip-code it took place in, as well as the type of crime that was reported. Our second data set is for the drug rehabilitation/mental health treatment center locations. This set includes the addresses of the facilities, the years of operation, and the type of services offered by each treatment center.
 
@@ -63,7 +69,7 @@ Our first dataset consists of 911 call data complied by the Detroit, MI police. 
   \end{itemize}
 
 
-\section{Data Acquisition}
+\subsection{Data Acquisition}
 \label{sec:theory}
 How we acquired our datasets:
 \begin{itemize}
@@ -80,7 +86,7 @@ How we acquired our datasets:
 \end{itemize}
 
 
-\section{Data Manipulation}
+\subsection{Data Manipulation}
 \label{sec:data}
 
 Steps we have taken and plan to take towards data analysis 
@@ -102,14 +108,14 @@ Steps we have taken and plan to take towards data analysis
 \item We may look in those time to see if a drug treatment center has opened or closed and the impact it has had on close 911 calls, as well the services of rehab services offered. 
 \end{itemize}
 
-\section{Linking Datasets}
+\subsection{Linking Datasets}
 \label{sec:discussion}
 
 \begin{itemize}
     \item We will merge the 911 calls data to the treatment center data through the location. In the 911 call the location data variables are called \textit{longitude} and \textit{latitude} and the treatment center location data variables are also called \textit{longitude} and \textit{latitude}.
 \end{itemize}
 
-\section{Notes from 11/14/24:}
+\subsection{Notes from 11/14/24:}
 \begin{itemize}
     \item think about the opening and closing potentially
     \item Think about how to deal with the farther data points and potentially overlapping, sharing
@@ -118,7 +124,7 @@ Steps we have taken and plan to take towards data analysis
     \item Only doing this in 2017 - specific we are only analyzing 2017, not just each year
 \end{itemize}
 
-\section{Key Variables}
+\subsection{Key Variables}
 \label{sec:result}
 
 \subsection{911 Calls}
@@ -135,16 +141,18 @@ Steps we have taken and plan to take towards data analysis
     \item Year
 \end{itemize}
 
-\section{Running Analysis}
+\subsection{Running Analysis}
 \label{Data Manipulation and Analysis}
-
-\subsection{ArcGIS}
-
-\label{Analysis}
-
-\subsection{Stata Analysis}
+\begin{itemize}
+    \item ArcGIS
+    \item Stata Analysis
+\end{itemize}
 
 \section{Results}
 
+\section{Discussion}
 
+\section{Conclusion}
+
+\section{References}
 \end{document}

@@ -5,12 +5,14 @@ The general tracking of our total progress on the project can be found in in the
   - [Data by Year](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Data%20by%20year) | Includes 911 call data set and drug treatment center data set, both seperated by year
   - [**Team Contract**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/team_contract.md) 
   - [Literature Review](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Lit_Review) | Includes initial lit review paper summarys
-  - [**Reproducibility Package**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Replication_Package.md) | Has links to all datasets used (fromn raw datasets to manipulated ones)
-  - [**ArcGIS Reproducibility**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md) | 
-  - [.github](https://github.com/ecn310/course-project-zipcentercrime/tree/main/.github) | Includes the raw dataset for the 911 calls
+  - [**ArcGIS Reproducibility**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md) |
+  - [Visual Graphics](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Visual%20Graphics) | Currently has the .pngs of each two sample t-test performed
   - [**project_crime.tex**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/project_crime.tex) | the github viewing window of the research paper written in overleaf
   - [data.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project documents updates from overleaf
   - [projecttemplate.tex](https://github.com/ecn310/course-project-zipcentercrime/blob/main/data.tex) | project template from overleaf
+  - [Reproducability Package Folder](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package) | includes all the files we currently are using to create the reproducability package
+    - [Raw Data](https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/RawData) | this store the raw data and their codebooks
+    - [**Reproducibility Package**](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Replication_Package.md) | Draft of reporducability package: Has links to all datasets used (fromn raw datasets to manipulated ones)
 
 ### Issues
   - **#2** [**Group Log**](https://github.com/ecn310/course-project-zipcentercrime/issues/2)
