@@ -80,7 +80,7 @@ A["Cost of Treatment"] --(#45;)--> B["Patients Admited"] --(#45;)--> C["Drug Usa
 
 
 # Fifth Paper Summary 
-- Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218. [[https://www.american.edu/spa/publicpurpose/upload/2013_collateral-damage.pdf](https://core.ac.uk/download/pdf/34709913.pdf](https://core.ac.uk/download/pdf/34709913.pdf)(https://www.american.edu/spa/publicpurpose/upload/2013_collateral-damage.pdf)
+- Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218. [https://core.ac.uk/download/pdf/34709913.pdf](https://core.ac.uk/download/pdf/34709913.pdf)
 - How we found it: Found through Google Scholar in an effort to find a paper that focused more on the urban economics of the relationship between drug abuse and crime
 - Big Picture Question: Does Drug Abuse Cause Crime or Vice Versa and to what extent do they cause one another
 - Research Hypothesis: There is a positive feedback loop between higher drug use, higher crime, and lower standards of living in an area.
