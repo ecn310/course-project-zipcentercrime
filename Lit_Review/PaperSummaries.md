@@ -61,7 +61,7 @@ flowchart LR
 
 
 # Fourth Paper Summary 
-- Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972.
+- Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972. [https://www.nber.org/system/files/working_papers/w12506/w12506.pdf](https://www.nber.org/system/files/working_papers/w12506/w12506.pdf)
 - How we found it: google scholar after failing to find anything through the American Economic Association
 - Big Picture Question: Does making drug rehabilitation and other preventative medicine centers more afforadable through government subsidies like medicare help the economy in the long run through a healthier workforce?
 - Research Hypothesis: Clients are willing to begin treatment's with higher rates of treatment success and an affordable cost.
