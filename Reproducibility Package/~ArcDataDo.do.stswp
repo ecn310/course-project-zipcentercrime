@@ -1,16 +1,19 @@
 *** This pathway should lead to the folder where you are saving the exported data from ArcGIS
 cd "C:\Users\wrmaechl\OneDrive - Syracuse University\ZipCenterCrime"
+
 *** This is to log the work done by the dofile
 log using "DTA log", text replace 
+
 *** This should be the file you exported from ArcGIS
 import delimited "DTA.csv"
+
 *** This drops any values that were further than 2500 meters from any treatment center
 drop if near_dist == -1
 
 *** this is install a program that may or may not be usefull in exporting tables
 ssc install outreg2
 
-*** these commands seperate the data points from ArcGIS into groups based on their realative distance to the nearest treatment center
+*** these commands seperate the data points from ArcGIS into groups based on their calculated distance to the nearest treatment center in meters
 gen dist_group = 100 if near_dist <= 100 
 replace dist_group = 250 if (near_dist <= 250 & near_dist >100)
 replace dist_group = 500 if (near_dist <= 500 & near_dist >250)
@@ -37,10 +40,14 @@ replace dist_group2 = 2000 if (near_dist <= 2250 & near_dist >2000)
 replace dist_group2 = 2250 if (near_dist <= 2500 & near_dist >2250)
 replace dist_group2 = 2500 if (near_dist <= 2750 & near_dist >2500)
 
-*** this generates both the difference in area between each distance group as well as taking that difference in area and dividing the amount of calls in that specific distance group by the new ring of area
+*** this uses the two distance groups calculated above as radii to find the area of that circle and subtract the area of the smaller adjecent circle to calculate the total area of the ring that those calls came from to standardize the data as Calls per Area
 egen freq = count(near_dist), by(dist_group)
 gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2) 
+
+*** This is used to get the exact amount of area so that we can divide our count of calls for each distance group once we collapse the data on line 71
 tab area 
+
+*** taking that difference in area and dividing the amount of calls in that specific distance group by the new ring of area will give us the number of calls per the increase in area from one ring to the next largest
 gen CallxArea = freq / area
 
 *** these commands create new seperate variables for each distance group 
