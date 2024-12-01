@@ -99,8 +99,8 @@ Since every 911 call (observation) is associated with only one SATC, no 911 call
     \item Upload these datasets into ArcGISPro and create XY tables for both datasets. Follow this replication file here "\href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md}{ArcGISPro Reproducibility File} "
     \item Use the "near" tool in ArcGISPro to create two new variables, near\textunderscore\ fid and near \textunderscore\ dist. It will add these columns/observations to the 911 calls dataset. 
     \item Export this updated dataset as a csv file. 
-    \subsubsection{Stata}
-    \item Open that dataset into Stata and follow this do file \href{C:\Users\sorti\OneDrive\Desktop\ArcDataDo.do.txt}{ArcData Do File}
+\subsubsection{Stata}
+  \item Open that dataset into Stata and follow this do file "\href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS%20files/ArcDataDo.do}{ArcData Do File}"
     \item Create distance rings per distance (in meters) radius of the treatment center. The distance rings/parameters should be 50, 100, 250, 500, 750, 1000, 1250, 1500, 1750. These will become new observations in the dataset. 
     \item Perform a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
 \end{enumerate}
