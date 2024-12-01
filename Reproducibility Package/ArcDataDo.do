@@ -8,7 +8,7 @@ import delimited "DTA.csv"
 drop if near_dist == -1
 
 *** this is install a program that may or may not be usefull in exporting tables
-ssc install estout
+ssc install outreg2
 
 *** these commands seperate the data points from ArcGIS into groups based on their realative distance to the nearest treatment center
 gen dist_group = 100 if near_dist <= 100 
@@ -58,7 +58,7 @@ gen dist_group_2500 = 2500 if (near_dist <= 2500 & near_dist >2250)
 
 *** This graph shows the decline in calls per area over the groups of distances recorded
 graph bar CallxArea, over(dist_group) title("Calls by Area for Each Distance") ytitle("Calls By Area") b1title("Distance Groups")
-graph export Calls_Distance.png, replace
+graph export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Calls_Distance.png", replace
 
 *** This command colapses our data down, Using the various variables we created for each seperate distance groups we can now collapse the data by the count of how many of our observations are within each individual distance groups by the id number for the treatment center it was nearest.
 collapse (count) dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, by(near_fid)
@@ -77,20 +77,16 @@ replace dist_group_2250 = dist_group_2250 / 3337942.194
 replace dist_group_2500 = dist_group_2500 / 3730641.276
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
-ttest dist_group_100 == dist_group_250 
-ttest dist_group_250 == dist_group_500  
-ttest dist_group_500 == dist_group_750 
-ttest dist_group_750 == dist_group_1000  
-ttest dist_group_1000 == dist_group_1250
-ttest dist_group_1250 == dist_group_1500
-ttest dist_group_1500 == dist_group_1750
-ttest dist_group_1750 == dist_group_2000
-ttest dist_group_2000 == dist_group_2250
-ttest dist_group_2250 == dist_group_2500 
-// I was wondering if there may be a way to export the data from these ttest in a similar way to how i groupd all of the ratio calculations into a single table?
+table (command) (result), command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_100 == dist_group_250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_250 == dist_group_500) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_500 == dist_group_750) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_750 == dist_group_1000) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1000 == dist_group_1250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1250 == dist_group_1500) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1500 == dist_group_1750) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1750 == dist_group_2000) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2000 == dist_group_2250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2250 == dist_group_2500) nformat(%9.6f) stars(Tailed_p 0.1 "*" 0.05 "**" 0.01 "***", shownote)  name(t_test) replace
+collect set t_test
+collect export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\t_test.tex", replace
+
+
 
 *** This test shows the sum of each variable divided by the sum of the next largest variable to show an estimate of how many more or less calls you can expect going from one ring to an adjecent one
-ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_group_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1) // I am having trouble figuring out how to export the tables to best add the information to Overleaf
+ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_group_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1) 
+
+outreg2 using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Ratio.tex", replace sum(log)
 
 
 log close
