@@ -91,9 +91,13 @@ collect export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHu
 
 
 *** This test shows the sum of each variable divided by the sum of the next largest variable to show an estimate of how many more or less calls you can expect going from one ring to an adjecent one
+
+table (command) (result), command(Ratio=r(table): ratio dist_group_100/dist_group_250)
+
+
 ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_group_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1) 
 
-outreg2 using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Ratio.tex", replace sum(log)
+outreg2 using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Ratio.tex", sum(log) replace
 
 
 log close
