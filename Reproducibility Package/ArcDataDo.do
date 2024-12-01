@@ -1,11 +1,11 @@
 *** This pathway should lead to the folder where you are saving the exported data from ArcGIS
-cd "C:\Users\wrmaechl\OneDrive - Syracuse University\ZipCenterCrime"
+cd "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility Package"
 
 *** This is to log the work done by the dofile
-log using "DTA log", text replace 
+log using "Data_log", text replace 
 
 *** This should be the file you exported from ArcGIS
-import delimited "DTA.csv"
+import delimited "2017_Arc_Data.csv"
 
 *** This drops any values that were further than 2500 meters from any treatment center
 drop if near_dist == -1
