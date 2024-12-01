@@ -24,6 +24,11 @@ bookmarksnumbered=false,
 pdfview=fitH,
 bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
+% enable flowchart diagram package
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+\usepackage{graphicx}
+
 % define environments
 \newtheorem{definition}{Definition}
 \newtheorem{fact}{Fact}
@@ -68,8 +73,31 @@ The geographical relationship between crime and access to mental health care is 
 
 \section{Theoretical Analysis}
 \label{sec:theory}
-Optional--may include in intro if it's short.
+This paper assesses the hypothesis that as you get further away from a substance abuse treatment center in Detroit, MI you can expect a higher number of calls to 911. \cite{SAT_centers_and_crime} demonstrate how crime rate is negatively related to the number of substance abuse treatment centers. As more centers open, they can provide treatment to people who were previously unable to receive any due to centers not being in their areas. This greater access to treatment caused overall crime rates to drop as there was a reduction in crimes motivated by drugs or getting the money to acquire more. We can connect it with the findings of \cite{drugs_and_crime} who found that a change in the drug use in an area will positively correlate to the change in crime in the same area. This rise in both drug usage and crime causes a negatively related change in the standards of living of that area which they found will again negatively relate to the amount of drug usage restarting the cycle. This framework allowed us to analyze our claim (see Figure 1) that the distance to the closest treatment center will impact the ability to receive treatment, negatively affecting the level of drug use in that area, leading to a positively related effect on drugs-related crimes and also positively effecting the total number of 911. 
 
+\begin{figure}[h!]
+    \scalebox{0.8}{\begin{tikzpicture}[node distance= 4.5cm, auto]
+    % Define block styles
+    \tikzstyle{process} = [rectangle, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
+    \tikzstyle{arrow} = [thick,->,>=stealth]
+
+    % Start of the flowchart (horizontal layout)
+    \node (A) [process] {Distance to SAT};
+    \node (B) [process, right of=A] {Access to Treatment};
+    \node (C) [process, right of=B] {Drug Usage};
+    \node (D) [process, right of=C, xshift=-0.4cm] {Drug Related Crime};
+    \node (E) [process, right of=D] {Number of 911 Calls};
+    
+    % Draw dashed arrows (negative correlation)
+    \draw [arrow, dashed] (A) -- (B);
+    \draw [arrow, dashed] (B) -- (C);
+    
+    % Draw solid arrows (positive correlation)
+    \draw [arrow] (C) -- (D);
+    \draw [arrow] (D) -- (E);
+\end{tikzpicture}
+}
+\end{figure}
 
 \section{Data}
 \label{sec:data}
@@ -215,7 +243,7 @@ For the research question on "How does the distance to the closest drug rehabili
     \caption{Paired t test showing the likelihood of a call coming from within 1750 to 2000 meters}
 \end{figure}
    
-Our current research show that the likelihood of a 911 call increases the closer someone is to a drug treatment center, at least within 1250 meters. The high confidence interval of these sections also helps to prove that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. Our original hypothesis was proven to be false, but we have ideas on why areas closer to treatment centers would have more calls.
+Our current research show that the likelihood of a 911 call increases the closer someone is to a drug treatment center, at least within 1250 meters. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. Our original hypothesis was proven to be false, but we have ideas on why areas closer to treatment centers would have more calls.
 
 Our first theory is that these treatment centers were placed in areas of high crime and low standards of living. These places would naturally have a higher rate of 911 calls. Along with that, some readings we looked at say that affluent communities petition against the construction of rehab centers near them to ensure people with those issues have no reason to be near them.
 
@@ -229,13 +257,16 @@ Regardless of the reason, our research so far shows that the closer an area is t
 Optional. This is where you would discuss any of the following
 \begin{itemize}
     \item caveats (are there problems with the data that there are no obvious ways to resolve? if so, how might this impact
+- higher 911 calls per area due to higher city density: Would have to do this in different area with different population densities to control for that. 
     \item future work / next steps
+- why are drug treatment center locations picked, are they purposely put in higher crime neighborhoods? Way to control for this is to see the crime rates of an area before a drug treatment center was placed and afterwards, to see if the center has any impact on the immediate crime rate or not. 
     \item implications of the results: that is, how your findings -- if they were causally identified -- might inform policymaking, etc.
 \end{itemize}
 
 \section{Conclusion}
 \label{sec:conclusion}
 
+Our hypothesis was that the frequency of  911 calls would decrease  
 Re-state (in different words) what you did and what you learned. If your discussion (Section 6) would be short, you can just have a Conclusion section that includes your discussion (that is, leave out a separate Discussion section).
 
 \newpage
