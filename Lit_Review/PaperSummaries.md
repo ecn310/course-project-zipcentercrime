@@ -61,7 +61,7 @@ flowchart LR
 
 
 # Fourth Paper Summary 
-- Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972.
+- Citation: Bishai, David, Jody Sindelar, E. P. Ricketts, S. Huettner, L. Cornelius, J. J. Lloyd, J. R. Havens, C. A. Latkin, and S. A. Strathdee. "Willingness to pay for drug rehabilitation: implications for cost recovery." Journal of health economics 27, no. 4 (2008): 959-972. [https://www.sciencedirect.com/science/article/pii/S0167629607000872?casa_token=Cu_ApJxr1JoAAAAA:upTCH09hJQM-SMXjYrFuVt1Ym-RLdWAbwx_oR2hU5TmgOwOLeoxmZQKV6u6givp2Ss02qR46nA](https://www.sciencedirect.com/science/article/pii/S0167629607000872?casa_token=Cu_ApJxr1JoAAAAA:upTCH09hJQM-SMXjYrFuVt1Ym-RLdWAbwx_oR2hU5TmgOwOLeoxmZQKV6u6givp2Ss02qR46nA)
 - How we found it: google scholar after failing to find anything through the American Economic Association
 - Big Picture Question: Does making drug rehabilitation and other preventative medicine centers more afforadable through government subsidies like medicare help the economy in the long run through a healthier workforce?
 - Research Hypothesis: Clients are willing to begin treatment's with higher rates of treatment success and an affordable cost.
@@ -80,7 +80,7 @@ A["Cost of Treatment"] --(#45;)--> B["Patients Admited"] --(#45;)--> C["Drug Usa
 
 
 # Fifth Paper Summary 
-- Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218.
+- Citation: White, Helene R., and Dennis M. Gorman. "Dynamics of the drug-crime relationship." Criminal justice 1, no. 15 (2000): 1-218. [https://core.ac.uk/download/pdf/34709913.pdf](https://core.ac.uk/download/pdf/34709913.pdf)
 - How we found it: Found through Google Scholar in an effort to find a paper that focused more on the urban economics of the relationship between drug abuse and crime
 - Big Picture Question: Does Drug Abuse Cause Crime or Vice Versa and to what extent do they cause one another
 - Research Hypothesis: There is a positive feedback loop between higher drug use, higher crime, and lower standards of living in an area.

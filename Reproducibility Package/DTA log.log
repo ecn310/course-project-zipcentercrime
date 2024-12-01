@@ -1,0 +1,565 @@
+--------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sgortizh\OneDrive - Syracuse University\Intro to Econ Rese
+> arch\ArcGIS\DTA log.log
+  log type:  text
+ opened on:  22 Nov 2024, 14:50:38
+
+. *** This should be the file you exported from ArcGIS
+. import delimited "ArcGISmdata.csv"
+(encoding automatically selected: UTF-8)
+(29 vars, 620,359 obs)
+
+. *** This drops any values that were further than 2500 meters from any treatmen
+> t center
+. drop if near_dist == -1
+(205,143 observations deleted)
+
+. *create new variable: dist_group: It assigns every observation in its paramete
+> r the higher end of its parameters. 
+. gen dist_group = 50 if near_dist <= 50
+(413,947 missing values generated)
+
+. replace dist_group = 100 if (near_dist <= 100 & near_dist >50)
+(2,655 real changes made)
+
+. replace dist_group = 250 if (near_dist <= 250 & near_dist >100)
+(13,571 real changes made)
+
+. replace dist_group = 500 if (near_dist <= 500 & near_dist >250)
+(43,553 real changes made)
+
+. replace dist_group = 750 if (near_dist <= 750 & near_dist >500)
+(46,198 real changes made)
+
+. replace dist_group = 1000 if (near_dist <= 1000 & near_dist >750)
+(59,258 real changes made)
+
+. replace dist_group = 1250 if (near_dist <= 1250 & near_dist >1000)
+(64,059 real changes made)
+
+. replace dist_group = 1500 if (near_dist <= 1500 & near_dist >1250)
+(53,583 real changes made)
+
+. replace dist_group = 1750 if (near_dist <= 1750 & near_dist >1500)
+(46,384 real changes made)
+
+. replace dist_group = 2000 if (near_dist <= 2000 & near_dist >1750)
+(32,171 real changes made)
+
+. replace dist_group = 2250 if (near_dist <= 2250 & near_dist >2000)
+(30,260 real changes made)
+
+. replace dist_group = 2500 if (near_dist <= 2500 & near_dist >2250)
+(22,255 real changes made)
+
+. *** May Be Useless for now 
+. gen dist_group2 = 0 if near_dist <= 50
+(413,947 missing values generated)
+
+. replace dist_group2 = 50 if (near_dist <= 100 & near_dist >50)
+(2,655 real changes made)
+
+. replace dist_group2 = 100 if (near_dist <= 250 & near_dist >100)
+(13,571 real changes made)
+
+. replace dist_group2 = 250 if (near_dist <= 500 & near_dist >250)
+(43,553 real changes made)
+
+. replace dist_group2 = 500 if (near_dist <= 750 & near_dist >500)
+(46,198 real changes made)
+
+. replace dist_group2 = 750 if (near_dist <= 1000 & near_dist >750)
+(59,258 real changes made)
+
+. replace dist_group2 = 1000 if (near_dist <= 1250 & near_dist >1000)
+(64,059 real changes made)
+
+. replace dist_group2 = 1250 if (near_dist <= 1500 & near_dist >1250)
+(53,583 real changes made)
+
+. replace dist_group2 = 1500 if (near_dist <= 1750 & near_dist >1500)
+(46,384 real changes made)
+
+. replace dist_group2 = 1750 if (near_dist <= 2000 & near_dist >1750)
+(32,171 real changes made)
+
+. replace dist_group2 = 2000 if (near_dist <= 2250 & near_dist >2000)
+(30,260 real changes made)
+
+. replace dist_group2 = 2250 if (near_dist <= 2500 & near_dist >2250)
+(22,255 real changes made)
+
+. egen freq = count(near_dist), by(dist_group)
+
+. gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2)
+
+. *** ^^^
+. tab area
+
+       area |      Freq.     Percent        Cum.
+------------+-----------------------------------
+   7853.981 |      1,269        0.31        0.31
+   23561.95 |      2,655        0.64        0.95
+   164933.6 |     13,571        3.27        4.21
+   589048.6 |     43,553       10.49       14.70
+   981747.7 |     46,198       11.13       25.83
+    1374447 |     59,258       14.27       40.10
+    1767146 |     64,059       15.43       55.53
+    2159845 |     53,583       12.90       68.43
+    2552544 |     46,384       11.17       79.60
+    2945243 |     32,171        7.75       87.35
+    3337942 |     30,260        7.29       94.64
+    3730641 |     22,255        5.36      100.00
+------------+-----------------------------------
+      Total |    415,216      100.00
+
+. gen CallxArea = freq /area
+
+. ***
+. gen dist_group_50 = 50 if near_dist <= 50
+(413,947 missing values generated)
+
+. gen dist_group_100 = 100 if (near_dist <= 100 & near_dist >50)
+(412,561 missing values generated)
+
+. gen dist_group_250 = 250 if (near_dist <= 250 & near_dist >100)
+(401,645 missing values generated)
+
+. gen dist_group_500 = 500 if (near_dist <= 500 & near_dist >250)
+(371,663 missing values generated)
+
+. gen dist_group_750 = 750 if (near_dist <= 750 & near_dist >500)
+(369,018 missing values generated)
+
+. gen dist_group_1000 = 1000 if (near_dist <= 1000 & near_dist >750)
+(355,958 missing values generated)
+
+. gen dist_group_1250 = 1250 if (near_dist <= 1250 & near_dist >1000)
+(351,157 missing values generated)
+
+. gen dist_group_1500 = 1500 if (near_dist <= 1500 & near_dist >1250)
+(361,633 missing values generated)
+
+. gen dist_group_1750 = 1750 if (near_dist <= 1750 & near_dist >1500)
+(368,832 missing values generated)
+
+. gen dist_group_2000 = 2000 if (near_dist <= 2000 & near_dist >1750)
+(383,045 missing values generated)
+
+. gen dist_group_2250 = 2250 if (near_dist <= 2250 & near_dist >2000)
+(384,956 missing values generated)
+
+. gen dist_group_2500 = 2500 if (near_dist <= 2500 & near_dist >2250)
+(392,961 missing values generated)
+
+. browse
+
+. help collaspe
+
+. collapse (count) dist_group_50 dist_group_100 dist_group_250 dist_group_500 di
+> st_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 d
+> ist_group_2000 dist_group_2250 dist_group_2500, by(near_fid)
+
+. ***Now, normalize it***
+. replace dist_group_50 = dist_group_50 / 7853.981
+variable dist_group_50 was long now double
+(15 real changes made)
+
+. replace dist_group_100 = dist_group_100 / 23561.95
+variable dist_group_100 was long now double
+(34 real changes made)
+
+. replace dist_group_250 = dist_group_250 / 164933.6
+variable dist_group_250 was long now double
+(43 real changes made)
+
+. replace dist_group_500 = dist_group_500 / 589048.6
+variable dist_group_500 was long now double
+(43 real changes made)
+
+. replace dist_group_750 = dist_group_750 / 981747.7
+variable dist_group_750 was long now double
+(43 real changes made)
+
+. replace dist_group_1000 = dist_group_1000 / 1374447
+variable dist_group_1000 was long now double
+(43 real changes made)
+
+. replace dist_group_1250 = dist_group_1250 / 1767146
+variable dist_group_1250 was long now double
+(43 real changes made)
+
+. replace dist_group_1500 = dist_group_1500 / 2159845
+variable dist_group_1500 was long now double
+(42 real changes made)
+
+. replace dist_group_1750 = dist_group_1750 / 2552544
+variable dist_group_1750 was long now double
+(39 real changes made)
+
+. replace dist_group_2000 = dist_group_2000 / 2945243
+variable dist_group_2000 was long now double
+(36 real changes made)
+
+. replace dist_group_2250 = dist_group_2250 / 3337942
+variable dist_group_2250 was long now double
+(30 real changes made)
+
+. replace dist_group_2500 = dist_group_2500 / 3730641
+variable dist_group_2500 was long now double
+(28 real changes made)
+
+. *Summary Statistics*
+. collapse (sum) dist_group_50 dist_group_100 dist_group_250 dist_group_500 dist
+> _group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dis
+> t_group_2000 dist_group_2250 dist_group_2500
+
+. browse
+
+. summarize dist_group_50 dist_group_100 dist_group_250 dist_group_500 dist_grou
+> p_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_gro
+> up_2000 dist_group_2250 dist_group_2500,detail
+
+                     (sum) dist_group_50
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .1615741       .1615741
+ 5%     .1615741              .
+10%     .1615741              .       Obs                   1
+25%     .1615741              .       Sum of wgt.           1
+
+50%     .1615741                      Mean           .1615741
+                        Largest       Std. dev.             .
+75%     .1615741              .
+90%     .1615741              .       Variance              .
+95%     .1615741              .       Skewness              .
+99%     .1615741       .1615741       Kurtosis              .
+
+                    (sum) dist_group_100
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .1126817       .1126817
+ 5%     .1126817              .
+10%     .1126817              .       Obs                   1
+25%     .1126817              .       Sum of wgt.           1
+
+50%     .1126817                      Mean           .1126817
+                        Largest       Std. dev.             .
+75%     .1126817              .
+90%     .1126817              .       Variance              .
+95%     .1126817              .       Skewness              .
+99%     .1126817       .1126817       Kurtosis              .
+
+                    (sum) dist_group_250
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0822816       .0822816
+ 5%     .0822816              .
+10%     .0822816              .       Obs                   1
+25%     .0822816              .       Sum of wgt.           1
+
+50%     .0822816                      Mean           .0822816
+                        Largest       Std. dev.             .
+75%     .0822816              .
+90%     .0822816              .       Variance              .
+95%     .0822816              .       Skewness              .
+99%     .0822816       .0822816       Kurtosis              .
+
+                    (sum) dist_group_500
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0739379       .0739379
+ 5%     .0739379              .
+10%     .0739379              .       Obs                   1
+25%     .0739379              .       Sum of wgt.           1
+
+50%     .0739379                      Mean           .0739379
+                        Largest       Std. dev.             .
+75%     .0739379              .
+90%     .0739379              .       Variance              .
+95%     .0739379              .       Skewness              .
+99%     .0739379       .0739379       Kurtosis              .
+
+                    (sum) dist_group_750
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0470569       .0470569
+ 5%     .0470569              .
+10%     .0470569              .       Obs                   1
+25%     .0470569              .       Sum of wgt.           1
+
+50%     .0470569                      Mean           .0470569
+                        Largest       Std. dev.             .
+75%     .0470569              .
+90%     .0470569              .       Variance              .
+95%     .0470569              .       Skewness              .
+99%     .0470569       .0470569       Kurtosis              .
+
+                    (sum) dist_group_1000
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0431141       .0431141
+ 5%     .0431141              .
+10%     .0431141              .       Obs                   1
+25%     .0431141              .       Sum of wgt.           1
+
+50%     .0431141                      Mean           .0431141
+                        Largest       Std. dev.             .
+75%     .0431141              .
+90%     .0431141              .       Variance              .
+95%     .0431141              .       Skewness              .
+99%     .0431141       .0431141       Kurtosis              .
+
+                    (sum) dist_group_1250
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%       .03625         .03625
+ 5%       .03625              .
+10%       .03625              .       Obs                   1
+25%       .03625              .       Sum of wgt.           1
+
+50%       .03625                      Mean             .03625
+                        Largest       Std. dev.             .
+75%       .03625              .
+90%       .03625              .       Variance              .
+95%       .03625              .       Skewness              .
+99%       .03625         .03625       Kurtosis              .
+
+                    (sum) dist_group_1500
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0248087       .0248087
+ 5%     .0248087              .
+10%     .0248087              .       Obs                   1
+25%     .0248087              .       Sum of wgt.           1
+
+50%     .0248087                      Mean           .0248087
+                        Largest       Std. dev.             .
+75%     .0248087              .
+90%     .0248087              .       Variance              .
+95%     .0248087              .       Skewness              .
+99%     .0248087       .0248087       Kurtosis              .
+
+                    (sum) dist_group_1750
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0181717       .0181717
+ 5%     .0181717              .
+10%     .0181717              .       Obs                   1
+25%     .0181717              .       Sum of wgt.           1
+
+50%     .0181717                      Mean           .0181717
+                        Largest       Std. dev.             .
+75%     .0181717              .
+90%     .0181717              .       Variance              .
+95%     .0181717              .       Skewness              .
+99%     .0181717       .0181717       Kurtosis              .
+
+                    (sum) dist_group_2000
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%      .010923        .010923
+ 5%      .010923              .
+10%      .010923              .       Obs                   1
+25%      .010923              .       Sum of wgt.           1
+
+50%      .010923                      Mean            .010923
+                        Largest       Std. dev.             .
+75%      .010923              .
+90%      .010923              .       Variance              .
+95%      .010923              .       Skewness              .
+99%      .010923        .010923       Kurtosis              .
+
+                    (sum) dist_group_2250
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0090655       .0090655
+ 5%     .0090655              .
+10%     .0090655              .       Obs                   1
+25%     .0090655              .       Sum of wgt.           1
+
+50%     .0090655                      Mean           .0090655
+                        Largest       Std. dev.             .
+75%     .0090655              .
+90%     .0090655              .       Variance              .
+95%     .0090655              .       Skewness              .
+99%     .0090655       .0090655       Kurtosis              .
+
+                    (sum) dist_group_2500
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%     .0059655       .0059655
+ 5%     .0059655              .
+10%     .0059655              .       Obs                   1
+25%     .0059655              .       Sum of wgt.           1
+
+50%     .0059655                      Mean           .0059655
+                        Largest       Std. dev.             .
+75%     .0059655              .
+90%     .0059655              .       Variance              .
+95%     .0059655              .       Skewness              .
+99%     .0059655       .0059655       Kurtosis              .
+
+. ttest dist_group_50 == dist_group_100
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dist~_50 |       1    .1615741           .           .           .           .
+dist~100 |       1    .1126817           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0488924           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_50 - dist_group_100)            t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_100 == dist_group_250
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dist~100 |       1    .1126817           .           .           .           .
+dis~_250 |       1    .0822816           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0304001           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_100 - dist_group_250)           t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_250 == dist_group_500
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~_250 |       1    .0822816           .           .           .           .
+dis~_500 |       1    .0739379           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0083437           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_250 - dist_group_500)           t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_500 == dist_group_750
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~_500 |       1    .0739379           .           .           .           .
+dis~_750 |       1    .0470569           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1     .026881           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_500 - dist_group_750)           t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_750 == dist_group_1000
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~_750 |       1    .0470569           .           .           .           .
+dis~1000 |       1    .0431141           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0039428           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_750 - dist_group_1000)          t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_1000 == dist_group_1250
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~1000 |       1    .0431141           .           .           .           .
+dis~1250 |       1      .03625           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0068641           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_1000 - dist_group_1250)         t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_1250 == dist_group_1500
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~1250 |       1      .03625           .           .           .           .
+dis~1500 |       1    .0248087           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0114413           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_1250 - dist_group_1500)         t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_1500 == dist_group_1750
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~1500 |       1    .0248087           .           .           .           .
+dis~1750 |       1    .0181717           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1     .006637           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_1500 - dist_group_1750)         t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. ttest dist_group_1750 == dist_group_2000
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
+---------+--------------------------------------------------------------------
+dis~1750 |       1    .0181717           .           .           .           .
+dis~2000 |       1     .010923           .           .           .           .
+---------+--------------------------------------------------------------------
+    diff |       1    .0072486           .           .           .           .
+------------------------------------------------------------------------------
+     mean(diff) = mean(dist_group_1750 - dist_group_2000)         t =        .
+ H0: mean(diff) = 0                              Degrees of freedom =        0
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
+ Pr(T < t) =      .         Pr(|T| > |t|) =      .          Pr(T > t) =      .
+
+. clear
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\sgortizh\OneDrive - Syracuse University\Intro to Econ Rese
+> arch\ArcGIS\DTA log.log
+  log type:  text
+ closed on:  22 Nov 2024, 14:50:42
+--------------------------------------------------------------------------------
