@@ -9,7 +9,14 @@ The drug treatment center data was provided to us directly from a Professor Deza
 We are only analizing 2017 data from both data sets
 - The 2017 911 Call data set can be accessed through OneDrive via this [link](https://sumailsyr-my.sharepoint.com/my?id=%2Fpersonal%2Fregaudre%5Fsyr%5Fedu%2FDocuments%2FECN%20310%20%2D%20Zip%20Center%20Crime%20data%2F911%20Calls%20Yearly%20data) and the do file used to seperate the 2017 data from the raw data can be found in GitHub [here](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/911%20call%20data%20by%20year/do%20files/Create_2017_911_call_data.do)
 - The 2017 Treatment Center data can be accessed in GitHub [here](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/Treatment%20center%20data%20by%20year/2017_treatment_center_data.dta), and the do file can be accessed also in GitHub through following this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/Treatment%20center%20data%20by%20year/do%20files/create_2017_treatment_center_data.do)
+- Make sure both datasets are saved as ".csv" files. (comma delimited)
 ### Data Analysis
+#### ArcGISPro
+- We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 - The ArcGIS Reproducability Document can be accessed in GitHub or through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/ArcGIS_Reproducability.md). This document explains how to reproduce the process of seperating 911 calls by distance from a drug treatment center.
 - The NewData2.csv file created from the ArcGIS Reproducability Package above can be accessed and downloaded through this [GitHub file](https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS%20files/NewData2Download.md)
 - ArcData.do uses NewData2.csv to collapse the data and run analysis through conducting t-tests at each distance range
+#### Stata
+- Open that dataset into Stata/MP 18.0 and follow this [do file](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do).
+- We created distance rings per distance (in meters) radius of the treatment center. The distance rings/parameters are 100, 250, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, and 2500 meters. These will become new columns/varaibles in the dataset.
+- Perform a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
