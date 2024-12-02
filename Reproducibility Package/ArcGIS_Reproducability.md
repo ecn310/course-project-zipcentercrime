@@ -1,4 +1,6 @@
 # ArcGIS Reproducability Document
+We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using
+the coordinates (longitude and latitude variables) of each point, we created two new variables:
 ### Step 1. 
 - Download 911 Call [data](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/911%20call%20data%20by%20year/2017_911_call_data_access.md) for 2017.
 - Download Treatment Center [data](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Data%20by%20year/Treatment%20center%20data%20by%20year/2017_treatment_center_data.dta) for 2017.
@@ -28,7 +30,11 @@
 - Select the Near tool
 - Your parameters should be set to the following. Input Features will be the layer of plotted 911 call data. Your Near Features will be the layer of plotted treatment centers. Search radius will be 2500 meters. Method will be Geodesic, and all of your distances will be set to meters.
 - Hit Run
-- Check the attribute table for 911 Call Data to confirm the new variables have been created
+- Check the attribute table for 911 Call Data to confirm these two new variables below have been created:
+- near fid: This assigned every 911 call with one SATC, the center geographically closest to it.
+Variable is a numeric integer, with values ranging from 1 to 44.
+- near dist: This is the distance in meters the 911 call observation is from the SATC it is
+associated with in near fid.
 
 ### Step 5
 - Right click on the layer for your 911 Call Data points
