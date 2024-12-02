@@ -115,22 +115,11 @@ This data is from the Substance Abuse and Mental Health Services Administration 
 
 We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
-\subsection{Data Manipulation}
-We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
-\begin{enumerate}
-    \item Download raw datasets of "\href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{911 Calls}"and "\href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/detroit_samhsa_sud_2015_2021.dta}{SATC} ". Make sure both datasets are saved as ".csv" files. (comma delimited)
-    \item Open Stata/MP 18.0 and import the raw datasets. Follow this do file to isolate the observations to 2017.
-\subsubsection{ArcGIS}
-    \item Upload these datasets into ArcGISPro and create XY tables for both datasets. Follow this replication file here "\href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/ArcGIS_Reproducability.md}{ArcGISPro Reproducibility File} "
-    \item Use the "near" tool in ArcGISPro to create two new variables, near\textunderscore\ fid and near \textunderscore\ dist. It will add these columns/observations to the 911 calls dataset. 
-    \item Export this updated dataset as a csv file. 
-    \subsubsection{Stata}
-    \item Open that dataset into Stata and follow this do file \href{https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do}{ArcData Do File}
-    \item Create distance rings per distance (in meters) radius of the treatment center. The distance rings/parameters should be 50, 100, 250, 500, 750, 1000, 1250, 1500, 1750. These will become new observations in the dataset. 
-    \item Perform a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
-\end{enumerate}
 
 \subsection{Summary Statistics}
+
+We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
+
  summarize
 
     Variable |        Obs        Mean    Std. dev.       Min        Max
@@ -189,6 +178,7 @@ Ratio estimation                            Number of obs = 44
 
 \section{Results}
 \label{sec:result}
+\subsubsection{Summary Statisticsw}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
 %Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
