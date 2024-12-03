@@ -52,7 +52,7 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
 \bigskip
 \section{Introduction} \label{sec:introduction}
-
+    Our study examines whether drug treatment or rehab centers have a positive or negative correlation with the number of 911 calls in an area. This study itself focuses on the city of Detroit and its metropolitan area. At first, our group thought that the implementation of a drug rehab center in an area would reduce the number of 911 calls. This is caused by a reduction in drug and alcohol misuse; activities that are the main causes of many other illegal activities. In addition to that, drug and alcohol addictions have shown a direct negative correlation with quality of life. For this reason, our initial hypothesis is as follows: How does the distance to the closest drug rehabilitation center relate to the number of calls to 911? To show opposite of our hypothesis, preliminary research further built upon in the literature review shows that prosperous communities prefer not to have drug treatment or rehab centers anywhere near them. This is because these centers have a reputation for affecting people who could be a danger to the community around them. In addition to this, our group hypothesized that the number of 911 calls would decrease with time as the rehab center was in a community for longer. This is because rehab centers are positive aspects of the communities that need them, offering the necessary advice to vulnerable people. The longer a community has a rehab center in it, the more prosperous it would be and the less 911 calls it would need. 
 Answer the questions
 \begin{enumerate}
     \item \textbf{Why should the reader care? / Why is the topic important?} (required)
@@ -178,58 +178,13 @@ Ratio estimation                            Number of obs = 44
 
 \section{Results}
 \label{sec:result}
-\subsubsection{Summary Statisticsw}
+\subsubsection{Summary Statistics}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
 %Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
 
 For the research question on "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the more  likely that 911 would be called with a drug related inquiry. Our null hypothesis in this case would then be that there is no relation between distance to a drug treatment center and likelihood to call 911. 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image50-100.png}
-        \caption{Paired t test showing the likelihood of a call coming from within 50 to 100 meters}
-    \end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image100-250.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 100 to 250 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image250-500.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 250 to 500 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image500-750.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 500 to 750 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image750-1000.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 750 to 1000 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image1000-1250.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 1000 to 1250 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image1250-1500.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 1250 to 1500 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image1500-1750.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 1500 to 1750 meters}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{image1750-2000.png}
-    \caption{Paired t test showing the likelihood of a call coming from within 1750 to 2000 meters}
-\end{figure}
-   
+
 Our current research show that the likelihood of a 911 call increases the closer someone is to a drug treatment center, at least within 1250 meters. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. Our original hypothesis was proven to be false, but we have ideas on why areas closer to treatment centers would have more calls.
 
 Our first theory is that these treatment centers were placed in areas of high crime and low standards of living. These places would naturally have a higher rate of 911 calls. Along with that, some readings we looked at say that affluent communities petition against the construction of rehab centers near them to ensure people with those issues have no reason to be near them.
@@ -252,7 +207,7 @@ Optional. This is where you would discuss any of the following
 
     We hypothesized that as the distance from a substance abuse treatment center (SATC) increases, the frequency of 911 calls also increases. The closer a SATC is, the more accessible treatments centers are, which should reduce crime rates in the area, measured by 911 calls. We conducted a cross-sectional analysis to examine the overlap of 911 calls' geographical locations to their distances to their closest SATC. Our results show that contrary to our hypothesis, as distance from a SATC increases, the amount of 911 calls decreases. There is strong correlation between these two variables, as the r coefficient is 0.8,.. This distance decay relationship indicates that there is a relationship between SATC placements and 911 calls, but just in the opposite direction of the original hypothesis. 
     One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. Drug treatment centers may be purposely selected in drug usage hot spots, which tend to have other associated demographics such as high population density and lower standard of living. These communities tend to have higher crime rates in general, which could explain part of this trend. Alternately, they may be placed there since higher standards of living communities, which tend to have less crime rates in general, will rally against SATC being placed in their neighborhoods, due to fear of the type of people it will bring to the neighborhood. 
-    Another explantation for the lower frequency of 911 calls in further distance rings could be due our data not counting 911 calls twice. When we geocoded the 911 calls, we assigned each observation to only one SATC, the one geographically closest to it. This was to limit the amount of overlap that some SATC might have at the smaller distance rings, as it could exaggerate our data frequencies. However, the in farther distance rings, a call might be similar in distance to two SATCs, but will only be assigned to be correlated to one, when the reality it could be correlated to either. This thins the observations and data associated in farther out distance rings. 
+    Another explanation for the lower frequency of 911 calls in further distance rings could be due our data not counting 911 calls twice. When we geocoded the 911 calls, we assigned each observation to only one SATC, the one geographically closest to it. This was to limit the amount of overlap that some SATC might have at the smaller distance rings, as it could exaggerate our data frequencies. However, the in farther distance rings, a call might be similar in distance to two SATCs, but will only be assigned to be correlated to one, when the reality it could be correlated to either. This thins the observations and data associated in farther out distance rings. 
     One significant limitation was the inability to fine-tune 911 call data to determine whether calls were directly related to drug activity. Without additional data, such as toxicology reports or detailed incident descriptions, it remains challenging to assess the role of drugs in criminal behavior or whether the crimes involved were violent in nature. A better understanding of what calls were drug related or induced could provide more accurate results on the relationship between drug abuse and crime, and the role SATC in amplifying or mitigating this. 
     Another limitation is the population density of this urban sample. The observed pattern of 911 calls could have been influenced higher population density in more urban parts of Detroit, which naturally results in an increase of emergency calls. Future research should explore similar analyses in areas with varying population densities to better control for this variable and isolate the effects of proximity to drug treatment centers. 
 
