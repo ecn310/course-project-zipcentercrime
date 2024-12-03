@@ -121,18 +121,24 @@ We used the ArcGISPro application to layer both 2017 datasets and geocode their 
 We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
 
 \begin{table}[h]
-\caption{\textbf{Ratio Analysis}}
-\label{Table}
-\scriptsize
-\begin{center}
-\input{Visual Graphics/ratio_results}
-\end{center}
-\flushleft
-\begin{footnotesize}
-\begin{singlespace}
-\textbf{Notes}: Description of your table here.
-\end{singlespace}
-\end{footnotesize}
+\centering
+\caption{Ratio Analysis}
+\begin{tabular}{l|c|c|cc|c|c}
+\hline\hline
+Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&     P value\\
+\hline
+100/250     &    1.518016&     .305492&     .901933&      2.1341&    4.969087&    .0000112\\
+250/500     &    1.112848&    .1703623&    .7692794&    1.456416&    6.532241&    6.14e-08\\
+500/750     &    1.571244&    .1966827&    1.174596&    1.967893&    7.988725&    4.92e-10\\
+750/1000    &    1.091451&    .1104992&    .8686081&    1.314294&    9.877456&    1.25e-12\\
+1000/1250   &    1.189354&    .0748615&    1.038382&    1.340327&     15.8874&    1.32e-19\\
+1250/1500   &    1.461179&    .1268808&    1.205299&    1.717058&    11.51615&    1.00e-14\\
+1500/1750   &    1.365242&    .1935897&    .9748308&    1.755652&    7.052244&    1.08e-08\\
+1750/2000   &     1.66361&    .2204068&    1.219117&    2.108103&    7.547907&    2.09e-09\\
+2000/2250   &    1.204906&     .110774&    .9815093&    1.428303&    10.87716&    6.33e-14\\
+2250/2500  &    1.519659&    .1688579&    1.179124&    1.860193&     8.99963&    1.91e-11\\
+\hline\hline
+\end{tabular}
 \end{table}
 
 %Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
