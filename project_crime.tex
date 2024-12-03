@@ -120,48 +120,20 @@ We used the ArcGISPro application to layer both 2017 datasets and geocode their 
 
 We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
 
- summarize
-
-    Variable |        Obs        Mean    Std. dev.       Min        Max
--------------+---------------------------------------------------------
-    near_fid |         44        22.5    12.84523          1         44
-dist_gro~_50 |         44    28.84091    66.19771          0        376
-dist_gro~100 |         44    60.34091    77.67582          0        326
-dist_gr~_250 |         44    308.4318    314.5254          0       1434
-dist_gr~_500 |         44    989.8409    1014.308          0       4174
--------------+---------------------------------------------------------
-dist_gr~_750 |         44    1049.955    698.9852          0       2645
-dist_gr~1000 |         44    1346.773    943.0601          0       3742
-dist_gr~1250 |         44    1455.886    1202.573          0       5552
-dist_gr~1500 |         44    1217.795    1222.337          0       5014
-dist_gr~1750 |         44    1054.182    1104.161          0       4129
--------------+---------------------------------------------------------
-dist_gr~2000 |         44    731.1591    824.6483          0       2816
-ratio dist_group_100/dist_group_50
-
-Ratio estimation                            Number of obs = 44
-
-     _ratio_1: dist_group_100/dist_group_50
-
---------------------------------------------------------------
-             |             Linearized
-             |      Ratio   std. err.     [95% conf. interval]
--------------+------------------------------------------------
-    _ratio_1 |   2.092199   .8721967      .3332463    3.851151
---------------------------------------------------------------
-
-Ratio estimation                            Number of obs = 44
-
-     _ratio_1: dist_group_250/dist_group_100
-
---------------------------------------------------------------
-             |             Linearized
-             |      Ratio   std. err.     [95% conf. interval]
--------------+------------------------------------------------
-    _ratio_1 |   5.111488   1.337423      2.414317    7.808659
---------------------------------------------------------------
-
-. ratio dist_group_50/dist_group_100
+\begin{table}[h]
+\caption{\textbf{Ratio Analysis}}
+\label{Table}
+\scriptsize
+\begin{center}
+\input{Reproducibility Package/ratio_results}
+\end{center}
+\flushleft
+\begin{footnotesize}
+\begin{singlespace}
+\textbf{Notes}: Description of your table here.
+\end{singlespace}
+\end{footnotesize}
+\end{table}
 
 %Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
 %In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
