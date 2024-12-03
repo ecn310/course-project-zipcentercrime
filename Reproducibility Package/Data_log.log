@@ -334,6 +334,12 @@ dist_gr~2500 |         44    .0001356    .0001788          0   .0006554
 C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Ratio.tex
 dir : seeout
 
+*To create a regression line graph follow these steps. This measures the distance decay and see how the strong the correlation between the frequency of CallxArea and the distance groups
+regress CallxArea dist_group
+
+ssc install outreg2
+outreg2 using CallxArea_Regress.doc, replace word
+seeout using "CallxArea_Regress.txt"
 . 
 . 
 . log close
