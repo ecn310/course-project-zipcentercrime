@@ -185,7 +185,7 @@ matrix rownames results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "
 
 matrix colnames results = "Ratio" "Std. Err."
 
-estout matrix(ratio_results) using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace
+esttab matrix(ratio_results) using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace latex
 
 
 
