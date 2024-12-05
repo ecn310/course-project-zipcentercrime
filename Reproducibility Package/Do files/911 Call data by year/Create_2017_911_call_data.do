@@ -7,7 +7,7 @@ Author Rachel Gaudreau
 
 Updated December 5, 2024 RG
 ***********************************************************************/
-* Set cd to computer path where the calls_final.csv file is saved and mimport the raw data
+* Set cd to computer path where the calls_final.csv file is saved and import the raw data
 cd "C:\Users\regaudre\OneDrive - Syracuse University\documents"
 import delimited "calls_final", clear 
 
