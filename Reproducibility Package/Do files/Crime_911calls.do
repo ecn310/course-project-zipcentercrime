@@ -112,4 +112,5 @@ drop if calldescription == "VISCOUS ANIMAL"
 drop if calldescription == "VIP THREATS J/H OR REPORT"
 
 * Save 2017 911 call data for later use
-export delimited using "C:\Users\wrmaechl\OneDrive - Syracuse University\ECN 310\Raw Data\Crime_Calls_2017.csv", replace
+save "documents\2017_Crime_911calls"
+
