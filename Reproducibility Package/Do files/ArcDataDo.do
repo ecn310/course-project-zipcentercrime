@@ -1,3 +1,10 @@
+/***********************************************************************
+This program runs the data analysis used for our report
+
+Created October 8, 2024
+
+Author Weston Maechling and Sophia Oritz-Heaney
+***********************************************************************/
 *** This pathway should lead to the folder where you are saving the exported data from ArcGIS
 
 cd "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility Package"
@@ -81,7 +88,7 @@ mkat dist_group, matrix(dist)
 
 graph bar CallxArea, over(dist_group) title("Calls by Area for Each Distance") ytitle("Calls By Area") b1title("Distance Groups")
 graph save graph.gph, replace
-graph export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Calls_Distance.png", replace
+graph export "Visual Graphics\Calls_Distance.png", replace
 
 *** This command colapses our data down, Using the various variables we created for each seperate distance groups we can now collapse the data by the count of how many of our observations are within each individual distance groups by the id number for the treatment center it was nearest.
 
@@ -147,7 +154,7 @@ global dist_group_Vars "dist_group_100 dist_group_250 dist_group_500 dist_group_
 
 table (command) (result), command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_100 == dist_group_250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_250 == dist_group_500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_500 == dist_group_750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_750 == dist_group_1000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1000 == dist_group_1250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1250 == dist_group_1500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1500 == dist_group_1750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1750 == dist_group_2000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2000 == dist_group_2250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2250 == dist_group_2500) nformat(9.3f) stars(p_value 0.1 "*" 0.05 "**" 0.01 "***", shownote)  name(t_test) replace
 collect set t_test
-collect export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\t_test.tex", replace
+collect export "Visual Graphics\t_test.tex", replace
 
 
 
@@ -192,7 +199,7 @@ matrix list ci
 graph twoway (bar dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000) (rcap ci[1,1] ci[1,2] dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000)
 
 
-esttab matrix(ratio_results) using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace latex
+esttab matrix(ratio_results) using "Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace latex
 
 
 
