@@ -63,21 +63,24 @@ gen CallxArea = freq / area
 
 *** these commands create new seperate variables for each distance group 
 
-gen dist_group_100 = 100 if near_dist <= 100
-gen dist_group_250 = 250 if (near_dist <= 250 & near_dist >100)
-gen dist_group_500 = 500 if (near_dist <= 500 & near_dist >250)
-gen dist_group_750 = 750 if (near_dist <= 750 & near_dist >500)
-gen dist_group_1000 = 1000 if (near_dist <= 1000 & near_dist >750)
-gen dist_group_1250 = 1250 if (near_dist <= 1250 & near_dist >1000)
-gen dist_group_1500 = 1500 if (near_dist <= 1500 & near_dist >1250)
-gen dist_group_1750 = 1750 if (near_dist <= 1750 & near_dist >1500)
-gen dist_group_2000 = 2000 if (near_dist <= 2000 & near_dist >1750)
-gen dist_group_2250 = 2250 if (near_dist <= 2250 & near_dist >2000)
-gen dist_group_2500 = 2500 if (near_dist <= 2500 & near_dist >2250)
+gen dist_group_100 = 1 if near_dist <= 100
+gen dist_group_250 = 1 if (near_dist <= 250 & near_dist >100)
+gen dist_group_500 = 1 if (near_dist <= 500 & near_dist >250)
+gen dist_group_750 = 1 if (near_dist <= 750 & near_dist >500)
+gen dist_group_1000 = 1 if (near_dist <= 1000 & near_dist >750)
+gen dist_group_1250 = 1 if (near_dist <= 1250 & near_dist >1000)
+gen dist_group_1500 = 1 if (near_dist <= 1500 & near_dist >1250)
+gen dist_group_1750 = 1 if (near_dist <= 1750 & near_dist >1500)
+gen dist_group_2000 = 1 if (near_dist <= 2000 & near_dist >1750)
+gen dist_group_2250 = 1 if (near_dist <= 2250 & near_dist >2000)
+gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2250)
+
+mkat dist_group, matrix(dist)
 
 *** This graph shows the decline in calls per area over the groups of distances recorded
 
 graph bar CallxArea, over(dist_group) title("Calls by Area for Each Distance") ytitle("Calls By Area") b1title("Distance Groups")
+graph save graph.gph, replace
 graph export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\Calls_Distance.png", replace
 
 *** This command colapses our data down, Using the various variables we created for each seperate distance groups we can now collapse the data by the count of how many of our observations are within each individual distance groups by the id number for the treatment center it was nearest.
@@ -86,21 +89,63 @@ collapse (count) dist_group_100 dist_group_250 dist_group_500 dist_group_750 dis
 
 *** once our data is collapsed we use these commands to standardize the number of calls by the areas of the rings we calculated previously 
 
-replace dist_group_100 = dist_group_100 / 31415.9265
-replace dist_group_250 = dist_group_250 / 164933.6143
-replace dist_group_500 = dist_group_500 / 589048.6225
-replace dist_group_750 = dist_group_750 / 981747.7042
-replace dist_group_1000 = dist_group_1000 / 1374446.786
-replace dist_group_1250 = dist_group_1250 / 1767145.868
-replace dist_group_1500 = dist_group_1500 / 2159844.949
-replace dist_group_1750 = dist_group_1750 / 2552544.031
-replace dist_group_2000 = dist_group_2000 / 2945243.113
-replace dist_group_2250 = dist_group_2250 / 3337942.194
-replace dist_group_2500 = dist_group_2500 / 3730641.276
+replace dist_group_100 = (dist_group_100 / 31415.9265) * 1000000
+replace dist_group_250 = (dist_group_250 / 164933.6143) * 1000000
+replace dist_group_500 = (dist_group_500 / 589048.6225) * 1000000
+replace dist_group_750 = (dist_group_750 / 981747.7042) * 1000000
+replace dist_group_1000 = (dist_group_1000 / 1374446.786) * 1000000
+replace dist_group_1250 = (dist_group_1250 / 1767145.868) * 1000000
+replace dist_group_1500 = (dist_group_1500 / 2159844.949) * 1000000
+replace dist_group_1750 = (dist_group_1750 / 2552544.031) * 1000000
+replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
+replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
+replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
+rename dist_group_100 Dat01_dist_group_100
+rename dist_group_250 Dat02_dist_group_250
+rename dist_group_500 Dat03_dist_group_500
+rename dist_group_750 Dat04_dist_group_750
+rename dist_group_1000 Dat05_dist_group_1000
+rename dist_group_1250 Dat06_dist_group_1250
+rename dist_group_1500 Dat07_dist_group_1500
+rename dist_group_1750 Dat08_dist_group_1750
+rename dist_group_2000 Dat09_dist_group_2000
+rename dist_group_2250 Dat10_dist_group_2250
+rename dist_group_2500 Dat11_dist_group_2500
 
-table (command) (result), command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_100 == dist_group_250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_250 == dist_group_500) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_500 == dist_group_750) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_750 == dist_group_1000) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1000 == dist_group_1250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1250 == dist_group_1500) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1500 == dist_group_1750) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1750 == dist_group_2000) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2000 == dist_group_2250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2250 == dist_group_2500) nformat(%9.6f) stars(Tailed_p 0.1 "*" 0.05 "**" 0.01 "***", shownote)  name(t_test) replace
+global DatVars"Dat01_dist_group_100 Dat02_dist_group_250 Dat03_dist_group_500 Dat04_dist_group_750 Dat05_dist_group_1000 Dat06_dist_group_1250 Dat07_dist_group_1500 Dat08_dist_group_1750 Dat09_dist_group_2000 Dat10_dist_group_2250 Dat11_dist_group_2500"         
+local nvars : word count $DatVars
+forval i = 1/`nvars'-1 {
+	local var1: word `i' of $DatVars
+	local var2: word `=`i'+1' of $DatVars
+	ttest `var1' == `var2'
+}
+
+
+
+
+ foreach var in $DatVars {
+	local prevar : word `i' of $DatVars
+	local postvar : word `i' of $DatVars
+      ttest `prevar' == `postvar'
+      estimates store `var'}     
+            
+      
+      //Graph with signficance 
+      twoway      (bar  LabMatAll Question if HH_MotherRespond==1&running<=11, bcolor(orange) sort(LabMatAll)) ///
+                  (bar  LabMatAll Question if HH_MotherRespond==0&running<=11, bcolor(ltblue)) ///                
+                  (rcap LabMatAllhi LabMatAlllow Question if HH_MotherRespond==0&running<=11, lcolor(black))  /// 
+                  (rcap LabMatAllhi LabMatAlllow Question if HH_MotherRespond==1&running<=12, lcolor(black)) ///
+                        xlabel(1 4 7 10 13 16 19 22 25 28 31 , valuelabe angle(60)) ///
+                  ytitle("Strongly agree/Agree") ///
+            legend( order(  1 "Mother" 2 "Father") )
+
+
+global dist_group_Vars "dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500" 
+
+
+table (command) (result), command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_100 == dist_group_250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_250 == dist_group_500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_500 == dist_group_750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_750 == dist_group_1000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1000 == dist_group_1250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1250 == dist_group_1500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1500 == dist_group_1750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1750 == dist_group_2000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2000 == dist_group_2250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2250 == dist_group_2500) nformat(9.3f) stars(p_value 0.1 "*" 0.05 "**" 0.01 "***", shownote)  name(t_test) replace
 collect set t_test
 collect export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\t_test.tex", replace
 
@@ -110,80 +155,42 @@ collect export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHu
 
 ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_group_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1) 
 
-matrix ratio_results = J(10, 6, 0)
-
-matrix ratio_results[1,1] = e(b)[1,1]
-matrix ratio_results[2,1] = e(b)[1,2]
-matrix ratio_results[3,1] = e(b)[1,3]
-matrix ratio_results[4,1] = e(b)[1,4]
-matrix ratio_results[5,1] = e(b)[1,5]
-matrix ratio_results[6,1] = e(b)[1,6]
-matrix ratio_results[7,1] = e(b)[1,7]
-matrix ratio_results[8,1] = e(b)[1,8]
-matrix ratio_results[9,1] = e(b)[1,9]
-matrix ratio_results[10,1] = e(b)[1,10]
-
-matrix ratio_results[1,2] = r(table)[2,1]
-matrix ratio_results[2,2] = r(table)[2,2]
-matrix ratio_results[3,2] = r(table)[2,3]
-matrix ratio_results[4,2] = r(table)[2,4]
-matrix ratio_results[5,2] = r(table)[2,5]
-matrix ratio_results[6,2] = r(table)[2,6]
-matrix ratio_results[7,2] = r(table)[2,7]
-matrix ratio_results[8,2] = r(table)[2,8]
-matrix ratio_results[9,2] = r(table)[2,9]
-matrix ratio_results[10,2] = r(table)[2,10]
-
-matrix ratio_results[1,3] = r(table)[5,1]
-matrix ratio_results[2,3] = r(table)[5,2]
-matrix ratio_results[3,3] = r(table)[5,3]
-matrix ratio_results[4,3] = r(table)[5,4]
-matrix ratio_results[5,3] = r(table)[5,5]
-matrix ratio_results[6,3] = r(table)[5,6]
-matrix ratio_results[7,3] = r(table)[5,7]
-matrix ratio_results[8,3] = r(table)[5,8]
-matrix ratio_results[9,3] = r(table)[5,9]
-matrix ratio_results[10,3] = r(table)[5,10]
+matrix ci = J(2, 10, 0)
 
 
-matrix ratio_results[1,4] = r(table)[6,1]
-matrix ratio_results[2,4] = r(table)[6,2]
-matrix ratio_results[3,4] = r(table)[6,3]
-matrix ratio_results[4,4] = r(table)[6,4]
-matrix ratio_results[5,4] = r(table)[6,5]
-matrix ratio_results[6,4] = r(table)[6,6]
-matrix ratio_results[7,4] = r(table)[6,7]
-matrix ratio_results[8,4] = r(table)[6,8]
-matrix ratio_results[9,4] = r(table)[6,9]
-matrix ratio_results[10,4] = r(table)[6,10]
+matrix ci[1,1] = r(table)[5,1]
+matrix ci[1,2] = r(table)[5,2]
+matrix ci[1,3] = r(table)[5,3]
+matrix ci[1,4] = r(table)[5,4]
+matrix ci[1,5] = r(table)[5,5]
+matrix ci[1,6] = r(table)[5,6]
+matrix ci[1,7] = r(table)[5,7]
+matrix ci[1,8] = r(table)[5,8]
+matrix ci[1,9] = r(table)[5,9]
+matrix ci[1,10] = r(table)[5,10]
 
-matrix ratio_results[1,5] = r(table)[3,1]
-matrix ratio_results[2,5] = r(table)[3,2]
-matrix ratio_results[3,5] = r(table)[3,3]
-matrix ratio_results[4,5] = r(table)[3,4]
-matrix ratio_results[5,5] = r(table)[3,5]
-matrix ratio_results[6,5] = r(table)[3,6]
-matrix ratio_results[7,5] = r(table)[3,7]
-matrix ratio_results[8,5] = r(table)[3,8]
-matrix ratio_results[9,5] = r(table)[3,9]
-matrix ratio_results[10,5] = r(table)[3,10]
 
-matrix ratio_results[1,6] = r(table)[4,1]
-matrix ratio_results[2,6] = r(table)[4,2]
-matrix ratio_results[3,6] = r(table)[4,3]
-matrix ratio_results[4,6] = r(table)[4,4]
-matrix ratio_results[5,6] = r(table)[4,5]
-matrix ratio_results[6,6] = r(table)[4,6]
-matrix ratio_results[7,6] = r(table)[4,7]
-matrix ratio_results[8,6] = r(table)[4,8]
-matrix ratio_results[9,6] = r(table)[4,9]
-matrix ratio_results[10,6] = r(table)[4,10]
+matrix ci[2,1] = r(table)[6,1]
+matrix ci[2,2] = r(table)[6,2]
+matrix ci[2,3] = r(table)[6,3]
+matrix ci[2,4] = r(table)[6,4]
+matrix ci[2,5] = r(table)[6,5]
+matrix ci[2,6] = r(table)[6,6]
+matrix ci[2,7] = r(table)[6,7]
+matrix ci[2,8] = r(table)[6,8]
+matrix ci[2,9] = r(table)[6,9]
+matrix ci[2,10] = r(table)[6,10]
 
-matrix list ratio_results
 
-matrix rownames results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2000/2250" "2250/2500"
+matrix colnames ci = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2000/2250" "2250/2500"
 
-matrix colnames results = "Ratio" "Std. Err."
+matrix rownames ci = "lci" "uci"
+
+
+matrix list ci
+
+graph twoway (bar dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000) (rcap ci[1,1] ci[1,2] dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000)
+
 
 esttab matrix(ratio_results) using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace latex
 
