@@ -125,11 +125,11 @@ forval i = 1/`nvars'-1 {
 
 
 
- foreach var in $DatVars {
-	local prevar : word `i' of $DatVars
-	local postvar : word `i' of $DatVars
-      ttest `prevar' == `postvar'
-      estimates store `var'}     
+foreach pair in $DatVars {
+	local prevar: word `i' of $DatVars
+	local postvar: word `=`i'+1' of $DatVars
+	ttest `prevar' == `postvar'   
+estimates store `var'}     
             
       
       //Graph with signficance 

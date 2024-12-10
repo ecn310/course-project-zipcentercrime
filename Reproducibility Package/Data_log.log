@@ -3,7 +3,7 @@
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Data_log.log
   log type:  text
- opened on:   3 Dec 2024, 12:55:01
+ opened on:  10 Dec 2024, 11:53:17
 
 . 
 . 
@@ -206,56 +206,57 @@ all files already exist and are up to date.
 . 
 . gen CallxArea = freq / area
 
-. 
-. 
-. 
-. *** these commands create new seperate variables for each distance group 
+. browse
 
-. 
-. 
-. 
-. gen dist_group_100 = 100 if near_dist <= 100
+. gen dist_group_100 = 1 if near_dist <= 100
 (411,292 missing values generated)
 
 . 
-. gen dist_group_250 = 250 if (near_dist <= 250 & near_dist >100)
+. gen dist_group_250 = 1 if (near_dist <= 250 & near_dist >100)
 (401,645 missing values generated)
 
 . 
-. gen dist_group_500 = 500 if (near_dist <= 500 & near_dist >250)
+. gen dist_group_500 = 1 if (near_dist <= 500 & near_dist >250)
 (371,663 missing values generated)
 
 . 
-. gen dist_group_750 = 750 if (near_dist <= 750 & near_dist >500)
+. gen dist_group_750 = 1 if (near_dist <= 750 & near_dist >500)
 (369,018 missing values generated)
 
 . 
-. gen dist_group_1000 = 1000 if (near_dist <= 1000 & near_dist >750)
+. gen dist_group_1000 = 1 if (near_dist <= 1000 & near_dist >750)
 (355,958 missing values generated)
 
 . 
-. gen dist_group_1250 = 1250 if (near_dist <= 1250 & near_dist >1000)
+. gen dist_group_1250 = 1 if (near_dist <= 1250 & near_dist >1000)
 (351,157 missing values generated)
 
 . 
-. gen dist_group_1500 = 1500 if (near_dist <= 1500 & near_dist >1250)
+. gen dist_group_1500 = 1 if (near_dist <= 1500 & near_dist >1250)
 (361,633 missing values generated)
 
 . 
-. gen dist_group_1750 = 1750 if (near_dist <= 1750 & near_dist >1500)
+. gen dist_group_1750 = 1 if (near_dist <= 1750 & near_dist >1500)
 (368,832 missing values generated)
 
 . 
-. gen dist_group_2000 = 2000 if (near_dist <= 2000 & near_dist >1750)
+. gen dist_group_2000 = 1 if (near_dist <= 2000 & near_dist >1750)
 (383,045 missing values generated)
 
 . 
-. gen dist_group_2250 = 2250 if (near_dist <= 2250 & near_dist >2000)
+. gen dist_group_2250 = 1 if (near_dist <= 2250 & near_dist >2000)
 (384,956 missing values generated)
 
 . 
-. gen dist_group_2500 = 2500 if (near_dist <= 2500 & near_dist >2250)
+. gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2250)
 (392,961 missing values generated)
+
+. 
+. 
+. 
+. mkat dist_group, matrix(dist)
+command mkat is unrecognized
+r(199);
 
 . 
 . 
@@ -267,6 +268,11 @@ all files already exist and are up to date.
 . 
 . graph bar CallxArea, over(dist_group) title("Calls by Area for Each Distance") ytitle("Calls By Area") b1title("Distance Gr
 > oups")
+
+. 
+. graph save graph.gph, replace
+(file graph.gph not found)
+file graph.gph saved
 
 . 
 . graph export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Graphi
@@ -296,57 +302,57 @@ file C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-pr
 . 
 . 
 . 
-. replace dist_group_100 = dist_group_100 / 31415.9265
+. replace dist_group_100 = (dist_group_100 / 31415.9265) * 1000000
 variable dist_group_100 was long now double
 (36 real changes made)
 
 . 
-. replace dist_group_250 = dist_group_250 / 164933.6143
+. replace dist_group_250 = (dist_group_250 / 164933.6143) * 1000000
 variable dist_group_250 was long now double
 (43 real changes made)
 
 . 
-. replace dist_group_500 = dist_group_500 / 589048.6225
+. replace dist_group_500 = (dist_group_500 / 589048.6225) * 1000000
 variable dist_group_500 was long now double
 (43 real changes made)
 
 . 
-. replace dist_group_750 = dist_group_750 / 981747.7042
+. replace dist_group_750 = (dist_group_750 / 981747.7042) * 1000000
 variable dist_group_750 was long now double
 (43 real changes made)
 
 . 
-. replace dist_group_1000 = dist_group_1000 / 1374446.786
+. replace dist_group_1000 = (dist_group_1000 / 1374446.786) * 1000000
 variable dist_group_1000 was long now double
 (43 real changes made)
 
 . 
-. replace dist_group_1250 = dist_group_1250 / 1767145.868
+. replace dist_group_1250 = (dist_group_1250 / 1767145.868) * 1000000
 variable dist_group_1250 was long now double
 (43 real changes made)
 
 . 
-. replace dist_group_1500 = dist_group_1500 / 2159844.949
+. replace dist_group_1500 = (dist_group_1500 / 2159844.949) * 1000000
 variable dist_group_1500 was long now double
 (42 real changes made)
 
 . 
-. replace dist_group_1750 = dist_group_1750 / 2552544.031
+. replace dist_group_1750 = (dist_group_1750 / 2552544.031) * 1000000
 variable dist_group_1750 was long now double
 (39 real changes made)
 
 . 
-. replace dist_group_2000 = dist_group_2000 / 2945243.113
+. replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
 variable dist_group_2000 was long now double
 (36 real changes made)
 
 . 
-. replace dist_group_2250 = dist_group_2250 / 3337942.194
+. replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
 variable dist_group_2250 was long now double
 (30 real changes made)
 
 . 
-. replace dist_group_2500 = dist_group_2500 / 3730641.276
+. replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
 variable dist_group_2500 was long now double
 (28 real changes made)
 
@@ -357,1204 +363,94 @@ variable dist_group_2500 was long now double
 > mpared to the next larger ring
 
 . 
-. 
-. 
-. table (command) (result), command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): tt
-> est dist_group_100 == dist_group_250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p 
-> = r(p_u): ttest dist_group_250 == dist_group_500) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(
-> p) Tailed_p = r(p_u): ttest dist_group_500 == dist_group_750) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) 
-> p_value = r(p) Tailed_p = r(p_u): ttest dist_group_750 == dist_group_1000) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_
-> 2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1000 == dist_group_1250) command(M2=r(mu_2) M1=r(mu_1) Diff
-> erence= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1250 == dist_group_1500) command(M2=r(mu_2) M
-> 1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1500 == dist_group_1750) comman
-> d(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1750 == dist_grou
-> p_2000) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_200
-> 0 == dist_group_2250) command(M2=r(mu_2) M1=r(mu_1) Difference= (r(mu_2) -r(mu_1)) p_value = r(p) Tailed_p = r(p_u): ttest 
-> dist_group_2250 == dist_group_2500) nformat(%9.6f) stars(Tailed_p 0.1 "*" 0.05 "**" 0.01 "***", shownote)  name(t_test) rep
-> lace
-
-----------------------------------------------------------------------------------------------------------
-                                         |        M2         M1   Difference    p_value   Tailed_p   stars
------------------------------------------+----------------------------------------------------------------
-ttest dist_group_100 == dist_group_250   |  0.001870   0.002839    -0.000969   0.056443   0.028221      **
-ttest dist_group_2250 == dist_group_2500 |  0.000136   0.000206    -0.000070   0.003984   0.001992     ***
-ttest dist_group_250 == dist_group_500   |  0.001680   0.001870    -0.000190   0.490720   0.245360        
-ttest dist_group_500 == dist_group_750   |  0.001069   0.001680    -0.000611   0.006756   0.003378     ***
-ttest dist_group_750 == dist_group_1000  |  0.000980   0.001069    -0.000090   0.391751   0.195875        
-ttest dist_group_1000 == dist_group_1250 |  0.000824   0.000980    -0.000156   0.005975   0.002987     ***
-ttest dist_group_1250 == dist_group_1500 |  0.000564   0.000824    -0.000260   0.000067   0.000033     ***
-ttest dist_group_1500 == dist_group_1750 |  0.000413   0.000564    -0.000151   0.040070   0.020035      **
-ttest dist_group_1750 == dist_group_2000 |  0.000248   0.000413    -0.000165   0.001363   0.000682     ***
-ttest dist_group_2000 == dist_group_2250 |  0.000206   0.000248    -0.000042   0.039335   0.019668      **
-----------------------------------------------------------------------------------------------------------
-*** p<.01, ** p<.05, * p<.1
+. rename dist_group_100 Dat01_dist_group_100
 
 . 
-. collect set t_test
-(current collection is t_test)
+. rename dist_group_250 Dat02_dist_group_250
 
 . 
-. collect export "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Grap
-> hics\t_test.tex", replace
-(collection t_test exported to file C:\Users\wrmaechl\OneDrive - Syracuse
- University\Documents\GitHub\course-project-zipcentercrime\Visual Graphics\t_test.tex)
+. rename dist_group_500 Dat03_dist_group_500
+
+. 
+. rename dist_group_750 Dat04_dist_group_750
+
+. 
+. rename dist_group_1000 Dat05_dist_group_1000
+
+. 
+. rename dist_group_1250 Dat06_dist_group_1250
+
+. 
+. rename dist_group_1500 Dat07_dist_group_1500
+
+. 
+. rename dist_group_1750 Dat08_dist_group_1750
+
+. 
+. rename dist_group_2000 Dat09_dist_group_2000
+
+. 
+. rename dist_group_2250 Dat10_dist_group_2250
+
+. 
+. rename dist_group_2500 Dat11_dist_group_2500
 
 . 
 . 
 . 
-. 
-. 
-. 
-. 
-. *** This test shows the sum of each variable divided by the sum of the next largest variable to show an estimate of how man
-> y more or less calls you can expect going from one ring to an adjecent one
+. global DatVars"Dat01_dist_group_100 Dat02_dist_group_250 Dat03_dist_group_500 Dat04_dist_group_750 Dat05_dist_group_1000 Da
+> t06_dist_group_1250 Dat07_dist_group_1500 Dat08_dist_group_1750 Dat09_dist_group_2000 Dat10_dist_group_2250 Dat11_dist_grou
+> p_2500"
 
-. 
-. 
-. 
-. ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_
-> group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_gro
-> up_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1)
-
-Ratio estimation                            Number of obs = 44
-
-     _ratio_1: dist_group_100/dist_group_250
-     _ratio_2: dist_group_250/dist_group_500
-     _ratio_3: dist_group_500/dist_group_750
-     _ratio_4: dist_group_750/dist_group_1000
-     _ratio_5: dist_group_1000/dist_group_1250
-     _ratio_6: dist_group_1250/dist_group_1500
-     _ratio_7: dist_group_1500/dist_group_1750
-     _ratio_8: dist_group_1750/dist_group_2000
-     _ratio_9: dist_group_2000/dist_group_2250
-    _ratio_10: dist_group_2250/dist_group_2500
-
---------------------------------------------------------------
-             |             Linearized
-             |      Ratio   std. err.     [95% conf. interval]
--------------+------------------------------------------------
-    _ratio_1 |   1.518016    .305492       .901933      2.1341
-    _ratio_2 |   1.112848   .1703623      .7692794    1.456416
-    _ratio_3 |   1.571244   .1966827      1.174596    1.967893
-    _ratio_4 |   1.091451   .1104992      .8686081    1.314294
-    _ratio_5 |   1.189354   .0748615      1.038382    1.340327
-    _ratio_6 |   1.461179   .1268808      1.205299    1.717058
-    _ratio_7 |   1.365242   .1935897      .9748308    1.755652
-    _ratio_8 |    1.66361   .2204068      1.219117    2.108103
-    _ratio_9 |   1.204906    .110774      .9815093    1.428303
-   _ratio_10 |   1.519659   .1688579      1.179124    1.860193
---------------------------------------------------------------
-
-. ereturn list
-
-scalars:
-               e(df_r) =  43
-             e(N_over) =  1
-                  e(N) =  44
-               e(k_eq) =  1
-               e(rank) =  10
-
-macros:
-            e(cmdline) : "ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_grou.."
-                e(cmd) : "ratio"
-                e(vce) : "linearized"
-            e(vcetype) : "Linearized"
-              e(title) : "Ratio estimation"
-           e(namelist) : "_ratio_1 _ratio_2 _ratio_3 _ratio_4 _ratio_5 _ratio_6 _ratio_7 _ratio_8 _ratio_9 _ratio_10"
-          e(estat_cmd) : "estat_vce_only"
-            e(varlist) : "dist_group_100 dist_group_250 dist_group_250 dist_group_500 dist_group_500 dist_group_750 dist_.."
-       e(marginsnotok) : "_ALL"
-         e(properties) : "b V"
-
-matrices:
-                  e(b) :  1 x 10
-                  e(V) :  10 x 10
-                 e(_N) :  1 x 10
-              e(error) :  1 x 10
-
-functions:
-             e(sample)   
-
-. return list
-
-macros:
-           r(mcmethod) : "noadjust"
-
-matrices:
-              r(table) :  9 x 10
-
-. matrix ratio_results = J(4, 3)
-invalid syntax
-r(198);
-
-. help matrix
-
-. matrix ratio_results = J(10,2)
-invalid syntax
-r(198);
-
-. matrix ratio_results = J(4, 3, 0)
-
-. matrix ratio_results list
-matrix operation not found
-r(501);
-
-. matrix list ratio_results
-
-ratio_results[4,3]
-    c1  c2  c3
-r1   0   0   0
-r2   0   0   0
-r3   0   0   0
-r4   0   0   0
-
-. matrix ratio_results = J(10, 2, 0)
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-     c1  c2
- r1   0   0
- r2   0   0
- r3   0   0
- r4   0   0
- r5   0   0
- r6   0   0
- r7   0   0
- r8   0   0
- r9   0   0
-r10   0   0
-
-. matrix ratio_results[1,1] = e(b)[1]
-invalid syntax
-r(198);
-
-. matrix ratio_results[1,1] = e(b)[1,1]
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-            c1         c2
- r1  1.5180164          0
- r2          0          0
- r3          0          0
- r4          0          0
- r5          0          0
- r6          0          0
- r7          0          0
- r8          0          0
- r9          0          0
-r10          0          0
-
-. matrix ratio_results[2,1] = e(b)[2,1]
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-            c1         c2
- r1  1.5180164          0
- r2          .          0
- r3          0          0
- r4          0          0
- r5          0          0
- r6          0          0
- r7          0          0
- r8          0          0
- r9          0          0
-r10          0          0
-
-. matrix ratio_results[2,1] = e(b)[1,2]
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-            c1         c2
- r1  1.5180164          0
- r2  1.1128477          0
- r3          0          0
- r4          0          0
- r5          0          0
- r6          0          0
- r7          0          0
- r8          0          0
- r9          0          0
-r10          0          0
-
-. matrix ratio_results[1,1] = e(b)[1,1]
-
-. 
-. matrix ratio_results[2,1] = e(b)[1,2]
-
-. 
-. matrix ratio_results[3,1] = e(b)[1,3]
-
-. 
-. matrix ratio_results[4,1] = e(b)[1,4]
-
-. 
-. matrix ratio_results[5,1] = e(b)[1,5]
-
-. 
-. matrix ratio_results[6,1] = e(b)[1,6]
-
-. 
-. matrix ratio_results[7,1] = e(b)[1,7]
-
-. 
-. matrix ratio_results[8,1] = e(b)[1,8]
-
-. 
-. matrix ratio_results[9,1] = e(b)[1,9]
-
-. 
-. matrix ratio_results[10,1] = e(b)[1,10]
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-            c1         c2
- r1  1.5180164          0
- r2  1.1128477          0
- r3  1.5712441          0
- r4  1.0914509          0
- r5  1.1893545          0
- r6  1.4611786          0
- r7  1.3652415          0
- r8  1.6636101          0
- r9  1.2049064          0
-r10  1.5196585          0
-
-. matrix ratio_results[1,2] = e(error)[1,1]
-
-. 
-. matrix ratio_results[2,2] = e(error)[1,2]
-
-. 
-. matrix ratio_results[3,2] = e(error)[1,3]
-
-. 
-. matrix ratio_results[4,2] = e(error)[1,4]
-
-. 
-. matrix ratio_results[5,2] = e(error)[1,5]
-
-. 
-. matrix ratio_results[6,2] = e(error)[1,6]
-
-. 
-. matrix ratio_results[7,2] = e(error)[1,7]
-
-. 
-. matrix ratio_results[8,2] = e(error)[1,8]
-
-. 
-. matrix ratio_results[9,2] = e(error)[1,9]
-
-. 
-. matrix ratio_results[10,2] = e(error)[1,10]
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-            c1         c2
- r1  1.5180164          0
- r2  1.1128477          0
- r3  1.5712441          0
- r4  1.0914509          0
- r5  1.1893545          0
- r6  1.4611786          0
- r7  1.3652415          0
- r8  1.6636101          0
- r9  1.2049064          0
-r10  1.5196585          0
-
-. matrix list e(error)
-
-e(error)[1,10]
-     c1   c2   c3   c4   c5   c6   c7   c8   c9  c10
-r1    0    0    0    0    0    0    0    0    0    0
-
-. matrix list e(V)
-
-symmetric e(V)[10,10]
-             _ratio_1    _ratio_2    _ratio_3    _ratio_4    _ratio_5    _ratio_6    _ratio_7    _ratio_8    _ratio_9
- _ratio_1   .09332536
- _ratio_2  -.02479875   .02902332
- _ratio_3  -.00644346  -.01514942   .03868408
- _ratio_4   .00316192   .00209616  -.00859579   .01221007
- _ratio_5   .00417299    .0029551  -.00111373  -.00060382   .00560424
- _ratio_6   .00043678   .00167459  -.00259659   -.0028409  -.00110535   .01609874
- _ratio_7  -.00769893  -.01325818   .00705768   -.0020724  -.00448942  -.00407499   .03747696
- _ratio_8  -.01162517   .00694943   .01321991   -.0025811   .00252588  -.00713899  -.00444566   .04857916
- _ratio_9   .00128857   .00115892     .000679  -.00346613   .00017155  -.00346575   .00447805     .003096   .01227088
-_ratio_10   .00954594  -.00187718    .0023839   .00388741  -.00140622   .00421152  -.00828651  -.00404589  -.00896236
-
-            _ratio_10
-_ratio_10   .02851298
-
-. matrix list e(N)
-matrix e(N) not found
+. graph bar dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_
+> group_1750 dist_group_2000
+variable dist_group_100 not found
 r(111);
 
-. matrix list e(_N)
-
-e(_N)[1,10]
-     _ratio_1   _ratio_2   _ratio_3   _ratio_4   _ratio_5   _ratio_6   _ratio_7   _ratio_8   _ratio_9  _ratio_10
-r1         44         44         44         44         44         44         44         44         44         44
-
-. sum dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_
-> 1750 dist_group_2000 dist_group_2250 dist_group_2500, detail
-
-                   (count) dist_group_100
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs                  44
-25%     .0005889              0       Sum of wgt.          44
-
-50%     .0017985                      Mean           .0028387
-                        Largest       Std. dev.      .0030465
-75%     .0040107       .0087854
-90%     .0080851       .0088172       Variance       9.28e-06
-95%     .0088172       .0103769       Skewness       1.356683
-99%     .0119685       .0119685       Kurtosis       4.096271
-
-                   (count) dist_group_250
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%     .0000121       .0000121
-10%     .0000303       .0000121       Obs                  44
-25%     .0007245       .0000182       Sum of wgt.          44
-
-50%     .0014188                      Mean             .00187
-                        Largest       Std. dev.       .001907
-75%     .0021372       .0048201
-90%     .0047292       .0061237       Variance       3.64e-06
-95%     .0061237       .0063783       Skewness       1.705146
-99%     .0086944       .0086944       Kurtosis       5.807883
-
-                   (count) dist_group_500
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%     8.49e-06       6.79e-06
-10%     .0000951       8.49e-06       Obs                  44
-25%     .0006298        .000039       Sum of wgt.          44
-
-50%     .0011858                      Mean           .0016804
-                        Largest       Std. dev.      .0017219
-75%     .0018691        .005093
-90%     .0036958       .0062117       Variance       2.97e-06
-95%     .0062117       .0065903       Skewness       1.773508
-99%      .007086        .007086       Kurtosis       5.629117
-
-                   (count) dist_group_750
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%     .0000173       .0000132
-10%     .0002017       .0000173       Obs                  44
-25%     .0005419       .0001324       Sum of wgt.          44
-
-50%     .0010242                      Mean           .0010695
-                        Largest       Std. dev.       .000712
-75%     .0015264       .0022378
-90%     .0021411       .0022582       Variance       5.07e-07
-95%     .0022582       .0026351       Skewness       .5000187
-99%     .0026942       .0026942       Kurtosis       2.470598
-
-                   (count) dist_group_1000
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%     .0001004       .0000771
-10%     .0002808       .0001004       Obs                  44
-25%     .0004445       .0001957       Sum of wgt.          44
-
-50%     .0007825                      Mean           .0009799
-                        Largest       Std. dev.      .0006861
-75%     .0014631       .0018989
-90%     .0018378       .0024424       Variance       4.71e-07
-95%     .0024424       .0026396       Skewness        .831115
-99%     .0027225       .0027225       Kurtosis       2.998284
-
-                   (count) dist_group_1250
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%     .0000441       5.66e-07
-10%     .0000696       .0000441       Obs                  44
-25%     .0003327       .0000639       Sum of wgt.          44
-
-50%     .0006692                      Mean           .0008239
-                        Largest       Std. dev.      .0006805
-75%     .0011439        .001907
-90%     .0015239       .0022279       Variance       4.63e-07
-95%     .0022279       .0024673       Skewness       1.330445
-99%     .0031418       .0031418       Kurtosis       5.000484
-
-                   (count) dist_group_1500
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%     4.63e-07              0
-10%     .0000144       4.63e-07       Obs                  44
-25%     .0001482       .0000102       Sum of wgt.          44
-
-50%     .0003817                      Mean           .0005638
-                        Largest       Std. dev.      .0005659
-75%     .0008725         .00152
-90%     .0012441       .0018881       Variance       3.20e-07
-95%     .0018881       .0020326       Skewness       1.371865
-99%     .0023215       .0023215       Kurtosis        4.51875
-
-                   (count) dist_group_1750
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs                  44
-25%     .0000527              0       Sum of wgt.          44
-
-50%     .0002966                      Mean            .000413
-                        Largest       Std. dev.      .0004326
-75%     .0006188       .0011804
-90%     .0009179       .0013908       Variance       1.87e-07
-95%     .0013908       .0016113       Skewness        1.26669
-99%     .0016176       .0016176       Kurtosis       4.062333
-
-                   (count) dist_group_2000
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs                  44
-25%     1.36e-06              0       Sum of wgt.          44
-
-50%      .000166                      Mean           .0002483
-                        Largest       Std. dev.        .00028
-75%     .0003787       .0007982
-90%     .0007609        .000823       Variance       7.84e-08
-95%      .000823       .0009116       Skewness       1.077564
-99%     .0009561       .0009561       Kurtosis       3.132897
-
-                   (count) dist_group_2250
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs                  44
-25%            0              0       Sum of wgt.          44
-
-50%     .0001098                      Mean            .000206
-                        Largest       Std. dev.      .0002705
-75%     .0002521       .0007316
-90%     .0007262       .0007966       Variance       7.32e-08
-95%     .0007966       .0008194       Skewness       1.491236
-99%     .0010198       .0010198       Kurtosis       4.142539
-
-                   (count) dist_group_2500
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            0              0
- 5%            0              0
-10%            0              0       Obs                  44
-25%            0              0       Sum of wgt.          44
-
-50%      .000055                      Mean           .0001356
-                        Largest       Std. dev.      .0001788
-75%     .0002085       .0004994
-90%     .0003978       .0005503       Variance       3.20e-08
-95%     .0005503       .0005916       Skewness       1.427627
-99%     .0006554       .0006554       Kurtosis       4.181603
-
-. return list
-
-scalars:
-                  r(N) =  44
-              r(sum_w) =  44
-               r(mean) =  .000135578689326
-                r(Var) =  3.19666436102e-08
-                 r(sd) =  .000178792179947
-           r(skewness) =  1.427626820813381
-           r(kurtosis) =  4.181602624707543
-                r(sum) =  .0059654623303428
-                r(min) =  0
-                r(max) =  .0006553833025247
-                 r(p1) =  0
-                 r(p5) =  0
-                r(p10) =  0
-                r(p25) =  0
-                r(p50) =  .0000549503382485
-                r(p75) =  .0002085432349138
-                r(p90) =  .000397786838833
-                r(p95) =  .0005503075337764
-                r(p99) =  .0006553833025247
-
-. ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_
-> group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_gro
-> up_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500)
-
-Ratio estimation                            Number of obs = 44
-
-     _ratio_1: dist_group_100/dist_group_250
-     _ratio_2: dist_group_250/dist_group_500
-     _ratio_3: dist_group_500/dist_group_750
-     _ratio_4: dist_group_750/dist_group_1000
-     _ratio_5: dist_group_1000/dist_group_1250
-     _ratio_6: dist_group_1250/dist_group_1500
-     _ratio_7: dist_group_1500/dist_group_1750
-     _ratio_8: dist_group_1750/dist_group_2000
-     _ratio_9: dist_group_2000/dist_group_2250
-    _ratio_10: dist_group_2250/dist_group_2500
-
---------------------------------------------------------------
-             |             Linearized
-             |      Ratio   std. err.     [95% conf. interval]
--------------+------------------------------------------------
-    _ratio_1 |   1.518016    .305492       .901933      2.1341
-    _ratio_2 |   1.112848   .1703623      .7692794    1.456416
-    _ratio_3 |   1.571244   .1966827      1.174596    1.967893
-    _ratio_4 |   1.091451   .1104992      .8686081    1.314294
-    _ratio_5 |   1.189354   .0748615      1.038382    1.340327
-    _ratio_6 |   1.461179   .1268808      1.205299    1.717058
-    _ratio_7 |   1.365242   .1935897      .9748308    1.755652
-    _ratio_8 |    1.66361   .2204068      1.219117    2.108103
-    _ratio_9 |   1.204906    .110774      .9815093    1.428303
-   _ratio_10 |   1.519659   .1688579      1.179124    1.860193
---------------------------------------------------------------
-
-. ereturn list
-
-scalars:
-               e(df_r) =  43
-             e(N_over) =  1
-                  e(N) =  44
-               e(k_eq) =  1
-               e(rank) =  10
-
-macros:
-            e(cmdline) : "ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_grou.."
-                e(cmd) : "ratio"
-                e(vce) : "linearized"
-            e(vcetype) : "Linearized"
-              e(title) : "Ratio estimation"
-           e(namelist) : "_ratio_1 _ratio_2 _ratio_3 _ratio_4 _ratio_5 _ratio_6 _ratio_7 _ratio_8 _ratio_9 _ratio_10"
-          e(estat_cmd) : "estat_vce_only"
-            e(varlist) : "dist_group_100 dist_group_250 dist_group_250 dist_group_500 dist_group_500 dist_group_750 dist_.."
-       e(marginsnotok) : "_ALL"
-         e(properties) : "b V"
-
-matrices:
-                  e(b) :  1 x 10
-                  e(V) :  10 x 10
-                 e(_N) :  1 x 10
-              e(error) :  1 x 10
-
-functions:
-             e(sample)   
-
-. matrix list e(error)
-
-e(error)[1,10]
-     c1   c2   c3   c4   c5   c6   c7   c8   c9  c10
-r1    0    0    0    0    0    0    0    0    0    0
-
-. matrix list r(table)
-
-r(table)[9,10]
-         _ratio_1   _ratio_2   _ratio_3   _ratio_4   _ratio_5   _ratio_6   _ratio_7   _ratio_8   _ratio_9  _ratio_10
-     b  1.5180164  1.1128477  1.5712441  1.0914509  1.1893545  1.4611786  1.3652415  1.6636101  1.2049064  1.5196585
-    se  .30549199  .17036232   .1966827  .11049919  .07486149   .1268808  .19358966  .22040681    .110774  .16885788
-     t  4.9690873  6.5322411  7.9887255  9.8774562    15.8874  11.516152  7.0522442   7.547907  10.877158  8.9996305
-pvalue   .0000112  6.145e-08  4.918e-10  1.253e-12  1.320e-19  1.004e-14  1.081e-08  2.090e-09  6.328e-14  1.913e-11
-    ll  .90193305  .76927937  1.1745956  .86860808  1.0383819  1.2052991  .97483079  1.2191174   .9815093  1.1791241
-    ul  2.1340997  1.4564161  1.9678925  1.3142938   1.340327  1.7170581  1.7556523  2.1081028  1.4283034  1.8601929
-    df         43         43         43         43         43         43         43         43         43         43
-  crit  2.0166922  2.0166922  2.0166922  2.0166922  2.0166922  2.0166922  2.0166922  2.0166922  2.0166922  2.0166922
- eform          0          0          0          0          0          0          0          0          0          0
-
-. 
-. matrix ratio_results[1,2] = r(table)[2,1]
-
-. 
-. matrix ratio_results[2,2] = r(table)[2,2]
-
-. 
-. matrix ratio_results[3,2] = r(table)[2,3]
-
-. 
-. matrix ratio_results[4,2] = r(table)[2,4]
-
-. 
-. matrix ratio_results[5,2] = r(table)[2,5]
-
-. 
-. matrix ratio_results[6,2] = r(table)[2,6]
-
-. 
-. matrix ratio_results[7,2] = r(table)[2,7]
-
-. 
-. matrix ratio_results[8,2] = r(table)[2,8]
-
-. 
-. matrix ratio_results[9,2] = r(table)[2,9]
-
-. 
-. matrix ratio_results[10,2] = r(table)[2,10]
-
-. matrix list ratio_results
-
-ratio_results[10,2]
-            c1         c2
- r1  1.5180164  .30549199
- r2  1.1128477  .17036232
- r3  1.5712441   .1966827
- r4  1.0914509  .11049919
- r5  1.1893545  .07486149
- r6  1.4611786   .1268808
- r7  1.3652415  .19358966
- r8  1.6636101  .22040681
- r9  1.2049064    .110774
-r10  1.5196585  .16885788
-
-. matrix ratio_results[1,3] = r(table)[5,1]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[2,3] = r(table)[5,2]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[3,3] = r(table)[5,3]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[4,3] = r(table)[5,4]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[5,3] = r(table)[5,5]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[6,3] = r(table)[5,6]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[7,3] = r(table)[5,7]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[8,3] = r(table)[5,8]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[9,3] = r(table)[5,9]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[10,3] = r(table)[5,10]
-conformability error
-r(503);
-
-. 
-. 
-. 
-. 
-. 
-. matrix ratio_results[1,4] = r(table)[6,1]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[2,4] = r(table)[6,2]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[3,4] = r(table)[6,3]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[4,4] = r(table)[6,4]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[5,4] = r(table)[6,5]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[6,4] = r(table)[6,6]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[7,4] = r(table)[6,7]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[8,4] = r(table)[6,8]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[9,4] = r(table)[6,9]
-conformability error
-r(503);
-
-. 
-. matrix ratio_results[10,4] = r(table)[6,10]
-conformability error
-r(503);
-
-. matrix ratio_results = J(10, 5, 0)
-
-. matrix ratio_results[1,1] = e(b)[1,1]
-
-. 
-. matrix ratio_results[2,1] = e(b)[1,2]
-
-. 
-. matrix ratio_results[3,1] = e(b)[1,3]
-
-. 
-. matrix ratio_results[4,1] = e(b)[1,4]
-
-. 
-. matrix ratio_results[5,1] = e(b)[1,5]
-
-. 
-. matrix ratio_results[6,1] = e(b)[1,6]
-
-. 
-. matrix ratio_results[7,1] = e(b)[1,7]
-
-. 
-. matrix ratio_results[8,1] = e(b)[1,8]
-
-. 
-. matrix ratio_results[9,1] = e(b)[1,9]
-
-. 
-. matrix ratio_results[10,1] = e(b)[1,10]
-
-. 
-. 
-. 
-. matrix ratio_results[1,2] = r(table)[2,1]
-
-. 
-. matrix ratio_results[2,2] = r(table)[2,2]
-
-. 
-. matrix ratio_results[3,2] = r(table)[2,3]
-
-. 
-. matrix ratio_results[4,2] = r(table)[2,4]
-
-. 
-. matrix ratio_results[5,2] = r(table)[2,5]
-
-. 
-. matrix ratio_results[6,2] = r(table)[2,6]
-
-. 
-. matrix ratio_results[7,2] = r(table)[2,7]
-
-. 
-. matrix ratio_results[8,2] = r(table)[2,8]
-
-. 
-. matrix ratio_results[9,2] = r(table)[2,9]
-
-. 
-. matrix ratio_results[10,2] = r(table)[2,10]
-
-. 
-. 
-. 
-. matrix ratio_results[1,3] = r(table)[5,1]
-
-. 
-. matrix ratio_results[2,3] = r(table)[5,2]
-
-. 
-. matrix ratio_results[3,3] = r(table)[5,3]
-
-. 
-. matrix ratio_results[4,3] = r(table)[5,4]
-
-. 
-. matrix ratio_results[5,3] = r(table)[5,5]
-
-. 
-. matrix ratio_results[6,3] = r(table)[5,6]
-
-. 
-. matrix ratio_results[7,3] = r(table)[5,7]
-
-. 
-. matrix ratio_results[8,3] = r(table)[5,8]
-
-. 
-. matrix ratio_results[9,3] = r(table)[5,9]
-
-. 
-. matrix ratio_results[10,3] = r(table)[5,10]
-
-. 
-. 
-. 
-. 
-. 
-. matrix ratio_results[1,4] = r(table)[6,1]
-
-. 
-. matrix ratio_results[2,4] = r(table)[6,2]
-
-. 
-. matrix ratio_results[3,4] = r(table)[6,3]
-
-. 
-. matrix ratio_results[4,4] = r(table)[6,4]
-
-. 
-. matrix ratio_results[5,4] = r(table)[6,5]
-
-. 
-. matrix ratio_results[6,4] = r(table)[6,6]
-
-. 
-. matrix ratio_results[7,4] = r(table)[6,7]
-
-. 
-. matrix ratio_results[8,4] = r(table)[6,8]
-
-. 
-. matrix ratio_results[9,4] = r(table)[6,9]
-
-. 
-. matrix ratio_results[10,4] = r(table)[6,10]
-
-. matrix list ratio_results
-
-ratio_results[10,5]
-            c1         c2         c3         c4         c5
- r1  1.5180164  .30549199  .90193305  2.1340997          0
- r2  1.1128477  .17036232  .76927937  1.4564161          0
- r3  1.5712441   .1966827  1.1745956  1.9678925          0
- r4  1.0914509  .11049919  .86860808  1.3142938          0
- r5  1.1893545  .07486149  1.0383819   1.340327          0
- r6  1.4611786   .1268808  1.2052991  1.7170581          0
- r7  1.3652415  .19358966  .97483079  1.7556523          0
- r8  1.6636101  .22040681  1.2191174  2.1081028          0
- r9  1.2049064    .110774   .9815093  1.4283034          0
-r10  1.5196585  .16885788  1.1791241  1.8601929          0
-
-. matrix ratio_results = J(10, 6, 0)
-
-. 
-. 
-. 
-. matrix ratio_results[1,1] = e(b)[1,1]
-
-. 
-. matrix ratio_results[2,1] = e(b)[1,2]
-
-. 
-. matrix ratio_results[3,1] = e(b)[1,3]
-
-. 
-. matrix ratio_results[4,1] = e(b)[1,4]
-
-. 
-. matrix ratio_results[5,1] = e(b)[1,5]
-
-. 
-. matrix ratio_results[6,1] = e(b)[1,6]
-
-. 
-. matrix ratio_results[7,1] = e(b)[1,7]
-
-. 
-. matrix ratio_results[8,1] = e(b)[1,8]
-
-. 
-. matrix ratio_results[9,1] = e(b)[1,9]
-
-. 
-. matrix ratio_results[10,1] = e(b)[1,10]
-
-. 
-. 
-. 
-. matrix ratio_results[1,2] = r(table)[2,1]
-
-. 
-. matrix ratio_results[2,2] = r(table)[2,2]
-
-. 
-. matrix ratio_results[3,2] = r(table)[2,3]
-
-. 
-. matrix ratio_results[4,2] = r(table)[2,4]
-
-. 
-. matrix ratio_results[5,2] = r(table)[2,5]
-
-. 
-. matrix ratio_results[6,2] = r(table)[2,6]
-
-. 
-. matrix ratio_results[7,2] = r(table)[2,7]
-
-. 
-. matrix ratio_results[8,2] = r(table)[2,8]
-
-. 
-. matrix ratio_results[9,2] = r(table)[2,9]
-
-. 
-. matrix ratio_results[10,2] = r(table)[2,10]
-
-. 
-. 
-. 
-. matrix ratio_results[1,3] = r(table)[5,1]
-
-. 
-. matrix ratio_results[2,3] = r(table)[5,2]
-
-. 
-. matrix ratio_results[3,3] = r(table)[5,3]
-
-. 
-. matrix ratio_results[4,3] = r(table)[5,4]
-
-. 
-. matrix ratio_results[5,3] = r(table)[5,5]
-
-. 
-. matrix ratio_results[6,3] = r(table)[5,6]
-
-. 
-. matrix ratio_results[7,3] = r(table)[5,7]
-
-. 
-. matrix ratio_results[8,3] = r(table)[5,8]
-
-. 
-. matrix ratio_results[9,3] = r(table)[5,9]
-
-. 
-. matrix ratio_results[10,3] = r(table)[5,10]
-
-. 
-. 
-. 
-. 
-. 
-. matrix ratio_results[1,4] = r(table)[6,1]
-
-. 
-. matrix ratio_results[2,4] = r(table)[6,2]
-
-. 
-. matrix ratio_results[3,4] = r(table)[6,3]
-
-. 
-. matrix ratio_results[4,4] = r(table)[6,4]
-
-. 
-. matrix ratio_results[5,4] = r(table)[6,5]
-
-. 
-. matrix ratio_results[6,4] = r(table)[6,6]
-
-. 
-. matrix ratio_results[7,4] = r(table)[6,7]
-
-. 
-. matrix ratio_results[8,4] = r(table)[6,8]
-
-. 
-. matrix ratio_results[9,4] = r(table)[6,9]
-
-. 
-. matrix ratio_results[10,4] = r(table)[6,10]
-
-. 
-. 
-. 
-. matrix ratio_results[1,5] = r(table)[3,1]
-
-. 
-. matrix ratio_results[2,5] = r(table)[3,2]
-
-. 
-. matrix ratio_results[3,5] = r(table)[3,3]
-
-. 
-. matrix ratio_results[4,5] = r(table)[3,4]
-
-. 
-. matrix ratio_results[5,5] = r(table)[3,5]
-
-. 
-. matrix ratio_results[6,5] = r(table)[3,6]
-
-. 
-. matrix ratio_results[7,5] = r(table)[3,7]
-
-. 
-. matrix ratio_results[8,5] = r(table)[3,8]
-
-. 
-. matrix ratio_results[9,5] = r(table)[3,9]
-
-. 
-. matrix ratio_results[10,5] = r(table)[3,10]
-
-. 
-. 
-. 
-. matrix ratio_results[1,6] = r(table)[4,1]
-
-. 
-. matrix ratio_results[2,6] = r(table)[4,2]
-
-. 
-. matrix ratio_results[3,6] = r(table)[4,3]
-
-. 
-. matrix ratio_results[4,6] = r(table)[4,4]
-
-. 
-. matrix ratio_results[5,6] = r(table)[4,5]
-
-. 
-. matrix ratio_results[6,6] = r(table)[4,6]
-
-. 
-. matrix ratio_results[7,6] = r(table)[4,7]
-
-. 
-. matrix ratio_results[8,6] = r(table)[4,8]
-
-. 
-. matrix ratio_results[9,6] = r(table)[4,9]
-
-. 
-. matrix ratio_results[10,6] = r(table)[4,10]
-
-. matrix list ratio_results
-
-ratio_results[10,6]
-            c1         c2         c3         c4         c5         c6
- r1  1.5180164  .30549199  .90193305  2.1340997  4.9690873   .0000112
- r2  1.1128477  .17036232  .76927937  1.4564161  6.5322411  6.145e-08
- r3  1.5712441   .1966827  1.1745956  1.9678925  7.9887255  4.918e-10
- r4  1.0914509  .11049919  .86860808  1.3142938  9.8774562  1.253e-12
- r5  1.1893545  .07486149  1.0383819   1.340327    15.8874  1.320e-19
- r6  1.4611786   .1268808  1.2052991  1.7170581  11.516152  1.004e-14
- r7  1.3652415  .19358966  .97483079  1.7556523  7.0522442  1.081e-08
- r8  1.6636101  .22040681  1.2191174  2.1081028   7.547907  2.090e-09
- r9  1.2049064    .110774   .9815093  1.4283034  10.877158  6.328e-14
-r10  1.5196585  .16885788  1.1791241  1.8601929  8.9996305  1.913e-11
-
-. matrix rownames ratio_results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2
-> 000/2250" "2250/2500"
-
-. matrix colnames results = "Ratio" "Std. Err." "[95% Conf." "Interval]" "T score" "P value"
-
-. matrix list ratio_results
-
-ratio_results[10,6]
-                  c1         c2         c3         c4         c5         c6
-  100/250  1.5180164  .30549199  .90193305  2.1340997  4.9690873   .0000112
-  250/500  1.1128477  .17036232  .76927937  1.4564161  6.5322411  6.145e-08
-  500/750  1.5712441   .1966827  1.1745956  1.9678925  7.9887255  4.918e-10
- 750/1000  1.0914509  .11049919  .86860808  1.3142938  9.8774562  1.253e-12
-1000/1250  1.1893545  .07486149  1.0383819   1.340327    15.8874  1.320e-19
-1250/1500  1.4611786   .1268808  1.2052991  1.7170581  11.516152  1.004e-14
-1500/1750  1.3652415  .19358966  .97483079  1.7556523  7.0522442  1.081e-08
-1750/2000  1.6636101  .22040681  1.2191174  2.1081028   7.547907  2.090e-09
-2000/2250  1.2049064    .110774   .9815093  1.4283034  10.877158  6.328e-14
-2250/2500  1.5196585  .16885788  1.1791241  1.8601929  8.9996305  1.913e-11
-
-. matrix colnames ratio_results = "Ratio" "Std. Err." "[95% Conf." "Interval]" "T score" "P value"
-
-. matrix list ratio_results
-
-ratio_results[10,6]
-                Ratio   Std. Err.  [95% Conf.   Interval]     T score     P value
-  100/250   1.5180164   .30549199   .90193305   2.1340997   4.9690873    .0000112
-  250/500   1.1128477   .17036232   .76927937   1.4564161   6.5322411   6.145e-08
-  500/750   1.5712441    .1966827   1.1745956   1.9678925   7.9887255   4.918e-10
- 750/1000   1.0914509   .11049919   .86860808   1.3142938   9.8774562   1.253e-12
-1000/1250   1.1893545   .07486149   1.0383819    1.340327     15.8874   1.320e-19
-1250/1500   1.4611786    .1268808   1.2052991   1.7170581   11.516152   1.004e-14
-1500/1750   1.3652415   .19358966   .97483079   1.7556523   7.0522442   1.081e-08
-1750/2000   1.6636101   .22040681   1.2191174   2.1081028    7.547907   2.090e-09
-2000/2250   1.2049064     .110774    .9815093   1.4283034   10.877158   6.328e-14
-2250/2500   1.5196585   .16885788   1.1791241   1.8601929   8.9996305   1.913e-11
-
-. estout matrix(ratio_results) using "ratio_results.tex", cells("b(fmt(4)) se(fmt(4)) ci(fmt(4)) t(fmt(4)) p(fmt(4))") title(
-> "Ratio Analysis") border 
-option border not allowed
+. graph bar Dat01_dist_group_100 Dat02_dist_group_250 Dat03_dist_group_500 Dat04_dist_group_750 Dat05_dist_group_1000 Dat06_d
+> ist_group_1250 Dat07_dist_group_1500 Dat08_dist_group_1750 Dat09_dist_group_2000 Dat10_dist_group_2250 Dat11_dist_group_250
+> 0
+
+. local nvars : word count $DatVars
+
+. forval i = 1/`nvars'-1 {
+  2. 
+. local var1: word `i' of $DatVars
+  3. 
+. local var2: word `=`i'+1' of $DatVars
+  4. 
+. ttest `var1' == `var2'
+  5. 
+. }
+invalid syntax
 r(198);
 
-. estout matrix(ratio_results) using "ratio_results.tex", cells("b(fmt(4)) se(fmt(4)) ci(fmt(4)) t(fmt(4)) p(fmt(4))") title(
-> "Ratio Analysis")
-(output written to ratio_results.tex)
-
-. estout matrix(ratio_results) using "ratio_results.tex", title("Ratio Analysis"
-) required
-r(100);
-
-. estout matrix(ratio_results) using "ratio_results.tex", title("Ratio Analysis")
-file ratio_results.tex already exists
-r(602);
-
-. estout matrix(ratio_results) using "ratio_results.tex", title("Ratio Analysis"), replace
-invalid 'replace' 
+. foreach var in $DatVars {
+  2. 
+. local prevar : word `i' of $DatVars
+  3. 
+. local postvar : word `=`i'+1' of $DatVars
+  4. 
+.       ttest `prevar' == `postvar'
+  5. 
+.       estimates store `var'}     
+invalid syntax
 r(198);
 
-. estout matrix(ratio_results) using "ratio_results.tex", title("Ratio Analysis") replace
-(output written to ratio_results.tex)
+. 
+.             
+             is not a valid command name
+r(199);
 
-. estout matrix(ratio_results) using "ratio_results.tex", title("Ratio Analysis") line(1) replace
-option line() not allowed
+. foreach var in $DatVars {
+  2. 
+. local prevar : word `i' of $DatVars
+  3. 
+. local postvar : word `=`i'+1' of $DatVars
+  4. 
+. ttest `prevar' == `postvar'   
+  5. 
+. estimates store `var'}     
+invalid syntax
 r(198);
 
-. estout matrix(ratio_results) using "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcen
-> tercrime\Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace
-(file C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual
-    Graphics\ratio_results.tex not found)
-(output written to C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Visual Gra
-> phics\ratio_results.tex)
-
-. log close
-      name:  <unnamed>
-       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
-> Package\Data_log.log
-  log type:  text
- closed on:   3 Dec 2024, 13:46:17
------------------------------------------------------------------------------------------------------------------------------
