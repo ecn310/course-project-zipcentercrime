@@ -5,11 +5,14 @@ Created October 8, 2024
 
 Author Rachel Gaudreau
 
-Updated December 5, 2024 RG
+Updated December 10, 2024 RG
 ***********************************************************************/
 * Set cd to computer path where the calls_final.csv file is saved and import the raw data
 cd "C:\Users\regaudre\OneDrive - Syracuse University\documents"
 import delimited "calls_final", clear 
+
+* Open log to track the work done by the do-file
+log using "911CallLog", text replace
 
 * Create specific year variable
 gen year = call_timestamp
@@ -20,3 +23,6 @@ keep if year == "2017"
 
 * Save 2017 911 call data for later use
 save "documents\2017_911_call_data"
+
+* Close log
+log close
