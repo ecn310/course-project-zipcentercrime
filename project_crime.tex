@@ -58,6 +58,8 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
    Within this study, our group found that there was indeed a correlation between the distance to a drug treatment center and likelihood of 911 call. Contrary to our hypothesis, the amount of 911 calls actually increased as one got closer to the treatment center. The probable cause behind this trend could have been because of affluent communities protesting drug treatment centers built in their vicinity out of fear of the miscreants it would attract. To complete our project we had to have a road map. First, we gathered our data and defined our hypothesis. After we combined the datasets and manipulated them to show the information we needed.
 
+
+
 \section{Literature Review} \label{sec:literature}
     The geographical relationship between crime and access to mental health care is a widely studied topic but can be convoluted. For example, mental illness is associated with an increased likelihood of substance abuse, which directly and indirectly relates an increase in crime to mental illness. One viable method of treating mental illness is through office-based mental healthcare. Thus, evidence shows that increasing access to office-based mental health care by 10 mental health care provider offices in a county can lead to a 0. 4\% reduction in the county crime rate. \cite{mental_healthcare_and_crime}). An increase in access to mental health care also shows a connection to participation in government disability programs. This is largely because better access to mental health facilities increases the likelihood of proper diagnosis of serious mental illness which leads to access to programs such as Supplemental Security Income (SSI) and Social Security Disability Insurance (SS(D)I). \cite{mental_health_and_disability}. While access to disability insurance does not directly relate to crime this shows that increasing access to mental health care allows for more opportunities for support and better access to the social safety net. Furthermore, this effect is also evident when specifically considering access to substance abuse treatment (SAT) facilities. Evidence shows that increasing access to SAT facilities reduces violent crime due to the effectiveness in reducing crimes motivated by obtaining money to purchase drugs, reducing violence among those in the drug trade, and reducing drug usage which eases aggressive behavior due to drug abuse \cite{SAT_centers_and_crime}. 
 
@@ -114,7 +116,13 @@ This data is from the Substance Abuse and Mental Health Services Administration 
 We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
 
-\subsection{Summary Statistics}
+\subsection{Results}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
+    \caption{Enter Caption}
+    \label{fig:Average Number of Calls per Distance Group}
+\end{figure}
 - ADD SUMMARY STATS HERE
 We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
 

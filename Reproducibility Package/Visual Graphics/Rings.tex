@@ -1,41 +1,21 @@
-\documentclass[tikz,border=10pt]{standalone}
-\usepackage{tikz}
+ \begin{tikzpicture}
+% Define the radii corresponding to the first 3 distances (in meters)
 
-\begin{document}
+\def\radiusOne{0.5}
+\def\radiusTwo{1}
+\def\radiusThree{1.75}
 
-\begin{tikzpicture}
-% Define the radii corresponding to the given distances (in meters)
-\def\scalingFactor{0.4} % Scale factor to adjust the overall size
-\def\radiusOne{100 * \scalingFactor}
-\def\radiusTwo{250 * \scalingFactor}
-\def\radiusThree{500 * \scalingFactor}
-\def\radiusFour{750 * \scalingFactor}
-\def\radiusFive{1000 * \scalingFactor}
-\def\radiusSix{1250 * \scalingFactor}
-\def\radiusSeven{1500 * \scalingFactor}
-\def\radiusEight{1750 * \scalingFactor}
-\def\radiusNine{2000 * \scalingFactor}
-\def\radiusTen{2250 * \scalingFactor}
-\def\radiusEleven{2500 * \scalingFactor}
 
 % Draw the concentric circles
 \foreach \r/\label in {
-    \radiusOne/100m,
-    \radiusTwo/250m,
-    \radiusThree/500m,
-    \radiusFour/750m,
-    \radiusFive/1000m,
-    \radiusSix/1250m,
-    \radiusSeven/1500m,
-    \radiusEight/1750m,
-    \radiusNine/2000m,
-    \radiusTen/2250m,
-    \radiusEleven/2500m
-} {
+    \radiusOne/,
+    \radiusTwo/,
+    \radiusThree/,
+    }
+ {
     \draw[thick] (0,0) circle (\r);
-    \node at (\r,0) [right] {\label};
+    \node at (\r, 0) [right] {\label};
+    
 }
 
 \end{tikzpicture}
-
-\end{document}
