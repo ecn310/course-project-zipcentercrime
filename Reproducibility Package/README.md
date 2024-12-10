@@ -13,12 +13,12 @@ Using these steps you will be able to access all of the raw data used for our an
 Follow these steps to limit the data sets to data from 2017
 ### 2017 911 Calls
 1. Open Create_2017_911_call_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/911%20Call%20data%20by%20year/Create_2017_911_call_data.do) or by clicking Do Files\911 Call data by year\Create_2017_911_call_data.do
-2. Edit the working directory and file paths to where the 911 call raw data set is saved on your computer
-3. Run the do file
+2. Edit the working directory in line 11 to where the 911 call raw data set is saved on your computer
+3. Running the do file creates the 2017_911_call_data.dta file 
 ### 2017 Treatment Centers
 1. Open create_2017_treatment_center_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Treatment%20Center%20by%20year/create_2017_treatment_center_data.do) or by clicking Do Files\Treatment Center by year\create_2017_treatment_center_data.do
-2. Edit the working directory and file paths to where the 911 call raw data set is saved on your computer
-3. Run the do file
+2. Edit the working directory in line 11 to where the center raw data is stored in github on your computer
+3. Running this do file creates the 2017_treatment_center_data.dta file
 # ArcGIS Pro Process
 Follow these steps to reproduce the geocoded data 
 ### Set up
@@ -53,11 +53,6 @@ near dist: This is the distance in meters the 911 call observation is from the S
 4. Choose your prefered location to save the file
 5. When naming the file end it with .csv so that it is able to export as a text doccument
 # Data Analysis
-1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do) or by clicking Do files\ArcDataDo.do
+1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do) or by clicking Do files\ArcDataDo.do in line 10 
 2. Edit the working directory to where you stored the data previously exported from ArcGIS Pro
-3. Run lines 1-11 to import the data and open a log file
-4. Run lines 12-62 to find the number of calls per the increase in area from one ring to the next largest
-5. Run lines 63-77 to create new, seperate variables for each distance group
-6. To create and export the Calls by Area for Each Distance graph run lines 78-82
-7. Run lines 83-104 to run a paired t test which measures the statisical likelyhood that one distance ring will have greater median of calls compared to the next larger distance ring
-8. Run lines 109-111 to test the sum of each variable divided by the sum of the next largest variable to show an estimate of how many more or less calls you can expect going from one ring to an adjecent one
+3. In line 88 change the computer name and file path to get hub to export graoh into 
