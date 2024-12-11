@@ -13,19 +13,27 @@ Using these steps you will be able to access all of the raw data used for our an
 Follow these steps to limit the data sets to data from 2017
 ### 2017 911 Calls
 1. Open Create_2017_911_call_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/911%20Call%20data%20by%20year/Create_2017_911_call_data.do) or by clicking Do Files\911 Call data by year\Create_2017_911_call_data.do
-2. Edit the working directory in line 11 to where the 911 call raw data set is saved on your computer
-3. Running the do file creates the 2017_911_call_data.dta file 
+2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will liekly take a few minutes to load the data due to the size of the raw data set
+3. Edit the working directory in line 11 to where the 911 call raw data set is saved on your computer
+4. Running the do file creates the 2017_911_call_data.csv file
+### 2017 911 calls only related to crime
+1. Open Crime_911Calls.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Crime_911calls.do) or by opening Do files\Crime_911Calls.do
+2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will liekly take a few minutes to load the data due to the size of the raw data set
+3. Change the working directory in line 9 to where the calls_final.csv file is stored locally on your computer
+4. Running the do file will create a data set comprised of only 911 calls made in 2017 that are related to crimes
+5. Please note that this do file uses the raw 911 call data set, not the 2017 911 call data set
 ### 2017 Treatment Centers
 1. Open create_2017_treatment_center_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Treatment%20Center%20by%20year/create_2017_treatment_center_data.do) or by clicking Do Files\Treatment Center by year\create_2017_treatment_center_data.do
-2. Edit the working directory in line 11 to where the center raw data is stored in github on your computer
-3. Running this do file creates the 2017_treatment_center_data.dta file
+2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will liekly take a few minutes to load the data due to the size of the raw data set
+3. Edit the working directory in line 11 to where the center raw data is stored in github on your computer
+4. Running this do file creates the 2017_treatment_center_data.csv file
 # ArcGIS Pro Process
 Follow these steps to reproduce the geocoded data 
 ### Set up
 1. Open ArcGIS and create a new project with the map option as your base template.
 2. Select the Map option from the toolbar.
 3. Under Layer, select add data and select browse.
-4. Navigate to where you downloaded the .csv data files and import them into ArcGIS
+4. Navigate to where you downloaded the 2017_treatment_center_data.csv and 2017_911_call_data.csv data files and import them into ArcGIS
 5. *Once your data appears as a Standalone Table in the conents section on the left, right click your first data set to reveal more options.
 6. *Select Create Points from Table, then select XY Table to Point
 7. *Make sure X Field is set to longitude, Y Field is set to latitude, and the Coordinate System is set to GCS_WGS_1984, the select ok.
@@ -52,7 +60,10 @@ near dist: This is the distance in meters the 911 call observation is from the S
 3. Select Export Table
 4. Choose your prefered location to save the file
 5. When naming the file end it with .csv so that it is able to export as a text doccument
+
+Repeat the steps under Set up, Data manipulation, and Export geocoded data with using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime
 # Data Analysis
-1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do) or by clicking Do files\ArcDataDo.do in line 10 
-2. Edit the working directory to where you stored the data previously exported from ArcGIS Pro
-3. In line 88 change the computer name and file path to get hub to export graoh into 
+1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do) or by clicking Do files\ArcDataDo.do
+2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18
+3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer
+4. This do file has all of our data analysis work done from the data exported from ArcGIS Pro including making the graphs
