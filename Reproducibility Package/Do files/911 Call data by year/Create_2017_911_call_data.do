@@ -22,7 +22,7 @@ replace year = substr(year, 1, 4)
 keep if year == "2017"
 
 * Save 2017 911 call data for later use
-save "documents\2017_911_call_data"
+export delimited "2017_911_call_data"
 
 * Close log
 log close
