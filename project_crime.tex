@@ -122,6 +122,8 @@ This data is from the Substance Abuse and Mental Health Services Administration 
 
 We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
+We used Stata 18.0 to identify distance buckets, referred to as distance groups, and perform our analysis. We standardized the data to account for how different in total area of a distance group might alter results. We did this by dividing the area by the total count of 911 calls in each distance group.
+
 - won't do a regression line, because by collapsing (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
 
 We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
@@ -134,15 +136,24 @@ Data Limitation due to Group Variable - once data is by SATC, an ordinal variabl
 \subsection{Survey data}
 
 \section{Results}
-For the research question "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the more drug-related likely that 911 would be called with a drug related inquiry. In this case, Our null hypothesis would be that there is no relation between distance to a drug treatment center and likelihood to call 911. 
+For the research question "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to a drug treatment center and the likelihood of calling 911. 
+\label{sec:result}[hb]
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
+    \caption{Enter Caption}
+    \label{fig: Average Number of Calls per Distance Group}
+\end{figure}
+Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figures 2 and 4 show a distribution of mean 911 calls per distance group. In Figure 2, the unit of analysis was the mean 911 calls, but with almost 500,000 observations since the data was per 911 call. We conducted a two-sample t-test, seen in Figure 3, between sequential distance groups. 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/t_test_ss.png}
+    \caption{Two Sample T-Tests}
+    \label{fig:enter-label}
+\end{figure}
+The results identify that there is statistical significance between most distance group's call averages. However, most of the confidence intervals were extremely high due to the total amount of observations. 5 of the t tests had a p value less than 1\% and 2 of the t test had a p value less than 5\%.  
+We revised our graph to account for this potential skewed-ness in the confidence intervales to group the 911 calls count in each distance group by the SATC-assigned variable (, creating 44 total observations (one observation for each SATC). The results are in Figure 4. The confidence intervals show that overall, there is statistical signficance in the mean calls of each distance group. The only exceptions are: differences by using the SATC as a group variable, sand the We due to high In. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. 
 
-Our analysis supports that the amount of 911 calls increase the closer they are to a SATC. In. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. We provide evidence that our original hypothesis is false, but we have ideas on why areas closer to treatment centers would have more calls.
-
-Our first theory is that these treatment centers were placed in areas of high crime and low standards of living. These places would naturally have a higher rate of 911 calls. Along with that, some readings we looked at say that affluent communities petition against the construction of rehab centers near them to ensure people with those issues have no reason to be near them.
-
-The second theory is that these treatment centers were built in densely populated areas. These areas would naturally have more people than their surroundings. These people would also call the police more often and have more issues.
-
-Regardless of the reason, our research so far shows that the closer an area is to a drug or alcohol rehab center, the higher likelihood it is more 911 calls will come out of it. This leads into our discussion on the further implications of areas near these research centers being more dangerous.
 \label{sec:result}[hb]
 \begin{figure}
     \centering
@@ -154,18 +165,7 @@ Regardless of the reason, our research so far shows that the closer an area is t
 - won't do a regression line, because by collasping (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
 
 We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/t_test_ss.png}
-    \caption{Two Sample T-Tests}
-    \label{fig:enter-label}
-\end{figure}
-\begin{figure}
-    \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Mean Calls.png}
-    \caption{Mean Calls}
-    \label{fig:enter-label}
-\end{figure}
+
 
 \begin{table}[h]
 \centering
