@@ -16,6 +16,8 @@
 \usepackage[american]{babel}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
+\usepackage{multirow, amsmath}
+\usepackage[table]{xcolor}
 
 % enable hyperlinks and table of contents
 \usepackage[pdftex,
@@ -115,16 +117,50 @@ This data is from the Substance Abuse and Mental Health Services Administration 
 
 We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
+- won't do a regression line, because by collapsing (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
 
-\subsection{Results}
+We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
+
+
+Data Limitation due to Group Variable - once data is by SATC, an ordinal variable, can't use a group variable again so can't do scatterplot or confidence
+%Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
+%In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
+
+\subsection{Survey data}
+
+\section{Results}
+For the research question on "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the more  likely that 911 would be called with a drug related inquiry. Our null hypothesis in this case would then be that there is no relation between distance to a drug treatment center and likelihood to call 911. 
+
+Our current results show that the closer to drug treatment centers the  amount of 911 calls increases, at least within 1250 meters. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. We provide evidence that our original hypothesis is false, but we have ideas on why areas closer to treatment centers would have more calls.
+
+Our first theory is that these treatment centers were placed in areas of high crime and low standards of living. These places would naturally have a higher rate of 911 calls. Along with that, some readings we looked at say that affluent communities petition against the construction of rehab centers near them to ensure people with those issues have no reason to be near them.
+
+The second theory is that these treatment centers were built in densely populated areas. These areas would naturally have more people than their surroundings. These people would also call the police more often and have more issues.
+
+Regardless of the reason, our research so far shows that the closer an area is to a drug or alcohol rehab center, the higher likelihood it is more 911 calls will come out of it. This leads into our discussion on the further implications of areas near these research centers being more dangerous.
+\label{sec:result}[hb]
 \begin{figure}
     \centering
     \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
     \caption{Enter Caption}
-    \label{fig:Average Number of Calls per Distance Group}
+    \label{fig: Average Number of Calls per Distance Group}
 \end{figure}
-- ADD SUMMARY STATS HERE
+
+- won't do a regression line, because by collasping (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
+
 We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/t_test_ss.png}
+    \caption{Two Sample T-Tests}
+    \label{fig:enter-label}
+\end{figure}
+\begin{figure}
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Mean Calls.png}
+    \caption{Mean Calls}
+    \label{fig:enter-label}
+\end{figure}
 
 \begin{table}[h]
 \centering
@@ -154,37 +190,11 @@ Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&   
 \end{footnotesize}
 \end{table}
 
-
-Data Limitation due to Group Variable - once data is by SATC, an ordinal variable, can't use a group variable again so can't do scatterplot or confidence
-%Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
-%In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
-
-\section{Notes from 11/14/24:}
-\begin{itemize}
-    \item think about the opening and closing potentially
-    \item Think about how to deal with the farther data points and potentially overlapping, sharing
-    \item Only isolate 911 calls to specific drug related ones 
-    \item doing zip code level with population density data and number of 911 calls in each density
-    \item Only doing this in 2017 - specific we are only analyzing 2017, not just each year
-    \end{itemize}
-\subsection{Survey data}
-
-\section{Results}
-\label{sec:result}
 \subsubsection{Summary Statistics}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
 %Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
 
-For the research question on "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the more  likely that 911 would be called with a drug related inquiry. Our null hypothesis in this case would then be that there is no relation between distance to a drug treatment center and likelihood to call 911. 
-
-Our current results show that the closer to drug treatment centers the  amount of 911 calls increases, at least within 1250 meters. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. We provide evidence that our original hypothesis is false, but we have ideas on why areas closer to treatment centers would have more calls.
-
-Our first theory is that these treatment centers were placed in areas of high crime and low standards of living. These places would naturally have a higher rate of 911 calls. Along with that, some readings we looked at say that affluent communities petition against the construction of rehab centers near them to ensure people with those issues have no reason to be near them.
-
-The second theory is that these treatment centers were built in densely populated areas. These areas would naturally have more people than their surroundings. These people would also call the police more often and have more issues.
-
-Regardless of the reason, our research so far shows that the closer an area is to a drug or alcohol rehab center, the higher likelihood it is more 911 calls will come out of it. This leads into our discussion on the further implications of areas near these research centers being more dangerous.
 
 \section{Discussion}
 \label{sec:discussion}
