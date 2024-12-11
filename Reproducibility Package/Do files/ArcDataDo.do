@@ -108,6 +108,13 @@ replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
 replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
 replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
 
+***Find the average of total number of calls in each distance group and collapse the data
+collapse (mean) dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500
+
+***Bar Graph the Results
+graph bar dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, title("Mean Calls") ytitle("Calls/km^2") b1title("Mean Calls in Each Distance Group")
+graph save graph.gph, replace
+
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
 rename dist_group_100 Dat01_dist_group_100
 rename dist_group_250 Dat02_dist_group_250
