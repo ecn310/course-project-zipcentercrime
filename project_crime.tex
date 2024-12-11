@@ -136,36 +136,35 @@ Data Limitation due to Group Variable - once data is by SATC, an ordinal variabl
 \subsection{Survey data}
 
 \section{Results}
-For the research question "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to a drug treatment center and the likelihood of calling 911. 
-\label{sec:result}[hb]
-\begin{figure}
+\label{sec:result}
+
+\begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
     \caption{Enter Caption}
     \label{fig: Average Number of Calls per Distance Group}
 \end{figure}
-Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figures 2 and 4 show a distribution of mean 911 calls per distance group. In Figure 2, the unit of analysis was the mean 911 calls, but with almost 500,000 observations since the data was per 911 call. We conducted a two-sample t-test, seen in Figure 3, between sequential distance groups. 
-\begin{figure}
+For the research question "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to a drug treatment center and the likelihood of calling 911. 
+\begin{figure}[hb]
     \centering
     \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/t_test_ss.png}
     \caption{Two Sample T-Tests}
     \label{fig:enter-label}
 \end{figure}
+Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figures 2 and 4 show a distribution of mean 911 calls per distance group. In Figure 2, the unit of analysis was the mean 911 calls, but with almost 500,000 observations since the data was per 911 call. We conducted a two-sample t-test, seen in Figure 3, between sequential distance groups. 
+
 The results identify that there is statistical significance between most distance group's call averages. However, most of the confidence intervals were extremely high due to the total amount of observations. 5 of the t tests had a p value less than 1\% and 2 of the t test had a p value less than 5\%.  
-We revised our graph to account for this potential skewed-ness in the confidence intervales to group the 911 calls count in each distance group by the SATC-assigned variable (, creating 44 total observations (one observation for each SATC). The results are in Figure 4. The confidence intervals show that overall, there is statistical signficance in the mean calls of each distance group. The only exceptions are: differences by using the SATC as a group variable, sand the We due to high In. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. 
 
-\label{sec:result}[hb]
-\begin{figure}
+We revised our graph to account for this potential skewed-ness in the confidence intervales to group the 911 calls count in each distance group by the SATC-assigned variable (, creating 44 total observations (one observation for each SATC). The results are in Figure 4. The confidence intervals show that overall, there is statistical signficance in the mean calls of each distance group. The only exceptions are: differences by using the SATC as a group variable, sand the We due to high In. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call.
+
+ 
+
+\begin{figure}[h]
     \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
-    \caption{Enter Caption}
-    \label{fig: Average Number of Calls per Distance Group}
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Mean Calls.png}
+    \caption{Mean Calls}
+    \label{fig:enter-label}
 \end{figure}
-
-- won't do a regression line, because by collasping (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
-
-We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
-
 
 \begin{table}[h]
 \centering
@@ -203,7 +202,7 @@ Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&   
 
 \section{Discussion}
 \label{sec:discussion}
-
+- won't do a regression line, because by collasping (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
 Optional. This is where you would discuss any of the following
 \begin{itemize}
     \item caveats (are there problems with the data that there are no obvious ways to resolve? if so, how might this impact
@@ -214,9 +213,13 @@ Optional. This is where you would discuss any of the following
 \label{sec:conclusion}
 
     We hypothesized that as the distance from a substance abuse treatment center (SATC) increases, the frequency of 911 calls also increases. The closer a SATC is, the more accessible treatments centers are, which should reduce crime rates in the area, measured by 911 calls. We conducted a cross-sectional analysis to examine the overlap of 911 calls' geographical locations to their distances to their closest SATC. Our results show that contrary to our hypothesis, as distance from a SATC increases, the amount of 911 calls decreases. There is strong correlation between these two variables, as the r coefficient is 0.8,.. This distance decay relationship indicates that there is a relationship between SATC placements and 911 calls, but just in the opposite direction of the original hypothesis. 
+    
     One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. Drug treatment centers may be purposely selected in drug usage hot spots, which tend to have other associated demographics such as high population density and lower standard of living. These communities tend to have higher crime rates in general, which could explain part of this trend. Alternately, they may be placed there since higher standards of living communities, which tend to have less crime rates in general, will rally against SATC being placed in their neighborhoods, due to fear of the type of people it will bring to the neighborhood. 
+    
     Another explanation for the lower frequency of 911 calls in further distance rings could be due our data not counting 911 calls twice. When we geocoded the 911 calls, we assigned each observation to only one SATC, the one geographically closest to it. This was to limit the amount of overlap that some SATC might have at the smaller distance rings, as it could exaggerate our data frequencies. However, the in farther distance rings, a call might be similar in distance to two SATCs, but will only be assigned to be correlated to one, when the reality it could be correlated to either. This thins the observations and data associated in farther out distance rings. 
+    
     One significant limitation was the inability to fine-tune 911 call data to determine whether calls were directly related to drug activity. Without additional data, such as toxicology reports or detailed incident descriptions, it remains challenging to assess the role of drugs in criminal behavior or whether the crimes involved were violent in nature. A better understanding of what calls were drug related or induced could provide more accurate results on the relationship between drug abuse and crime, and the role SATC in amplifying or mitigating this. 
+    
     Another limitation is the population density of this urban sample. The observed pattern of 911 calls could have been influenced higher population density in more urban parts of Detroit, which naturally results in an increase of emergency calls. Future research should explore similar analyses in areas with varying population densities to better control for this variable and isolate the effects of proximity to drug treatment centers. 
 
  
