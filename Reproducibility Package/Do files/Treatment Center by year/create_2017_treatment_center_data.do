@@ -18,7 +18,7 @@ log using "TreatmentCenterLog", text replace
 keep if year == 2017
 
 *Save 2017 treatment center data for later use
-save "Data by year\Treatment center data by year\2017_treatment_center_data"
+export delimited "Data by year\Treatment center data by year\2017_treatment_center_data"
 
 * Close log
 log close
