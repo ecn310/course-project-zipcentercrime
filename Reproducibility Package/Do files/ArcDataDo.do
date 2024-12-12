@@ -114,14 +114,6 @@ table (command) (result), command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(m
 collect set t_test
 collect export "Visual Graphics\t_test.tex", replace
 
-***Find the average of total number of calls in each distance group and collapse the data
-
-collapse (mean) dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500
-
-***Bar Graph the Results
-
-graph bar dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, title("Mean Calls") ytitle("Calls/km^2") b1title("Mean Calls in Each Distance Group")
-graph save graph.gph, replace
 
 
 
@@ -210,7 +202,7 @@ svmat uci, names(uci)
 graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(horizontal)) legend(label (1 "Mean Calls per Km^2") label(2 "Confidence Intervals"))
 
 *** Export Graph
-graph export "Visual Graphics\CI_Grpah.png", replace
+graph export "Visual Graphics\CI_Graph.png", replace
 
 
 log close

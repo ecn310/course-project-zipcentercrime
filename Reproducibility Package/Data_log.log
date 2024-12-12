@@ -1,10 +1,9 @@
----------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documen
-> ts\GitHub\course-project-zipcentercrime\Reproducibility Package\Dat
-> a_log.log
+       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
+> Package\Data_log.log
   log type:  text
- opened on:  12 Dec 2024, 16:48:54
+ opened on:  12 Dec 2024, 17:21:24
 
 . 
 . *** This should be the file you exported from ArcGIS
@@ -14,8 +13,7 @@
 (2 vars, 620,359 obs)
 
 . 
-. *** This drops any values that were further than 2500 meters from a
-> ny treatment center
+. *** This drops any values that were further than 2500 meters from any treatment center
 . 
 . drop if near_dist == -1
 (205,143 observations deleted)
@@ -32,9 +30,8 @@ checking estout consistency and verifying not already installed...
 all files already exist and are up to date.
 
 . 
-. *** these commands seperate the data points from ArcGIS into groups
->  based on their calculated distance to the nearest treatment center
->  in meters
+. *** these commands seperate the data points from ArcGIS into groups based on their calculated distance to the nearest treat
+> ment center in meters
 . 
 . gen dist_group = 100 if near_dist <= 100 
 (411,292 missing values generated)
@@ -70,9 +67,8 @@ all files already exist and are up to date.
 (22,255 real changes made)
 
 . 
-. *** these commands are used to make a second variable that is one d
-> istance size smaller than its actrual group which allows us to calc
-> ulate the difference in area between the two radii
+. *** these commands are used to make a second variable that is one distance size smaller than its actrual group which allows
+>  us to calculate the difference in area between the two radii
 . 
 . gen dist_group2 = 0 if near_dist <= 100 
 (411,292 missing values generated)
@@ -111,19 +107,17 @@ all files already exist and are up to date.
 (0 real changes made)
 
 . 
-. *** this uses the two distance groups calculated above as radii to 
-> find the area of that circle and subtract the area of the smaller a
-> djecent circle to calculate the total area of the ring that those c
-> alls came from to standardize the data as Calls per Area
+. *** this uses the two distance groups calculated above as radii to find the area of that circle and subtract the area of th
+> e smaller adjecent circle to calculate the total area of the ring that those calls came from to standardize the data as Cal
+> ls per Area
 . 
 . egen freq = count(near_dist), by(dist_group)
 
 . gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2) 
 
 . 
-. *** This is used to get the exact amount of area so that we can div
-> ide our count of calls for each distance group once we collapse the
->  data on line 71
+. *** This is used to get the exact amount of area so that we can divide our count of calls for each distance group once we c
+> ollapse the data on line 71
 . 
 . tab area 
 
@@ -144,16 +138,13 @@ all files already exist and are up to date.
       Total |    415,216      100.00
 
 . 
-. *** taking that difference in area and dividing the amount of calls
->  in that specific distance group by the new ring of area will give 
-> us the number of calls per the increase in area from one ring to th
-> e next largest
+. *** taking that difference in area and dividing the amount of calls in that specific distance group by the new ring of area
+>  will give us the number of calls per the increase in area from one ring to the next largest
 . 
 . gen CallxArea = freq / area
 
 . 
-. *** these commands create new seperate variables for each distance 
-> group 
+. *** these commands create new seperate variables for each distance group 
 . 
 . gen dist_group_100 = 1 if near_dist <= 100
 (411,292 missing values generated)
@@ -191,34 +182,25 @@ all files already exist and are up to date.
 . 
 . 
 . 
-. *** This graph shows the decline in calls per area over the groups 
-> of distances recorded
+. *** This graph shows the decline in calls per area over the groups of distances recorded
 . 
-. graph bar CallxArea, over(dist_group) title("Calls by Area for Each
->  Distance") ytitle("Calls By Area") b1title("Distance Groups")
-
-. graph save graph.gph, replace
-file graph.gph saved
+. graph bar CallxArea, over(dist_group) title("Calls by Area for Each Distance") ytitle("Calls By Area") b1title("Distance Gr
+> oups")
 
 . graph export "Visual Graphics\Calls_Distance.png", replace
 file Visual Graphics\Calls_Distance.png saved as PNG format
 
 . 
-. *** This command colapses our data down, Using the various variable
-> s we created for each seperate distance groups we can now collapse 
-> the data by the count of how many of our observations are within ea
-> ch individual distance groups by the id number for the treatment ce
-> nter it was nearest.
+. *** This command colapses our data down, Using the various variables we created for each seperate distance groups we can no
+> w collapse the data by the count of how many of our observations are within each individual distance groups by the id numbe
+> r for the treatment center it was nearest.
 . 
-. collapse (count) dist_group_100 dist_group_250 dist_group_500 dist_
-> group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_grou
-> p_1750 dist_group_2000 dist_group_2250 dist_group_2500, by(near_fid
-> )
+. collapse (count) dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_150
+> 0 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, by(near_fid)
 
 . 
-. *** once our data is collapsed we use these commands to standardize
->  the number of calls by the areas of the rings we calculated previo
-> usly 
+. *** once our data is collapsed we use these commands to standardize the number of calls by the areas of the rings we calcul
+> ated previously 
 . 
 . replace dist_group_100 = (dist_group_100 / 31415.9265) * 1000000
 variable dist_group_100 was long now double
@@ -265,54 +247,100 @@ variable dist_group_2500 was long now double
 (28 real changes made)
 
 . 
-end of do-file
+. 
+. *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls co
+> mpared to the next larger ring
+. 
+. table (command) (result), command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(
+> p_u): ttest dist_group_100 == dist_group_250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value 
+> = r(p) Tailed_p = r(p_u): ttest dist_group_250 == dist_group_500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1
+> ) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_500 == dist_group_750) command(Mean_1=r(mu_1) Mean_2=r(mu_2)
+>  Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_750 == dist_group_1000) command(Mean_1=r
+> (mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_1000 == dist_group_
+> 1250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_gro
+> up_1250 == dist_group_1500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = 
+> r(p_u): ttest dist_group_1500 == dist_group_1750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_va
+> lue = r(p) Tailed_p = r(p_u): ttest dist_group_1750 == dist_group_2000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (
+> r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2000 == dist_group_2250) command(Mean_1=r(mu_1) Mean_2
+> =r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p) Tailed_p = r(p_u): ttest dist_group_2250 == dist_group_2500) nformat
+> (%9.3f) stars(p_value 0.1 "*" 0.05 "**" 0.01 "***", shownote) name(t_test) replace
 
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
+---------------------------------------------------------------------------------------------------------
+                                         |    Mean_1     Mean_2   Difference   p_value   Tailed_p   stars
+-----------------------------------------+---------------------------------------------------------------
+ttest dist_group_100 == dist_group_250   |  2838.745   1870.036      968.709     0.056      0.028       *
+ttest dist_group_2250 == dist_group_2500 |   206.033    135.579       70.455     0.004      0.002     ***
+ttest dist_group_250 == dist_group_500   |  1870.036   1680.406      189.630     0.491      0.245        
+ttest dist_group_500 == dist_group_750   |  1680.406   1069.475      610.931     0.007      0.003     ***
+ttest dist_group_750 == dist_group_1000  |  1069.475    979.865       89.610     0.392      0.196        
+ttest dist_group_1000 == dist_group_1250 |   979.865    823.863      156.002     0.006      0.003     ***
+ttest dist_group_1250 == dist_group_1500 |   823.863    563.835      260.028     0.000      0.000     ***
+ttest dist_group_1500 == dist_group_1750 |   563.835    412.993      150.842     0.040      0.020      **
+ttest dist_group_1750 == dist_group_2000 |   412.993    248.251      164.742     0.001      0.001     ***
+ttest dist_group_2000 == dist_group_2250 |   248.251    206.033       42.218     0.039      0.020      **
+---------------------------------------------------------------------------------------------------------
+*** p<.01, ** p<.05, * p<.1
 
+. collect set t_test
+(current collection is t_test)
+
+. collect export "Visual Graphics\t_test.tex", replace
+(collection t_test exported to file Visual Graphics\t_test.tex)
+
+. 
+. 
+. 
+. 
+. *** Clear any matrices stores in Stata
+. 
 . matrix drop _all
 
+. 
+. 
+. *** Create two new matrices for storing Confidence Interval data
 . 
 . matrix lci = J(11, 1, .) 
 
 . matrix uci = J(11, 1, .)  
 
 . 
-. * List of groups
-. local groups dist_group_100 dist_group_250 dist_group_500 dist_grou
-> p_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_17
-> 50 dist_group_2000 dist_group_2250 dist_group_2500 
+. *** List of variables to be groupped for looping
+. 
+. local groups dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 di
+> st_group_1750 dist_group_2000 dist_group_2250 dist_group_2500 
 
 . 
-. * Detailed debugging
+. *** Begin loop by telling Stata which row to begin at
+. 
 . local row_index = 1
 
 . foreach var of local groups {
-  2.    * Calculate basic statistics
+  2.    *** Calculate basic statistics
 .    summarize `var', detail
   3.    
-.    * Mean of the variable
+.    *** Mean of the variable
 .    local mean = r(mean)
   4.    
-.    * Standard deviation of the variable
+.    *** Standard deviation of the variable
 .    local sd = r(sd)
   5.    
-.    * Number of observations
+.    *** Number of observations
 .    local n = r(N)
   6.    
-.    * Degrees of freedom
+.    *** Degrees of freedom
 .    local df = `n' - 1
   7.    
-.    * Calculate standard error
+.    *** Calculate standard error
 .    local se = `sd' / sqrt(`n')
   8.    
-.    * Calculate t-critical value
+.    *** Calculate t-critical value
 .    scalar t_crit = invttail(`df', 0.025)
   9.    
-.    * Calculate confidence interval
+.    *** Calculate confidence interval
 .    local ci_lower = `mean' - (t_crit * `se')
  10.    local ci_upper = `mean' + (t_crit * `se')
  11.    
-.    * Debug display
+.    *** Display Data to check if correct
 .    display "Variable: `var'"
  12.    display "Mean: `mean'"
  13.    display "Standard Deviation: `sd'"
@@ -322,11 +350,11 @@ end of do-file
  17.    display "CI Lower: `ci_lower'"
  18.    display "CI Upper: `ci_upper'"
  19.    
-.    * Store in matrices
+.    *** Store in matrices
 .    matrix lci[`row_index', 1] = `ci_lower'
  20.    matrix uci[`row_index', 1] = `ci_upper'
  21.    
-.    * Increment row index
+.    *** Increment row index
 .    local row_index = `row_index' + 1
  22. }
 
@@ -584,7 +612,8 @@ CI Lower: 81.22089829236572
 CI Upper: 189.9364803595797
 
 . 
-. * Display final matrices
+. *** Display final matrices to check if correct
+. 
 . matrix list lci
 
 lci[11,1]
@@ -618,159 +647,51 @@ r10  288.27529
 r11  189.93648
 
 . 
+. *** Reshape the data to be over distance instead of treatment center
+. 
 . reshape long dist_group_, i(near_fid) j(distance)
 (j = 100 250 500 750 1000 1250 1500 1750 2000 2250 2500)
 
 Data                               Wide   ->   Long
----------------------------------------------------------------------
-> --------
+-----------------------------------------------------------------------------
 Number of observations               44   ->   484         
 Number of variables                  12   ->   3           
 j variable (11 values)                    ->   distance
 xij variables:
 dist_group_100 dist_group_250 ... dist_group_2500->dist_group_
----------------------------------------------------------------------
-> --------
+-----------------------------------------------------------------------------
 
+. 
+. *** Collapse the data to be the mean number of calls at each distance
 . 
 . collapse (mean) dist_group_, by(distance)
 
+. 
+. *** Turn the two matrices into seperate variables 
 . 
 . svmat lci, names(lci)
 
 . svmat uci, names(uci)
 
 . 
-end of do-file
-
-. graph twoway (bar dist_group_ distance) (rcap lci1 uci1 distance)
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, barwidth(2)) (rcap lci1 uci
-> 1 distance), 
-
 . 
-end of do-file
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, barwidth(5)) (rcap lci1 uci
-> 1 distance), 
-
+. *** Create a bar graph with confidence interval data on it
 . 
-end of do-file
-
-. graph twoway (bar dist_group_ distance
-> , barwidth(5)) (rcap lci1 uci1 distanc
-> e, lcolor(black)),
-
-. help graph
-
-. graph twoway (bar dist_group_ distance, lwidth(5)) (rcap lci1 uci1 distance, lcolor(black)),
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)), 
-
-. 
-end of do-file
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ylabel(Mean Calls, angle(horizontal))
-invalid label specifier, :  Mean Calls:
-r(198);
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal))
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legen((label #2 "Confidence Intervals" ))
-parentheses unbalanced
-r(132);
-
-end of do-file
-
-r(132);
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legen(label (#2 "Confidence Intervals" ))
-#2 not an integer in option label()
-r(198);
-
-end of do-file
-
-r(198);
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legen(label (2 "Confidence Intervals" ))
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legen(label (1 "Mean Calls")(2 "Confidence Intervals" ))
-parentheses unbalanced
-r(132);
-
-end of do-file
-
-r(132);
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls")(2 "Confidence Intervals" ))
-parentheses unbalanced
-r(132);
-
-end of do-file
-
-r(132);
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls" 2 "Confidence Intervals" ))
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls") (2 "Confidence Intervals" ))
-parentheses unbalanced
-r(132);
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. 
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls" "Confidence Intervals" ))
-
-. 
-end of do-file
-
-. do "C:\Users\wrmaechl\AppData\Local\Temp\STD42d0_000000.tmp"
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls") label(2 "Confidence Intervals"))
-
-. 
-end of do-file
-
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls" 2 "Confidence Intervals" ))
-
 . graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
 > zontal)) legend(label (1 "Mean Calls per Km^2") label(2 "Confidence Intervals"))
 
-. graph export "Visual Graphics\CI_Grpah.png", replace
-could not find Graph window
-r(693);
+. 
+. *** Export Graph
+. graph export "Visual Graphics\CI_Graph.png", replace
+(file Visual Graphics\CI_Graph.png not found)
+file Visual Graphics\CI_Graph.png saved as PNG format
 
-. graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(hori
-> zontal)) legend(label (1 "Mean Calls per Km^2") label(2 "Confidence Intervals"))
-
-. graph export "Visual Graphics\CI_Grpah.png", replace
-(file Visual Graphics\CI_Grpah.png not found)
-file Visual Graphics\CI_Grpah.png saved as PNG format
-
-. help invttail
-
+. 
+. 
+. log close
+      name:  <unnamed>
+       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
+> Package\Data_log.log
+  log type:  text
+ closed on:  12 Dec 2024, 17:21:28
+-----------------------------------------------------------------------------------------------------------------------------
