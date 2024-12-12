@@ -115,6 +115,105 @@ collect set t_test
 collect export "Visual Graphics\t_test.tex", replace
 
 
+*** This will run a ratio for each pair of distance groups
+
+ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_group_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1)
+
+
+*** This creates a matrix to store the results
+
+matrix ratio_results = J(10, 6, 0)
+
+*** This takes the numerical data from the ratio command and stores the ratio result
+
+matrix ratio_results[1,1] = e(b)[1,1]
+matrix ratio_results[2,1] = e(b)[1,2]
+matrix ratio_results[3,1] = e(b)[1,3]
+matrix ratio_results[4,1] = e(b)[1,4]
+matrix ratio_results[5,1] = e(b)[1,5]
+matrix ratio_results[6,1] = e(b)[1,6]
+matrix ratio_results[7,1] = e(b)[1,7]
+matrix ratio_results[8,1] = e(b)[1,8]
+matrix ratio_results[9,1] = e(b)[1,9]
+matrix ratio_results[10,1] = e(b)[1,10]
+
+*** This takes the numerical data from the ratio command and stores the Standard Error
+
+matrix ratio_results[1,2] = r(table)[2,1]
+matrix ratio_results[2,2] = r(table)[2,2]
+matrix ratio_results[3,2] = r(table)[2,3]
+matrix ratio_results[4,2] = r(table)[2,4]
+matrix ratio_results[5,2] = r(table)[2,5]
+matrix ratio_results[6,2] = r(table)[2,6]
+matrix ratio_results[7,2] = r(table)[2,7]
+matrix ratio_results[8,2] = r(table)[2,8]
+matrix ratio_results[9,2] = r(table)[2,9]
+matrix ratio_results[10,2] = r(table)[2,10]
+
+*** This takes the numerical data from the ratio command and stores the lower Confidence Interval
+
+matrix ratio_results[1,3] = r(table)[5,1]
+matrix ratio_results[2,3] = r(table)[5,2]
+matrix ratio_results[3,3] = r(table)[5,3]
+matrix ratio_results[4,3] = r(table)[5,4]
+matrix ratio_results[5,3] = r(table)[5,5]
+matrix ratio_results[6,3] = r(table)[5,6]
+matrix ratio_results[7,3] = r(table)[5,7]
+matrix ratio_results[8,3] = r(table)[5,8]
+matrix ratio_results[9,3] = r(table)[5,9]
+matrix ratio_results[10,3] = r(table)[5,10]
+
+*** This takes the numerical data from the ratio command and stores the upper Confidence Interval
+
+matrix ratio_results[1,4] = r(table)[6,1]
+matrix ratio_results[2,4] = r(table)[6,2]
+matrix ratio_results[3,4] = r(table)[6,3]
+matrix ratio_results[4,4] = r(table)[6,4]
+matrix ratio_results[5,4] = r(table)[6,5]
+matrix ratio_results[6,4] = r(table)[6,6]
+matrix ratio_results[7,4] = r(table)[6,7]
+matrix ratio_results[8,4] = r(table)[6,8]
+matrix ratio_results[9,4] = r(table)[6,9]
+matrix ratio_results[10,4] = r(table)[6,10]
+
+*** This takes the numerical data from the ratio command and stores the T score
+
+matrix ratio_results[1,5] = r(table)[3,1]
+matrix ratio_results[2,5] = r(table)[3,2]
+matrix ratio_results[3,5] = r(table)[3,3]
+matrix ratio_results[4,5] = r(table)[3,4]
+matrix ratio_results[5,5] = r(table)[3,5]
+matrix ratio_results[6,5] = r(table)[3,6]
+matrix ratio_results[7,5] = r(table)[3,7]
+matrix ratio_results[8,5] = r(table)[3,8]
+matrix ratio_results[9,5] = r(table)[3,9]
+matrix ratio_results[10,5] = r(table)[3,10]
+
+*** This takes the numerical data from the ratio command and stores the P value
+
+matrix ratio_results[1,6] = r(table)[4,1]
+matrix ratio_results[2,6] = r(table)[4,2]
+matrix ratio_results[3,6] = r(table)[4,3]
+matrix ratio_results[4,6] = r(table)[4,4]
+matrix ratio_results[5,6] = r(table)[4,5]
+matrix ratio_results[6,6] = r(table)[4,6]
+matrix ratio_results[7,6] = r(table)[4,7]
+matrix ratio_results[8,6] = r(table)[4,8]
+matrix ratio_results[9,6] = r(table)[4,9]
+matrix ratio_results[10,6] = r(table)[4,10]
+
+*** Display the results
+
+matrix list ratio_results
+
+*** This changes the row and column names
+matrix rownames ratio_results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2000/2250" "2250/2500"
+
+matrix colnames ratio_results = "Ratio" "Std. Err."
+
+*** Export the Graph
+
+estout matrix(ratio_results) using "Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace
 
 
 *** Clear any matrices stores in Stata
