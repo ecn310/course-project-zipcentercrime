@@ -1,0 +1,12 @@
+	(1)
+VARIABLES	CallxArea
+	
+dist_group	-3.52e-05***
+	(1.92e-08)
+Constant	0.0822***
+	(2.79e-05)
+	
+Observations	415,216
+R-squared	0.891
+Standard errors in parentheses	
+*** p<0.01, ** p<0.05, * p<0.1	

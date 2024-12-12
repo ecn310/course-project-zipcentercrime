@@ -1,0 +1,123 @@
+\documentclass[12pt]{article}
+
+% set margins and spacing
+\addtolength{\textwidth}{1.3in}
+\addtolength{\oddsidemargin}{-.65in} %left margin
+\addtolength{\evensidemargin}{-.65in}
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-.5in}
+\setlength{\headheight}{0.0in}
+\setlength{\footskip}{.375in}
+\renewcommand{\baselinestretch}{1.0}
+\linespread{1.0}
+
+% load miscellaneous packages
+\usepackage{csquotes}
+\usepackage[american]{babel}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
+
+% enable hyperlinks and table of contents
+\usepackage[pdftex,
+bookmarks=true,
+bookmarksnumbered=false,
+pdfview=fitH,
+bookmarksopen=true,hyperfootnotes=false]{hyperref}
+
+% define environments
+\newtheorem{definition}{Definition}
+\newtheorem{fact}{Fact}
+\newtheorem{result}{Result}
+\newtheorem{proposition}{Proposition}
+
+
+
+\begin{document}
+\title{Insert title here}
+\author{Name 1\thanks{Syracuse University, Economics Department. Email: kbuzard@syr.edu.} \and Name 2\thanks{abc} \and Name 3\thanks{abc}}
+\date{\vskip-.1in \today}
+\maketitle
+
+\vskip.3in
+\begin{center} {\bf Abstract} \end{center}
+
+\begin{quote}
+{\small Insert abstract text here: 75-200 words, very high-level summary of your project.}
+\end{quote}
+
+\bigskip
+\section{Introduction} \label{sec:introduction}
+
+Answer the questions
+\begin{enumerate}
+    \item \textbf{Why should the reader care? / Why is the topic important?} (required)
+    \item Why did you choose this topic? (optional)
+    \item \textbf{What question will you answer? How will you do it?} (required)
+        \begin{enumerate}
+            \item If your theory/hypothesis fit in one paragraph, include it here. If it is longer, make it a separate section after the lit review. EITHER OPTION IS FINE as long as the length is sufficient/appropriate for your project.
+        \end{enumerate}
+    \item \textbf{What did you find?} (required)
+    \item \textbf{Give a "road map" of the paper. Where will the reader find the various parts of your work?} (required)
+\end{enumerate}
+
+\section{Literature Review} \label{sec:literature}
+
+Discuss at least five papers that are closely related to your results (more is better). Explain how they're related. Did you find something similar, or different? Did you look at a different context? Different time period? Different level of detail?
+
+\section{Theoretical Analysis}
+\label{sec:theory}
+Optional--may include in intro if it's short.
+
+
+\section{Data}
+\label{sec:data}
+
+Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
+
+In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
+
+\subsection{Survey data}
+
+\section{Results}
+\label{sec:result}
+
+Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
+
+
+
+
+\section{Discussion}
+\label{sec:discussion}
+
+Optional. This is where you would discuss any of the following
+\begin{itemize}
+    \item caveats (are there problems with the data that there are no obvious ways to resolve? if so, how might this impact
+    \item future work / next steps
+    \item implications of the results: that is, how your findings -- if they were causally identified -- might inform policymaking, etc.
+\end{itemize}
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+Re-state (in different words) what you did and what you learned. If your discussion (Section 6) would be short, you can just have a Conclusion section that includes your discussion (that is, leave out a separate Discussion section).
+
+\newpage
+\section*{Bibliography}
+\singlespacing
+\setlength\bibsep{0pt}
+
+You can either explicitly include your list of references, or you can learn to use BibTex so that it includes the references automatically.
+
+Either way, this list should include ONLY the papers (reports, book chatpers, etc.) that you actually cite in the text (no extra).
+
+At the same time EVERYTHING you cite in the main text must have an entry here (no references in text that don't have something here).
+
+You can choose which citation style to follow. Whichever you choose, you must follow it consistently.
+
+\newpage
+\section*{Data Appendix} \label{sec:appendixa}
+\addcontentsline{toc}{section}{Appendix A}
+
+You should at least direct your reader to your replication package. You might put key elements of your replication package in this section as well.
+
+\end{document}
