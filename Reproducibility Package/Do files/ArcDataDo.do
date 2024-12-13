@@ -209,11 +209,11 @@ matrix list ratio_results
 *** This changes the row and column names
 matrix rownames ratio_results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2000/2250" "2250/2500"
 
-matrix colnames ratio_results = "Ratio" "Std. Err."
+matrix colnames ratio_results = "Ratio" "Std. Err." "[95 Conf." "Interval]" "T score" "P value"
 
 *** Export the Graph
 
-estout matrix(ratio_results) using "Visual Graphics\ratio_results.tex", title("Ratio Analysis") replace
+esttab matrix(ratio_results) using "Visual Graphics\ratio_results.tex", alignment(1||c|c|cc|c|c) lines title("Ratio Analysis") replace
 
 
 *** Clear any matrices stores in Stata
