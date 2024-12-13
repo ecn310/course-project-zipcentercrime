@@ -9,7 +9,7 @@ Using these steps you will be able to access all of the raw data used for our an
 3. A menu will apear to select the format for the data. Select CSV to download the data as a .csv file.
 ### Treatment Centers
 1. Follow [THIS link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/RawData/detroit_samhsa_sud_2015_2021.dta) to the raw treatment center data and download the raw data file.
-# Limiting data set
+# Limiting Data Set
 Follow these steps to limit the data sets to data from 2017.
 ### 2017 911 Calls
 1. Open Create_2017_911_call_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/911%20Call%20data%20by%20year/Create_2017_911_call_data.do) or by clicking Do Files\911 Call data by year\Create_2017_911_call_data.do.
