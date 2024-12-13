@@ -3,7 +3,7 @@
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Data_log.log
   log type:  text
- opened on:  12 Dec 2024, 17:27:53
+ opened on:  13 Dec 2024, 14:46:28
 
 . 
 . 
@@ -404,6 +404,13 @@ ttest dist_group_2000 == dist_group_2250 |   248.251    206.033       42.218    
 . 
 . 
 . 
+. 
+. 
+. *** This will run a ratio for each pair of distance groups
+
+. 
+. 
+. 
 . ratio (dist_group_100/dist_group_250) (dist_group_250/dist_group_500) (dist_group_500/dist_group_750) (dist_group_750/dist_
 > group_1000) (dist_group_1000/dist_group_1250) (dist_group_1250/dist_group_1500) (dist_group_1500/dist_group_1750) (dist_gro
 > up_1750/dist_group_2000) (dist_group_2000/dist_group_2250) (dist_group_2250/dist_group_2500), fvwrap(1)
@@ -440,7 +447,19 @@ Ratio estimation                            Number of obs = 44
 . 
 . 
 . 
+. 
+. 
+. *** This creates a matrix to store the results
+
+. 
+. 
+. 
 . matrix ratio_results = J(10, 6, 0)
+
+. 
+. 
+. 
+. *** This takes the numerical data from the ratio command and stores the ratio result
 
 . 
 . 
@@ -477,6 +496,11 @@ Ratio estimation                            Number of obs = 44
 . 
 . 
 . 
+. *** This takes the numerical data from the ratio command and stores the Standard Error
+
+. 
+. 
+. 
 . matrix ratio_results[1,2] = r(table)[2,1]
 
 . 
@@ -505,6 +529,11 @@ Ratio estimation                            Number of obs = 44
 
 . 
 . matrix ratio_results[10,2] = r(table)[2,10]
+
+. 
+. 
+. 
+. *** This takes the numerical data from the ratio command and stores the lower Confidence Interval
 
 . 
 . 
@@ -541,6 +570,11 @@ Ratio estimation                            Number of obs = 44
 . 
 . 
 . 
+. *** This takes the numerical data from the ratio command and stores the upper Confidence Interval
+
+. 
+. 
+. 
 . matrix ratio_results[1,4] = r(table)[6,1]
 
 . 
@@ -569,6 +603,11 @@ Ratio estimation                            Number of obs = 44
 
 . 
 . matrix ratio_results[10,4] = r(table)[6,10]
+
+. 
+. 
+. 
+. *** This takes the numerical data from the ratio command and stores the T score
 
 . 
 . 
@@ -605,6 +644,11 @@ Ratio estimation                            Number of obs = 44
 . 
 . 
 . 
+. *** This takes the numerical data from the ratio command and stores the P value
+
+. 
+. 
+. 
 . matrix ratio_results[1,6] = r(table)[4,1]
 
 . 
@@ -637,6 +681,11 @@ Ratio estimation                            Number of obs = 44
 . 
 . 
 . 
+. *** Display the results
+
+. 
+. 
+. 
 . matrix list ratio_results
 
 ratio_results[10,6]
@@ -655,30 +704,94 @@ r10  1.5196585  .16885788  1.1791241  1.8601929  8.9996305  1.913e-11
 . 
 . 
 . 
-. matrix rownames results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2000/22
-> 50" "2250/2500"
-matrix results not found
-r(111);
+. *** This changes the row and column names
 
 . 
-. 
-. 
-. matrix colnames results = "Ratio" "Std. Err."
-matrix results not found
-r(111);
-
 . matrix rownames ratio_results = "100/250" "250/500" "500/750" "750/1000" "1000/1250" "1250/1500" "1500/1750" "1750/2000" "2
 > 000/2250" "2250/2500"
 
 . 
 . 
 . 
-. matrix colnames ratio_results = "Ratio" "Std. Err."
+. matrix colnames ratio_results = "Ratio" "Std. Err." "[95% Conf." "Interval]" "T score" "P value"
+
+. esttab
+
+----------------------------
+                      (1)   
+                    Ratio   
+----------------------------
+_ratio_1            1.518***
+                   (4.97)   
+
+_ratio_2            1.113***
+                   (6.53)   
+
+_ratio_3            1.571***
+                   (7.99)   
+
+_ratio_4            1.091***
+                   (9.88)   
+
+_ratio_5            1.189***
+                  (15.89)   
+
+_ratio_6            1.461***
+                  (11.52)   
+
+_ratio_7            1.365***
+                   (7.05)   
+
+_ratio_8            1.664***
+                   (7.55)   
+
+_ratio_9            1.205***
+                  (10.88)   
+
+_ratio_10           1.520***
+                   (9.00)   
+----------------------------
+N                      44   
+----------------------------
+t statistics in parentheses
+* p<0.05, ** p<0.01, *** p<0.001
+
+. esttab matrix(ratio_results)
+
+------------------------------------------------------------------------------------------
+             ratio_resu~s                                                                 
+                    Ratio    Std. Err.   [95% Conf.    Interval]      T score      P value
+------------------------------------------------------------------------------------------
+100/250          1.518016      .305492      .901933       2.1341     4.969087     .0000112
+250/500          1.112848     .1703623     .7692794     1.456416     6.532241     6.14e-08
+500/750          1.571244     .1966827     1.174596     1.967893     7.988725     4.92e-10
+750/1000         1.091451     .1104992     .8686081     1.314294     9.877456     1.25e-12
+1000/1250        1.189354     .0748615     1.038382     1.340327      15.8874     1.32e-19
+1250/1500        1.461179     .1268808     1.205299     1.717058     11.51615     1.00e-14
+1500/1750        1.365242     .1935897     .9748308     1.755652     7.052244     1.08e-08
+1750/2000         1.66361     .2204068     1.219117     2.108103     7.547907     2.09e-09
+2000/2250        1.204906      .110774     .9815093     1.428303     10.87716     6.33e-14
+2250/2500        1.519659     .1688579     1.179124     1.860193      8.99963     1.91e-11
+------------------------------------------------------------------------------------------
+
+. esttab matrix(ratio_results) using "Visual Graphics\ratio_results.tex", alignment(1||c|c|cc|c|c) longtab top("\hline")title
+> ("Ratio Analysis") replace
+file \hline not found
+r(601);
+
+. esttab matrix(ratio_results) using "Visual Graphics\ratio_results.tex", alignment(1||c|c|cc|c|c) longtab top("\hline", raw)
+>  title("Ratio Analysis") replace
+file \hline , raw not found
+r(601);
+
+. esttab matrix(ratio_results) using "Visual Graphics\ratio_results.tex", alignment(1||c|c|cc|c|c) lines title("Ratio Analysi
+> s") replace
+(output written to Visual Graphics\ratio_results.tex)
 
 . log close
       name:  <unnamed>
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Data_log.log
   log type:  text
- closed on:  12 Dec 2024, 17:34:07
+ closed on:  13 Dec 2024, 14:54:09
 -----------------------------------------------------------------------------------------------------------------------------
