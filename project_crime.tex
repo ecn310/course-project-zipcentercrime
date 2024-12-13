@@ -25,6 +25,7 @@ bookmarks=true,
 bookmarksnumbered=false,
 pdfview=fitH,
 bookmarksopen=true,hyperfootnotes=false]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue, citecolor=blue}
 
 % enable flowchart diagram package
 \usepackage{tikz}
@@ -41,7 +42,7 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 
 \begin{document}
 \title{Crime and Drug Treatment across Detroit}
-\author{Rachel Gaudreau\thanks{Syracuse University, Economics Department. Email: regaudre@syr.edu.} \and Sophia Oritz-Heaney\thanks{Syracuse University, Economics Department. Email} \and Weston Maechling\thanks{Syracuse University, Economics Department. Email: wrmaechl@syr.edu.} \and Leo Gershman\thanks{abc}}
+\author{Rachel Gaudreau\thanks{Syracuse University, Economics Department. Email: regaudre@syr.edu.} \and Sophia Oritz-Heaney\thanks{Syracuse University, Economics Department. Email: sgortizh@syr.edu} \and Weston Maechling\thanks{Syracuse University, Economics Department. Email: wrmaechl@syr.edu.} \and Leo Gershman\thanks{abc}}
 \date{\vskip-.1in \today}
 \maketitle
 
@@ -49,21 +50,36 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \begin{center} {\bf Abstract} \end{center}
 
 \begin{quote}
-    {\small We examine the effects drug and alcohol treatment centers have on their neighbors in Detroit, Michigan. In this study, we find the relationship between the distance from a drug treatment center and the number of 911 calls in an area. We create a framework that locates all the drug treatment centers in the greater Detroit area and then creates rings around them at pre-designated distances to find the number of calls within each ring. Our analysis uses multiple t tests to find the number of calls within a ring and the probability that this is indicative of all crime in the city throughout its history. To complete this, we used a 0.05 confidence interval. This data was found through the City of Detroit's Open Data Portal (https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about) Our group looked in the "Police Serviced 911 Calls" section. This portal contains a wealth of information on the type of crime committed along with where and when it was committed. With this information, we were able to make a map using ARCGIS to organize the hundreds of thousands of data points. 
+    {\small We examine the effects drug and alcohol treatment centers have on their neighbors in Detroit, Michigan. In this study, we find the relationship between the distance from a substance abuse treatment centers and the number of 911 calls in an area. We create a framework that locates all the  substance abuse treatment centers in the greater Detroit area and then creates rings around them at distances ranging from 50 to over 2000 meters to find the number of calls within each ring. Our analysis uses multiple t tests to find the number of calls within a ring and the probability that this is indicative of all crime in the city throughout its history. This data was found through the City of Detroit's Open Data Portal. Our group looked in the "Police Serviced 911 Calls" section. This portal contains a wealth of information on the type of crime committed along with where and when it was committed. Along with the information we obtained on what 
+
+    Say we did correlation and t test
+    Define Substance Abuse Treatment Center (SATC)
+    
+    Say what the result
+    Why we think that is
+    } 
 \end{quote}
 
 \bigskip
 \section{Introduction} \label{sec:introduction}
-    This question is important to answer because it is the answer to how to effectively and efficiently eliminate drugs-related crimes within American cities. Drugs are one of the main causes of civil unrest and discord within cities. Our group answers within this paper whether there is an increase or decrease in crime closer to drug treatment centers. To do this, our group has made standardized graphs by area for all 911 calls in an area and 911 calls that our group has found could be drug or alcohol related. Drug treatment/ rehab centers are one of the ways theorized to eliminate these issues. This study aims to find out if there is an decrease in drug-related crime in an area where there is a drug treatment center. We also find if there is an increase in all 911 calls around these treatment centers.
-    Our study examines whether drug treatment or rehab centers have a positive or negative correlation with the number of 911 calls in an area. This study itself focuses on the city of Detroit and its surrounding county of Wayne County. At first, our group thought that the implementation of a drug rehab center in an area would reduce the number of 911 calls in an area. This is caused by a reduction in drug and alcohol misuse; activities that are the main causes of many other illegal activities. In addition to that, drug and alcohol addictions have shown a direct negative correlation with quality of life. For this reason, our initial hypothesis is as follows: How does the distance to the closest drug rehabilitation center relate to the number of calls to 911? To show opposite of our hypothesis, preliminary research further built upon in the literature review shows that prosperous communities prefer not to have drug treatment or rehab centers anywhere near them. This is because these centers have a reputation for affecting people who could be a danger to the community around them. In addition to this, our group hypothesized that the number of 911 calls would decrease with time as the rehab center was in a community for longer. This is because rehab centers are positive aspects of the communities that need them, offering the necessary advice to vulnerable people. The longer a community has a rehab center in it, the more prosperous it would be and the less 911 calls it would need. 
-   This question is important to answer because within it is the answer to how to effectively and efficiently eliminate crimes caused by drugs within American cities. Drugs are one of the main causes of civil unrest and discord within cities. Within this paper, our group will attempt to answer whether or not there is an increase or decrease in crime closer to drug treatment centers. Along with this, our goal is to see how drug treatment centers change crime statistics over time. Drug treatment/ rehab centers are one of the ways theorized to eliminate these issues. This study aims to find if an increase of drug treatment centers within communities in need eliminates or decreases the crime caused by drug usage.
+  A common concern among the general American public is that crime rates are increasing. About 6 in 10 Americans share this concern according to Pew Research Center. Additionally, drug usage is another public concern in the American populous, especially in urban centers. This paper seeks to find a correlation between proximity to  substance abuse treatment centers and crime. Our hypothesis theorizes that a closer proximity to substance abuse treatment centers increases access to drug rehabilitation and mental health resources, which, in turn, decreases drug usage. This reduction in drug usage would theoretically lead to a decrease in drug-related crimes and, consequently, fewer calls to 911. So, we explored the question, "How does the distance to the closest drug rehabilitation center relate to the number of calls to 911?" 
 
-   Within this study, our group found that there was indeed a correlation between the distance to a drug treatment center and likelihood of 911 call. Contrary to our hypothesis, the amount of 911 calls actually increased as one got closer to the treatment center. The probable cause behind this trend could have been because of affluent communities protesting drug treatment centers built in their vicinity out of fear of the miscreants it would attract. To complete our project we had to have a road map. First, we gathered our data and defined our hypothesis. After we combined the datasets and manipulated them to show the information we needed.
+Our hypothesis is based on the established impact of drug rehabilitation centers on community well-being . \cite{SAT_centers_and_crime} agrees with this point by showing that there is a decline on all violent crimes within the year of a substance abuse treatment center opening in an area.  Studies such as \cite{drugs_and_crime} and \cite{drugs_crime_space_time} have demonstrated that these centers can lower crime rates and elevate the standard of living in surrounding areas. This means that substance abuse treatment centers can help community well-being by doing more than preventing crime. This is shown in \cite{mental_healthcare_and_crime}, an article showing that drug dependency is a leading cause of criminal behavior. By reducing this dependency, substance abuse treatment centers improve the crime rates in their neighborhoods. The lack of criminal behavior allows people to fully embrace better lives that are closer to their communities further decreasing the amount of 911 calls. 
 
+To explore the relationship between crime and SATC, we conducted a spatial analysis of Wayne County, where Detroit is located. We mapped the locations of drug rehabilitation centers in conjunction with the data points representing 911 calls. Our results showed that areas closer to substance abuse treatment centers had a higher number of 911 calls when compared to areas further away.  Interestingly, further analysis revealed that this trend persisted even when isolating calls related to criminal activities. This shows that while our initial hypothesis on the trend of 911 call density was not support in this data, our insights into the relationship between drug usage and 911 calls could still be possible as stated in \cite{Socioeconomic-Determinants}. 
+
+A potential explanation for these findings could be the reluctance of wealthier communities to give drug rehabilitation centers consent inside their neighborhoods. They could fear that such facilities might attract individuals they perceive as a threat due to their unstable nature as addicts as shown in \cite{mental_health_and_disability}. This "Not in My Backyard" (NIMBY) mentality can lead to fewer treatment centers in areas where they might otherwise reduce crime rates effectively. Instead, treatment centers would be prioritized in areas that already had a high crime rate and a lower standard of living. These places might not be able to perform to their best abilities due to information from \cite{cost_of_drug_treatment}. These places get their funding from the surrounding neighborhoods and a poorer neighborhood means less money and supplies to help the needy. The treatment centers alone wouldn't be able to fully stop this issue immediately and further testing on the impacts of these treatment centers over time could be necessary. 
+
+Answering this question is crucial for developing strategies to mitigate drug-related crimes along with crimes as a whole in American cities. As shown in \cite{SAT_centers_and_crime}, drugs are a major source of civil unrest, social discord, and crime, particularly in urban areas. This is especially true in areas that are historically under supported. By understanding the relationship between treatment center proximity and emergency call frequency, we can work toward solutions that foster safer and healthier communities. Due to this, we will examine whether proximity to drug rehabilitation centers influences crime and 911 call patterns in this paper. Hopefully our work will be able to, offer insights that could guide future policy and urban planning.
+
+Take it away from professor Deza's influence
+When citing papers also go into the point they're trying to make
+Our results show not showed: Do it in present tense
+No contractions in academic writing
 
 
 \section{Literature Review} \label{sec:literature}
-    The geographical relationship between crime and access to mental health care is a widely studied topic but can be convoluted. For example, mental illness is associated with an increased likelihood of substance abuse, which directly and indirectly relates an increase in crime to mental illness. One viable method of treating mental illness is through office-based mental healthcare. Thus, evidence shows that increasing access to office-based mental health care by 10 mental health care provider offices in a county can lead to a 0. 4\% reduction in the county crime rate. \cite{mental_healthcare_and_crime}). An increase in access to mental health care also shows a connection to participation in government disability programs. This is largely because better access to mental health facilities increases the likelihood of proper diagnosis of serious mental illness which leads to access to programs such as Supplemental Security Income (SSI) and Social Security Disability Insurance (SS(D)I). \cite{mental_health_and_disability}. While access to disability insurance does not directly relate to crime this shows that increasing access to mental health care allows for more opportunities for support and better access to the social safety net. Furthermore, this effect is also evident when specifically considering access to substance abuse treatment (SAT) facilities. Evidence shows that increasing access to SAT facilities reduces violent crime due to the effectiveness in reducing crimes motivated by obtaining money to purchase drugs, reducing violence among those in the drug trade, and reducing drug usage which eases aggressive behavior due to drug abuse \cite{SAT_centers_and_crime}. 
+    The geographical relationship between crime and access to mental health care is a widely studied topic but specific studies are widespread and disconnected. For example, mental illness is associated with an increased likelihood of substance abuse, which directly and indirectly relates an increase in crime to mental illness. One viable method of treating mental illness is through office-based mental healthcare. Thus, evidence shows that increasing access to office-based mental health care by 10 mental health care provider offices in a county can lead to a 0. 4\% reduction in the county crime rate. \cite{mental_healthcare_and_crime}). An increase in access to mental health care also shows a connection to participation in government disability programs. This is largely because better access to mental health facilities increases the likelihood of proper diagnosis of serious mental illness which leads to access to programs such as Supplemental Security Income (SSI) and Social Security Disability Insurance (SS(D)I). \cite{mental_health_and_disability}. While access to disability insurance does not directly relate to crime this shows that increasing access to mental health care allows for more opportunities for support and better access to the social safety net. Furthermore, this effect is also evident when specifically considering access to substance abuse treatment (SAT) facilities. Evidence shows that increasing access to SAT facilities reduces violent crime due to the effectiveness in reducing crimes motivated by obtaining money to purchase drugs, reducing violence among those in the drug trade, and reducing drug usage which eases aggressive behavior due to drug abuse \cite{SAT_centers_and_crime}. 
 
 However, a significant barrier to treatment could be the price of substance abuse treatment. In a study conducted between 2002 and 2003, the median willingness to pay for drug rehabilitation is shown to be below the average cost of treatment. Moreover, the cost of drug treatment is a significant indicator of self-reported probability of enrollment. \cite{cost_of_drug_treatment}. While it is likely that cost of treatment has changed in the subsequent decades, it is still important to acknowledge barriers to treatment when considering its affects on crime rates in an urban area, such as Detroit. 
 
@@ -73,34 +89,8 @@ Considering the almost conflicting theories on how drugs, crime, and drug treatm
 
 \section{Theoretical Analysis}
 \label{sec:theory}
-This paper assesses the hypothesis that as you get further away from a substance abuse treatment center in Detroit, MI you can expect a higher number of calls to 911. \cite{SAT_centers_and_crime} demonstrate how crime rate is negatively related to the number of substance abuse treatment centers. As more centers open, they can provide treatment to people who were previously unable to receive any due to distance constraints. The paper also showed that this number was found through the likelihood dependency on emergency services decreasing, not just crime. This follows along with what \cite{Socioeconomic-Determinants} found;  lower drug usage in an area causes the people who live there to have more stable and prosperous lives. It shows that as someone frees themselves from drug addiction and increases their socioeconomic standing, they become more productive members of society. This greater access to treatment caused overall crime rates to drop as there was a reduction in crimes motivated by drugs or getting the money to acquire more. We can connect it with the findings of \cite{drugs_and_crime} who found that a decreased drug use in an area has a positive correlation with the change in crime in the same area. This rise in both drug usage and crime causes a negatively related change in the standards of living of that area which they found will again negatively relate to the amount of drug usage restarting the cycle. This framework allowed us to analyze our claim (see Figure 1) that the distance to the closest treatment center will impact the ability to receive treatment, negatively affecting the level of drug use in that area, leading to a positively related effect on drugs-related crimes and also positively effecting the total number of 911. 
-\vspace{0.5cm}
-\begin{figure}[h!]
-\caption{} 
-\vspace{0.5cm}
-    \scalebox{0.8}{\begin{tikzpicture}[node distance= 4.5cm, auto]
-    % Define block styles
-    \tikzstyle{process} = [rectangle, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-    \tikzstyle{arrow} = [thick,->,>=stealth]
+This paper assesses the hypothesis that as you get further away from a substance abuse treatment center in Detroit, MI you can expect a higher number of calls to 911. \cite{SAT_centers_and_crime} demonstrate how crime rate is negatively related to the number of substance abuse treatment centers. As more centers open, they can provide treatment to people who were previously unable to receive any due to distance constraints. The paper also showed that this number was found through the likelihood dependency on emergency services decreasing, not just crime. This follows along with what \cite{Socioeconomic-Determinants} found;  lower drug usage in an area causes the people who live there to have more stable and prosperous lives. It shows that as someone frees themselves from drug addiction and increases their socioeconomic standing, they become more productive members of society. This greater access to treatment caused overall crime rates to drop as there was a reduction in crimes motivated by drugs or getting the money to acquire more. We can connect it with the findings of \cite{drugs_and_crime} who found that a decreased drug use in an area has a positive correlation with the change in crime in the same area. This rise in both drug usage and crime causes a negatively related change in the standards of living of that area which they found will again negatively relate to the amount of drug usage restarting the cycle. This framework allowed us to analyze our claim (see Figure 1) that the distance to the closest treatment center will impact the ability to receive treatment, which will decrease the level of drug use in that area, leading to a positively related effect on drug-related crimes and also positively effecting the total number of 911. 
 
-    % Start of the flowchart (horizontal layout)
-    \node (A) [process] {Distance to SAT};
-    \node (B) [process, right of=A] {Access to Treatment};
-    \node (C) [process, right of=B] {Drug Usage};
-    \node (D) [process, right of=C, xshift=-0.4cm] {Drug Related Crime};
-    \node (E) [process, right of=D] {Number of 911 Calls};
-    
-    % Draw dashed arrows (negative correlation)
-    \draw [arrow, dashed] (A) -- (B);
-    \draw [arrow, dashed] (B) -- (C);
-    
-    % Draw solid arrows (positive correlation)
-    \draw [arrow] (C) -- (D);
-    \draw [arrow] (D) -- (E);
-\end{tikzpicture}
-
-}
-\end{figure}
 
 
 \section{Data}
@@ -117,47 +107,38 @@ This data is from the Substance Abuse and Mental Health Services Administration 
 
 We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
-- won't do a regression line, because by collapsing (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
+We used Stata 18.0 to identify distance buckets, referred to as distance groups, and perform our analysis. We standardized the data to account for how different in total area of a distance group might alter results. We did this by dividing the area by the total count of 911 calls in each distance group. 
 
-We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
-
-
-Data Limitation due to Group Variable - once data is by SATC, an ordinal variable, can't use a group variable again so can't do scatterplot or confidence
 %Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
 %In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
 
-\subsection{Survey data}
-
 \section{Results}
-For the research question on "How does the distance to the closest drug rehabilitation center relate to the amount of calls to 911?" our group hypothesized that as the distance from a drug treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the more  likely that 911 would be called with a drug related inquiry. Our null hypothesis in this case would then be that there is no relation between distance to a drug treatment center and likelihood to call 911. 
+\label{sec:result}
 
-Our current results show that the closer to drug treatment centers the  amount of 911 calls increases, at least within 1250 meters. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and likelihood of 911 call. In the future we plan on organizing this into a more detailed graph. Before then we also plan on cutting down on the amount of 911 calls used in the datasets by focusing only on those that are directly related to drug or violence related incidents. Along with that, our group hopes to show the correlation over time between new treatment centers and lowered 911 calls. We provide evidence that our original hypothesis is false, but we have ideas on why areas closer to treatment centers would have more calls.
-
-Our first theory is that these treatment centers were placed in areas of high crime and low standards of living. These places would naturally have a higher rate of 911 calls. Along with that, some readings we looked at say that affluent communities petition against the construction of rehab centers near them to ensure people with those issues have no reason to be near them.
-
-The second theory is that these treatment centers were built in densely populated areas. These areas would naturally have more people than their surroundings. These people would also call the police more often and have more issues.
-
-Regardless of the reason, our research so far shows that the closer an area is to a drug or alcohol rehab center, the higher likelihood it is more 911 calls will come out of it. This leads into our discussion on the further implications of areas near these research centers being more dangerous.
-\label{sec:result}[hb]
-\begin{figure}
+\begin{figure}[ht]
     \centering
     \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
     \caption{Enter Caption}
     \label{fig: Average Number of Calls per Distance Group}
 \end{figure}
-
-- won't do a regression line, because by collasping (mean) calls per distance group per nearfid, we lose variability within groups. Stata tras the ordinal grouping variable (nearfid) as a predictor rather than the original ordinal structure. 
-
-We performed a two-sample t-test on each coinciding parameter to identify if there is a statistical difference in the distribution of observations for each. 
-\begin{figure}
+We found evidence that supports as the distance from a substance abuse treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to a SATC and the likelihood of calling 911. 
+\begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/t_test_ss.png}
     \caption{Two Sample T-Tests}
     \label{fig:enter-label}
 \end{figure}
-\begin{figure}
+Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figures 2 and 4 show a distribution of mean 911 calls per distance group. In Figure 2, the unit of analysis was the mean 911 calls, but with almost 500,000 observations since the data was per 911 call. We conducted a two-sample t-test, seen in Figure 3, between sequential distance groups. 
+
+The results identify that there is statistical significance between most distance group's call averages. However, most of the confidence intervals were extremely high due to the total amount of observations. 5 of the t tests had a p value less than 1\% and 2 of the t test had a p value less than 5\%.  
+
+We revised our graph to account for this potential skewed-ness in the confidence intervals to group the 911 calls count in each distance group by the SATC-assigned variable (, creating 44 total observations (one observation for each SATC). The results are in Figure 4. The confidence intervals show that overall, there is statistical significance in the mean calls of each distance group. The only exceptions are: differences by using the SATC as a group variable, and the We due to high In. The high confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and the likelihood of a 911 call.
+
+ 
+
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Mean Calls.png}
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/CI_Graph.png}
     \caption{Mean Calls}
     \label{fig:enter-label}
 \end{figure}
@@ -165,9 +146,10 @@ We performed a two-sample t-test on each coinciding parameter to identify if the
 \begin{table}[h]
 \centering
 \caption{Ratio Analysis}
-\begin{tabular}{l|c|c|cc|c|c}
+\begin{tabular}{l||c|c|cc|c|c}
 \hline\hline
-Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&     P value\\
+            &ratio\_results&            &            &            &            &            \\
+            &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&     P value\\
 \hline
 100/250     &    1.518016&     .305492&     .901933&      2.1341&    4.969087&    .0000112\\
 250/500     &    1.112848&    .1703623&    .7692794&    1.456416&    6.532241&    6.14e-08\\
@@ -178,7 +160,7 @@ Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&   
 1500/1750   &    1.365242&    .1935897&    .9748308&    1.755652&    7.052244&    1.08e-08\\
 1750/2000   &     1.66361&    .2204068&    1.219117&    2.108103&    7.547907&    2.09e-09\\
 2000/2250   &    1.204906&     .110774&    .9815093&    1.428303&    10.87716&    6.33e-14\\
-2250/2500  &    1.519659&    .1688579&    1.179124&    1.860193&     8.99963&    1.91e-11\\
+2250/2500   &    1.519659&    .1688579&    1.179124&    1.860193&     8.99963&    1.91e-11\\
 \hline\hline
 \end{tabular}
 \flushleft
@@ -190,7 +172,7 @@ Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&   
 \end{footnotesize}
 \end{table}
 
-\subsubsection{Summary Statistics}
+%\subsubsection{Summary Statistics}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
 %Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
@@ -199,23 +181,27 @@ Distances   &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&   
 \section{Discussion}
 \label{sec:discussion}
 
-Optional. This is where you would discuss any of the following
-\begin{itemize}
-    \item caveats (are there problems with the data that there are no obvious ways to resolve? if so, how might this impact
-    \item future work / next steps
-    \item     implications of the results: that is, how your findings -- if they were causally identified -- might inform policymaking, etc.
-    \end{itemize}
+One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. SATC may be purposely selected in drug usage hot spots, which tend to have other associated demographics such as high population density and lower standard of living. These communities tend to have higher crime rates in general, which could explain part of this trend. Alternately, they may be placed there since higher standards of living communities, which tend to have lower crime rates in general, will rally against SATC being placed in their neighborhoods, due to fear of the type of people it will bring to the neighborhood. 
+    
+Another explanation for the lower frequency of 911 calls in further distance rings could be due to our data not counting 911 calls twice. When we geo-coded the 911 calls, we assigned each observation to only one SATC, the one geographically closest to it. This was to limit the amount of overlap that some SATC might have at the smaller distance rings, as it could exaggerate our data frequencies. However, in farther distance rings, a call might be similar in distance to two SATCs, but will only be assigned to be correlated to one, when the reality it could be correlated to either. This thins the observations and data associated in farther-out distance rings. 
+
+One significant limitation was the inability to fine-tune 911 call data to determine whether calls were directly related to drug activity. Without additional data, such as toxicology reports or detailed incident descriptions, it remains challenging to assess the role of drugs in criminal behavior or whether the crimes involved were violent in nature. A better understanding of what calls were drug-related or induced could provide more accurate results on the relationship between drug abuse and crime, and the role of SATC in amplifying or mitigating this. 
+    
+Another limitation is the population density of this urban sample. The observed pattern of 911 calls could have been influenced by higher population density in more urban parts of Detroit, which naturally results in an increase of emergency calls. Future research should explore similar analyses in areas with varying population densities to better control for this variable and isolate the effects of proximity to substance abuse treatment centers. 
+
+Another limitation was the inability to create a regression line (or line of best fit) for this relationship. Since we collapsed the data multiple times, we lost variability to perform a regression line. First, we collapsed the data by count to get the total counts for each distance group. Then we collapsed the data by grouping by SATC designation, to get the total observations per distance group per SATC. Finally, we collapsed that data set by mean, creating mean counts of 911 calls per distance group adjusted for SATC correlation. This left one observation row that created Figure 4. We lost analysis flexibility due to this data manipulation approach. In the future, a different data manipulation approach might leave more room for further data analysis. 
+
+Since we only analyzed 
+
 \section{Conclusion}
 \label{sec:conclusion}
 
-    We hypothesized that as the distance from a substance abuse treatment center (SATC) increases, the frequency of 911 calls also increases. The closer a SATC is, the more accessible treatments centers are, which should reduce crime rates in the area, measured by 911 calls. We conducted a cross-sectional analysis to examine the overlap of 911 calls' geographical locations to their distances to their closest SATC. Our results show that contrary to our hypothesis, as distance from a SATC increases, the amount of 911 calls decreases. There is strong correlation between these two variables, as the r coefficient is 0.8,.. This distance decay relationship indicates that there is a relationship between SATC placements and 911 calls, but just in the opposite direction of the original hypothesis. 
-    One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. Drug treatment centers may be purposely selected in drug usage hot spots, which tend to have other associated demographics such as high population density and lower standard of living. These communities tend to have higher crime rates in general, which could explain part of this trend. Alternately, they may be placed there since higher standards of living communities, which tend to have less crime rates in general, will rally against SATC being placed in their neighborhoods, due to fear of the type of people it will bring to the neighborhood. 
-    Another explanation for the lower frequency of 911 calls in further distance rings could be due our data not counting 911 calls twice. When we geocoded the 911 calls, we assigned each observation to only one SATC, the one geographically closest to it. This was to limit the amount of overlap that some SATC might have at the smaller distance rings, as it could exaggerate our data frequencies. However, the in farther distance rings, a call might be similar in distance to two SATCs, but will only be assigned to be correlated to one, when the reality it could be correlated to either. This thins the observations and data associated in farther out distance rings. 
-    One significant limitation was the inability to fine-tune 911 call data to determine whether calls were directly related to drug activity. Without additional data, such as toxicology reports or detailed incident descriptions, it remains challenging to assess the role of drugs in criminal behavior or whether the crimes involved were violent in nature. A better understanding of what calls were drug related or induced could provide more accurate results on the relationship between drug abuse and crime, and the role SATC in amplifying or mitigating this. 
-    Another limitation is the population density of this urban sample. The observed pattern of 911 calls could have been influenced higher population density in more urban parts of Detroit, which naturally results in an increase of emergency calls. Future research should explore similar analyses in areas with varying population densities to better control for this variable and isolate the effects of proximity to drug treatment centers. 
+    We hypothesized that as the distance from a substance abuse treatment center (SATC) increases, the frequency of 911 calls also increases. The closer a SATC is, the more accessible treatment centers are, which should reduce crime rates in the area, measured by 911 calls. We conducted a cross-sectional analysis to examine the overlap of 911 calls' geographical locations to their distances to their closest SATC. Our results show that contrary to our hypothesis, as distance from a SATC increases, the amount of 911 calls decreases. This distance decay relationship indicates that there is a relationship between SATC placements and 911 calls, but just in the opposite direction of the original hypothesis. 
+   % A
+
 
  
-Re-state (in different words) what you did and what you learned. If your discussion (Section 6) would be short, you can just have a Conclusion section that includes your discussion (that is, leave out a separate Discussion section).
+%Re-state (in different words) what you did and what you learned. If your discussion (Section 6) would be short, you can just have a Conclusion section that includes your discussion (that is, leave out a separate Discussion section).
 
 \newpage
 \singlespacing
@@ -223,7 +209,7 @@ Re-state (in different words) what you did and what you learned. If your discuss
 
 \bibliographystyle{chicago}
 \bibliography{reference.bib}
-
+https://www.pewresearch.org/short-reads/2024/04/24/what-the-data-says-about-crime-in-the-us/
 
 \newpage
 \section*{Data Appendix} \label{sec:appendixa}
