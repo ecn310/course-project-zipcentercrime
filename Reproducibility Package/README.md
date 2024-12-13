@@ -60,6 +60,7 @@ near dist: This is the distance in meters the 911 call observation is from the S
 3. Select Export Table
 4. Choose your prefered location to save the file
 5. When naming the file end it with .csv so that it is able to export as a text doccument
+6. Select the "Fields" drop down and only keep variables "near_dist" and "near_fid" (All other variable are not used in analysis and only takes up storage)
 
 Repeat the steps under Set up, Data manipulation, and Export geocoded data with using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime
 # Data Analysis
