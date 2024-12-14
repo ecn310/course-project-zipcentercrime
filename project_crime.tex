@@ -50,14 +50,7 @@ bookmarksopen=true,hyperfootnotes=false]{hyperref}
 \begin{center} {\bf Abstract} \end{center}
 
 \begin{quote}
-    {\small We examine the effects drug and alcohol treatment centers have on their neighbors in Detroit, Michigan. In this study, we find the relationship between the distance from a substance abuse treatment centers and the number of 911 calls in an area. We create a framework that locates all the  substance abuse treatment centers in the greater Detroit area and then creates rings around them at distances ranging from 50 to over 2000 meters to find the number of calls within each ring. Our analysis uses multiple t tests to find the number of calls within a ring and the probability that this is indicative of all crime in the city throughout its history. This data was found through the City of Detroit's Open Data Portal. Our group looked in the "Police Serviced 911 Calls" section. This portal contains a wealth of information on the type of crime committed along with where and when it was committed. Along with the information we obtained on what 
-
-    Say we did correlation and t test
-    Define Substance Abuse Treatment Center (SATC)
-    
-    Say what the result
-    Why we think that is
-    } 
+    {\small We examine the effects drug and alcohol treatment centers have on their neighbors in Detroit, Michigan. In this study, we find the relationship between the distance from a substance abuse treatment centers (SATC) and the number of 911 calls in an area. This paper creates a framework that locates all the  substance abuse treatment centers in the greater Detroit area and then creates rings around them at distances ranging from 50 to 2500 meters to find the number of calls within each ring. Our analysis uses multiple t tests to find the number of calls within a ring and the probability that this is indicative of all crime in the city throughout its history. This data was found through the "City of Detroit's Open Data Portal". Our group looked in the "Police Serviced 911 Calls" section. This portal contains a wealth of information on the type of crime committed along with where and when it was committed along with the type of crime. With this information, our group finds the correlation between the distance to a SATC and 911 call. With this information, a t test is conducted. We did this for all 911 calls and for calls that involved crimes. The results of this experiment were different than our hypothesis. These results show that that there are more 911 calls and crimes reported the closer it is to a SATC. This could be because SATCs are placed in areas where they can help the most. Our group believes that they are placed in worse neighborhoods that have more 911 calls and report more crimes. Along with this, due to "Not in my backyard" (NIMBY), a characterization of opposition by residents to infrastructure development in their local area, SATCs are only built in poorer neighborhoods. Information on the trend of 911 calls in relation to SATCs could help infrastructure planning in similar urban areas.} 
 \end{quote}
 
 \bigskip
@@ -72,10 +65,6 @@ A potential explanation for these findings could be the reluctance of wealthier 
 
 Answering this question is crucial for developing strategies to mitigate drug-related crimes along with crimes as a whole in American cities. As shown in \cite{SAT_centers_and_crime}, drugs are a major source of civil unrest, social discord, and crime, particularly in urban areas. This is especially true in areas that, historically, have not been supported by government resources. By understanding the relationship between treatment center proximity and emergency call frequency, we can work toward solutions that foster safer and healthier communities. Our paper, attempts to provide further insight into the relationship between SATCs and crime in Detroit. In doing so, we hope to further the field of social economics and the consequences of SATC construction in an area. Although more can be done on the subject by adding more cities or seeing the relationship between the amount of 911 calls over the years, our study shows how SATCs are commonly found in areas that have a 911 calls along with explanations on why that could be the case.
 
-Take it away from professor Deza's influence
-When citing papers also go into the point they're trying to make
-Our results show not showed: Do it in present tense
-No contractions in academic writing
 
 
 \section{Literature Review} \label{sec:literature}
@@ -109,7 +98,7 @@ We used layered the datasets and geocode their locations. Using the coordinates 
 
 We create distance rings, referred to as distance groups, and perform our analysis. We normalize the data to account for differences in total area of a distance group might alter results. We did this by dividing the area by the total count of 911 calls in each distance group. 
 
-\subsection{Explaining distance Groups}
+\subsection{Distance Rings / Groups}
  \begin{tikzpicture}
 % Define the radii corresponding to the first 3 distances (in meters)
 
@@ -119,56 +108,23 @@ We create distance rings, referred to as distance groups, and perform our analys
 
 
 % Draw the concentric circles
-\foreach \r/\label in {
-    \radiusOne/, 
+\foreach \r/\label in {\radiusOne/, 
     \radiusTwo/,
-    \radiusThree/,
+    \radiusThree/,}
+ { 
+\draw[thick] (0,0) circle (\r);
+    \node at (\r, 0) [middle] {\label}; 
     }
- {
-    \draw[thick] (0,0) circle (\r);
-    \node at (\r, 0) [right] {\label};
-    
-}
-
 \end{tikzpicture}
+
+We created concentric rings around each SATC. Each 911 point falls within one circle, referred to as a distance ring or distance group, and is counted towards the SATC in its circle's center.
 
 %Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
 %In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
 
 \section{Results}
 \label{sec:result}
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
-    \caption{Enter Caption}
-    \label{fig: Average Number of Calls per Distance Group}
-\end{figure}
-We hypothesize that as the distance from a substance abuse treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to a SATC and the likelihood of calling 911. 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/t_test.tex}
-    \caption{Two Sample T-Tests}
-    \label{fig:enter-label}
-\end{figure}
-Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figures 2 and 4 show a distribution of mean 911 calls per distance group. In Figure 2, the unit of analysis was the mean 911 calls, but with almost 500,000 observations since the data was per 911 call. The hight is mean calls per meter squared. We conducted a two-sample t-test, seen in Figure 3, between sequential distance groups. 
-
-The results identify that there is statistical significance between most distance group's call averages. However, most of the confidence intervals were extremely high due to the total amount of observations. 5 of the t tests had a p-value less than 0.01 and 2 of the t test had a p value less than 0.05.  Go back to research hypothesis 
-
-We revised our graph to account for this potential skewed-ness in the confidence intervals to group the 911 calls count in each distance group by the SATC-assigned variable (creating 44 total observations per distance ring (one observation for each SATC)). The results are in Figure 4. The confidence intervals show that overall, there is statistical significance in the mean calls of each distance group. The only exceptions are: . The confidence interval of these sections indicates that there is a strong correlation between distance to a treatment center and the likelihood of a 911 call.
-
- Explain more abt how the statistical test support hypothesis or provide evidence
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/CI_Graph.png}
-    \caption{Mean Calls}
-    \label{fig:enter-label}
-\end{figure}
-
-
-
-\begin{table}[!h]
+\begin{table}[h]
 \centering
 \begin{tabular}{lllllll}
 \cline{1-7}
@@ -187,13 +143,6 @@ We revised our graph to account for this potential skewed-ness in the confidence
   \multicolumn{1}{r}{0.056} &
   \multicolumn{1}{r}{0.028} &
   \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{ttest dist\_group\_2250 == dist\_group\_2500} &
-  \multicolumn{1}{|r}{206.033} &
-  \multicolumn{1}{r}{135.579} &
-  \multicolumn{1}{r}{70.455} &
-  \multicolumn{1}{r}{0.004} &
-  \multicolumn{1}{r}{0.002} &
-  \multicolumn{1}{r}{***} \\
 \multicolumn{1}{l}{ttest dist\_group\_250 == dist\_group\_500} &
   \multicolumn{1}{|r}{1870.036} &
   \multicolumn{1}{r}{1680.406} &
@@ -250,42 +199,59 @@ We revised our graph to account for this potential skewed-ness in the confidence
   \multicolumn{1}{r}{0.039} &
   \multicolumn{1}{r}{0.020} &
   \multicolumn{1}{r}{**} \\
+  \multicolumn{1}{l}{ttest dist\_group\_2250 == dist\_group\_2500} &
+  \multicolumn{1}{|r}{206.033} &
+  \multicolumn{1}{r}{135.579} &
+  \multicolumn{1}{r}{70.455} &
+  \multicolumn{1}{r}{0.004} &
+  \multicolumn{1}{r}{0.002} &
+  \multicolumn{1}{r}{***} \\
 \cline{1-7}
 \end{tabular}
+\caption{Tailed T-Test}
+\label{tabl:enter-label}
 \break
-\footnotesize{
-*** p$<$.01, ** p$<$.05,
-}
-\end{table}
+\footnotesize{*** p$<$.01, ** p$<$.05}
 
-\begin{table}[h]
-\centering
-\caption{Ratio Analysis}
-\begin{tabular}{l||c|c|cc|c|c}
-\hline\hline
-            &ratio\_results&            &            &            &            &            \\
-            &       Ratio&   Std. Err.&  [95 Conf.&   Interval]&     T score&     P value\\
-\hline
-100/250     &    1.518016&     .305492&     .901933&      2.1341&    4.969087&    .0000112\\
-250/500     &    1.112848&    .1703623&    .7692794&    1.456416&    6.532241&    6.14e-08\\
-500/750     &    1.571244&    .1966827&    1.174596&    1.967893&    7.988725&    4.92e-10\\
-750/1000    &    1.091451&    .1104992&    .8686081&    1.314294&    9.877456&    1.25e-12\\
-1000/1250   &    1.189354&    .0748615&    1.038382&    1.340327&     15.8874&    1.32e-19\\
-1250/1500   &    1.461179&    .1268808&    1.205299&    1.717058&    11.51615&    1.00e-14\\
-1500/1750   &    1.365242&    .1935897&    .9748308&    1.755652&    7.052244&    1.08e-08\\
-1750/2000   &     1.66361&    .2204068&    1.219117&    2.108103&    7.547907&    2.09e-09\\
-2000/2250   &    1.204906&     .110774&    .9815093&    1.428303&    10.87716&    6.33e-14\\
-2250/2500   &    1.519659&    .1688579&    1.179124&    1.860193&     8.99963&    1.91e-11\\
-\hline\hline
-\end{tabular}
-\flushleft
-\begin{footnotesize}
-\begin{singlespace}
-\textbf{Note 1}: A larger T score indicates the estimated coefficient is more significantly different from the hypothesized value.
-\textbf{Note 2}: A smaller P value p<0.05 means the result is statistically significant. This means the estimated coefficient is likely not zero.
-\end{singlespace}
-\end{footnotesize}
+\textbf{Note 1: Mean 1 is the mean calls of the lower bound distance ring.}
+
+\textbf{Mean 2 is the mean calls of the higher bound distance ring.}
 \end{table}
+We hypothesize that as the distance from a substance abuse treatment facility increases, the number of 911 calls also increases. This means that the further someone is from a treatment center, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to an SATC and the likelihood of calling 911. 
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/Avg_Calls_per_Distance_Group.png}
+    \caption{Mean Calls per Distance Group}
+    \label{fig: Average Number of Calls per Distance Group}
+      \textit{Note 1: X-axis consists of distance buckets. Distance measured in meters.}
+
+      \textit{Note 2: Y-axis is measured in mean calls per meter squared.}
+\end{figure}
+
+We conducted a paired t-test to examine the statistical likelihood that one distance ring has a greater mean number of calls than the next larger ring. The pairwise comparison table is seen in Table 1 above.
+
+The results support the rejection of the null hypothesis for 7 of the paired tests. 5 of the pair t-tests exhibit a p-value less than 0.01, indicating statistical significance between sequential distance rings. In addition, 2 of the tests show p-values less than 0.05. This is still statistically significant, although less strong than the groups mentioned above. 
+
+For 3 comparisons of the paired t-test, we cannot reject the null hypothesis as the null hypothesis value falls within the 95\% confidence interval. The 100-250 meter ring test, has a p-value of 0.056, which is close to the threshold of significance. This suggests that there may be a weak effect presence, so further tests should be done.
+
+However, the 250-500 meter and 750-1000 meter ring tests exhibit p-values of 0.491 and 0.392 respectively. These high p-values show no evidence of statistical significance in the mean values of the distance rings, likely attributing the differences in the mean values to random variation.
+
+Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figure 1 shows a distribution of mean 911 calls per distance group. In Figure 1 and Table 1, the unit of analysis was the mean 911 calls per distance group. The height is the mean calls per meter squared. T
+
+There are about 600,000 total observations analyzed in Figure 1 and Table 1 since the data rows were per each 911 call. This might skew our data towards high-confidence variables as it doesn't break the call counts down per SATC. 
+
+To account for SATC within the unit of analysis, we analyze the mean calls per distance group per SATC. The results are in Figure 2. This figure shows the same relationships between distance bar heights as Figure 1 but is overlapped with a confidence interval. Although the figure mirrors Figure 1 visually, the majority of the confidence intervals overlap some range. The confidence intervals of 250-500 meters and 750-1000 meters significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
+
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/CI_Graph.png}
+    \caption{Mean Calls per SATC per Distance Group}
+    \label{fig:enter-label}
+    \textit{Note 1: X-axis consist of the different distance groups used. Distance measured in meters.}
+    
+    \textit{Note 2: Y-axis is measured in mean calls per kilometers squared.}
+\end{figure}
 
 %\subsubsection{Summary Statistics}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
@@ -296,9 +262,9 @@ We revised our graph to account for this potential skewed-ness in the confidence
 \section{Discussion}
 \label{sec:discussion}
 
-One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. SATC may be purposely selected in drug usage hot spots, which tend to have other associated demographics such as high population density and lower standard of living. 
+One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. SATC may be put into neighborhoods where there are a lot of drug users so it is accessible and convenient to those who need it. Additionally, neighborhoods with higher rates of drug usage tend to have a lower standard of living. Another indication of a lower standard of living is higher crime rates, which could potentially contribute to higher counts of 911 calls closer to an SATC. 
 
-These communities tend to have higher crime rates in general, which could explain part of this trend. Alternately, they may be placed there since higher standards of living communities, which tend to have lower crime rates in general, will rally against SATC being placed in their neighborhoods, due to fear of the type of people it will bring to the neighborhood. NIMBY ECON AND POSITIVE FEEDBACK LOOP
+Additionally, SATC may be strategically placed in lower standard-of-living neighborhoods due to pressure from higher standard-of-living communities. Richer communities tend to exhibit a "Not In My Backyard" (NIMMBY) mentality, opposing the placement of treatment centers in their neighborhoods. This resistance stems from the fear or stigma residents have about drug users. They might perceive SATC as bringing dangerous or mentally ill people into their area, impacting the safety of the area. Thus, higher standard-of-living neighborhoods tend to lobby for NIMBY policies in their communities, pushing SATC to be placed in areas that can't or don't lobby these same interests. Additionally, higher standard-of-living areas tend to have lower crime rates in general. This creates a positive feedback system in these neighborhoods, potentially explaining why the farther a distance ring is from a SATC, the fewer mean 911 calls there are. Those distance rings could be on the cusp or or geographically in neighborhoods that don't have SATC. 
     
 Another explanation for the lower frequency of 911 calls in further distance rings could be due to our data not counting 911 calls twice. When we geo-coded the 911 calls, we assigned each observation to only one SATC, the one geographically closest to it. This was to limit the amount of overlap that some SATC might have at the smaller distance rings, as it could exaggerate our data frequencies. However, in farther distance rings, a call might be similar in distance to two SATCs, but will only be assigned to be correlated to one, when the reality it could be correlated to either. This thins the observations and data associated in farther-out distance rings. 
 
@@ -308,7 +274,7 @@ Another limitation is the population density of this urban sample. The observed 
 
 Another limitation was the inability to create a regression line (or line of best fit) for this relationship. Since we collapsed the data multiple times, we lost variability to perform a regression line. First, we collapsed the data by count to get the total counts for each distance group. Then we collapsed the data by grouping by SATC designation, to get the total observations per distance group per SATC. Finally, we collapsed that data set by mean, creating mean counts of 911 calls per distance group adjusted for SATC correlation. This left one observation row that created Figure 4. We lost analysis flexibility due to this data manipulation approach. In the future, a different data manipulation approach might leave more room for further data analysis. 
 
-We analyzed data from 2017 only. Future research should run this cross sectional data analysis 
+We analyzed data from 2017 only. This leaves room for error from using a small dataset. We see future research supporting these findings or supporting a stronger pattern through these two ways: Firstly, performing cross-sectional data within multiple different years. Then, comparing the mean calls per SATC per distance group and identifying trend lines. This option could strengthen the correlational relationships we found in this paper. Secondly, a paper could analyze time series based on the openings and closings of substance abuse treatment centers. This option might identify a causal impact of a SATC's presence might have on a neighborhood as it pertains to 911 calls, and subsequently, crime rates. These results could impact policy-making decisions when it comes to where to fund and support the placement of SATC to serve populations in need. 
 
 \section{Conclusion}
 \label{sec:conclusion}
@@ -332,10 +298,42 @@ https://www.pewresearch.org/short-reads/2024/04/24/what-the-data-says-about-crim
 \section*{Data Appendix} \label{sec:appendixa}
 \addcontentsline{toc}{section}{Appendix A}
 
+Our replication package is linked \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package}{here}.
+
+We isolated our data from both Police Serviced 911 Calls and N-SSATS to only include observations from the year 2017. We picked this year due to an overlap in data and no potential disruptions from COVID-19. The year 2018 or 2019 from both data sets could additionally work. 
+
 We used the ArcGISPro application to layer both 2017 datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
 We used Stata 18.0 to identify distance buckets, referred to as distance groups, and perform our analysis. We normalize the data to account for how differences in total area of a distance group might alter results. We did this by dividing the area by the total count of 911 calls in each distance group. 
 
-You should at least direct your reader to your replication package. You might put key elements of your replication package in this section as well.
+
+% \begin{table}[h]
+%\centering
+%\caption{Ratio Analysis}
+%begin{tabular}{l||c|c|cc|c|c}
+%\hline\hline
+ %           &ratio\_results&            &            &            &            &            \\
+     %       &       Ratio&   Std. Err.&  [95 5Conf.&   Interval]&     T score&     P value\\
+%\hline
+%100/250     &    1.518016&     .305492&     .901933&      2.1341&    4.969087&    .0000112\\
+%250/500     &    1.112848&    .1703623&    .7692794&    1.456416&    6.532241&    6.14e-08\\
+%500/750     &    1.571244&    .1966827&    1.174596&    1.967893&    7.988725&    4.92e-10\\
+%750/1000    &    1.091451&    .1104992&    .8686081&    1.314294&    9.877456&    1.25e-12\\
+%1000/1250   &    1.189354&    .0748615&    1.038382&    1.340327&     15.8874&    1.32e-19\\
+%1250/1500   &    1.461179&    .1268808&    1.205299&    1.717058&    11.51615&    1.00e-14\\
+%1500/1750   &    1.365242&    .1935897&    .9748308&    1.755652&    7.052244&    1.08e-08\\
+%1750/2000   &     1.66361&    .2204068&    1.219117&    2.108103&    7.547907&    2.09e-09\\
+%2000/2250   &    1.204906&     .110774&    .9815093&    1.428303&    10.87716&    6.33e-14\\
+%2250/2500   &    1.519659&    .1688579&    1.179124&    1.860193&     8.99963&    1.91e-11\\
+%\hline\hline
+%\end{tabular}
+%\flushleft
+%\begin{footnotesize}
+%\begin{singlespace}
+%\textbf{Note 1}: A larger T score indicates the estimated coefficient is more significantly different from the hypothesized value.
+%\textbf{Note 2}: A smaller P value p<0.05 means the result is statistically significant. This means the estimated coefficient is likely not zero.
+%\end{singlespace}
+%\end{footnotesize}
+%\end{table} %
 
 \end{document}
