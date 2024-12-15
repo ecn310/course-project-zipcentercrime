@@ -139,11 +139,6 @@ We conducted a set paired t-test to examine the statistical likelihood that one 
 \flushleft
 \caption{\textbf{Two Sample T-Tests}}
 \label{tab:Table1}
- \begin{minipage}{1\linewidth}
-        \centering
-        \textit{Mean 1 is the mean calls of the lower bound distance ring.} \\
-        \textit{Mean 2 is the mean calls of the higher bound distance ring.}
-    \end{minipage}
 \end{table}
 
 The results support the rejection of the null hypothesis for seven of the paired tests. Five of the pair t-tests exhibit a p-value less than 0.01, indicating statistical significance between sequential distance rings. In addition, two of the tests show p-values less than 0.05. This is still statistically significant, although less strong than the groups mentioned above. 
@@ -155,14 +150,20 @@ However, the 250-500 meter and 750-1000 meter ring tests exhibit p-values of 0.4
 To account for SATC within the unit of analysis, we analyze the mean calls per distance group across SATC. The results are in Figure~\ref{fig:Figure1}. Figure~\ref{fig:Figure1} is overlapped with a confidence interval. Although the figure mirrors Figure~\ref{fig:Figure1} visually, the majority of the confidence intervals overlap some range. 
 \begin{figure}{h!}
     \centering
-    \includegraphics[width=0.5\linewidth]{CI_Graph.png}
+\includegraphics[width=0.75\linewidth]{CI_Graph.png}
     \caption{Mean Calls per SATC per distance group}
     \label{fig:Figure1}
      \textit{X-axis consist of the different distance groups used. Distance measured in meters.}
     \textit{Y-axis is measured in mean calls per kilometers squared.}
-\end{figure}The confidence intervals of 250-500 meters and 750-1000 meters significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
+\end{figure}
+The confidence intervals of 250-500 meters and 750-1000 meters significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
 
-\cite{}
+\begin{figure}{h!}
+    \centering
+\includegraphics[width=0.75\linewidth]{Crim_CI_Graph.png}
+    \caption{Mean Crime Calls per SATC per distance group}
+    \label{fig:Figure2}
+\end{figure}
 %\subsubsection{Summary Statistics}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
