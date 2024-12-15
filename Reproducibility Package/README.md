@@ -4,7 +4,7 @@ Everything below will be run using a combination of Stata 18 and ArcGIS Pro.
 # Sourcing the Data 
 Using these steps you will be able to access all of the raw data used for our analysis.
 ### 911 Calls
-1. Follow [THIS link](https://drive.google.com/drive/u/1/folders/1bvpeAH9oXN7poEpW0kRwM8bXW4WOT02c) and download the calls_final.csv file to get the raw 911 Call data.
+1. Follow [THIS link](https://drive.google.com/drive/u/1/folders/1bvpeAH9oXN7poEpW0kRwM8bXW4WOT02c) and download the calls_final.csv file to get the raw 911 Call data. If that doesn't work, use this [link](https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&dl=0) instead. 
 2. Select the download option at the top of the page.
 3. A menu will apear to select the format for the data. Select CSV to download the data as a .csv file.
 ### Treatment Centers
