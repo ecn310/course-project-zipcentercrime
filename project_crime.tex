@@ -18,6 +18,7 @@
 \usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
 \usepackage{multirow, amsmath}
 \usepackage[table]{xcolor}
+\usepackage{float}
 
 % enable hyperlinks and table of contents
 \usepackage[pdftex,
@@ -97,9 +98,9 @@ This data is from the Substance Abuse and Mental Health Services Administration 
  
 We used layered the datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
 
-We create distance rings, referred to as distance groups, and perform our analysis. We normalize the data to account for differences in total area of a distance group might alter results. We did this by dividing the area by the total count of 911 calls in each distance group.
+We create distance rings, referred to as distance groups, and perform our analysis. We normalize the data to account for differences in total area of a distance group might alter results. We did this by dividing the area in squared meters by the total count of 911 calls in each distance group.
 
-\subsection{Distance Rings / Groups}
+\subsection{Measuring Distance of each 911 Call to each SATC}
  \begin{tikzpicture}
 % Define the radii corresponding to the first 3 distances (in meters)
 
@@ -112,9 +113,9 @@ We create distance rings, referred to as distance groups, and perform our analys
 \foreach \r/\label in {\radiusOne/, 
     \radiusTwo/,
     \radiusThree/,}
- { 
+ {
 \draw[thick] (0,0) circle (\r);
-    \node at (\r, 0) [middle] {\label}; 
+    \node at (\r, 0) {\label};
     }
 \end{tikzpicture}
 
@@ -131,121 +132,37 @@ We hypothesize that as the distance from a substance abuse treatment facility in
 We conducted a set paired t-test to examine the statistical likelihood that one distance ring has a greater mean number of calls than the next larger ring. The pairwise comparison table is seen in Table~\ref{tabl:Table1}.
 
 \begin{table}[h]
-\centering
-\begin{tabular}{lllllll}
-\cline{1-7}
-\multicolumn{1}{c}{} &
-  \multicolumn{1}{|r}{Mean\_1} &
-  \multicolumn{1}{r}{Mean\_2} &
-  \multicolumn{1}{r}{Difference} &
-  \multicolumn{1}{r}{p\-value} &
-  \multicolumn{1}{r}{Tailed\-p} &
-  \multicolumn{1}{r}{stars} \\
-\cline{1-7}
-\multicolumn{1}{l}{ttest dist\_group\_100 == dist\_group\_250} &
-  \multicolumn{1}{|r}{2838.745} &
-  \multicolumn{1}{r}{1870.036} &
-  \multicolumn{1}{r}{968.709} &
-  \multicolumn{1}{r}{0.056} &
-  \multicolumn{1}{r}{0.028} &
-  \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{ttest dist\_group\_250 == dist\_group\_500} &
-  \multicolumn{1}{|r}{1870.036} &
-  \multicolumn{1}{r}{1680.406} &
-  \multicolumn{1}{r}{189.630} &
-  \multicolumn{1}{r}{0.491} &
-  \multicolumn{1}{r}{0.245} &
-  \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{ttest dist\_group\_500 == dist\_group\_750} &
-  \multicolumn{1}{|r}{1680.406} &
-  \multicolumn{1}{r}{1069.475} &
-  \multicolumn{1}{r}{610.931} &
-  \multicolumn{1}{r}{0.007} &
-  \multicolumn{1}{r}{0.003} &
-  \multicolumn{1}{r}{***} \\
-\multicolumn{1}{l}{ttest dist\_group\_750 == dist\_group\_1000} &
-  \multicolumn{1}{|r}{1069.475} &
-  \multicolumn{1}{r}{979.865} &
-  \multicolumn{1}{r}{89.610} &
-  \multicolumn{1}{r}{0.392} &
-  \multicolumn{1}{r}{0.196} &
-  \multicolumn{1}{r}{} \\
-\multicolumn{1}{l}{ttest dist\_group\_1000 == dist\_group\_1250} &
-  \multicolumn{1}{|r}{979.865} &
-  \multicolumn{1}{r}{823.863} &
-  \multicolumn{1}{r}{156.002} &
-  \multicolumn{1}{r}{0.006} &
-  \multicolumn{1}{r}{0.003} &
-  \multicolumn{1}{r}{***} \\
-\multicolumn{1}{l}{ttest dist\_group\_1250 == dist\_group\_1500} &
-  \multicolumn{1}{|r}{823.863} &
-  \multicolumn{1}{r}{563.835} &
-  \multicolumn{1}{r}{260.028} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{0.000} &
-  \multicolumn{1}{r}{***} \\
-\multicolumn{1}{l}{ttest dist\_group\_1500 == dist\_group\_1750} &
-  \multicolumn{1}{|r}{563.835} &
-  \multicolumn{1}{r}{412.993} &
-  \multicolumn{1}{r}{150.842} &
-  \multicolumn{1}{r}{0.040} &
-  \multicolumn{1}{r}{0.020} &
-  \multicolumn{1}{r}{**} \\
-\multicolumn{1}{l}{ttest dist\_group\_1750 == dist\_group\_2000} &
-  \multicolumn{1}{|r}{412.993} &
-  \multicolumn{1}{r}{248.251} &
-  \multicolumn{1}{r}{164.742} &
-  \multicolumn{1}{r}{0.001} &
-  \multicolumn{1}{r}{0.001} &
-  \multicolumn{1}{r}{***} \\
-\multicolumn{1}{l}{ttest dist\_group\_2000 == dist\_group\_2250} &
-  \multicolumn{1}{|r}{248.251} &
-  \multicolumn{1}{r}{206.033} &
-  \multicolumn{1}{r}{42.218} &
-  \multicolumn{1}{r}{0.039} &
-  \multicolumn{1}{r}{0.020} &
-  \multicolumn{1}{r}{**} \\
-  \multicolumn{1}{l}{ttest dist\_group\_2250 == dist\_group\_2500} &
-  \multicolumn{1}{|r}{206.033} &
-  \multicolumn{1}{r}{135.579} &
-  \multicolumn{1}{r}{70.455} &
-  \multicolumn{1}{r}{0.004} &
-  \multicolumn{1}{r}{0.002} &
-  \multicolumn{1}{r}{***} \\
-\cline{1-7}
-\end{tabular}
-\caption{Tailed T-Test}
-\label{tabl:Table1} 
-\break
-\footnotesize{*** p$<$.01, ** p$<$.05}
-
-\textbf{Note 1: Mean 1 is the mean calls of the lower bound distance ring.}
-
-\textbf{Mean 2 is the mean calls of the higher bound distance ring.}
+\scriptsize
+\begin{center}
+\input{Reproducibility Package/Visual Graphics/t_test}
+\end{center}
+\flushleft
+\caption{\textbf{Two Sample T-Tests}}
+\label{tab:Table1}
+ \begin{minipage}{1\linewidth}
+        \centering
+        \textit{Mean 1 is the mean calls of the lower bound distance ring.} \\
+        \textit{Mean 2 is the mean calls of the higher bound distance ring.}
+    \end{minipage}
 \end{table}
-The results support the rejection of the null hypothesis for seven of the paired tests. 5 of the pair t-tests exhibit a p-value less than 0.01, indicating statistical significance between sequential distance rings. In addition, 2 of the tests show p-values less than 0.05. This is still statistically significant, although less strong than the groups mentioned above. 
 
-For 3 of the paired t-test, we cannot reject the null hypothesis as the null hypothesis value falls within the 95\% confidence interval. The 100-250 meter ring test, has a p-value of 0.056, which is close to the threshold of significance. This suggests that there may be a weak effect presence, so further tests should be done.
+The results support the rejection of the null hypothesis for seven of the paired tests. Five of the pair t-tests exhibit a p-value less than 0.01, indicating statistical significance between sequential distance rings. In addition, two of the tests show p-values less than 0.05. This is still statistically significant, although less strong than the groups mentioned above. 
+
+For three of the paired t-test, we cannot reject the null hypothesis as the null hypothesis value falls within the 95\% confidence interval. The 100-250 meter ring test, has a p-value of 0.056, which is close to the threshold of significance. This suggests that there may be a weak effect presence, so further tests should be done.
 
 However, the 250-500 meter and 750-1000 meter ring tests exhibit p-values of 0.491 and 0.392 respectively. These high p-values show no evidence of statistical significance in the mean values of the distance rings, likely attributing the differences in the mean values to random variation.
 
-Our data analysis supports the conclusion that the amount of 911 calls increases the closer they are to an SATC. Figure 1 shows a distribution of mean 911 calls per distance group. In Figure 1 and Table 1, the unit of analysis was the mean 911 calls per distance group. The height is the mean calls per meter squared. T
-
-There are about 600,000 total observations analyzed in Figure 1 and Table 1 since the data rows were per each 911 call. This might skew our data towards high-confidence variables as it doesn't break the call counts down per SATC. 
-
-To account for SATC within the unit of analysis, we analyze the mean calls per distance group across SATC. The results are in Figure 1. This figure shows the same relationships between distance bar heights as Figure~\ref{fig:Figure1} but is overlapped with a confidence interval. Although the figure mirrors Figure~\ref{fig:Figure1} visually, the majority of the confidence intervals overlap some range. The confidence intervals of 250-500 meters and 750-1000 meters significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
-
-
-\begin{figure}[ht]
+To account for SATC within the unit of analysis, we analyze the mean calls per distance group across SATC. The results are in Figure~\ref{fig:Figure1}. Figure~\ref{fig:Figure1} is overlapped with a confidence interval. Although the figure mirrors Figure~\ref{fig:Figure1} visually, the majority of the confidence intervals overlap some range. 
+\begin{figure}{h!}
     \centering
-    \includegraphics[width=1\linewidth]{Reproducibility Package//Visual Graphics/CI_Graph.png}
-    \caption{Mean Calls per SATC per Distance Group}
+    \includegraphics[width=0.5\linewidth]{CI_Graph.png}
+    \caption{Mean Calls per SATC per distance group}
     \label{fig:Figure1}
-    \textit{Note 1: X-axis consist of the different distance groups used. Distance measured in meters.}
-    
-    \textit{Note 2: Y-axis is measured in mean calls per kilometers squared.}
-\end{figure}
+     \textit{X-axis consist of the different distance groups used. Distance measured in meters.}
+    \textit{Y-axis is measured in mean calls per kilometers squared.}
+\end{figure}The confidence intervals of 250-500 meters and 750-1000 meters significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
 
+\cite{}
 %\subsubsection{Summary Statistics}
 %State your working hypothesis and null hypothesis - Explain why the statistics you’re presenting are appropriate -Present statistics and explain what they mean (e.g., do your results support the working hypothesis? 
 
