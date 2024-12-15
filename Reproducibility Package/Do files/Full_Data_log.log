@@ -1,0 +1,477 @@
+-----------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
+> Package\Full_Data_log.log
+  log type:  text
+ opened on:  15 Dec 2024, 17:08:07
+
+. 
+. 
+. 
+. *** This should be the file you exported from ArcGIS
+
+. 
+. 
+. 
+. import delimited "2017_Arc_Data.csv"
+(encoding automatically selected: UTF-8)
+(2 vars, 620,359 obs)
+
+. 
+. 
+. 
+. *** This drops any values that were further than 2500 meters from any treatment center
+
+. 
+. 
+. 
+. drop if near_dist == -1
+(205,143 observations deleted)
+
+. 
+. 
+. 
+. *** this is install programs that are usefull in exporting tables
+
+. 
+. 
+. 
+. ssc install outreg2
+checking outreg2 consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. 
+. ssc install estout
+checking estout consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. 
+. 
+. 
+. *** these commands seperate the data points from ArcGIS into groups based on their calculated distance to the nearest treat
+> ment center in meters
+
+. 
+. 
+. 
+. gen dist_group = 100 if near_dist <= 100 
+(411,292 missing values generated)
+
+. 
+. replace dist_group = 250 if (near_dist <= 250 & near_dist >100)
+(13,571 real changes made)
+
+. 
+. replace dist_group = 500 if (near_dist <= 500 & near_dist >250)
+(43,553 real changes made)
+
+. 
+. replace dist_group = 750 if (near_dist <= 750 & near_dist >500)
+(46,198 real changes made)
+
+. 
+. replace dist_group = 1000 if (near_dist <= 1000 & near_dist >750)
+(59,258 real changes made)
+
+. 
+. replace dist_group = 1250 if (near_dist <= 1250 & near_dist >1000)
+(64,059 real changes made)
+
+. 
+. replace dist_group = 1500 if (near_dist <= 1500 & near_dist >1250)
+(53,583 real changes made)
+
+. 
+. replace dist_group = 1750 if (near_dist <= 1750 & near_dist >1500)
+(46,384 real changes made)
+
+. 
+. replace dist_group = 2000 if (near_dist <= 2000 & near_dist >1750)
+(32,171 real changes made)
+
+. 
+. replace dist_group = 2250 if (near_dist <= 2250 & near_dist >2000)
+(30,260 real changes made)
+
+. 
+. replace dist_group = 2500 if (near_dist <= 2500 & near_dist >2250)
+(22,255 real changes made)
+
+. 
+. 
+. 
+. *** these commands are used to make a second variable that is one distance size smaller than its actrual group which allows
+>  us to calculate the difference in area between the two radii
+
+. 
+. 
+. 
+. gen dist_group2 = 0 if near_dist <= 100 
+(411,292 missing values generated)
+
+. 
+. replace dist_group2 = 100 if (near_dist <= 250 & near_dist >100)
+(13,571 real changes made)
+
+. 
+. replace dist_group2 = 250 if (near_dist <= 500 & near_dist >250)
+(43,553 real changes made)
+
+. 
+. replace dist_group2 = 500 if (near_dist <= 750 & near_dist >500)
+(46,198 real changes made)
+
+. 
+. replace dist_group2 = 750 if (near_dist <= 1000 & near_dist >750)
+(59,258 real changes made)
+
+. 
+. replace dist_group2 = 1000 if (near_dist <= 1250 & near_dist >1000)
+(64,059 real changes made)
+
+. 
+. replace dist_group2 = 1250 if (near_dist <= 1500 & near_dist >1250)
+(53,583 real changes made)
+
+. 
+. replace dist_group2 = 1500 if (near_dist <= 1750 & near_dist >1500)
+(46,384 real changes made)
+
+. 
+. replace dist_group2 = 1750 if (near_dist <= 2000 & near_dist >1750)
+(32,171 real changes made)
+
+. 
+. replace dist_group2 = 2000 if (near_dist <= 2250 & near_dist >2000)
+(30,260 real changes made)
+
+. 
+. replace dist_group2 = 2250 if (near_dist <= 2500 & near_dist >2250)
+(22,255 real changes made)
+
+. 
+. replace dist_group2 = 2500 if (near_dist <= 2750 & near_dist >2500)
+(0 real changes made)
+
+. 
+. 
+. 
+. *** this uses the two distance groups calculated above as radii to find the area of that circle and subtract the area of th
+> e smaller adjecent circle to calculate the total area of the ring that those calls came from to standardize the data as Cal
+> ls per Area
+
+. 
+. 
+. 
+. egen freq = count(near_dist), by(dist_group)
+
+. 
+. gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2) 
+
+. 
+. 
+. 
+. *** This is used to get the exact amount of area so that we can divide our count of calls for each distance group once we c
+> ollapse the data on line 71
+
+. 
+. 
+. 
+. tab area 
+
+       area |      Freq.     Percent        Cum.
+------------+-----------------------------------
+   31415.93 |      3,924        0.95        0.95
+   164933.6 |     13,571        3.27        4.21
+   589048.6 |     43,553       10.49       14.70
+   981747.7 |     46,198       11.13       25.83
+    1374447 |     59,258       14.27       40.10
+    1767146 |     64,059       15.43       55.53
+    2159845 |     53,583       12.90       68.43
+    2552544 |     46,384       11.17       79.60
+    2945243 |     32,171        7.75       87.35
+    3337942 |     30,260        7.29       94.64
+    3730641 |     22,255        5.36      100.00
+------------+-----------------------------------
+      Total |    415,216      100.00
+
+. 
+. 
+. 
+. *** taking that difference in area and dividing the amount of calls in that specific distance group by the new ring of area
+>  will give us the number of calls per the increase in area from one ring to the next largest
+
+. 
+. 
+. 
+. gen CallxArea = freq / area
+
+. 
+. 
+. 
+. *** these commands create new seperate variables for each distance group 
+
+. 
+. 
+. 
+. gen dist_group_100 = 1 if near_dist <= 100
+(411,292 missing values generated)
+
+. 
+. gen dist_group_250 = 1 if (near_dist <= 250 & near_dist >100)
+(401,645 missing values generated)
+
+. 
+. gen dist_group_500 = 1 if (near_dist <= 500 & near_dist >250)
+(371,663 missing values generated)
+
+. 
+. gen dist_group_750 = 1 if (near_dist <= 750 & near_dist >500)
+(369,018 missing values generated)
+
+. 
+. gen dist_group_1000 = 1 if (near_dist <= 1000 & near_dist >750)
+(355,958 missing values generated)
+
+. 
+. gen dist_group_1250 = 1 if (near_dist <= 1250 & near_dist >1000)
+(351,157 missing values generated)
+
+. 
+. gen dist_group_1500 = 1 if (near_dist <= 1500 & near_dist >1250)
+(361,633 missing values generated)
+
+. 
+. gen dist_group_1750 = 1 if (near_dist <= 1750 & near_dist >1500)
+(368,832 missing values generated)
+
+. 
+. gen dist_group_2000 = 1 if (near_dist <= 2000 & near_dist >1750)
+(383,045 missing values generated)
+
+. 
+. gen dist_group_2250 = 1 if (near_dist <= 2250 & near_dist >2000)
+(384,956 missing values generated)
+
+. 
+. gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2250)
+(392,961 missing values generated)
+
+. 
+. 
+. 
+. 
+. 
+. 
+. 
+. *** This graph shows the decline in calls per area over the groups of distances recorded
+
+. 
+. 
+. 
+. graph bar CallxArea, over(dist_group) title("Calls by Area for Each Distance") ytitle("Calls By Area") b1title("Distance Gr
+> oups")
+
+. 
+. graph export "Visual Graphics\Calls_Distance.png", replace
+file Visual Graphics\Calls_Distance.png saved as PNG format
+
+. 
+. 
+. 
+. *** This command colapses our data down, Using the various variables we created for each seperate distance groups we can no
+> w collapse the data by the count of how many of our observations are within each individual distance groups by the id numbe
+> r for the treatment center it was nearest.
+
+. 
+. 
+. 
+. collapse (count) dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_150
+> 0 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, by(near_fid)
+
+. 
+. 
+. 
+. *** once our data is collapsed we use these commands to standardize the number of calls by the areas of the rings we calcul
+> ated previously 
+
+. 
+. 
+. 
+. replace dist_group_100 = (dist_group_100 / 31415.9265) * 1000000
+variable dist_group_100 was long now double
+(36 real changes made)
+
+. 
+. replace dist_group_250 = (dist_group_250 / 164933.6143) * 1000000
+variable dist_group_250 was long now double
+(43 real changes made)
+
+. 
+. replace dist_group_500 = (dist_group_500 / 589048.6225) * 1000000
+variable dist_group_500 was long now double
+(43 real changes made)
+
+. 
+. replace dist_group_750 = (dist_group_750 / 981747.7042) * 1000000
+variable dist_group_750 was long now double
+(43 real changes made)
+
+. 
+. replace dist_group_1000 = (dist_group_1000 / 1374446.786) * 1000000
+variable dist_group_1000 was long now double
+(43 real changes made)
+
+. 
+. replace dist_group_1250 = (dist_group_1250 / 1767145.868) * 1000000
+variable dist_group_1250 was long now double
+(43 real changes made)
+
+. 
+. replace dist_group_1500 = (dist_group_1500 / 2159844.949) * 1000000
+variable dist_group_1500 was long now double
+(42 real changes made)
+
+. 
+. replace dist_group_1750 = (dist_group_1750 / 2552544.031) * 1000000
+variable dist_group_1750 was long now double
+(39 real changes made)
+
+. 
+. replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
+variable dist_group_2000 was long now double
+(36 real changes made)
+
+. 
+. replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
+variable dist_group_2250 was long now double
+(30 real changes made)
+
+. 
+. replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
+variable dist_group_2500 was long now double
+(28 real changes made)
+
+. 
+. 
+. 
+. 
+. 
+. *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls co
+> mpared to the next larger ring
+
+. 
+. 
+. 
+. table (command) (result) , command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p): ttest dist_
+> group_100 == dist_group_250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p): ttest dis
+> t_group_250 == dist_group_500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p): ttest d
+> ist_group_500 == dist_group_750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p): ttest
+>  dist_group_750 == dist_group_1000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p): tt
+> est dist_group_1000 == dist_group_1250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = r(p)
+> : ttest dist_group_1250 == dist_group_1500) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_value = 
+> r(p): ttest dist_group_1500 == dist_group_1750) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_valu
+> e = r(p): ttest dist_group_1750 == dist_group_2000) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)) p_
+> value = r(p): ttest dist_group_2000 == dist_group_2250) command(Mean_1=r(mu_1) Mean_2=r(mu_2) Difference= (r(mu_1) -r(mu_2)
+> ) p_value = r(p): ttest dist_group_2250 == dist_group_2500) nformat(%9.3f) name(t_test) replace
+
+--------------------------------------------------------------------------------------
+                                         |    Mean_1     Mean_2   Difference   p_value
+-----------------------------------------+--------------------------------------------
+ttest dist_group_100 == dist_group_250   |  2838.745   1870.036      968.709     0.056
+ttest dist_group_2250 == dist_group_2500 |   206.033    135.579       70.455     0.004
+ttest dist_group_250 == dist_group_500   |  1870.036   1680.406      189.630     0.491
+ttest dist_group_500 == dist_group_750   |  1680.406   1069.475      610.931     0.007
+ttest dist_group_750 == dist_group_1000  |  1069.475    979.865       89.610     0.392
+ttest dist_group_1000 == dist_group_1250 |   979.865    823.863      156.002     0.006
+ttest dist_group_1250 == dist_group_1500 |   823.863    563.835      260.028     0.000
+ttest dist_group_1500 == dist_group_1750 |   563.835    412.993      150.842     0.040
+ttest dist_group_1750 == dist_group_2000 |   412.993    248.251      164.742     0.001
+ttest dist_group_2000 == dist_group_2250 |   248.251    206.033       42.218     0.039
+--------------------------------------------------------------------------------------
+
+. 
+. 
+. 
+. collect label levels command 1 "100m-250m", modify
+
+. 
+. collect label levels command 2 "250m-500m", modify
+
+. 
+. collect label levels command 3 "500m-750m", modify
+
+. 
+. collect label levels command 4 "750m-1000m", modify
+
+. 
+. collect label levels command 5 "1000m-1250m", modify
+
+. 
+. collect label levels command 6 "1250m-1500m", modify
+
+. 
+. collect label levels command 7 "1500m-1750m", modify
+
+. 
+. collect label levels command 8 "1750m-2000m", modify
+
+. 
+. collect label levels command 9 "2000m-2250m", modify
+
+. 
+. collect label levels command 10 "2250m-2500m", modify
+
+. 
+. 
+. 
+. collect layout (command[1 2 3 4 5 6 7 8 9 10]) (result) (), name(t_test), replace
+invalid 'replace' 
+r(198);
+
+. 
+. 
+. 
+. collect set t_test
+(current collection is t_test)
+
+. 
+. collect export "Visual Graphics\t_test.tex", replace
+(collection t_test exported to file Visual Graphics\t_test.tex)
+
+. collect layout (command[1 2 3 4 5 6 7 8 9 10]) (result) (), name(t_test)
+
+Collection: t_test
+      Rows: command[1 2 3 4 5 6 7 8 9 10]
+   Columns: result
+   Table 1: 10 x 4
+
+---------------------------------------------------------
+            |    Mean_1     Mean_2   Difference   p_value
+------------+--------------------------------------------
+100m-250m   |  2838.745   1870.036      968.709     0.056
+250m-500m   |  1870.036   1680.406      189.630     0.491
+500m-750m   |  1680.406   1069.475      610.931     0.007
+750m-1000m  |  1069.475    979.865       89.610     0.392
+1000m-1250m |   979.865    823.863      156.002     0.006
+1250m-1500m |   823.863    563.835      260.028     0.000
+1500m-1750m |   563.835    412.993      150.842     0.040
+1750m-2000m |   412.993    248.251      164.742     0.001
+2000m-2250m |   248.251    206.033       42.218     0.039
+2250m-2500m |   206.033    135.579       70.455     0.004
+---------------------------------------------------------
+
+. collect set t_test
+(current collection is t_test)
+
+. 
+. collect export "Visual Graphics\t_test.tex", replace
+(collection t_test exported to file Visual Graphics\t_test.tex)
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
+> Package\Full_Data_log.log
+  log type:  text
+ closed on:  15 Dec 2024, 17:12:25
+-----------------------------------------------------------------------------------------------------------------------------
