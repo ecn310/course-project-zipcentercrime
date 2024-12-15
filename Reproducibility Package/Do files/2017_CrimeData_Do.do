@@ -216,7 +216,7 @@ svmat uci, names(uci)
 graph twoway (bar dist_group_ distance, lwidth(2)) (rcap lci1 uci1 distance, lcolor(black)),  ytitle(Mean Calls, angle(horizontal)) legend(label (1 "Mean Calls per Km^2") label(2 "Confidence Intervals"))
 
 *** Export Graph
-graph export "Visual Graphics\Crim_CI_Graph.png", replace
+graph export "Visual Graphics\Crime_CI_Graph.png", replace
 
 
 log close

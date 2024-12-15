@@ -3,7 +3,7 @@
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Do Files\CrimeOnly_Data_log.log
   log type:  text
- opened on:  15 Dec 2024, 17:21:15
+ opened on:  15 Dec 2024, 17:56:39
 
 . 
 . *** This should be the file you exported from ArcGIS
@@ -720,9 +720,9 @@ dist_group_100 dist_group_250 ... dist_group_2500->dist_group_
 
 . 
 . *** Export Graph
-. graph export "Visual Graphics\Crim_CI_Graph.png", replace
-(file Visual Graphics\Crim_CI_Graph.png not found)
-file Visual Graphics\Crim_CI_Graph.png saved as PNG format
+. graph export "Visual Graphics\Crime_CI_Graph.png", replace
+(file Visual Graphics\Crime_CI_Graph.png not found)
+file Visual Graphics\Crime_CI_Graph.png saved as PNG format
 
 . 
 . 
@@ -731,5 +731,5 @@ file Visual Graphics\Crim_CI_Graph.png saved as PNG format
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Do Files\CrimeOnly_Data_log.log
   log type:  text
- closed on:  15 Dec 2024, 17:21:18
+ closed on:  15 Dec 2024, 17:56:42
 -----------------------------------------------------------------------------------------------------------------------------
