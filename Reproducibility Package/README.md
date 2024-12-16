@@ -36,9 +36,9 @@ Follow these steps to reproduce the geocoded data.
 4. Navigate to where you downloaded the 2017_treatment_center_data.csv and 2017_911_call_data.csv data files and import them into ArcGIS Pro.
 5. *Once your data appears as a Standalone Table in the conents section on the left, right click your first data set to reveal more options.
 6. *Select Create Points from Table, then select XY Table to Point.
-7. *Make sure X Field is set to longitude, Y Field is set to latitude, and the Coordinate System is set to GCS_WGS_1984, the select ok.
+7. *Make sure X Field is set to longitude, Y Field is set to latitude, (Leave Z Field blank), and the Coordinate System is set to GCS_WGS_1984, the select ok.
 8. Repeat steps with a * for the second data set.
-9. Right click on the red dot underneath the treatment center map layer and convert color to green.
+9. Right click on the colored dot underneath the treatment center map layer and convert it to a different color than your call data.
 10. Right click on treatment center layer and select attribute table.
 11. Right click on 911 calls layer and select attribute table.
 ### Data Manipulation
@@ -47,9 +47,11 @@ Follow these steps to reproduce the geocoded data.
 3. Your parameters should be set to the following:
      - Input Features will be the layer of plotted 911 call data.
      - Your Near Features will be the layer of plotted treatment centers.
-     - Search radius will be 2500 meters.
+     - Search radius will be 2500, and to the right click on the drop down and select meters.
      - Method will be Geodesic.
-     - All of your distances will be set to meters.
+     - Under Field Names make sure they are as follows (Feature_ID --> NEAR_FID) and (Distance --> NEAR_DIST)
+     - Make sure all of your Distance units are set to meters.
+     - Leave all other section blank or unchecked
 4. Hit Run.
 5. Check the attribute table for 911 Call Data to confirm these two new variables below have been created:
 near fid: This assigned every 911 call with one SATC, the center geographically closest to it. Variable is a numeric integer, with values ranging from 1 to 44.
@@ -61,10 +63,11 @@ near dist: This is the distance in meters the 911 call observation is from the S
 4. Choose your preferred location to save the file.
 5. When naming the file end it with .csv so that it is able to export as a text doccument.
 6. Select the "Fields" drop down and only keep variables "near_dist" and "near_fid" (All other variable are not used in analysis and only takes up storage).
+7. Click "OK"
 
 Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime.
 # Data Analysis
-1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/ArcDataDo.do) or by clicking Do files\ArcDataDo.do.
+1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/2017_FullData_Do.do) or by clicking Do files\2017_FullData_Do.do.
 2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
 3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
 4. This do file has all of our data analysis work done from the data exported from ArcGIS Pro including making the graphs.
