@@ -18,6 +18,7 @@
 \usepackage{graphicx,amsbsy,amssymb, amsmath, amsthm, MnSymbol,bbding,times, verbatim,bm,pifont,pdfsync,setspace,natbib}
 \usepackage{wrapfig}
 \usepackage{multirow, amsmath}
+\usepackage{ulem}
 \usepackage[table]{xcolor}
 \usepackage{booktabs} 
 
@@ -71,11 +72,11 @@ Answering this question is crucial for developing strategies to mitigate drug-re
 
 
 \section{Literature Review} \label{sec:literature}
-The geographical relationship between crime and access to mental health care is a widely studied topic but specific studies are widespread and disconnected. For example, mental illness is associated with an increased likelihood of substance abuse, which directly and indirectly relates an increase in crime to mental illness. One viable method of treating mental illness is through office-based mental healthcare. Evidence shows that increasing access to office-based mental health care by 10 mental health care provider offices in a county can lead to a 0.4\% reduction in the county crime rate. \cite{mental_healthcare_and_crime}. An increase in access to mental health care also shows a connection to participation in government disability programs. Furthermore, this effect is also evident when specifically considering access to SATC facilities. Evidence shows that increasing access to SAT facilities reduces violent crime due to the effectiveness in reducing crimes motivated by obtaining money to purchase drugs, reducing violence among those in the drug trade, and reducing drug usage which eases aggressive behavior due to drug abuse \cite{SAT_centers_and_crime}. 
+The geographical relationship between crime and access to mental health care is a widely studied topic but specific studies are widespread and disconnected. For example, mental illness is associated with an increased likelihood of substance abuse, which directly and indirectly relates an increase in crime to mental illness. One viable method of treating mental illness is through office-based mental healthcare. Evidence shows that increasing access to office-based mental health care by 10 mental health care provider offices in a county can lead to a 0.4\% reduction in the county crime rate (\cite{mental_healthcare_and_crime}). An increase in access to mental health care also shows a connection to participation in government disability programs. Furthermore, this effect is also evident when specifically considering access to SATC facilities. Evidence shows that increasing access to SAT facilities reduces violent crime due to the effectiveness in reducing crimes motivated by obtaining money to purchase drugs, reducing violence among those in the drug trade, and reducing drug usage which eases aggressive behavior due to drug abuse (\cite{SAT_centers_and_crime}). 
 
-However, a significant barrier to treatment could be the price of substance abuse treatment. In a study conducted between 2002 and 2003, the median willingness to pay for drug rehabilitation is shown to be below the average cost of treatment. Moreover, the cost of drug treatment is a significant indicator of self-reported probability of enrollment. \cite{cost_of_drug_treatment}. While it is likely that cost of treatment has changed in the subsequent decades, it is still important to acknowledge barriers to treatment when considering its affects on crime rates in an urban area, such as Detroit. 
+However, a significant barrier to treatment could be the price of substance abuse treatment. In a study conducted between 2002 and 2003, the median willingness to pay for drug rehabilitation is shown to be below the average cost of treatment. Moreover, the cost of drug treatment is a significant indicator of self-reported probability of enrollment (\cite{cost_of_drug_treatment}). While it is likely that cost of treatment has changed in the subsequent decades, it is still important to acknowledge barriers to treatment when considering its affects on crime rates in an urban area, such as Detroit. 
 
-Barriers to  treatment also contribute to evidence of a positive feedback loop between drug usage, crime, and standard of living in a given area. The drug trade, specifically the sale and use of drugs in a given area has been closely linked to an increase in the crime rate in the subsequent area. A case study of Miami-Dade county shows that drug activity on a given block can alter or nullify the relationship between household income and crime. Thus, drug usage can be a predictor of crime rates in a geographical area \cite{drugs_crime_space_time}. This effect also has implications on an area's living standards. Since higher levels of drug usage leads to higher crime rates in a given geographical area, this corresponds to lower standards of living. This effect is due to the addictive properties of drugs, the numbing of decision making caused by drug usage, and the relationship between areas with lower standards of living and a higher tendency for those who live within such an area to turn to drugs as a means for escape \cite{drugs_and_crime}.
+Barriers to  treatment also contribute to evidence of a positive feedback loop between drug usage, crime, and standard of living in a given area. The drug trade, specifically the sale and use of drugs in a given area has been closely linked to an increase in the crime rate in the vicinity. A case study of Miami-Dade county shows that drug activity on a given block can alter or nullify the relationship between household income and crime. Thus, drug usage can be a predictor of crime rates in a geographical area (\cite{drugs_crime_space_time}). This effect also has implications on an area's living standards. Since higher levels of drug usage leads to higher crime rates in a given geographical area, this corresponds to lower standards of living. This effect is due to the addictive properties of drugs, the numbing of decision making caused by drug usage, and the relationship between areas with lower standards of living and a higher tendency for those who live within such an area to turn to drugs as a means for escape (\cite{drugs_and_crime}).
 
 Considering the almost conflicting theories on how drugs, crime, and drug treatment are related and the affects on geographical area, understanding how drug treatment relates directly to crime in the area will give insight into possible policies to reduce crime in an area. Furthermore, given the lack of economic research on this topic we decided to focus on a single case study, in this case, Detroit, and the immediate surrounding communities to analyze the effects a SATC has on crime in its surrounding area. Moreover, given our focus on crime it is important to understand the impact the COVID-19 Pandemic had on crime in general. Practices such as Social Distancing and at-home quarantines led people to spend more time in privately occupied spaces. This led to a decrease in the amount of crimes committed in a public setting, such as robbery, homicide, physical violence, etc. However, this also led to an increase in crimes committed in private settings, such as domestic violence \cite{covid_and_crime}. Since, COVID-19 had a varied affect on crime for the purposes of our analysis we decided to limit our study of crime prior to the COVID-19 Pandemic.
 
@@ -93,6 +94,8 @@ This paper assesses the hypothesis that the number of 911 calls increases as a p
 This data comes from the City of Detroit Open Data Portal's   \href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{Police Serviced 911 Calls}. It is generated by the Detroit Police Department's Crime Data Analytics when a call is placed. This data set covers 911 calls that are received by precincts around the Detroit metropolitan area from the year 2016-2022. There are 5,238,111 observations. Key variables include incident address, year, latitude, longitude, call category and call description. 
 
 %Trying to add the year_freq.tex file here, not working
+
+
 
 We isolated the observations to one year, 2017, from the original dataset so we could perform cross-sectional analysis. We chose observations from 2017 since the year a) overlaps with the second set of data and b) is before COVID-19, where crime rates statistics shifted in general \cite{covid_and_crime}. This is to eliminate COVID-19 effects from affecting our data analysis. Years 2016, 2018 and 2019 could also work for cross sectional analysis, but for simplicity, we only analyze one year in this report. The data includes latitude and longitude variables which we used to geocode each call to a single point in space.
 Here is the frequency table:
@@ -127,12 +130,13 @@ This data is from the Substance Abuse and Mental Health Services Administration 
     \node at (\r, 0) {\label};
     }   
     \fill (0,0) circle (2pt);
+    \label{fig:Figure1}
 \end{tikzpicture}
 \caption{Concentric Distance Rings}
 \small\textit{Notes: The figure represents the first three distance rings (100m, 250m, 500m). Center dot marks the SATC.}
 \end{wrapfigure}
 
-We used layered the datasets and geocode their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This means no observation is counted twice. 
+We used layered data sets and geocoded their locations. Using the coordinates (longitude and latitude variables) of each point, we created two new variables. Every 911 call is assigned one SATC, the one geographically closest to it. This will prevent overlap from calls that are within range of multiple treatment centers.
 
 We create distance rings, referred to as distance groups, and perform our analysis. We normalize the data to account for differences in total area of a distance group that may alter results. We did this by dividing the area in squared meters by the total count of 911 calls in each distance group.
 
@@ -143,9 +147,9 @@ We created concentric rings around each SATC. Each 911 point falls within one ci
 \section{Results}
 \label{sec:result}
 
-We hypothesize that as the distance from a SATC facility increases, the number of 911 calls also increases. This means that the farther someone is from a SATC, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to an SATC and the likelihood of calling 911. 
+This paper hypothesizes that as the distance from a SATC facility increases, the number of 911 calls also increases. This means that the farther someone is from a SATC, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to an SATC and the likelihood of calling 911. 
 
-We conducted a sequential pairwise t-test to examine the statistical likelihood that one distance ring has a greater mean number of calls than the next larger ring. The pairwise comparison table is seen in Table~\ref{tabl:Table1}.
+Our group conducts a sequential pairwise t-test to examine the statistical likelihood that one distance ring has a greater mean number of calls than the next larger ring. The pairwise comparison table is seen in Table~\ref{tabl:Table1} .
 
 \begin{table}[htbp]
 \scriptsize
@@ -155,7 +159,7 @@ We conducted a sequential pairwise t-test to examine the statistical likelihood 
 \flushleft
 \caption{\textbf{All 2017 Calls T-Tests}}
 \label{tabl:Table1}
-\textit{Two sample t-tests of the difference in mean calls per SATC per distance group.}
+\centering\textit{Two sample t-tests of the difference in mean calls per SATC per distance group.}
 \textit{Distances in kilometers squared.}
 \end{table}
 
@@ -164,37 +168,39 @@ The results support the rejection of the null hypothesis for seven of the paired
 
 For three of the paired t-test, we cannot reject the null hypothesis as the null hypothesis value falls within the 95\% confidence interval. The 100-250 meter ring test, has a p-value of 0.056, which is close to the threshold of significance. This suggests that there may be a weak effect presence, so further tests should be done.
 
-\begin{table}[htbp]
+\begin{table}[h]
 \scriptsize
 \begin{center}
 \input{Reproducibility Package/Visual Graphics/Crime_t_test}
 \end{center}
-\flushleft
+
 \caption{\bf{2017 Crime Calls Two Sample T-Tests}}
-\label{fig:Table2}
-\textit{Two sample t-tests of the difference in mean crime only calls per SATC per distance group.}
+\label{tabl:Table2}
+\centering\textit{Two sample t-tests of the difference in mean crime only calls per SATC per distance group.}
 \textit{Distances in kilometers squared.}
 \end{table}
 
-However, the 250-500 meter and 750-1000 meter ring tests exhibit p-values of 0.491 and 0.392 respectively. These high p-values show no evidence of statistical significance in the mean values of the distance rings, likely attributing the differences in the mean values to random variation.
+However, the 250-500 meter and 750-1000 meter ring tests exhibit p-values of 0.491 and 0.392 respectively. These high p-values show no evidence of statistical significance in the mean values of the distance rings, likely attributing the differences in the mean values to random variation.                   
 
-To account for SATC within the unit of analysis, we analyze the mean calls per distance group across SATC. The results are in Figure~\ref{fig:Figure1}. Figure~\ref{fig:Figure1} is overlapped with a confidence interval. Although the figure mirrors Figure~\ref{fig:Figure1} visually, the majority of the confidence intervals overlap some range. 
+To account for SATC within the unit of analysis, we analyze the mean calls per distance group across SATC. The results are in Figure \ref{fig:Figure2}. Figure \ref{fig:Figure2} is overlapped with a confidence interval. Although the figure mirrors Figure \ref{fig:Figure2} visually, the majority of the confidence intervals overlap some range. 
 
-The confidence intervals of 250-500 meters and 750-1000 meters significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
-\begin{figure}{h!}
+\begin{figure}[htbp]
     \centering
 \includegraphics[width=0.75\linewidth]{Reproducibility Package/Visual Graphics/CI_Graph.png}
     \caption{Mean Calls per SATC per distance group}
-    \label{fig:Figure1}
+    \label{fig:Figure2}
      \textit{X-axis consist of the different distance groups used. Distance measured in meters.}
     \textit{Y-axis is measured in mean calls per kilometers squared.}
 \end{figure}
 
-\begin{figure}{h!}
+The confidence intervals of 250-500 meters and 500-750 meters as well as 750-1000 meters and 1000-1250 significantly overlap. The other confidence intervals do overlap with the sequential intervals, but not visually as significantly as in the two comparisons mentioned above. These observations additionally support the p-values observed in Table 1. 
+
+
+\begin{figure}[htbp]
     \centering
 \includegraphics[width=0.75\linewidth]{Reproducibility Package/Visual Graphics/Crime_CI_Graph.png}
     \caption{Mean Crime Calls per SATC per distance group}
-    \label{fig:Figure2}
+    \label{fig:Figure3}
         \textit{X-axis consist of the different distance groups used. Distance measured in meters.}
     \textit{Y-axis is measured in mean calls per kilometers squared.}
 \end{figure}
@@ -209,26 +215,26 @@ The confidence intervals of 250-500 meters and 750-1000 meters significantly ove
 \section{Discussion}
 \label{sec:discussion}
 
-    One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. SATCs may have been built in neighborhoods where there are many drug users, so it is accessible and convenient to those who need the help. Additionally, neighborhoods with higher rates of drug usage tend to have a lower standard of living. Another indication of a lower standard of living is higher crime rates, which could contribute to higher counts of 911 calls closer to an SATC. 
+One explanation for this relationship could be due to the positive feedback loop between drugs, crime, and lower standards of living in those places. SATCs may have been built in neighborhoods where there are many drug users, so it is accessible and convenient to those who need the help. Additionally, neighborhoods with higher rates of drug usage tend to have a lower standard of living. Another indication of a lower standard of living is higher crime rates, which could contribute to higher counts of 911 calls closer to an SATC. 
 
-    Additionally, Detroit may have placed SATCs in neighborhoods with lower living standards due to pressure from more affluent communities. More affluent communities tend to exhibit a "Not In My Backyard" (NIMMBY) mentality, opposing the placement of SATCs in their neighborhoods. This resistance stems from the fear or stigma residents have about drug users. They might perceive SATC as bringing dangerous or mentally ill people into their area, impacting the safety of the area. Thus, higher standard-of-living neighborhoods tend to lobby for NIMBY policies in their communities, pushing SATC to be in areas that cannot or do not lobby these same interests.
+Additionally, Detroit may have placed SATCs in neighborhoods with lower living standards due to pressure from more affluent communities. More affluent communities tend to exhibit a "Not In My Backyard" (NIMMBY) mentality, opposing the placement of SATCs in their neighborhoods. This resistance stems from the fear or stigma residents have about drug users. They might perceive SATCs as bringing dangerous or mentally ill people into their area, impacting the safety of the area. Thus, higher standard-of-living neighborhoods tend to lobby for NIMBY policies in their communities, pushing SATC to be in areas that cannot or do not lobby these same interests.
 
-    To build off this, higher standard-of-living areas tend to have lower crime rates in general. Decreasing crime creates a positive feedback system in these neighborhoods, potentially explaining why the farther a distance ring is from a SATC, the fewer mean 911 calls there are. Those distance rings could be on the cusp or geographically in neighborhoods that do not have SATC. 
+To build off this, higher standard-of-living areas tend to have lower crime rates in general. Decreasing crime creates a positive feedback system in these neighborhoods, potentially explaining why the farther a distance ring is from a SATC, the fewer mean 911 calls there are. Those distance rings could be on the cusp or geographically in neighborhoods that do not have SATC. 
     
-    Another explanation for the lower frequency of 911 calls in further distance rings could be our data not counting 911 calls twice. When we geo-code the 911 calls, we assign each observation to only one SATC, the one geographically closest to it. The methodology behind labeling the SATCs is to limit the overlap some SATCs might have at the smaller distance rings. It could exaggerate our data frequencies. However, in farther distance rings, a call might be similar in distance to two SATCs but will correlate to one, when in reality, it could assign itself to either. The lack of double-counting thins the observations and data associated with farther-out distance rings. 
+Another explanation for the lower frequency of 911 calls in further distance rings could be our data not counting 911 calls twice. When we geo-code the 911 calls, we assign each observation to only one SATC, the one geographically closest to it. The methodology behind labeling the SATCs is to limit the overlap some SATCs might have at the smaller distance rings. It could exaggerate our data frequencies. However, in farther distance rings, a call might be similar in distance to two SATCs but will correlate to one, when in reality, it could assign itself to either. The lack of double-counting thins the observations and data associated with farther-out distance rings. 
 
-    One significant limitation was the inability to fine-tune 911 call data to determine whether calls were directly related to drug activity. Without additional data, such as toxicology reports or detailed incident descriptions, it remains challenging to assess the role of drugs in criminal behavior or whether the crimes involved were violent. A better understanding of what calls were drug-related or induced could provide more accurate results on the relationship between drug abuse, crime, and the role of a SATC in amplifying or mitigating this. 
+One significant limitation was the inability to fine-tune 911 call data to determine whether calls were directly related to drug activity. Without additional data, such as toxicology reports or detailed incident descriptions, it remains challenging to assess the role of drugs in criminal behavior or whether the crimes involved were violent. A better understanding of what calls were drug-related or induced could provide more accurate results on the relationship between drug abuse, crime, and the role of a SATC in amplifying or mitigating this. 
     
-    Another limitation is the population density of this urban sample. The observed pattern of 911 calls was influenced by higher population density in more urban parts of Detroit. The increase in population for these areas naturally increased the number of emergency calls. Future research should explore similar analyses in areas with varying population densities to better control for this variable and isolate the effects of proximity to SATC. 
+Another limitation is the population density of this urban sample. The observed pattern of 911 calls was influenced by higher population density in more urban parts of Detroit. The increase in population for these areas naturally increased the number of emergency calls. Future research should explore similar analyses in areas with varying population densities to better control for this variable and isolate the effects of proximity to SATC. 
 
-    Another limitation was the inability to create a regression line (or line of best fit) for this relationship. Since we collapsed the data multiple times, we lost variability for a regression line. First, we collapsed the data by count to get the total counts for each distance group. Then, we collapsed the data by grouping by SATC designation to get the total observations per distance group per SATC. Finally, we collapsed that data set by mean, creating mean counts of 911 calls per distance group adjusted for SATC correlation. Creating a regression line left one observation row that created Figure 4. We needed more analysis flexibility due to this data manipulation approach. In the future, a different data manipulation approach might leave more room for further data analysis. 
+Another limitation was the inability to create a regression line (or line of best fit) for this relationship. Since we collapsed the data multiple times, we lost variability for a regression line. First, we collapsed the data by count to get the total counts for each distance group. Then, we collapsed the data by grouping by SATC designation to get the total observations per distance group per SATC. Finally, we collapsed that data set by mean, creating mean counts of 911 calls per distance group adjusted for SATC correlation. Creating a regression line left one observation row that created Figure 4. We needed more analysis flexibility due to this data manipulation approach. In the future, a different data manipulation approach might leave more room for further data analysis. 
 
-    Our group analyzes data only from the year 2017. The lack of multiple years and the smaller data set leaves room for error. We see future research supporting these findings or a stronger pattern through these two ways: Firstly, performing cross-sectional data within multiple years. Then, compare the mean calls per SATC per distance group and identify trend lines. This option could strengthen the correlational relationships we found in this paper. Secondly, a paper could analyze time series based on the openings and closings of SATCs. This option could identify a causal impact of the presence of a SATC in a neighborhood regarding 911 calls and, subsequently, crime rates. These results could impact policymaking decisions regarding where to fund and support the placement of SATC to serve populations in need. 
+Our group analyzes data only from the year 2017. The lack of multiple years and the smaller data set leaves room for error. We see future research supporting these findings or a stronger pattern through these two ways: Firstly, performing cross-sectional data within multiple years. Then, compare the mean calls per SATC per distance group and identify trend lines. This option could strengthen the correlational relationships we found in this paper. Secondly, a paper could analyze time series based on the openings and closings of SATCs. This option could identify a causal impact of the presence of a SATC in a neighborhood regarding 911 calls and, subsequently, crime rates. These results could impact policymaking decisions regarding where to fund and support the placement of SATC to serve populations in need. 
 
 \section{Conclusion}
 \label{sec:conclusion}
 
-We hypothesized that as the distance from a SATC increases, the frequency of 911 calls also increases. The closer a SATC is, the more accessible it is. This should reduce crime rates in the area, measured by 911 calls. We conducted a cross-sectional analysis to examine the overlap of 911 calls' geographical locations to their distances to their closest SATC. Our results show that contrary to our hypothesis, as distance from a SATC increases, the amount of 911 calls decreases. This distance decay relationship indicates that there is a relationship between SATC placements and 911 calls, but just in the opposite direction of the original hypothesis. 
+We hypothesized that as the distance from a SATC increases, the frequency of 911 calls also increases. The closer a SATC is, the more accessible it is. This should reduce crime rates in the area, measured by 911 calls. We conducted a cross-sectional analysis to examine the overlap of 911 calls' geographical locations to their distances to their closest SATC. Our results show that contrary to our hypothesis, as distance from a SATC increases, the amount of 911 calls decreases. This distance decay relationship indicates that there is a relationship between SATC placements and 911 calls, but in the opposite direction of the original hypothesis. 
 
 \cite{cost_of_drug_treatment}
 
@@ -248,7 +254,11 @@ We hypothesized that as the distance from a SATC increases, the frequency of 911
 \section*{Data Appendix} \label{sec:appendixa}
 \addcontentsline{toc}{section}{Appendix A}
 
-Our replication package is linked \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package}{here}.
+Our replication package:
+
+\href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package}{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility\%20Package}
+
+\vspace{10pt}
 
 We isolated our data from both Police Serviced 911 Calls and N-SSATS to only include observations from the year 2017. We picked this year due to an overlap in data and no potential disruptions from COVID-19. The year 2018 or 2019 from both data sets could additionally work. 
 
