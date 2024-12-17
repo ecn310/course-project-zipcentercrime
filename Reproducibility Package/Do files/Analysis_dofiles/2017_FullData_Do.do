@@ -15,7 +15,7 @@ log using "Do Files\Full_Data_log", text replace
 
 *** This should be the file you exported from ArcGIS
 
-import delimited "2017_Arc_Data.csv"
+import delimited "ExtraFiles\2017_Arc_Data.csv"
 
 *** This drops any values that were further than 2500 meters from any treatment center
 
