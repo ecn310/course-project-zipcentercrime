@@ -104,14 +104,8 @@ Additionally, we isolated the 2017 call data to only include calls related to cr
 \subsection{Substance Abuse Treatment Centers (SATCs) in Detroit Area (Dataset 2)}
 
 This data is from the Substance Abuse and Mental Health Services Administration (SAMHSA). Data is generated through the National Survey of Substance Abuse Treatment Services \href{https://www.samhsa.gov/data/data-we-collect/n-ssats-national-survey-substance-abuse-treatment-services}{N-SSATS}, an annual survey of all known public and private substance abuse treatment services in the United States. SAMHSA conducts this survey annually.  This data covers the names and addresses of substance abuse treatment services in operation in the Detroit Metropolitan area between the years 2015 to 2021. Key variables in year, longitude, latitude, zipcode, and services provided listed in priority. There are 55 variables and 333 observations. Although there are 333 observations, there are only 115 distinct SATC names. This means that some SATC overlap between years, while others are only opened and registered for one year within this dataset. 
-\begin{figure}[htbp]
-    \centering
-\includegraphics[width=0.75\linewidth]{Reproducibility Package/Visual Graphics/Combined_Scatter.png}
-    \caption{Calls and Centers Plotted by Long/Lat}
-    \label{fig:Figure2}
-     \textit{This visual shows how each call and center data point look when plotted by longitude and latitude.}
-    \textit{Detroit's city center is 42.3314° N, 83.0458° W}
-\end{figure}
+
+
 
 \subsection{Measuring Distance of each 911 Call to each SATC}
  
@@ -147,6 +141,30 @@ We used layered data sets and geocoded their locations. Using the coordinates (l
 We create distance rings, referred to as distance groups, and perform our analysis. We normalize the data to account for differences in total area of a distance group that may alter results. We did this by dividing the area in squared meters by the total count of 911 calls in each distance group.
 
 We created concentric rings around each SATC. Each 911 point falls within one circle, referred to as a distance ring or distance group, and is counted towards the SATC in its circle's center. Our data is organized by SATC. There are 620,359 observations total, but only 415,216 observations within the geocoded parameters.
+\begin{table}[h]
+\centering
+\scalebox{0.8}{
+\centering
+\input{Reproducibility Package/Visual Graphics/Call_Summary_Stats}
+}
+
+
+\caption{\textbf{All 2017 Calls T-Tests}}
+\label{tabl:Table1}
+\centering\textit{Two sample t-tests of the difference in mean calls per SATC per distance group.}
+\textit{Distances in kilometers squared.}
+\end{table}
+
+
+\begin{figure}[h!]
+    \centering
+\includegraphics[width=0.75\linewidth]{Reproducibility Package/Visual Graphics/Combined_Scatter.png}
+    \caption{Calls and Centers Plotted by Long/Lat}
+    \label{fig:Figure2}
+     \textit{This visual shows how each call and center data point look when plotted by longitude and latitude.}
+    \textit{Detroit's city center is 42.3314° N, 83.0458° W}
+\end{figure}
+
 
 %Describe your data. Where you got it from, how it was generated, what variables you'll use, what data cleaning steps you had to take, where your processed data, code and documentation is stored.
 %In a published paper, a lot of this detail will be in a data appendix. For the purposes of this report, include it all here (this may be the longest section of your report).
