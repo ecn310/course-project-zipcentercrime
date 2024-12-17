@@ -146,7 +146,7 @@ matrix list summary_results
 
 *** Export table
 
-esttab matrix(summary_results) using "Visual Graphics\Call_Summary_Stats.tex", title("Call Summary Stats")replace
+esttab matrix(summary_results) using "Visual Graphics\Call_Summary_Stats.tex", replace
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
 

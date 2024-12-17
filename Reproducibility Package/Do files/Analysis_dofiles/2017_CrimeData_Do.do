@@ -147,7 +147,8 @@ matrix list crime_summary_results
 
 ***Export the table
 
-esttab using "Visual Graphics\Crime_Call_Summary_Stats.tex", replace
+
+esttab matrix(crime_summary_results) using "Visual Graphics\Crime_Call_Summary_Stats.tex", replace
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
 
