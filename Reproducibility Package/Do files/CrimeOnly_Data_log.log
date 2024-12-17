@@ -3,7 +3,7 @@
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Do Files\CrimeOnly_Data_log.log
   log type:  text
- opened on:  17 Dec 2024, 12:19:49
+ opened on:  17 Dec 2024, 15:53:03
 
 . 
 . *** This should be the file you exported from ArcGIS
@@ -239,6 +239,233 @@ variable dist_group_2500 was long now double
 (28 real changes made)
 
 . 
+. *** This will create a group called vars for this loop to run through
+. 
+. local vars dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist
+> _group_1750 dist_group_2000 dist_group_2250 dist_group_2500
+
+. 
+. *** Create a blank matrix for the data to go in
+. 
+. matrix crime_summary_results = J(1, 6, .)
+
+. 
+. *** Start the loop
+. 
+. foreach var of local vars {
+  2.    
+.    *** This is to summarize each variable 
+.     summarize `var', detail
+  3.     
+.     *** This will save each of the needed summary stats from the Data
+. 
+.     local N = r(N)
+  4.     local mean = r(mean)
+  5.     local sd = r(sd)
+  6.     local sum = r(sum)
+  7.     local min = r(min)
+  8.     local max = r(max)
+  9.     
+.         *** This adds the captured data into the Matrix
+.     
+.     matrix crime_summary_results = crime_summary_results \ (`N', `mean', `sd', `sum', `min', `max')
+ 10.         }
+
+                   (count) dist_group_100
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  44
+25%     397.8874              0       Sum of wgt.          44
+
+50%      1448.31                      Mean           2182.593
+                        Largest       Std. dev.      2373.514
+75%     2880.704       6811.832
+90%     5888.733       7193.803       Variance        5633571
+95%     7193.803       7639.437       Skewness       1.287836
+99%     9040.001       9040.001       Kurtosis       3.748329
+
+                   (count) dist_group_250
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     12.12609       12.12609
+10%     18.18914       12.12609       Obs                  44
+25%     515.3589       12.12609       Sum of wgt.          44
+
+50%     1030.718                      Mean           1398.221
+                        Largest       Std. dev.       1528.53
+75%     1500.604       4086.493
+90%     3746.962       4177.438       Variance        2336403
+95%     4177.438       5632.569       Skewness       2.145647
+99%     7421.168       7421.168       Kurtosis       7.924747
+
+                   (count) dist_group_500
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     5.092958       5.092958
+10%     74.69672       5.092958       Obs                  44
+25%     473.6451       37.34836       Sum of wgt.          44
+
+50%     926.0696                      Mean           1328.915
+                        Largest       Std. dev.      1345.148
+75%     1474.411       3697.488
+90%     3171.215        4614.22       Variance        1809422
+95%      4614.22       5216.887       Skewness       1.594074
+99%     5311.955       5311.955       Kurtosis       4.912307
+
+                   (count) dist_group_750
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     13.24169       13.24169
+10%      122.231       13.24169       Obs                  44
+25%     386.5555       108.9893       Sum of wgt.          44
+
+50%     813.8547                      Mean           813.5769
+                        Largest       Std. dev.      533.2833
+75%     1083.782       1609.375
+90%     1508.534       1852.818       Variance         284391
+95%     1852.818       1911.897       Skewness       .4704864
+99%     2072.834       2072.834       Kurtosis       2.540572
+
+                   (count) dist_group_1000
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     75.66681       51.65715
+10%     219.7248       75.66681       Obs                  44
+25%      358.326       140.4201       Sum of wgt.          44
+
+50%     556.2238                      Mean           746.6475
+                        Largest       Std. dev.      522.7328
+75%     1142.278       1533.708
+90%     1498.057       1536.618       Variance       273249.6
+95%     1536.618       1989.164       Skewness       .8770443
+99%     2245.267       2245.267       Kurtosis       3.273708
+
+                   (count) dist_group_1250
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     28.29421              0
+10%     54.32489       28.29421       Obs                  44
+25%     252.9503       47.53428       Sum of wgt.          44
+
+50%     525.4235                      Mean           623.5144
+                        Largest       Std. dev.      508.9674
+75%     842.6016       1312.286
+90%     1144.784       1510.345       Variance       259047.8
+95%     1510.345       1757.636       Skewness       1.415222
+99%     2514.224       2514.224       Kurtosis       5.844984
+
+                   (count) dist_group_1500
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     .4629962              0
+10%     11.11191       .4629962       Obs                  44
+25%     106.9521        9.72292       Sum of wgt.          44
+
+50%     294.4656                      Mean           402.1017
+                        Largest       Std. dev.      391.8479
+75%       608.84       1126.007
+90%     773.6666       1152.861       Variance       153544.8
+95%     1152.861       1517.239       Skewness       1.303393
+99%     1573.724       1573.724       Kurtosis       4.386292
+
+                   (count) dist_group_1750
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  44
+25%      41.5272              0       Sum of wgt.          44
+
+50%      224.286                      Mean           319.9749
+                        Largest       Std. dev.      325.5068
+75%     501.6564         880.69
+90%     798.4191        935.929       Variance       105954.6
+95%      935.929       1145.524       Skewness       1.100333
+99%     1238.372       1238.372       Kurtosis       3.527343
+
+                   (count) dist_group_2000
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  44
+25%     1.018592              0       Sum of wgt.          44
+
+50%     120.3636                      Mean           188.5629
+                        Largest       Std. dev.      216.6281
+75%      300.145       590.4436
+90%     568.0346        650.201       Variance       46927.73
+95%      650.201       712.6746       Skewness       1.117524
+99%     751.3811       751.3811       Kurtosis       3.243334
+
+                   (count) dist_group_2250
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  44
+25%            0              0       Sum of wgt.          44
+
+50%     83.13505                      Mean           159.4205
+                        Largest       Std. dev.      213.9684
+75%     191.1357       573.4072
+90%     560.2254       625.5351       Variance       45782.47
+95%     625.5351       636.9194       Skewness       1.594737
+99%     847.2286       847.2286       Kurtosis       4.618889
+
+                   (count) dist_group_2500
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  44
+25%            0              0       Sum of wgt.          44
+
+50%     40.34159                      Mean           104.4909
+                        Largest       Std. dev.      139.0523
+75%      164.717       391.0856
+90%     311.4746       424.3238       Variance       19335.53
+95%     424.3238       460.7787       Skewness       1.422163
+99%     505.5431       505.5431       Kurtosis       4.132197
+
+. 
+.         *** Change column and row names
+. matrix colnames crime_summary_results = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+
+. matrix rownames crime_summary_results = "100m" "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
+
+. 
+. matrix crime_summary_results = crime_summary_results[2..rowsof(summary_results), 1..colsof(summary_results)]
+
+. 
+. matrix list crime_summary_results
+
+crime_summary_results[11,6]
+             Obs       Mean  Std. dev.        Sum        Min        Max
+ 250m         44   2182.593  2373.5144  96034.093          0  9040.0008
+ 500m         44   1398.221  1528.5298  61521.722          0  7421.1676
+ 750m         44  1328.9148  1345.1478  58472.253          0  5311.9554
+1000m         44  813.57692  533.28326  35797.384          0   2072.834
+1250m         44  746.64751  522.73278  32852.491          0   2245.267
+1500m         44  623.51441   508.9674  27434.634          0  2514.2237
+1750m         44  402.10168  391.84788  17692.474          0  1573.7241
+2000m         44  319.97489  325.50675  14078.895          0  1238.3724
+2250m         44  188.56292  216.62809  8296.7684          0   751.3811
+2500m         44  159.42049  213.96838  7014.5013          0  847.22857
+2500m         44  104.49093  139.05225   4597.601          0  505.54311
+
+. 
+. esttab using "Visual Graphics\Crime_Call_Summary_Stats.tex"
+(output written to Visual Graphics\Crime_Call_Summary_Stats.tex)
+
 . 
 . *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls co
 > mpared to the next larger ring
@@ -730,5 +957,5 @@ file Visual Graphics\Crime_CI_Graph.png saved as PNG format
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Do Files\CrimeOnly_Data_log.log
   log type:  text
- closed on:  17 Dec 2024, 12:19:52
+ closed on:  17 Dec 2024, 15:53:06
 -----------------------------------------------------------------------------------------------------------------------------

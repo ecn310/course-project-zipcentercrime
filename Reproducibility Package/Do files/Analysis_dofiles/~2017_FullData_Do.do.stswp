@@ -103,6 +103,44 @@ replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
 replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
 replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
 
+*** This will create a group called vars for this loop to run through
+
+local vars dist_group_100 dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500
+
+*** Create a blank matrix for the data to go in
+
+matrix summary_results = J(1, 6, .)
+
+*** Start the loop
+
+foreach var of local vars {
+   
+   *** This is to summarize each variable 
+    summarize `var', detail
+    
+    *** This will save each of the needed summary stats from the Data
+
+    local N = r(N)
+    local mean = r(mean)
+    local sd = r(sd)
+    local sum = r(sum)
+    local min = r(min)
+    local max = r(max)
+    
+	*** This adds the captured data into the Matrix
+    
+    matrix summary_results = summary_results \ (`N', `mean', `sd', `sum', `min', `max')
+	}
+
+	*** Change column and row names
+matrix colnames summary_results = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+matrix rownames summary_results = "100m" "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
+
+matrix summary_results = summary_results[2..rowsof(summary_results), 1..colsof(summary_results)]
+
+matrix list summary_results
+
+esttab using "Visual Graphics\Call_Summary_Stats.tex", replace
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
 
