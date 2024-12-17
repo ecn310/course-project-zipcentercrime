@@ -134,13 +134,20 @@ foreach var of local vars {
 
 	*** Change column and row names
 matrix colnames crime_summary_results = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
-matrix rownames crime_summary_results = "100m" "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
 
-matrix crime_summary_results = crime_summary_results[2..rowsof(summary_results), 1..colsof(summary_results)]
+*** delete empty row from matrix
+
+matrix crime_summary_results = crime_summary_results[2..12, 1..colsof(summary_results)]
+
+*** Rename the rows
+
+matrix rownames crime_summary_results = "100m" "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
 
 matrix list crime_summary_results
 
-esttab using "Visual Graphics\Crime_Call_Summary_Stats.tex"
+***Export the table
+
+esttab using "Visual Graphics\Crime_Call_Summary_Stats.tex", replace
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
 

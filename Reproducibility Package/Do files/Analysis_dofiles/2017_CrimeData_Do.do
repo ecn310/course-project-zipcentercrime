@@ -134,11 +134,18 @@ foreach var of local vars {
 
 	*** Change column and row names
 matrix colnames crime_summary_results = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+
+*** delete empty row from matrix
+
+matrix crime_summary_results = crime_summary_results[2..12, 1..colsof(summary_results)]
+
+*** Rename the rows
+
 matrix rownames crime_summary_results = "100m" "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
 
-matrix crime_summary_results = crime_summary_results[2..rowsof(summary_results), 1..colsof(summary_results)]
-
 matrix list crime_summary_results
+
+***Export the table
 
 esttab using "Visual Graphics\Crime_Call_Summary_Stats.tex", replace
 
