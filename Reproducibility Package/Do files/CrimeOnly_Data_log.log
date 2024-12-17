@@ -3,7 +3,7 @@
        log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
 > Package\Do Files\CrimeOnly_Data_log.log
   log type:  text
- opened on:  17 Dec 2024, 16:14:39
+ opened on:  17 Dec 2024, 16:28:06
 
 . 
 . 
@@ -616,15 +616,17 @@ crime_summary_results[11,6]
 2250m         44  159.42049  213.96838  7014.5013          0  847.22857
 2500m         44  104.49093  139.05225   4597.601          0  505.54311
 
-. esttab using "Visual Graphics\Crime_Call_Summary_Stats.tex", replace
+. 
+. 
+. 
+. ***Export the table
+
+. 
+. 
+. 
+. 
+. 
+. esttab matrix(crime_summary_results) using "Visual Graphics\Crime_Call_Summary_Stats.tex", title("Crime Summary Stats") lab
+> el replace
 (output written to Visual Graphics\Crime_Call_Summary_Stats.tex)
 
-. clear
-
-. log close
-      name:  <unnamed>
-       log:  C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility 
-> Package\Do Files\CrimeOnly_Data_log.log
-  log type:  text
- closed on:  17 Dec 2024, 16:15:30
------------------------------------------------------------------------------------------------------------------------------
