@@ -11,7 +11,7 @@ cd "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-pro
 
 *** This is to log the work done by the dofile
 
-log using "Do Files\CrimeOnly_Data_log", text replace 
+log using "Do Files\Analysis_dofiles\CrimeOnly_Data_log", text replace 
 
 *** This should be the file you exported from ArcGIS
 
@@ -148,7 +148,7 @@ matrix list crime_summary_results
 ***Export the table
 
 
-esttab matrix(crime_summary_results) using "Visual Graphics\Crime_Call_Summary_Stats.tex",  replace
+esttab matrix(crime_summary_results) using "Visual Graphics\Crime_Call_Summary_Stats.tex", replace
 
 *** Now we will use a paired t test to measure the statisical likelyhood that one ring will have greater median of calls compared to the next larger ring
 

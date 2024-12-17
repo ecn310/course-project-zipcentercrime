@@ -11,7 +11,7 @@ cd "C:\Users\wrmaechl\OneDrive - Syracuse University\Documents\GitHub\course-pro
 
 *** This is to log the work done by the dofile
 
-log using "Do Files\Full_Data_log", text replace 
+log using "Do Files\Analysis_dofiles\Full_Data_log", text replace 
 
 *** This should be the file you exported from ArcGIS
 
