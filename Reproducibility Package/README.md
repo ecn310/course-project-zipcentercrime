@@ -17,7 +17,7 @@ Follow these steps to limit the data sets to data from 2017.
 3. Edit the working directory in line 11 to where the 911 call raw data set is saved on your computer.
 4. Running the do file creates the 2017_911_call_data.csv file.
 ### 2017 911 Calls only related to Crime
-1. Open Crime_911Calls.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Crime_911calls.do) or by opening Do files\Crime_911Calls.do.
+1. Open Crime_911Calls.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Crime_911calls.do) or by opening Do files\Crime_911Calls.do.
 2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
 3. Change the working directory in line 9 to where the calls_final.csv file is stored locally on your computer.
 4. Running the do file will create a data set comprised of only 911 calls made in 2017 that are related to crimes.
