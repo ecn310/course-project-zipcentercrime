@@ -65,6 +65,17 @@ near dist: This is the distance in meters the 911 call observation is from the S
 6. Select the "Fields" drop down and only keep variables "near_dist" and "near_fid" (All other variable are not used in analysis and only takes up storage).
 7. Click "OK"
 
+# Summary
+### Raw Data 
+1. Open Raw_data_summary.do [Here]{https://github.com/ecn310/course-project-zipcentercrime/edit/main/Reproducibility%20Package/README.md} or by navigating to the Summary Do Files in the Do Files folder
+2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
+3. Change the working directory in line 9 to where the calls_final.csv file is stored locally on your computer and again to where you have detroit_samhsa_sud_2015_2021.dta.
+4. Running the do file will create a table of summary statistics for the Raw Call and Center Data.
+5. Please note that this do file uses the raw 911 call data set, not the 2017 911 call data set.
+
+
+
+
 Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime.
 # Data Analysis
 1. Open 2017_FullData_Do.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/2017_FullData_Do.do) or by clicking Do files\Analysis_dofile\2017_FullData_Do.do.
