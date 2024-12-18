@@ -64,6 +64,12 @@ near dist: This is the distance in meters the 911 call observation is from the S
 5. When naming the file end it with .csv so that it is able to export as a text doccument.
 6. Select the "Fields" drop down and only keep variables "near_dist" and "near_fid" (All other variable are not used in analysis and only takes up storage).
 7. Click "OK"
+### Exporting Map
+1. Once you have exported your data navigate to the Share tab
+2. Select Expot Map option
+3. Change the file type to jpeg
+4. Set a name and select a location to store your file
+5. Cick Export
 
 # Summary
 ### Raw Data 
