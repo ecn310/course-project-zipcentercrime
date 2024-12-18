@@ -67,7 +67,11 @@ near dist: This is the distance in meters the 911 call observation is from the S
 
 Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime.
 # Data Analysis
-1. Open ArcDataDo.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/2017_FullData_Do.do) or by clicking Do files\2017_FullData_Do.do.
+1. Open 2017_FullData_Do.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/2017_FullData_Do.do) or by clicking Do files\Analysis_dofile\2017_FullData_Do.do.
 2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
 3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
-4. This do file has all of our data analysis work done from the data exported from ArcGIS Pro including making the graphs.
+4. This do file has all of our data analysis work done from the full 2017 data exported from ArcGIS Pro including making the graphs.
+5. Open 2017_CrimeData_Do.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/2017_CrimeData_Do.do) or by clicking Do files\Analysis_dofile\2017_CrimeData_Do.do.
+2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
+3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
+4. This do file has all of our data analysis work done from the 2017 data for onyl crime related 911 calls exported from ArcGIS Pro including making the graphs.
