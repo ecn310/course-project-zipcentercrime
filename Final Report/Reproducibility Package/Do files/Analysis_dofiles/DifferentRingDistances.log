@@ -1,0 +1,201 @@
+-----------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sgortizh\OneDrive - Syracuse University\EconResea
+> rch\course-project-zipcentercrime\Final Report\Reproducibility Packag
+> e\Do files\Analysis_dofiles\DifferentRingDistances.log
+  log type:  text
+ opened on:  23 Mar 2025, 18:23:45
+
+. do "C:\Users\LO1C13~1\Temp\STD2f20_000000.tmp"
+
+. import delimited "ExtraFiles\2017_Arc_Data.csv"
+(2 vars, 620,359 obs)
+
+. 
+end of do-file
+
+. do "C:\Users\LO1C13~1\Temp\STD2f20_000000.tmp"
+
+. drop if near_dist == -1
+(205,143 observations deleted)
+
+. 
+. *** this is install programs that are usefull in exporting tables
+. 
+. ssc install outreg2
+checking outreg2 consistency and verifying not already installed...
+installing into C:\Users\sgortizh\ado\plus\...
+installation complete.
+
+. ssc install estout
+checking estout consistency and verifying not already installed...
+installing into C:\Users\sgortizh\ado\plus\...
+installation complete.
+
+. 
+end of do-file
+
+. gen distgroup = 200 if near_dist <= 200
+(403,454 missing values generated)
+
+. clear
+
+. cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\cou
+> rse-project-zipcentercrime\Final Report\Reproducibility Package"
+C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-pr
+> oject-zipcentercrime\Final Report\Reproducibility Package
+
+. log using "C:\Users\sgortizh\OneDrive - Syracuse University\EconResea
+> rch\course-project-zipcentercrime\Final Report\Reproducibility Packag
+> e\Do files\Analysis_dofiles\DifferentRingDistances.log"
+log file already open
+r(604);
+
+.  import delimited "ExtraFiles\2017_Arc_Data.csv"
+(2 vars, 620,359 obs)
+
+. 
+. *** Then, drop any values that were further than 2500 meters from any
+>  treatment center
+
+. 
+. drop if near_dist == -1
+(205,143 observations deleted)
+
+. 
+. *** Then, create the distance rings. This is the farther bound of the
+>  distance ring
+
+. 
+. gen dist_group = 250 if near_dist <= 250
+(397,721 missing values generated)
+
+. 
+. replace dist_group = 500 if (near_dist <= 500 & near_dist >250)
+(43,553 real changes made)
+
+. 
+. replace dist_group = 750 if (near_dist <= 750 & near_dist >500)
+(46,198 real changes made)
+
+. 
+. replace dist_group = 1000 if (near_dist <= 1000 & near_dist >750)
+(59,258 real changes made)
+
+. 
+. replace dist_group = 1250 if (near_dist <= 1250 & near_dist >1000)
+(64,059 real changes made)
+
+. 
+. replace dist_group = 1500 if (near_dist <= 1500 & near_dist >1250)
+(53,583 real changes made)
+
+. 
+. replace dist_group = 1750 if (near_dist <= 1750 & near_dist >1500)
+(46,384 real changes made)
+
+. 
+. replace dist_group = 2000 if (near_dist <= 2000 & near_dist >1750)
+(32,171 real changes made)
+
+. 
+. replace dist_group = 2250 if (near_dist <= 2250 & near_dist >2000)
+(30,260 real changes made)
+
+. 
+. replace dist_group = 2500 if (near_dist <= 2500 & near_dist >2250)
+(22,255 real changes made)
+
+. 
+. *** Then, create the lower bound of the distance rings. 
+
+. 
+. gen dist_group2 = 0 if near_dist <= 250 
+(397,721 missing values generated)
+
+. 
+. replace dist_group2 = 250 if (near_dist <= 500 & near_dist >250)
+(43,553 real changes made)
+
+. 
+. replace dist_group2 = 500 if (near_dist <= 750 & near_dist >500)
+(46,198 real changes made)
+
+. 
+. replace dist_group2 = 750 if (near_dist <= 1000 & near_dist >750)
+(59,258 real changes made)
+
+. 
+. replace dist_group2 = 1000 if (near_dist <= 1250 & near_dist >1000)
+(64,059 real changes made)
+
+. 
+. replace dist_group2 = 1250 if (near_dist <= 1500 & near_dist >1250)
+(53,583 real changes made)
+
+. 
+. replace dist_group2 = 1500 if (near_dist <= 1750 & near_dist >1500)
+(46,384 real changes made)
+
+. 
+. replace dist_group2 = 1750 if (near_dist <= 2000 & near_dist >1750)
+(32,171 real changes made)
+
+. 
+. replace dist_group2 = 2000 if (near_dist <= 2250 & near_dist >2000)
+(30,260 real changes made)
+
+. 
+. replace dist_group2 = 2250 if (near_dist <= 2500 & near_dist >2250)
+(22,255 real changes made)
+
+. 
+. replace dist_group2 = 2500 if (near_dist <= 2750 & near_dist >2500)
+(0 real changes made)
+
+. browse
+
+. egen freq = count(near_dist), by(dist_group)
+
+. browse
+
+. sum
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+   ïnear_fid |    415,216    23.01149     12.9842          1         44
+   near_dist |    415,216    1196.654      607.34   13.19016   2499.994
+  dist_group |    415,216    1323.989    607.1243        250       2500
+ dist_group2 |    415,216    1073.989    607.1243          0       2250
+        freq |    415,216    46772.76    13423.93      17495      64059
+
+. sum freq
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        freq |    415,216    46772.76    13423.93      17495      64059
+
+. graph bar freq
+
+. histogram freq
+(bin=56, start=17495, width=831.5)
+
+. gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2)
+
+. gen TotalCallsperRing = freq / area
+
+. browse
+
+. replace TotalCallsperRing = TCpR * 100
+TCpR not found
+r(111);
+
+.  replace TotalCallsperRing = TotalCallsperRing * 100
+(415,216 real changes made)
+
+. browse
+
+. histogram TotalCallsperRing
+(bin=56, start=.59654623, width=.14845684)
+
+. exit, clear
