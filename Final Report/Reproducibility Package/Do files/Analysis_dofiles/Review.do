@@ -29,6 +29,7 @@ replace dist_group = 1750 if (near_dist <= 1750 & near_dist >1500)
 replace dist_group = 2000 if (near_dist <= 2000 & near_dist >1750)
 replace dist_group = 2250 if (near_dist <= 2250 & near_dist >2000)
 replace dist_group = 2500 if (near_dist <= 2500 & near_dist >2250)
+
 *** Then, create the lower bound of the distance rings. 
 
 gen dist_group2 = 0 if near_dist <= 250 
@@ -41,8 +42,8 @@ replace dist_group2 = 1500 if (near_dist <= 1750 & near_dist >1500)
 replace dist_group2 = 1750 if (near_dist <= 2000 & near_dist >1750)
 replace dist_group2 = 2000 if (near_dist <= 2250 & near_dist >2000)
 replace dist_group2 = 2250 if (near_dist <= 2500 & near_dist >2250)
-replace dist_group2 = 2500 if (near_dist <= 2750 & near_dist >2500)
 
+*dist_group2 of 2500 doesnt' have an uppderbound, so there won't be anything
 *** At this point, every call has an assigned SATC, The distance it is from that SATC, and a assigned upperbound distance ring and lowerbound distance ring. 
 ***Now, we count up the amount of observations per assigned dist_group and identify that number. 
 
@@ -73,12 +74,60 @@ gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2250)
 
 collapse (count) dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, by(near_fid)
 
+*** When collapse (count), it reduced the number of total calls to 35,731, when at the beginning there was 415,216 calls. What is going on here?
+
+*** To check, add up the dist~500 column to see what total calls come out t
+
+egen row_sum = rowtotal(dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500)
+summarize row_sum, meanonly
+display r(sum)
+
+
 ***Couldn't we also collapse count by the CallxArea variable? No, if we did, then we wouldn't be taking in SATCs into the final analysis (in the unit) at all. We need to do mean calls per ring per SATC center?
 ***So now, we have number of total 911 calls by ring for each SATC (1-44). How do we go about doing a two sample t-test now? Either do a matrix, or this new thing I will try out.
 
+local vars dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500
 
+*** Create a blank matrix for the data to go in
 
+matrix summary_results = J(1, 6, .)
 
+*** Start the loop
+
+foreach var of local vars {
+   
+   *** This is to summarize each variable 
+    summarize `var', detail
+    
+    *** This will save each of the needed summary stats from the Data
+
+    local N = r(N)
+    local mean = r(mean)
+    local sd = r(sd)
+    local sum = r(sum)
+    local min = r(min)
+    local max = r(max)
+    
+	*** This adds the captured data into the Matrix
+    
+    matrix summary_results = Summary Results \ (`N', `mean', `sd', `sum', `min', `max')
+	}
+
+	*** Change column and row names
+matrix colnames summary_results = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+
+*** Delete empty row from matrix
+
+matrix summary_results = summary_results[2..12, 1..colsof(summary_results)]
+
+*** Rename the rows
+matrix rownames summary_results = "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
+
+matrix list Summary Results
+
+*** Export table
+
+esttab matrix(summary_results) using "Visual Graphics\Call_Summary_Stats.tex", replace
 
 
 
@@ -113,12 +162,12 @@ foreach g in 250 500 750 1000 1250 1500 1750 2000 {
     di "Mean Difference: `mean_diff'"
 }
 * Create an empty matrix to store results
-local comparisons = 8  // Number of group comparisons (250 to 500, ..., 2000 to 2250)
+local comparisons = 9  // Number of group comparisons (250 to 500, ..., 2000 to 2250)
 matrix results = J(`comparisons', 4, .)  // 4 columns: Group, T, P, Mean Diff
 
 * Loop through each pair and run paired t-tests
 local i = 1
-foreach g in 250 500 750 1000 1250 1500 1750 2000 {
+foreach g in 250 500 750 1000 1250 1500 1750 2000 2250 2500 {
     local next = `g' + 250
     
     * Run paired t-test
