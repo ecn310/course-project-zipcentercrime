@@ -1,0 +1,21 @@
+ \begin{tikzpicture}
+% Define the radii corresponding to the first 3 distances (in meters)
+
+\def\radiusOne{0.5}
+\def\radiusTwo{1}
+\def\radiusThree{1.75}
+
+
+% Draw the concentric circles
+\foreach \r/\label in {
+    \radiusOne/,
+    \radiusTwo/,
+    \radiusThree/,
+    }
+ {
+    \draw[thick] (0,0) circle (\r);
+    \node at (\r, 0) [right] {\label};
+    
+}
+
+\end{tikzpicture}

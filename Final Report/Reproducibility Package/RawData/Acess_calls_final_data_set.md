@@ -1,0 +1,1 @@
+The data set is to large to directly upload to GitHub. Please follow this [link](https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&e=1&dl=0&copy_to_dropbox=true) to access the calls_final.csv file from Dropbox which is the raw 911 call data.
