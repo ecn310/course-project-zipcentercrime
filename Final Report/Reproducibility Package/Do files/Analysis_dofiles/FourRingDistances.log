@@ -5,7 +5,7 @@
 > Reproducibility Package\Do files\Analysis_dofiles\FourRing
 > Distances.log
   log type:  text
- opened on:  21 Apr 2025, 22:33:50
+ opened on:  22 Apr 2025, 08:56:11
 
 . 
 . *** Then, import the Arc Data needed 
@@ -143,30 +143,9 @@ all files already exist and are up to date.
 > calls to 35,731, when at the beginning there was 415,216 c
 > alls. 
 . 
-. replace dist_group_250 = (dist_group_250 / 164933.6143) * 
-> 1000000
-variable dist_group_2500 was long now double
-(30 real changes made)
-
 . replace dist_group_500 = (dist_group_500 / 589048.6225) * 
 > 1000000
 variable dist_group_500 was long now double
-(43 real changes made)
-
-. replace dist_group_750 = (dist_group_750 / 981747.7042) * 
-> 1000000
-variable dist_group_750 not found
-r(111);
-
-end of do-file
-
-r(111);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
-. replace dist_group_500 = (dist_group_500 / 589048.6225) * 
-> 1000000
 (43 real changes made)
 
 . replace dist_group_1000 = (dist_group_1000 / 1374446.786) 
@@ -186,23 +165,20 @@ variable dist_group_2000 was long now double
 
 . replace dist_group_2500 = (dist_group_2500 / 3730641.276) 
 > * 1000000
+variable dist_group_2500 was long now double
 (30 real changes made)
 
 . 
-end of do-file
-
-. browse
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
+. *** To check, add up the dist~500 column to see what total
+>  calls come out
+. 
 . egen row_sum = rowtotal(dist_group_500 dist_group_1000 dis
 > t_group_1500 dist_group_2000 dist_group_2500)
 
 . summarize row_sum, meanonly
 
 . display r(sum)
-419155.09
+275580.73
 
 . 
 . 
@@ -250,22 +226,22 @@ end of do-file
 > -
       Percentiles      Smallest
  1%            0              0
- 5%      34.5843       25.93822
-10%     172.9215        34.5843       Obs                  4
+ 5%     20.37183       15.27887
+10%     101.8592       20.37183       Obs                  4
 > 4
-25%     1853.142       72.05062       Sum of wgt.          4
+25%     1091.591       42.44132       Sum of wgt.          4
 > 4
 
-50%     3337.385                      Mean           3998.67
-> 8
-                        Largest       Std. dev.      3566.60
+50%     1965.882                      Mean           2355.41
 > 6
-75%     5119.917       9600.025
-90%     7320.343       13058.45       Variance       1.27e+0
-> 7
-95%     13058.45       13225.61       Skewness       1.67155
+                        Largest       Std. dev.      2100.90
+> 4
+75%      3015.88       5654.881
+90%     4312.038       7692.065       Variance        441379
+> 8
+95%     7692.065       7790.528       Skewness       1.67155
 > 9
-99%     16404.49       16404.49       Kurtosis       5.97668
+99%     9663.039       9663.039       Kurtosis       5.97668
 > 5
 
                    (count) dist_group_1000
@@ -348,16 +324,16 @@ end of do-file
 25%            0              0       Sum of wgt.          4
 > 4
 
-50%     1170.958                      Mean           1939.71
-> 5
-                        Largest       Std. dev.      2451.73
-> 1
-75%     2460.556       5691.457
-90%     5637.826       7555.564       Variance        601098
-> 5
-95%     7555.564       7657.952       Skewness       1.41964
+50%     193.1303                      Mean           319.924
+> 3
+                        Largest       Std. dev.      404.372
+> 8
+75%     405.8284       938.7126
+90%     929.8669       1246.166       Variance       163517.
+> 4
+95%     1246.166       1263.054       Skewness       1.41964
 > 6
-99%     9505.806       9505.806       Kurtosis       4.16861
+99%     1567.827       1567.827       Kurtosis       4.16861
 > 5
 
 . 
@@ -381,18 +357,18 @@ end of do-file
 
 Summary_Results_2[5,6]
              Obs       Mean  Std. dev.        Sum
- 500m         44  3998.6784  3566.6056  175941.85
+ 500m         44   2355.416  2100.9041   103638.3
 1000m         44   1743.776   1044.324  76726.143
 1500m         44  1237.9045  1070.7098  54467.799
 2000m         44  606.17777  600.69157  26671.822
-2500m         44  1939.7155   2451.731   85347.48
+2500m         44  319.92428  404.37285  14076.668
 
              Min        Max
- 500m          0  16404.485
+ 500m          0  9663.0393
 1000m          0  4324.6491
 1500m   .4629962  4892.0178
 2000m          0  2116.9729
-2500m          0  9505.8062
+2500m          0   1567.827
 
 . 
 . *** Export table
@@ -401,9 +377,11 @@ Summary_Results_2[5,6]
 (output written to Visual Graphics\Dist_4_Summary_Stats.tex)
 
 . 
-. *** Do one-sample t-tests for every adjacent ring
-. 
-. * Step 1: Initialize the matrix for storing t-test results
+end of do-file
+
+. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
+> p"
+
 . matrix t_tests = J(4, 4, .)  // 4 comparisons, 4 columns (
 > Mean 1, Mean 2, Difference, p_value)
 
@@ -418,28 +396,28 @@ Variable |     Obs        Mean    Std. err.   Std. dev.   [9
 > 5% conf. interval]
 ---------+--------------------------------------------------
 > ------------------
-dis~_500 |      44    3998.678     537.686    3566.606    29
-> 14.331                                                    
->           5083.026
+dis~_500 |      44    2355.416    316.7232    2100.904    17
+> 16.683                                                    
+>           2994.149
 dis~1000 |      44    1743.776    157.4378    1044.324    14
 > 26.272                                                    
 >           2061.279
 ---------+--------------------------------------------------
 > ------------------
-    diff |      44    2254.902    449.5896     2982.24    13
-> 48.219                                                    
->           3161.586
+    diff |      44      611.64     243.448    1614.851    12
+> 0.6804                                                    
+>             1102.6
 ------------------------------------------------------------
 > ------------------
      mean(diff) = mean(dist_group_500 - dist_group_1000)    
->       t =   5.0155
+>       t =   2.5124
  H0: mean(diff) = 0                              Degrees of 
 > freedom =       43
 
  Ha: mean(diff) < 0           Ha: mean(diff) != 0           
 > Ha: mean(diff) > 0
- Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          
-> Pr(T > t) = 0.0000
+ Pr(T < t) = 0.9921         Pr(|T| > |t|) = 0.0158          
+> Pr(T > t) = 0.0079
 
 . matrix t_tests[1, 1] = r(mu_1)   // Mean of dist_group_250
 
@@ -554,25 +532,25 @@ Variable |     Obs        Mean    Std. err.   Std. dev.   [9
 dis~2000 |      44    606.1778    90.55766    600.6916    42
 > 3.5508                                                    
 >           788.8047
-dis~2500 |      44    1939.715    369.6123    2451.731    11
-> 94.321                                                    
->            2685.11
+dis~2500 |      44    319.9243     60.9615    404.3728    19
+> 6.9837                                                    
+>           442.8649
 ---------+--------------------------------------------------
 > ------------------
-    diff |      44   -1333.538    303.2256    2011.371    -1
-> 945.05                                                    
->          -722.0249
+    diff |      44    286.2535    56.54425    375.0721    17
+> 2.2211                                                    
+>           400.2858
 ------------------------------------------------------------
 > ------------------
      mean(diff) = mean(dist_group_2000 - dist_group_2500)   
->       t =  -4.3978
+>       t =   5.0625
  H0: mean(diff) = 0                              Degrees of 
 > freedom =       43
 
  Ha: mean(diff) < 0           Ha: mean(diff) != 0           
 > Ha: mean(diff) > 0
- Pr(T < t) = 0.0000         Pr(|T| > |t|) = 0.0001          
-> Pr(T > t) = 1.0000
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          
+> Pr(T > t) = 0.0000
 
 . matrix t_tests[4, 1] = r(mu_1)   // Mean of dist_group_100
 > 0
@@ -596,21 +574,8 @@ dis~2500 |      44    1939.715    369.6123    2451.731    11
 
 . 
 . * Now, craete the tex file we will put the t-tests in 
-. file open t_tests_file using "4_t_tests_results.tex", writ
-> e replace
-file handle t_tests_file already exists
-r(110);
-
-end of do-file
-
-r(110);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
 . file open t_tests_four using "4_t_tests_results.tex", writ
 > e replace
-(file 4_t_tests_results.tex not found)
 
 . file write t_tests_four "\begin{table}[htbp]" _n
 
@@ -626,11 +591,7 @@ r(110);
 . file write t_tests_four "\hline" _n
 
 . 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
+. *Now, create the local rownames for the table
 . local rownames 500m-1000m 1000m-1500m 1500m-2000m 2000m-25
 > 00m
 
@@ -649,20 +610,43 @@ end of do-file
 > n2' & `diff' & `pval' \\" _n
   7.         local i = `i' + 1
   8. }
+file handle t_tests_file not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
+> p"
+
+. foreach row of local rownames {
+  2.         local mean1 = string(el(t_tests, `i', 1), "%9.1
+> f")
+  3.         local mean2 = string(el(t_tests, `i', 2), "%9.1
+> f")
+  4.         local diff  = string(el(t_tests, `i', 3), "%9.1
+> f")
+  5.         local pval  = string(el(t_tests, `i', 4), "%9.3
+> f")
+  6.         file write t_tests_four "`row' & `mean1' & `mea
+> n2' & `diff' & `pval' \\" _n
+  7.         local i = `i' + 1
+  8. }
 
 . 
-. file write t_tests_file "\hline" _n
+. file write t_tests_four "\hline" _n
 
-. file write t_tests_file "\end{tabular}" _n
+. file write t_tests_four "\end{tabular}" _n
 
-. file write t_tests_file "\caption{\textbf{One-sample T-tes
+. file write t_tests_four "\caption{\textbf{One-sample T-tes
 > t Results by Distance Rings}}" _n
 
-. file write t_tests_file "\label{tab:ttests}" _n
+. file write t_tests_four "\label{tab:ttests}" _n
 
-. file write t_tests_file "\end{table}" _n
+. file write t_tests_four "\end{table}" _n
 
-. file close t_tests_file
+. file close t_tests_four
 
 .  
 .  * Check the matrix
@@ -670,21 +654,22 @@ end of do-file
 
 t_tests[4,4]
              Lower Ring~n  Upper Ring~n  Mean Diffe~e
- 500m-1000m     3998.6784      1743.776     2254.9024
+ 500m-1000m      2355.416      1743.776     611.64003
 1000m-1500m      1743.776     1237.9045     505.87145
 1500m-2000m     1237.9045     606.17777     631.72674
-2000m-2500m     606.17777     1939.7155    -1333.5377
+2000m-2500m     606.17777     319.92428     286.25349
 
                   P-Value
- 500m-1000m     9.622e-06
+ 500m-1000m     .01582287
 1000m-1500m     3.567e-06
 1500m-2000m     .00005416
-2000m-2500m      .0000707
+2000m-2500m     8.248e-06
 
+. 
 . 
 end of do-file
 
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
+. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
 > p"
 
 . matrix drop _all
@@ -757,31 +742,31 @@ end of do-file
 > -
       Percentiles      Smallest
  1%            0              0
- 5%      34.5843       25.93822
-10%     172.9215        34.5843       Obs                  4
+ 5%     20.37183       15.27887
+10%     101.8592       20.37183       Obs                  4
 > 4
-25%     1853.142       72.05062       Sum of wgt.          4
+25%     1091.591       42.44132       Sum of wgt.          4
 > 4
 
-50%     3337.385                      Mean           3998.67
-> 8
-                        Largest       Std. dev.      3566.60
+50%     1965.882                      Mean           2355.41
 > 6
-75%     5119.917       9600.025
-90%     7320.343       13058.45       Variance       1.27e+0
-> 7
-95%     13058.45       13225.61       Skewness       1.67155
+                        Largest       Std. dev.      2100.90
+> 4
+75%      3015.88       5654.881
+90%     4312.038       7692.065       Variance        441379
+> 8
+95%     7692.065       7790.528       Skewness       1.67155
 > 9
-99%     16404.49       16404.49       Kurtosis       5.97668
+99%     9663.039       9663.039       Kurtosis       5.97668
 > 5
 Variable: dist_group_500
-Mean: 3998.678380610792
-Standard Deviation: 3566.605594141428
+Mean: 2355.415991919318
+Standard Deviation: 2100.904112229803
 Number of Observations: 44
 Degrees of Freedom: 43
-Standard Error: 537.6860241340777
-CI Lower: 3094.79015791755
-CI Upper: 4902.566603304033
+Standard Error: 316.7232118536804
+CI Lower: 1822.981879447891
+CI Upper: 2887.850104390745
 
                    (count) dist_group_1000
 ------------------------------------------------------------
@@ -887,25 +872,25 @@ CI Upper: 758.4116045725829
 25%            0              0       Sum of wgt.          4
 > 4
 
-50%     1170.958                      Mean           1939.71
-> 5
-                        Largest       Std. dev.      2451.73
-> 1
-75%     2460.556       5691.457
-90%     5637.826       7555.564       Variance        601098
-> 5
-95%     7555.564       7657.952       Skewness       1.41964
+50%     193.1303                      Mean           319.924
+> 3
+                        Largest       Std. dev.      404.372
+> 8
+75%     405.8284       938.7126
+90%     929.8669       1246.166       Variance       163517.
+> 4
+95%     1246.166       1263.054       Skewness       1.41964
 > 6
-99%     9505.806       9505.806       Kurtosis       4.16861
+99%     1567.827       1567.827       Kurtosis       4.16861
 > 5
 Variable: dist_group_2500
-Mean: 1939.715455769746
-Standard Deviation: 2451.730956358793
+Mean: 319.924280833676
+Standard Deviation: 404.3728479234513
 Number of Observations: 44
 Degrees of Freedom: 43
-Standard Error: 369.612348597333
-CI Lower: 1318.370965000893
-CI Upper: 2561.059946538599
+Standard Error: 60.96150054406966
+CI Lower: 217.443688245776
+CI Upper: 422.404873421576
 
 . 
 . *** Display final matrices to check if correct
@@ -914,21 +899,21 @@ CI Upper: 2561.059946538599
 
 lci[5,1]
            c1
-r1  3094.7902
+r1  1822.9819
 r2  1479.1119
 r3  966.55352
 r4  453.94394
-r5   1318.371
+r5  217.44369
 
 . matrix list uci
 
 uci[5,1]
            c1
-r1  4902.5666
+r1  2887.8501
 r2    2008.44
 r3  1509.2555
 r4   758.4116
-r5  2561.0599
+r5  422.40487
 
 . 
 . *** Reshape the data to be over distance instead of treatm
@@ -980,39 +965,6 @@ dist_group_500 dist_group_1000 ... dist_group_2500->dist_gro
 
 . 
 . *** Export Graph
-. graph export "Visual Graphics\2CI_Graph.png", replace
-file Visual Graphics\2CI_Graph.png saved as PNG format
-
-. 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
-. graph export "Visual Graphics\2CI_Graph.png", replace
-could not find Graph window
-r(693);
-
-end of do-file
-
-r(693);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
-. 
-. *** Export Graph
-. graph export "Visual Graphics\2CI_Graph.png", replace
-could not find Graph window
-r(693);
-
-end of do-file
-
-r(693);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tm
-> p"
-
 . graph export "Visual Graphics\2CI_Graph.png", replace name
 > (MyGraph)
 could not find Graph window
@@ -1022,4 +974,3 @@ end of do-file
 
 r(693);
 
-. exit, clear

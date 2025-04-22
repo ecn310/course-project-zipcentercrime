@@ -1,66 +1,81 @@
-------------------------------------------------------------------------------------------
+------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-
-> zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\DifferentR
-> ingDistances.log
+       log:  C:\Users\sgortizh\OneDrive - Syracuse Universit
+> y\EconResearch\course-project-zipcentercrime\Final Report\
+> Reproducibility Package\Do files\Analysis_dofiles\Differen
+> tRingDistances.log
   log type:  text
- opened on:  21 Apr 2025, 21:12:09
+ opened on:  22 Apr 2025, 08:50:52
 
 . 
 end of do-file
 
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tmp"
+. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
+> p"
 
 . import delimited "ExtraFiles\2017_Arc_Data.csv"
 (encoding automatically selected: UTF-8)
 (2 vars, 620,359 obs)
 
 .  
-. *** Then, drop any values that were further than 2500 meters from any treatment center
+. *** Then, drop any values that were further than 2500 mete
+> rs from any treatment center
 . 
 . drop if near_dist == -1
 (205,143 observations deleted)
 
 . 
 . ssc install outreg2
-checking outreg2 consistency and verifying not already installed...
+checking outreg2 consistency and verifying not already insta
+> lled...
 all files already exist and are up to date.
 
 . ssc install estout
-checking estout consistency and verifying not already installed...
+checking estout consistency and verifying not already instal
+> led...
 all files already exist and are up to date.
 
 . 
-. *** Then, create the distance rings. This is the farther bound of the distance ring
+. *** Then, create the distance rings. This is the farther b
+> ound of the distance ring
 . 
 . gen dist_group = 250 if near_dist <= 250
 (397,721 missing values generated)
 
-. replace dist_group = 500 if (near_dist <= 500 & near_dist >250)
+. replace dist_group = 500 if (near_dist <= 500 & near_dist 
+> >250)
 (43,553 real changes made)
 
-. replace dist_group = 750 if (near_dist <= 750 & near_dist >500)
+. replace dist_group = 750 if (near_dist <= 750 & near_dist 
+> >500)
 (46,198 real changes made)
 
-. replace dist_group = 1000 if (near_dist <= 1000 & near_dist >750)
+. replace dist_group = 1000 if (near_dist <= 1000 & near_dis
+> t >750)
 (59,258 real changes made)
 
-. replace dist_group = 1250 if (near_dist <= 1250 & near_dist >1000)
+. replace dist_group = 1250 if (near_dist <= 1250 & near_dis
+> t >1000)
 (64,059 real changes made)
 
-. replace dist_group = 1500 if (near_dist <= 1500 & near_dist >1250)
+. replace dist_group = 1500 if (near_dist <= 1500 & near_dis
+> t >1250)
 (53,583 real changes made)
 
-. replace dist_group = 1750 if (near_dist <= 1750 & near_dist >1500)
+. replace dist_group = 1750 if (near_dist <= 1750 & near_dis
+> t >1500)
 (46,384 real changes made)
 
-. replace dist_group = 2000 if (near_dist <= 2000 & near_dist >1750)
+. replace dist_group = 2000 if (near_dist <= 2000 & near_dis
+> t >1750)
 (32,171 real changes made)
 
-. replace dist_group = 2250 if (near_dist <= 2250 & near_dist >2000)
+. replace dist_group = 2250 if (near_dist <= 2250 & near_dis
+> t >2000)
 (30,260 real changes made)
 
-. replace dist_group = 2500 if (near_dist <= 2500 & near_dist >2250)
+. replace dist_group = 2500 if (near_dist <= 2500 & near_dis
+> t >2250)
 (22,255 real changes made)
 
 . 
@@ -69,147 +84,186 @@ all files already exist and are up to date.
 . gen dist_group2 = 0 if near_dist <= 250 
 (397,721 missing values generated)
 
-. replace dist_group2 = 250 if (near_dist <= 500 & near_dist >250)
+. replace dist_group2 = 250 if (near_dist <= 500 & near_dist
+>  >250)
 (43,553 real changes made)
 
-. replace dist_group2 = 500 if (near_dist <= 750 & near_dist >500)
+. replace dist_group2 = 500 if (near_dist <= 750 & near_dist
+>  >500)
 (46,198 real changes made)
 
-. replace dist_group2 = 750 if (near_dist <= 1000 & near_dist >750)
+. replace dist_group2 = 750 if (near_dist <= 1000 & near_dis
+> t >750)
 (59,258 real changes made)
 
-. replace dist_group2 = 1000 if (near_dist <= 1250 & near_dist >1000)
+. replace dist_group2 = 1000 if (near_dist <= 1250 & near_di
+> st >1000)
 (64,059 real changes made)
 
-. replace dist_group2 = 1250 if (near_dist <= 1500 & near_dist >1250)
+. replace dist_group2 = 1250 if (near_dist <= 1500 & near_di
+> st >1250)
 (53,583 real changes made)
 
-. replace dist_group2 = 1500 if (near_dist <= 1750 & near_dist >1500)
+. replace dist_group2 = 1500 if (near_dist <= 1750 & near_di
+> st >1500)
 (46,384 real changes made)
 
-. replace dist_group2 = 1750 if (near_dist <= 2000 & near_dist >1750)
+. replace dist_group2 = 1750 if (near_dist <= 2000 & near_di
+> st >1750)
 (32,171 real changes made)
 
-. replace dist_group2 = 2000 if (near_dist <= 2250 & near_dist >2000)
+. replace dist_group2 = 2000 if (near_dist <= 2250 & near_di
+> st >2000)
 (30,260 real changes made)
 
-. replace dist_group2 = 2250 if (near_dist <= 2500 & near_dist >2250)
+. replace dist_group2 = 2250 if (near_dist <= 2500 & near_di
+> st >2250)
 (22,255 real changes made)
 
 . 
-. *dist_group2 of 2500 doesnt' have an uppderbound, so there won't be anything
-. *** At this point, every call has an assigned SATC, The distance it is from that SATC, a
-> nd a assigned upperbound distance ring and lowerbound distance ring. 
-. ***Now, we count up the amount of observations per assigned dist_group and identify that
->  number. 
+. *dist_group2 of 2500 doesnt' have an uppderbound, so there
+>  won't be anything
+. *** At this point, every call has an assigned SATC, The di
+> stance it is from that SATC, and a assigned upperbound dis
+> tance ring and lowerbound distance ring. 
+. ***Now, we count up the amount of observations per assigne
+> d dist_group and identify that number. 
 . 
 . egen freq = count(near_dist), by(dist_group)
 
 . 
 . ***Then, we found the area for each respective group
 . 
-. gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2) 
+. gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2
+> ) 
 
 . 
-. *** taking that difference in area and dividing the amount of calls in that specific dis
-> tance group by the new ring of area will give us the number of calls per the increase in
->  area from one ring to the next largest, to standardize the total calls by their repesti
-> ve area sizes
+. *** taking that difference in area and dividing the amount
+>  of calls in that specific distance group by the new ring 
+> of area will give us the number of calls per the increase 
+> in area from one ring to the next largest, to standardize 
+> the total calls by their repestive area sizes
 . 
 . gen CallxArea = freq / area
 
 . 
-. ***these commands create new seperate variables for each distance group 
+. ***these commands create new seperate variables for each d
+> istance group 
 . gen dist_group_250 = 1 if near_dist <= 250
 (397,721 missing values generated)
 
-. gen dist_group_500 = 1 if (near_dist <= 500 & near_dist >250)
+. gen dist_group_500 = 1 if (near_dist <= 500 & near_dist >2
+> 50)
 (371,663 missing values generated)
 
-. gen dist_group_750 = 1 if (near_dist <= 750 & near_dist >500)
+. gen dist_group_750 = 1 if (near_dist <= 750 & near_dist >5
+> 00)
 (369,018 missing values generated)
 
-. gen dist_group_1000 = 1 if (near_dist <= 1000 & near_dist >750)
+. gen dist_group_1000 = 1 if (near_dist <= 1000 & near_dist 
+> >750)
 (355,958 missing values generated)
 
-. gen dist_group_1250 = 1 if (near_dist <= 1250 & near_dist >1000)
+. gen dist_group_1250 = 1 if (near_dist <= 1250 & near_dist 
+> >1000)
 (351,157 missing values generated)
 
-. gen dist_group_1500 = 1 if (near_dist <= 1500 & near_dist >1250)
+. gen dist_group_1500 = 1 if (near_dist <= 1500 & near_dist 
+> >1250)
 (361,633 missing values generated)
 
-. gen dist_group_1750 = 1 if (near_dist <= 1750 & near_dist >1500)
+. gen dist_group_1750 = 1 if (near_dist <= 1750 & near_dist 
+> >1500)
 (368,832 missing values generated)
 
-. gen dist_group_2000 = 1 if (near_dist <= 2000 & near_dist >1750)
+. gen dist_group_2000 = 1 if (near_dist <= 2000 & near_dist 
+> >1750)
 (383,045 missing values generated)
 
-. gen dist_group_2250 = 1 if (near_dist <= 2250 & near_dist >2000)
+. gen dist_group_2250 = 1 if (near_dist <= 2250 & near_dist 
+> >2000)
 (384,956 missing values generated)
 
-. gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2250)
+. gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist 
+> >2250)
 (392,961 missing values generated)
 
 . 
 . *** This is now total calls per ring. 
-. ***This command collapses our data down, Using the various variables we created for each
->  seperate distance groups we can now collapse the data by the count of how many of our o
-> bservations are within each individual distance groups per SATC center
+. ***This command collapses our data down, Using the various
+>  variables we created for each seperate distance groups we
+>  can now collapse the data by the count of how many of our
+>  observations are within each individual distance groups p
+> er SATC center
 . 
-. collapse (count) dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group
-> _1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, b
-> y(near_fid)
+. collapse (count) dist_group_250 dist_group_500 dist_group_
+> 750 dist_group_1000 dist_group_1250 dist_group_1500 dist_g
+> roup_1750 dist_group_2000 dist_group_2250 dist_group_2500,
+>  by(near_fid)
 
 . 
-. *** When collapse (count), it reduced the number of total calls to 35,731, when at the b
-> eginning there was 415,216 calls. What is going on here?
+. *** When collapse (count), it reduced the number of total 
+> calls to 35,731, when at the beginning there was 415,216 c
+> alls. What is going on here?
 . 
-. replace dist_group_250 = (dist_group_250 / 164933.6143) * 1000000
+. replace dist_group_250 = (dist_group_250 / 164933.6143) * 
+> 1000000
 variable dist_group_250 was long now double
 (43 real changes made)
 
-. replace dist_group_500 = (dist_group_500 / 589048.6225) * 1000000
+. replace dist_group_500 = (dist_group_500 / 589048.6225) * 
+> 1000000
 variable dist_group_500 was long now double
 (43 real changes made)
 
-. replace dist_group_750 = (dist_group_750 / 981747.7042) * 1000000
+. replace dist_group_750 = (dist_group_750 / 981747.7042) * 
+> 1000000
 variable dist_group_750 was long now double
 (43 real changes made)
 
-. replace dist_group_1000 = (dist_group_1000 / 1374446.786) * 1000000
+. replace dist_group_1000 = (dist_group_1000 / 1374446.786) 
+> * 1000000
 variable dist_group_1000 was long now double
 (43 real changes made)
 
-. replace dist_group_1250 = (dist_group_1250 / 1767145.868) * 1000000
+. replace dist_group_1250 = (dist_group_1250 / 1767145.868) 
+> * 1000000
 variable dist_group_1250 was long now double
 (43 real changes made)
 
-. replace dist_group_1500 = (dist_group_1500 / 2159844.949) * 1000000
+. replace dist_group_1500 = (dist_group_1500 / 2159844.949) 
+> * 1000000
 variable dist_group_1500 was long now double
 (42 real changes made)
 
-. replace dist_group_1750 = (dist_group_1750 / 2552544.031) * 1000000
+. replace dist_group_1750 = (dist_group_1750 / 2552544.031) 
+> * 1000000
 variable dist_group_1750 was long now double
 (39 real changes made)
 
-. replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
+. replace dist_group_2000 = (dist_group_2000 / 2945243.113) 
+> * 1000000
 variable dist_group_2000 was long now double
 (36 real changes made)
 
-. replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
+. replace dist_group_2250 = (dist_group_2250 / 3337942.194) 
+> * 1000000
 variable dist_group_2250 was long now double
 (30 real changes made)
 
-. replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
+. replace dist_group_2500 = (dist_group_2500 / 3730641.276) 
+> * 1000000
 variable dist_group_2500 was long now double
 (28 real changes made)
 
 . 
-. *** To check, add up the dist~500 column to see what total calls come out t
+. *** To check, add up the dist~500 column to see what total
+>  calls come out t
 . 
-. egen row_sum = rowtotal(dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dis
-> t_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_
-> 2500)
+. egen row_sum = rowtotal(dist_group_250 dist_group_500 dist
+> _group_750 dist_group_1000 dist_group_1250 dist_group_1500
+>  dist_group_1750 dist_group_2000 dist_group_2250 dist_grou
+> p_2500)
 
 . summarize row_sum, meanonly
 
@@ -218,15 +272,18 @@ variable dist_group_2500 was long now double
 
 . 
 . 
-. ***Couldn't we also collapse count by the CallxArea variable? No, if we did, then we wou
-> ldn't be taking in SATCs into the final analysis (in the unit) at all. We need to do mea
-> n calls per ring per SATC center?
-. ***So now, we have number of total 911 calls by ring for each SATC (1-44). How do we go 
-> about doing a two sample t-test now? Either do a matrix, or this new thing I will try ou
-> t.
+. ***Couldn't we also collapse count by the CallxArea variab
+> le? No, if we did, then we wouldn't be taking in SATCs int
+> o the final analysis (in the unit) at all. We need to do m
+> ean calls per ring per SATC center?
+. ***So now, we have number of total 911 calls by ring for e
+> ach SATC (1-44). How do we go about doing a two sample t-t
+> est now? Either do a matrix, or this new thing I will try 
+> out.
 . 
-. local vars dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 
-> dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500
+. local vars dist_group_250 dist_group_500 dist_group_750 di
+> st_group_1000 dist_group_1250 dist_group_1500 dist_group_1
+> 750 dist_group_2000 dist_group_2250 dist_group_2500
 
 . 
 . *** Create a blank matrix for the data to go in
@@ -241,7 +298,8 @@ variable dist_group_2500 was long now double
 .    *** This is to summarize each variable 
 .     summarize `var', detail
   3.     
-.     *** This will save each of the needed summary stats from the Data
+.     *** This will save each of the needed summary stats fr
+> om the Data
 . 
 .     local N = r(N)
   4.     local mean = r(mean)
@@ -252,397 +310,1272 @@ variable dist_group_2500 was long now double
   9.     
 .         *** This adds the captured data into the Matrix
 .     
-.     matrix Summary_Results = Summary_Results \ (`N', `mean', `sd', `sum', `min', `max')
+.     matrix Summary_Results = Summary_Results \ (`N', `mean
+> ', `sd', `sum', `min', `max')
  10.         }
 
                    (count) dist_group_250
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%     24.25218       12.12609
-10%     42.44132       24.25218       Obs                  44
-25%     1258.082       30.31523       Sum of wgt.          44
+10%     42.44132       24.25218       Obs                  4
+> 4
+25%     1258.082       30.31523       Sum of wgt.          4
+> 4
 
-50%     1997.773                      Mean            2410.75
-                        Largest       Std. dev.      2094.652
+50%     1997.773                      Mean            2410.7
+> 5
+                        Largest       Std. dev.      2094.65
+> 2
 75%     2822.348       5638.632
-90%     5432.489       6232.811       Variance        4387568
-95%     6232.811       6378.324       Skewness       1.893706
-99%     10974.11       10974.11       Kurtosis       7.789895
+90%     5432.489       6232.811       Variance        438756
+> 8
+95%     6232.811       6378.324       Skewness       1.89370
+> 6
+99%     10974.11       10974.11       Kurtosis       7.78989
+> 5
 
                    (count) dist_group_500
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%     8.488264       6.790611
-10%     95.06855       8.488264       Obs                  44
-25%     629.8292       39.04601       Sum of wgt.          44
+10%     95.06855       8.488264       Obs                  4
+> 4
+25%     629.8292       39.04601       Sum of wgt.          4
+> 4
 
-50%      1185.81                      Mean           1680.406
-                        Largest       Std. dev.      1721.943
+50%      1185.81                      Mean           1680.40
+> 6
+                        Largest       Std. dev.      1721.94
+> 3
 75%     1869.116       5092.958
-90%      3695.79       6211.711       Variance        2965088
-95%     6211.711       6590.288       Skewness       1.773508
-99%     7086.002       7086.002       Kurtosis       5.629117
+90%      3695.79       6211.711       Variance        296508
+> 8
+95%     6211.711       6590.288       Skewness       1.77350
+> 8
+99%     7086.002       7086.002       Kurtosis       5.62911
+> 7
 
                    (count) dist_group_750
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%     17.31606       13.24169
-10%     201.6811       17.31606       Obs                  44
-25%     541.8908       132.4169       Sum of wgt.          44
+10%     201.6811       17.31606       Obs                  4
+> 4
+25%     541.8908       132.4169       Sum of wgt.          4
+> 4
 
-50%     1024.194                      Mean           1069.475
-                        Largest       Std. dev.      711.9805
+50%     1024.194                      Mean           1069.47
+> 5
+                        Largest       Std. dev.      711.980
+> 5
 75%      1526.36       2237.846
-90%      2141.08       2258.218       Variance       506916.2
-95%     2258.218       2635.097       Skewness       .5000187
-99%     2694.175       2694.175       Kurtosis       2.470598
+90%      2141.08       2258.218       Variance       506916.
+> 2
+95%     2258.218       2635.097       Skewness       .500018
+> 7
+99%     2694.175       2694.175       Kurtosis       2.47059
+> 8
 
                    (count) dist_group_1000
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%      100.404       77.12194
-10%     280.8403        100.404       Obs                  44
-25%     444.5425       195.7151       Sum of wgt.          44
+10%     280.8403        100.404       Obs                  4
+> 4
+25%     444.5425       195.7151       Sum of wgt.          4
+> 4
 
-50%     782.4966                      Mean           979.8653
-                        Largest       Std. dev.      686.1379
+50%     782.4966                      Mean           979.865
+> 3
+                        Largest       Std. dev.      686.137
+> 9
 75%     1463.134       1898.946
-90%      1837.83       2442.437       Variance       470785.3
-95%     2442.437       2639.607       Skewness        .831115
-99%      2722.55        2722.55       Kurtosis       2.998284
+90%      1837.83       2442.437       Variance       470785.
+> 3
+95%     2442.437       2639.607       Skewness        .83111
+> 5
+99%      2722.55        2722.55       Kurtosis       2.99828
+> 4
 
                    (count) dist_group_1250
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%     44.13897       .5658842
-10%     69.60376       44.13897       Obs                  44
-25%     332.7399       63.94492       Sum of wgt.          44
+10%     69.60376       44.13897       Obs                  4
+> 4
+25%     332.7399       63.94492       Sum of wgt.          4
+> 4
 
-50%     669.1581                      Mean           823.8632
-                        Largest       Std. dev.      680.5173
+50%     669.1581                      Mean           823.863
+> 2
+                        Largest       Std. dev.      680.517
+> 3
 75%     1143.935        1907.03
-90%     1523.926       2227.886       Variance       463103.8
-95%     2227.886       2467.255       Skewness       1.330445
-99%     3141.789       3141.789       Kurtosis       5.000484
+90%     1523.926       2227.886       Variance       463103.
+> 8
+95%     2227.886       2467.255       Skewness       1.33044
+> 5
+99%     3141.789       3141.789       Kurtosis       5.00048
+> 4
 
                    (count) dist_group_1500
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%     .4629962              0
-10%     14.35288       .4629962       Obs                  44
-25%     148.1588       10.18592       Sum of wgt.          44
+10%     14.35288       .4629962       Obs                  4
+> 4
+25%     148.1588       10.18592       Sum of wgt.          4
+> 4
 
-50%     381.7404                      Mean           563.8347
-                        Largest       Std. dev.      565.9372
+50%     381.7404                      Mean           563.834
+> 7
+                        Largest       Std. dev.      565.937
+> 2
 75%     872.5163       1520.017
-90%     1244.071       1888.098       Variance       320284.9
-95%     1888.098       2032.553       Skewness       1.371865
-99%     2321.463       2321.463       Kurtosis        4.51875
+90%     1244.071       1888.098       Variance       320284.
+> 9
+95%     1888.098       2032.553       Skewness       1.37186
+> 5
+99%     2321.463       2321.463       Kurtosis        4.5187
+> 5
 
                    (count) dist_group_1750
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%            0              0
-10%            0              0       Obs                  44
-25%     52.69253              0       Sum of wgt.          44
+10%            0              0       Obs                  4
+> 4
+25%     52.69253              0       Sum of wgt.          4
+> 4
 
-50%     296.5669                      Mean           412.9926
-                        Largest       Std. dev.      432.5729
+50%     296.5669                      Mean           412.992
+> 6
+                        Largest       Std. dev.      432.572
+> 9
 75%     618.7944       1180.391
-90%     917.9078       1390.769       Variance       187119.3
-95%     1390.769       1611.334       Skewness        1.26669
-99%     1617.602       1617.602       Kurtosis       4.062333
+90%     917.9078       1390.769       Variance       187119.
+> 3
+95%     1390.769       1611.334       Skewness        1.2666
+> 9
+99%     1617.602       1617.602       Kurtosis       4.06233
+> 3
 
                    (count) dist_group_2000
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%            0              0
-10%            0              0       Obs                  44
-25%     1.358122              0       Sum of wgt.          44
+10%            0              0       Obs                  4
+> 4
+25%     1.358122              0       Sum of wgt.          4
+> 4
 
-50%     166.0304                      Mean           248.2508
-                        Largest       Std. dev.      279.9933
+50%     166.0304                      Mean           248.250
+> 8
+                        Largest       Std. dev.      279.993
+> 3
 75%     378.7463       798.2363
-90%      760.888        823.022       Variance       78396.23
-95%      823.022       911.6395       Skewness       1.077564
-99%      956.118        956.118       Kurtosis       3.132897
+90%      760.888        823.022       Variance       78396.2
+> 3
+95%      823.022       911.6395       Skewness       1.07756
+> 4
+99%      956.118        956.118       Kurtosis       3.13289
+> 7
 
                    (count) dist_group_2250
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%            0              0
-10%            0              0       Obs                  44
-25%            0              0       Sum of wgt.          44
+10%            0              0       Obs                  4
+> 4
+25%            0              0       Sum of wgt.          4
+> 4
 
-50%     109.7982                      Mean           206.0333
-                        Largest       Std. dev.      270.5081
+50%     109.7982                      Mean           206.033
+> 3
+                        Largest       Std. dev.      270.508
+> 1
 75%     252.1014       731.5885
-90%     726.1959       796.5986       Variance       73174.63
-95%     796.5986       819.3671       Skewness       1.491236
-99%      1019.79        1019.79       Kurtosis       4.142539
+90%     726.1959       796.5986       Variance       73174.6
+> 3
+95%     796.5986       819.3671       Skewness       1.49123
+> 6
+99%      1019.79        1019.79       Kurtosis       4.14253
+> 9
 
                    (count) dist_group_2500
--------------------------------------------------------------
+------------------------------------------------------------
+> -
       Percentiles      Smallest
  1%            0              0
  5%            0              0
-10%            0              0       Obs                  44
-25%            0              0       Sum of wgt.          44
+10%            0              0       Obs                  4
+> 4
+25%            0              0       Sum of wgt.          4
+> 4
 
-50%     54.95034                      Mean           135.5787
-                        Largest       Std. dev.      178.7922
+50%     54.95034                      Mean           135.578
+> 7
+                        Largest       Std. dev.      178.792
+> 2
 75%     208.5432        499.378
-90%     397.7868       550.3075       Variance       31966.64
-95%     550.3075       591.5873       Skewness       1.427627
-99%     655.3833       655.3833       Kurtosis       4.181603
+90%     397.7868       550.3075       Variance       31966.6
+> 4
+95%     550.3075       591.5873       Skewness       1.42762
+> 7
+99%     655.3833       655.3833       Kurtosis       4.18160
+> 3
 
 . 
 .         *** Change column and row names
-. matrix colnames Summary_Results = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+. matrix colnames Summary_Results = "Obs" "Mean" "Std. dev."
+>  "Sum" "Min" "Max"
 
 . 
 . *** Delete empty row from matrix
 . 
-. matrix Summary_Results = Summary_Results[2..11, 1..colsof(Summary_Results)]
+. matrix Summary_Results = Summary_Results[2..11, 1..colsof(
+> Summary_Results)]
 
 . 
 . *** Rename the rows
-. matrix rownames Summary_Results = "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "
-> 2000m" "2250m" "2500m"
+. matrix rownames Summary_Results = "250m" "500m" "750m" "10
+> 00m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
 
 . 
 . matrix list Summary_Results
 
 Summary_Results[10,6]
-             Obs       Mean  Std. dev.        Sum        Min        Max
- 250m         44  2410.7495  2094.6524  106072.98          0  10974.112
- 500m         44  1680.4061  1721.9431  73937.869          0  7086.0025
- 750m         44  1069.4749  711.98049  47056.896          0  2694.1749
-1000m         44  979.86531  686.13794  43114.074          0  2722.5499
-1250m         44  823.86315  680.51729  36249.979          0  3141.7893
-1500m         44  563.83467  565.93718  24808.725          0  2321.4629
-1750m         44  412.99261  432.57287  18171.675          0  1617.6019
-2000m         44  248.25084  279.99327  10923.037          0  956.11802
-2250m         44  206.03331  270.50809  9065.4656          0    1019.79
-2500m         44  135.57869  178.79218  5965.4623          0   655.3833
+             Obs       Mean  Std. dev.        Sum
+ 250m         44  2410.7495  2094.6524  106072.98
+ 500m         44  1680.4061  1721.9431  73937.869
+ 750m         44  1069.4749  711.98049  47056.896
+1000m         44  979.86531  686.13794  43114.074
+1250m         44  823.86315  680.51729  36249.979
+1500m         44  563.83467  565.93718  24808.725
+1750m         44  412.99261  432.57287  18171.675
+2000m         44  248.25084  279.99327  10923.037
+2250m         44  206.03331  270.50809  9065.4656
+2500m         44  135.57869  178.79218  5965.4623
+
+             Min        Max
+ 250m          0  10974.112
+ 500m          0  7086.0025
+ 750m          0  2694.1749
+1000m          0  2722.5499
+1250m          0  3141.7893
+1500m          0  2321.4629
+1750m          0  1617.6019
+2000m          0  956.11802
+2250m          0    1019.79
+2500m          0   655.3833
 
 . 
 . *** Export table
 . 
-. esttab matrix(Summary_Results) using "Visual Graphics\New_Call_Summary_Stats.tex", repla
-> ce
-(output written to Visual Graphics\New_Call_Summary_Stats.tex)
+. esttab matrix(Summary_Results) using "Visual Graphics\New_
+> Call_Summary_Stats.tex", replace
+(output written to Visual Graphics\New_Call_Summary_Stats.te
+> x)
 
 . 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tmp"
-
-. matrix t_tests = J(4, 4, .)  // 4 comparisons, 4 columns (Mean 1, Mean 2, Difference, p_
-> value)
+. *** Do one-sample t-tests for every adjacent ring
+. 
+. * Step 1: Initialize the matrix for storing t-test results
+. matrix t_tests = J(9, 4, .)  // 9 comparisons, 4 columns (
+> Mean 1, Mean 2, Difference, p_value)
 
 . 
-. * Run the first t-test: dist_group_500 vs. dist_group_1000
-. ttest dist_group_500 == dist_group_1000
+. * Run the first t-test: dist_group_250 vs. dist_group_500
+. ttest dist_group_250 == dist_group_500
 
 Paired t test
-------------------------------------------------------------------------------
-Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
----------+--------------------------------------------------------------------
-dis~_500 |      44    1680.406    259.5927    1721.943    1156.888    2203.925
-dis~1000 |      44    979.8653    103.4392    686.1379    771.2603     1188.47
----------+--------------------------------------------------------------------
-    diff |      44    700.5408    215.9044    1432.148    265.1281    1135.954
-------------------------------------------------------------------------------
-     mean(diff) = mean(dist_group_500 - dist_group_1000)          t =   3.2447
- H0: mean(diff) = 0                              Degrees of freedom =       43
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~_250 |      44     2410.75    315.7807    2094.652    17
+> 73.917                                                    
+>           3047.582
+dis~_500 |      44    1680.406    259.5927    1721.943    11
+> 56.888                                                    
+>           2203.925
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    730.3434    278.2744    1845.863    16
+> 9.1496                                                    
+>           1291.537
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_250 - dist_group_500)     
+>       t =   2.6245
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
 
- Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
- Pr(T < t) = 0.9989         Pr(|T| > |t|) = 0.0023          Pr(T > t) = 0.0011
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9940         Pr(|T| > |t|) = 0.0120          
+> Pr(T > t) = 0.0060
 
 . matrix t_tests[1, 1] = r(mu_1)   // Mean of dist_group_250
 
 . matrix t_tests[1, 2] = r(mu_2)   // Mean of dist_group_500
 
-. matrix t_tests[1, 3] = r(mu_1) - r(mu_2)  // Difference of means
+. matrix t_tests[1, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
 
 . matrix t_tests[1, 4] = r(p)     // p-value
 
 . 
-. * Run the second t-test: dist_group_1000 vs. dist_group_1500
-. ttest dist_group_1000 == dist_group_1500
+. * Run the second t-test: dist_group_500 vs. dist_group_750
+. ttest dist_group_500 == dist_group_750
 
 Paired t test
-------------------------------------------------------------------------------
-Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
----------+--------------------------------------------------------------------
-dis~1000 |      44    979.8653    103.4392    686.1379    771.2603     1188.47
-dis~1500 |      44    563.8347    85.31824    565.9372     391.774    735.8953
----------+--------------------------------------------------------------------
-    diff |      44    416.0306    69.45293    460.6986    275.9655    556.0958
-------------------------------------------------------------------------------
-     mean(diff) = mean(dist_group_1000 - dist_group_1500)         t =   5.9901
- H0: mean(diff) = 0                              Degrees of freedom =       43
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~_500 |      44    1680.406    259.5927    1721.943    11
+> 56.888                                                    
+>           2203.925
+dis~_750 |      44    1069.475    107.3351    711.9805    85
+> 3.0131                                                    
+>           1285.937
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    610.9312    214.6589    1423.886    17
+> 8.0303                                                    
+>           1043.832
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_500 - dist_group_750)     
+>       t =   2.8461
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
 
- Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
- Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9966         Pr(|T| > |t|) = 0.0068          
+> Pr(T > t) = 0.0034
 
 . matrix t_tests[2, 1] = r(mu_1)   // Mean of dist_group_500
 
 . matrix t_tests[2, 2] = r(mu_2)   // Mean of dist_group_750
 
-. matrix t_tests[2, 3] = r(mu_1) - r(mu_2)  // Difference of means
+. matrix t_tests[2, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
 
 . matrix t_tests[2, 4] = r(p)     // p-value
 
 . 
-. * Run the third t-test: dist_group_1500 vs. dist_group_2000
-. ttest dist_group_1500 == dist_group_2000
+. * Run the third t-test: dist_group_750 vs. dist_group_1000
+. ttest dist_group_750 == dist_group_1000
 
 Paired t test
-------------------------------------------------------------------------------
-Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
----------+--------------------------------------------------------------------
-dis~1500 |      44    563.8347    85.31824    565.9372     391.774    735.8953
-dis~2000 |      44    248.2508    42.21057    279.9933    163.1251    333.3766
----------+--------------------------------------------------------------------
-    diff |      44    315.5838    80.82459    536.1297    152.5855    478.5821
-------------------------------------------------------------------------------
-     mean(diff) = mean(dist_group_1500 - dist_group_2000)         t =   3.9046
- H0: mean(diff) = 0                              Degrees of freedom =       43
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~_750 |      44    1069.475    107.3351    711.9805    85
+> 3.0131                                                    
+>           1285.937
+dis~1000 |      44    979.8653    103.4392    686.1379    77
+> 1.2603                                                    
+>            1188.47
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    89.60961    103.5754    687.0416   -11
+> 9.2701                                                    
+>           298.4893
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_750 - dist_group_1000)    
+>       t =   0.8652
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
 
- Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
- Pr(T < t) = 0.9998         Pr(|T| > |t|) = 0.0003          Pr(T > t) = 0.0002
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.8041         Pr(|T| > |t|) = 0.3918          
+> Pr(T > t) = 0.1959
 
 . matrix t_tests[3, 1] = r(mu_1)   // Mean of dist_group_750
 
-. matrix t_tests[3, 2] = r(mu_2)   // Mean of dist_group_1000
+. matrix t_tests[3, 2] = r(mu_2)   // Mean of dist_group_100
+> 0
 
-. matrix t_tests[3, 3] = r(mu_1) - r(mu_2)  // Difference of means
+. matrix t_tests[3, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
 
 . matrix t_tests[3, 4] = r(p)     // p-value
 
 . 
-. * Run the fourth t-test: dist_group_1000 vs. dist_group_1250
-. ttest dist_group_2000 == dist_group_2500
+. * Run the fourth t-test: dist_group_1000 vs. dist_group_12
+> 50
+. ttest dist_group_1000 == dist_group_1250
 
 Paired t test
-------------------------------------------------------------------------------
-Variable |     Obs        Mean    Std. err.   Std. dev.   [95% conf. interval]
----------+--------------------------------------------------------------------
-dis~2000 |      44    248.2508    42.21057    279.9933    163.1251    333.3766
-dis~2500 |      44    135.5787    26.95394    178.7922     81.2209    189.9365
----------+--------------------------------------------------------------------
-    diff |      44    112.6722    23.98857    159.1221     64.2946    161.0497
-------------------------------------------------------------------------------
-     mean(diff) = mean(dist_group_2000 - dist_group_2500)         t =   4.6969
- H0: mean(diff) = 0                              Degrees of freedom =       43
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~1000 |      44    979.8653    103.4392    686.1379    77
+> 1.2603                                                    
+>            1188.47
+dis~1250 |      44    823.8632    102.5918    680.5173     6
+> 16.967                                                    
+>           1030.759
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    156.0022    53.93304    357.7513    47
+> .23582                                                    
+>           264.7685
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_1000 - dist_group_1250)   
+>       t =   2.8925
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
 
- Ha: mean(diff) < 0           Ha: mean(diff) != 0           Ha: mean(diff) > 0
- Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0000          Pr(T > t) = 0.0000
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9970         Pr(|T| > |t|) = 0.0060          
+> Pr(T > t) = 0.0030
 
-. matrix t_tests[4, 1] = r(mu_1)   // Mean of dist_group_1000
+. matrix t_tests[4, 1] = r(mu_1)   // Mean of dist_group_100
+> 0
 
-. matrix t_tests[4, 2] = r(mu_2)   // Mean of dist_group_1250
+. matrix t_tests[4, 2] = r(mu_2)   // Mean of dist_group_125
+> 0
 
-. matrix t_tests[4, 3] = r(mu_1) - r(mu_2)  // Difference of means
+. matrix t_tests[4, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
 
 . matrix t_tests[4, 4] = r(p)     // p-value
 
 . 
-. * Now, name the rows and columns for the one-sample t-test table 
-. matrix colnames t_tests = "Lower Ring Mean" "Upper Ring Mean" "Mean Difference" "P-Value
-> "
+. * Run the fifth t-test: dist_group_1250 vs. dist_group_150
+> 0
+. ttest dist_group_1250 == dist_group_1500
 
-. matrix rownames t_tests = "500m-1000m" "1000m-1500m" "1500m-2000m" "2000m-2500m"
+Paired t test
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~1250 |      44    823.8632    102.5918    680.5173     6
+> 16.967                                                    
+>           1030.759
+dis~1500 |      44    563.8347    85.31824    565.9372     3
+> 91.774                                                    
+>           735.8953
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    260.0285     58.8858    390.6042    14
+> 1.2739                                                    
+>            378.783
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_1250 - dist_group_1500)   
+>       t =   4.4158
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 1.0000         Pr(|T| > |t|) = 0.0001          
+> Pr(T > t) = 0.0000
+
+. matrix t_tests[5, 1] = r(mu_1)   // Mean of dist_group_125
+> 0
+
+. matrix t_tests[5, 2] = r(mu_2)   // Mean of dist_group_150
+> 0
+
+. matrix t_tests[5, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
+
+. matrix t_tests[5, 4] = r(p)     // p-value
 
 . 
-. file open t_tests_file using "larger_t_tests_results.tex", write replace
-(file larger_t_tests_results.tex not found)
+. * Run the sixth t-test: dist_group_1500 vs. dist_group_175
+> 0
+. ttest dist_group_1500 == dist_group_1750
 
-. file write t_tests_file "{\begin{table}[htbp] \centering \begin{tabular}{|l|c|c|c|} \hli
-> ne"
+Paired t test
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~1500 |      44    563.8347    85.31824    565.9372     3
+> 91.774                                                    
+>           735.8953
+dis~1750 |      44    412.9926    65.21281    432.5729    28
+> 1.4784                                                    
+>           544.5068
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    150.8421    71.24757    472.6029    7.
+> 157643                                                    
+>           294.5265
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_1500 - dist_group_1750)   
+>       t =   2.1172
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
 
-. file write t_tests_file "Comparison & Mean 1 & Mean 2 & Difference & p-value \\\\ \hline
-> " 
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9800         Pr(|T| > |t|) = 0.0401          
+> Pr(T > t) = 0.0200
+
+. matrix t_tests[6, 1] = r(mu_1)   // Mean of dist_group_150
+> 0
+
+. matrix t_tests[6, 2] = r(mu_2)   // Mean of dist_group_175
+> 0
+
+. matrix t_tests[6, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
+
+. matrix t_tests[6, 4] = r(p)     // p-value
 
 . 
-. local rownames 500m-1000m 1000m-1500m 1500m-2000m 2000m-2500m
+. * Run the seventh t-test: dist_group_1750 vs. dist_group_2
+> 000
+. ttest dist_group_1750 == dist_group_2000
+
+Paired t test
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~1750 |      44    412.9926    65.21281    432.5729    28
+> 1.4784                                                    
+>           544.5068
+dis~2000 |      44    248.2508    42.21057    279.9933    16
+> 3.1251                                                    
+>           333.3766
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    164.7418    48.10028    319.0612     6
+> 7.7383                                                    
+>           261.7452
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_1750 - dist_group_2000)   
+>       t =   3.4250
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9993         Pr(|T| > |t|) = 0.0014          
+> Pr(T > t) = 0.0007
+
+. matrix t_tests[7, 1] = r(mu_1)   // Mean of dist_group_175
+> 0
+
+. matrix t_tests[7, 2] = r(mu_2)   // Mean of dist_group_200
+> 0
+
+. matrix t_tests[7, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
+
+. matrix t_tests[7, 4] = r(p)     // p-value
 
 . 
+. * Run the eighth t-test: dist_group_2000 vs. dist_group_22
+> 50
+. ttest dist_group_2000 == dist_group_2250
+
+Paired t test
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~2000 |      44    248.2508    42.21057    279.9933    16
+> 3.1251                                                    
+>           333.3766
+dis~2250 |      44    206.0333    40.78063    270.5081    12
+> 3.7913                                                    
+>           288.2753
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    42.21754    19.86308    131.7568    2.
+> 159822                                                    
+>           82.27525
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_2000 - dist_group_2250)   
+>       t =   2.1254
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9803         Pr(|T| > |t|) = 0.0393          
+> Pr(T > t) = 0.0197
+
+. matrix t_tests[8, 1] = r(mu_1)   // Mean of dist_group_200
+> 0
+
+. matrix t_tests[8, 2] = r(mu_2)   // Mean of dist_group_225
+> 0
+
+. matrix t_tests[8, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
+
+. matrix t_tests[8, 4] = r(p)     // p-value
+
+. 
+. * Run the ninth t-test: dist_group_2250 vs. dist_group_250
+> 0
+. ttest dist_group_2250 == dist_group_2500
+
+Paired t test
+------------------------------------------------------------
+> ------------------
+Variable |     Obs        Mean    Std. err.   Std. dev.   [9
+> 5% conf. interval]
+---------+--------------------------------------------------
+> ------------------
+dis~2250 |      44    206.0333    40.78063    270.5081    12
+> 3.7913                                                    
+>           288.2753
+dis~2500 |      44    135.5787    26.95394    178.7922     8
+> 1.2209                                                    
+>           189.9365
+---------+--------------------------------------------------
+> ------------------
+    diff |      44    70.45462    23.15265    153.5773    23
+> .76285                                                    
+>           117.1464
+------------------------------------------------------------
+> ------------------
+     mean(diff) = mean(dist_group_2250 - dist_group_2500)   
+>       t =   3.0430
+ H0: mean(diff) = 0                              Degrees of 
+> freedom =       43
+
+ Ha: mean(diff) < 0           Ha: mean(diff) != 0           
+> Ha: mean(diff) > 0
+ Pr(T < t) = 0.9980         Pr(|T| > |t|) = 0.0040          
+> Pr(T > t) = 0.0020
+
+. matrix t_tests[9, 1] = r(mu_1)   // Mean of dist_group_225
+> 0
+
+. matrix t_tests[9, 2] = r(mu_2)   // Mean of dist_group_250
+> 0
+
+. matrix t_tests[9, 3] = r(mu_1) - r(mu_2)  // Difference of
+>  means
+
+. matrix t_tests[9, 4] = r(p)     // p-value
+
+. 
+. * Now, name the rows and columns for the one-sample t-test
+>  table 
+. matrix colnames t_tests = "Lower Ring Mean" "Upper Ring Me
+> an" "Mean Difference" "P-Value"
+
+. matrix rownames t_tests = "250m-500m" "500m-750m" "750m-10
+> 00m" "1000m-1250m" "1250m-1500m" "1500m-1750m" "1750m-2000
+> m" "2000m-2250m"
+
+.  
+.  **Now, put the matrix into a .tex file named t_tests 
+. file open t_tests_file using "Visual Graphics\t_tests_resu
+> lts.tex", write replace
+(file Visual Graphics\t_tests_results.tex not found)
+
+. file write t_tests_file "\begin{table}[htbp]" _n
+
+. file write t_tests_file "\centering" _n
+
+. file write t_tests_file "\begin{tabular}{l|c c c c}" _n
+
+. file write t_tests_file "\hline" _n
+
+. file write t_tests_file "Comparison & Mean 1 & Mean 2 & Di
+> fference & P-value \\" _n
+
+. file write t_tests_file "\hline" _n
+
+. 
+. local rownames 250m-500m 500m-750m 750m-1000m 1000m-1250m 
+> 1250m-1500m 1500m-1750m 1750m-2000m 2000m-2250m
+
 . local i = 1
 
 . foreach row of local rownames {
-  2.     * Write the row to the LaTeX file
-.     file write larger_t_tests_file "`row' & " 
-  3.     file write larger_t_tests_file matrix(t_tests)[`i',1] & " & " 
-  4.     file write larger_t_tests_file matrix(t_tests)[`i',2] & " & " 
-  5.     file write larger_t_tests_file matrix(t_tests)[`i',3] & " & " 
-  6.     file write larger_t_tests_file matrix(t_tests)[`i',4] & " \\\\ \hline" 
-  7. 
-.     * Increment row index
-.     local i = `i' + 1
+  2.         local mean1 = string(el(t_tests, `i', 1), "%9.1
+> f")
+  3.         local mean2 = string(el(t_tests, `i', 2), "%9.1
+> f")
+  4.         local diff  = string(el(t_tests, `i', 3), "%9.1
+> f")
+  5.         local pval  = string(el(t_tests, `i', 4), "%9.3
+> f")
+  6.         file write t_tests_file "`row' & `mean1' & `mea
+> n2' & `diff' & `pval' \\" _n
+  7.         local i = `i' + 1
   8. }
-file handle larger_t_tests_file not found
-r(111);
 
+. 
+. file write t_tests_file "\hline" _n
+
+. file write t_tests_file "\end{tabular}" _n
+
+. file write t_tests_file "\caption{\textbf{One-sample T-tes
+> t Results by Distance Ring}}" _n
+
+. file write t_tests_file "\label{tab:ttests}" _n
+
+. file write t_tests_file "\end{table}" _n
+
+. file close t_tests_file
+
+. 
+. * Test out the matrix
+. matrix list t_tests
+
+t_tests[9,4]
+             Lower Ring~n  Upper Ring~n  Mean Diffe~e
+  250m-500m     2410.7495     1680.4061     730.34343
+  500m-750m     1680.4061     1069.4749      610.9312
+ 750m-1000m     1069.4749     979.86531     89.609607
+1000m-1250m     979.86531     823.86315     156.00216
+1250m-1500m     823.86315     563.83467     260.02849
+1500m-1750m     563.83467     412.99261     150.84206
+1750m-2000m     412.99261     248.25084     164.74176
+2000m-2250m     248.25084     206.03331     42.217537
+2000m-2250m     206.03331     135.57869     70.454619
+
+                  P-Value
+  250m-500m     .01196384
+  500m-750m     .00675641
+ 750m-1000m     .39175066
+1000m-1250m     .00597486
+1250m-1500m     .00006678
+1500m-1750m     .04007031
+1750m-2000m     .00136319
+2000m-2250m     .03933545
+2000m-2250m       .003984
+
+. 
 end of do-file
 
-r(111);
+. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
+> p"
 
-. clear
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tmp"
-
-. ssc install estout
-checking estout consistency and verifying not already installed...
-all files already exist and are up to date.
+. matrix drop _all
 
 . 
-. *** Then, create the distance rings. This is the farther bound of the distance ring
 . 
-. gen dist_group = 500 if near_dist <= 500
-near_dist not found
-r(111);
+. *** Create two new matrices for storing Confidence Interva
+> l data
+. 
+. matrix lci = J(10, 1, .) 
 
-end of do-file
-
-r(111);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2dc8_000000.tmp"
-
-. cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcent
-> ercrime\Final Report\Reproducibility Package"
-C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcentercrim
-> e\Final Report\Reproducibility Package
+. matrix uci = J(10, 1, .)  
 
 . 
-. *** Then, start log 
+. *** List of variables to be groupped for looping
 . 
-. log using "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-
-> zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\FourRingDi
-> stances.log", replace
-log file already open
-r(604);
+. local groups dist_group_250 dist_group_500 dist_group_750 
+> dist_group_1000 dist_group_1250 dist_group_1500 dist_group
+> _1750 dist_group_2000 dist_group_2250 dist_group_2500 
 
-end of do-file
+. 
+. *** Begin loop by telling Stata which row to begin at
+. 
+. local row_index = 1
 
-r(604);
+. foreach var of local groups {
+  2.    *** Calculate basic statistics
+.    summarize `var', detail
+  3.    
+.    *** Mean of the variable
+.    local mean = r(mean)
+  4.    
+.    *** Standard deviation of the variable
+.    local sd = r(sd)
+  5.    
+.    *** Number of observations
+.    local n = r(N)
+  6.    
+.    *** Degrees of freedom
+.    local df = `n' - 1
+  7.    
+.    *** Calculate standard error
+.    local se = `sd' / sqrt(`n')
+  8.    
+.    *** Calculate t-critical value
+.    scalar t_crit = invttail(`df', 0.05)
+  9.    
+.    *** Calculate confidence interval
+.    local ci_lower = `mean' - (t_crit * `se')
+ 10.    local ci_upper = `mean' + (t_crit * `se')
+ 11.    
+.    *** Display Data to check if correct
+.    display "Variable: `var'"
+ 12.    display "Mean: `mean'"
+ 13.    display "Standard Deviation: `sd'"
+ 14.    display "Number of Observations: `n'"
+ 15.    display "Degrees of Freedom: `df'"
+ 16.    display "Standard Error: `se'"
+ 17.    display "CI Lower: `ci_lower'"
+ 18.    display "CI Upper: `ci_upper'"
+ 19.    
+.    *** Store in matrices
+.    matrix lci[`row_index',1] = `ci_lower'
+ 20.    matrix uci[`row_index',1] = `ci_upper'
+ 21.    
+.    *** Increment row index
+.    local row_index = `row_index' + 1
+ 22. }
 
+                   (count) dist_group_250
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     24.25218       12.12609
+10%     42.44132       24.25218       Obs                  4
+> 4
+25%     1258.082       30.31523       Sum of wgt.          4
+> 4
+
+50%     1997.773                      Mean            2410.7
+> 5
+                        Largest       Std. dev.      2094.65
+> 2
+75%     2822.348       5638.632
+90%     5432.489       6232.811       Variance        438756
+> 8
+95%     6232.811       6378.324       Skewness       1.89370
+> 6
+99%     10974.11       10974.11       Kurtosis       7.78989
+> 5
+Variable: dist_group_250
+Mean: 2410.749549454555
+Standard Deviation: 2094.652356474934
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 315.7807242118692
+CI Lower: 1879.899825345907
+CI Upper: 2941.599273563203
+
+                   (count) dist_group_500
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     8.488264       6.790611
+10%     95.06855       8.488264       Obs                  4
+> 4
+25%     629.8292       39.04601       Sum of wgt.          4
+> 4
+
+50%      1185.81                      Mean           1680.40
+> 6
+                        Largest       Std. dev.      1721.94
+> 3
+75%     1869.116       5092.958
+90%      3695.79       6211.711       Variance        296508
+> 8
+95%     6211.711       6590.288       Skewness       1.77350
+> 8
+99%     7086.002       7086.002       Kurtosis       5.62911
+> 7
+Variable: dist_group_500
+Mean: 1680.406118072043
+Standard Deviation: 1721.943149875234
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 259.5926972026757
+CI Lower: 1244.012440039302
+CI Upper: 2116.799796104784
+
+                   (count) dist_group_750
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     17.31606       13.24169
+10%     201.6811       17.31606       Obs                  4
+> 4
+25%     541.8908       132.4169       Sum of wgt.          4
+> 4
+
+50%     1024.194                      Mean           1069.47
+> 5
+                        Largest       Std. dev.      711.980
+> 5
+75%      1526.36       2237.846
+90%      2141.08       2258.218       Variance       506916.
+> 2
+95%     2258.218       2635.097       Skewness       .500018
+> 7
+99%     2694.175       2694.175       Kurtosis       2.47059
+> 8
+Variable: dist_group_750
+Mean: 1069.474918008721
+Standard Deviation: 711.9804882380093
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 107.3350971608874
+CI Lower: 889.0370307461571
+CI Upper: 1249.912805271285
+
+                   (count) dist_group_1000
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%      100.404       77.12194
+10%     280.8403        100.404       Obs                  4
+> 4
+25%     444.5425       195.7151       Sum of wgt.          4
+> 4
+
+50%     782.4966                      Mean           979.865
+> 3
+                        Largest       Std. dev.      686.137
+> 9
+75%     1463.134       1898.946
+90%      1837.83       2442.437       Variance       470785.
+> 3
+95%     2442.437       2639.607       Skewness        .83111
+> 5
+99%      2722.55        2722.55       Kurtosis       2.99828
+> 4
+Variable: dist_group_1000
+Mean: 979.8653108951482
+Standard Deviation: 686.1379371860404
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 103.4391860033881
+CI Lower: 805.9767257417363
+CI Upper: 1153.75389604856
+
+                   (count) dist_group_1250
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     44.13897       .5658842
+10%     69.60376       44.13897       Obs                  4
+> 4
+25%     332.7399       63.94492       Sum of wgt.          4
+> 4
+
+50%     669.1581                      Mean           823.863
+> 2
+                        Largest       Std. dev.      680.517
+> 3
+75%     1143.935        1907.03
+90%     1523.926       2227.886       Variance       463103.
+> 8
+95%     2227.886       2467.255       Skewness       1.33044
+> 5
+99%     3141.789       3141.789       Kurtosis       5.00048
+> 4
+Variable: dist_group_1250
+Mean: 823.8631513108139
+Standard Deviation: 680.5172864986132
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 102.591841030304
+CI Lower: 651.3990129671596
+CI Upper: 996.3272896544682
+
+                   (count) dist_group_1500
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%     .4629962              0
+10%     14.35288       .4629962       Obs                  4
+> 4
+25%     148.1588       10.18592       Sum of wgt.          4
+> 4
+
+50%     381.7404                      Mean           563.834
+> 7
+                        Largest       Std. dev.      565.937
+> 2
+75%     872.5163       1520.017
+90%     1244.071       1888.098       Variance       320284.
+> 9
+95%     1888.098       2032.553       Skewness       1.37186
+> 5
+99%     2321.463       2321.463       Kurtosis        4.5187
+> 5
+Variable: dist_group_1500
+Mean: 563.8346655899023
+Standard Deviation: 565.9371824624427
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 85.31824041540112
+CI Lower: 420.4086711787822
+CI Upper: 707.2606600010224
+
+                   (count) dist_group_1750
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  4
+> 4
+25%     52.69253              0       Sum of wgt.          4
+> 4
+
+50%     296.5669                      Mean           412.992
+> 6
+                        Largest       Std. dev.      432.572
+> 9
+75%     618.7944       1180.391
+90%     917.9078       1390.769       Variance       187119.
+> 3
+95%     1390.769       1611.334       Skewness        1.2666
+> 9
+99%     1617.602       1617.602       Kurtosis       4.06233
+> 3
+Variable: dist_group_1750
+Mean: 412.9926086990263
+Standard Deviation: 432.5728667684811
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 65.21281334361127
+CI Lower: 303.365258713667
+CI Upper: 522.6199586843856
+
+                   (count) dist_group_2000
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  4
+> 4
+25%     1.358122              0       Sum of wgt.          4
+> 4
+
+50%     166.0304                      Mean           248.250
+> 8
+                        Largest       Std. dev.      279.993
+> 3
+75%     378.7463       798.2363
+90%      760.888        823.022       Variance       78396.2
+> 3
+95%      823.022       911.6395       Skewness       1.07756
+> 4
+99%      956.118        956.118       Kurtosis       3.13289
+> 7
+Variable: dist_group_2000
+Mean: 248.2508447882723
+Standard Deviation: 279.993271041987
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 42.21057381229785
+CI Lower: 177.2918857870509
+CI Upper: 319.2098037894938
+
+                   (count) dist_group_2250
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  4
+> 4
+25%            0              0       Sum of wgt.          4
+> 4
+
+50%     109.7982                      Mean           206.033
+> 3
+                        Largest       Std. dev.      270.508
+> 1
+75%     252.1014       731.5885
+90%     726.1959       796.5986       Variance       73174.6
+> 3
+95%     796.5986       819.3671       Skewness       1.49123
+> 6
+99%      1019.79        1019.79       Kurtosis       4.14253
+> 9
+Variable: dist_group_2250
+Mean: 206.0333081751603
+Standard Deviation: 270.5080920082285
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 40.78062927028319
+CI Lower: 137.478187050724
+CI Upper: 274.5884292995966
+
+                   (count) dist_group_2500
+------------------------------------------------------------
+> -
+      Percentiles      Smallest
+ 1%            0              0
+ 5%            0              0
+10%            0              0       Obs                  4
+> 4
+25%            0              0       Sum of wgt.          4
+> 4
+
+50%     54.95034                      Mean           135.578
+> 7
+                        Largest       Std. dev.      178.792
+> 2
+75%     208.5432        499.378
+90%     397.7868       550.3075       Variance       31966.6
+> 4
+95%     550.3075       591.5873       Skewness       1.42762
+> 7
+99%     655.3833       655.3833       Kurtosis       4.18160
+> 3
+Variable: dist_group_2500
+Mean: 135.5786893259727
+Standard Deviation: 178.7921799469935
+Number of Observations: 44
+Degrees of Freedom: 43
+Standard Error: 26.95393528790374
+CI Lower: 90.26721837746115
+CI Upper: 180.8901602744843
+
+. 
+. *** Display final matrices to check if correct
+. 
+. matrix list lci
+
+lci[10,1]
+            c1
+ r1  1879.8998
+ r2  1244.0124
+ r3  889.03703
+ r4  805.97673
+ r5  651.39901
+ r6  420.40867
+ r7  303.36526
+ r8  177.29189
+ r9  137.47819
+r10  90.267218
+
+. matrix list uci
+
+uci[10,1]
+            c1
+ r1  2941.5993
+ r2  2116.7998
+ r3  1249.9128
+ r4  1153.7539
+ r5  996.32729
+ r6  707.26066
+ r7  522.61996
+ r8   319.2098
+ r9  274.58843
+r10  180.89016
+
+. 
+. *** Reshape the data to be over distance instead of treatm
+> ent center  - what was this purpose?
+. 
+. reshape long dist_group_, i(near_fid) j(Distance)
+(j = 250 500 750 1000 1250 1500 1750 2000 2250 2500)
+
+Data                               Wide   ->   Long
+------------------------------------------------------------
+> -----------------
+Number of observations               44   ->   440         
+Number of variables                  12   ->   4           
+j variable (10 values)                    ->   Distance
+xij variables:
+dist_group_250 dist_group_500 ... dist_group_2500->dist_grou
+> p_
+------------------------------------------------------------
+> -----------------
+
+. 
+. *** Collapse the data to be the mean number of calls at ea
+> ch distance
+. 
+. collapse (mean) dist_group_, by(Distance)
+
+. 
+. rename dist_group mean
+
+. 
+. *** Turn the two matrices into seperate variables 
+. 
+. svmat lci, names(lci)
+
+. svmat uci, names(uci)
+
+. 
+. rename mean Mean 
+
+. 
+. *** Plot the graph
+. graph twoway (bar Mean Distance, lwidth(02) color(navy)) (
+> rcap lci1 uci1 Distance, lcolor(black) lwidth(thin)), ytit
+> le("Mean Calls per Km²", angle(horizontal))  xtitle("Dista
+> nce Groups (m)", size(medsmall))  legend(label (1 "Mean Ca
+> lls per Km^2") label(2 "95% Confidence Intervals")) graphr
+> egion(color(white)) title("Mean Calls by Distance Group wi
+> th 95% CIs", size(medium))
+
+. 
+. *** Export Graph
+. graph export "Visual Graphics\CI_Graph.png", replace
+file Visual Graphics\CI_Graph.png saved as PNG format
+
+. 
+. 
 . log close
       name:  <unnamed>
-       log:  C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-
-> zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\DifferentR
-> ingDistances.log
+       log:  C:\Users\sgortizh\OneDrive - Syracuse Universit
+> y\EconResearch\course-project-zipcentercrime\Final Report\
+> Reproducibility Package\Do files\Analysis_dofiles\Differen
+> tRingDistances.log
   log type:  text
- closed on:  21 Apr 2025, 21:52:11
-------------------------------------------------------------------------------------------
+ closed on:  22 Apr 2025, 08:52:01
+------------------------------------------------------------
