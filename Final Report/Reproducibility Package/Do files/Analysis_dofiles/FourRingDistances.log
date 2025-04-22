@@ -5,7 +5,7 @@
 > Reproducibility Package\Do files\Analysis_dofiles\FourRing
 > Distances.log
   log type:  text
- opened on:  22 Apr 2025, 08:56:11
+ opened on:  22 Apr 2025, 13:25:10
 
 . 
 . *** Then, import the Arc Data needed 
@@ -377,11 +377,9 @@ Summary_Results_2[5,6]
 (output written to Visual Graphics\Dist_4_Summary_Stats.tex)
 
 . 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
-> p"
-
+. *** Do one-sample t-tests for every adjacent ring
+. 
+. * Step 1: Initialize the matrix for storing t-test results
 . matrix t_tests = J(4, 4, .)  // 4 comparisons, 4 columns (
 > Mean 1, Mean 2, Difference, p_value)
 
@@ -606,29 +604,6 @@ dis~2500 |      44    319.9243     60.9615    404.3728    19
 > f")
   5.         local pval  = string(el(t_tests, `i', 4), "%9.3
 > f")
-  6.         file write t_tests_file "`row' & `mean1' & `mea
-> n2' & `diff' & `pval' \\" _n
-  7.         local i = `i' + 1
-  8. }
-file handle t_tests_file not found
-r(111);
-
-end of do-file
-
-r(111);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
-> p"
-
-. foreach row of local rownames {
-  2.         local mean1 = string(el(t_tests, `i', 1), "%9.1
-> f")
-  3.         local mean2 = string(el(t_tests, `i', 2), "%9.1
-> f")
-  4.         local diff  = string(el(t_tests, `i', 3), "%9.1
-> f")
-  5.         local pval  = string(el(t_tests, `i', 4), "%9.3
-> f")
   6.         file write t_tests_four "`row' & `mean1' & `mea
 > n2' & `diff' & `pval' \\" _n
   7.         local i = `i' + 1
@@ -666,12 +641,7 @@ t_tests[4,4]
 2000m-2500m     8.248e-06
 
 . 
-. 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
-> p"
-
+. * Drop this matrix to start of the CI
 . matrix drop _all
 
 . 
