@@ -5,14 +5,11 @@
 > Reproducibility Package\Do files\Analysis_dofiles\Differen
 > tRingDistances.log
   log type:  text
- opened on:  22 Apr 2025, 08:50:52
+ opened on:  22 Apr 2025, 13:08:28
 
 . 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
-> p"
-
+. *** Then, import the dataset
+. 
 . import delimited "ExtraFiles\2017_Arc_Data.csv"
 (encoding automatically selected: UTF-8)
 (2 vars, 620,359 obs)
@@ -1023,7 +1020,6 @@ dis~2500 |      44    135.5787    26.95394    178.7922     8
 .  **Now, put the matrix into a .tex file named t_tests 
 . file open t_tests_file using "Visual Graphics\t_tests_resu
 > lts.tex", write replace
-(file Visual Graphics\t_tests_results.tex not found)
 
 . file write t_tests_file "\begin{table}[htbp]" _n
 
@@ -1099,12 +1095,9 @@ t_tests[9,4]
 2000m-2250m     .03933545
 2000m-2250m       .003984
 
+.  
+. *** Clear any matrices stores in Stata
 . 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD265c_000000.tm
-> p"
-
 . matrix drop _all
 
 . 
@@ -1577,5 +1570,5 @@ file Visual Graphics\CI_Graph.png saved as PNG format
 > Reproducibility Package\Do files\Analysis_dofiles\Differen
 > tRingDistances.log
   log type:  text
- closed on:  22 Apr 2025, 08:52:01
+ closed on:  22 Apr 2025, 13:08:34
 ------------------------------------------------------------
