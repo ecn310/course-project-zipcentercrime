@@ -4,7 +4,7 @@ cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project
 
 *** Then, start log 
 
-log using "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\DifferentRingDistances.log"
+log using "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\DifferentRingDistances.log", replace
 
 *** Then, import the dataset
 
@@ -75,6 +75,17 @@ gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2250)
 collapse (count) dist_group_250 dist_group_500 dist_group_750 dist_group_1000 dist_group_1250 dist_group_1500 dist_group_1750 dist_group_2000 dist_group_2250 dist_group_2500, by(near_fid)
 
 *** When collapse (count), it reduced the number of total calls to 35,731, when at the beginning there was 415,216 calls. What is going on here?
+
+replace dist_group_250 = (dist_group_250 / 164933.6143) * 1000000
+replace dist_group_500 = (dist_group_500 / 589048.6225) * 1000000
+replace dist_group_750 = (dist_group_750 / 981747.7042) * 1000000
+replace dist_group_1000 = (dist_group_1000 / 1374446.786) * 1000000
+replace dist_group_1250 = (dist_group_1250 / 1767145.868) * 1000000
+replace dist_group_1500 = (dist_group_1500 / 2159844.949) * 1000000
+replace dist_group_1750 = (dist_group_1750 / 2552544.031) * 1000000
+replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
+replace dist_group_2250 = (dist_group_2250 / 3337942.194) * 1000000
+replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
 
 *** To check, add up the dist~500 column to see what total calls come out t
 
@@ -199,31 +210,37 @@ matrix t_tests[9, 4] = r(p)     // p-value
 
 * Now, name the rows and columns for the one-sample t-test table 
 matrix colnames t_tests = "Lower Ring Mean" "Upper Ring Mean" "Mean Difference" "P-Value"
-matrix rownames t_tests = "100m-250m" "250m-500m" "500m-750m" "750m-1000m" "1000m-1250m" "1250m-1500m" "1500m-1750m" "1750m-2000m" "2000m-2250m"
+matrix rownames t_tests = "250m-500m" "500m-750m" "750m-1000m" "1000m-1250m" "1250m-1500m" "1500m-1750m" "1750m-2000m" "2000m-2250m"
+ 
+ **Now, put the matrix into a .tex file named t_tests 
+file open t_tests_file using "Visual Graphics\t_tests_results.tex", write replace
+file write t_tests_file "\begin{table}[htbp]" _n
+file write t_tests_file "\centering" _n
+file write t_tests_file "\begin{tabular}{l|c c c c}" _n
+file write t_tests_file "\hline" _n
+file write t_tests_file "Comparison & Mean 1 & Mean 2 & Difference & P-value \\" _n
+file write t_tests_file "\hline" _n
 
-file open t_tests_file using "t_tests_results.tex", write replace
-file write t_tests_file "{\begin{table}[htbp] \centering \begin{tabular}{|l|c|c|c|} \hline"
-file write t_tests_file "Comparison & Mean 1 & Mean 2 & Difference & p-value \\\\ \hline" 
-
-local rownames "100m-250m 250m-500m 500m-750m 750m-1000m 1000m-1250m 1250m-1500m 1500m-1750m 1750m-2000m 2000m-2250m"
-
+local rownames 250m-500m 500m-750m 750m-1000m 1000m-1250m 1250m-1500m 1500m-1750m 1750m-2000m 2000m-2250m
 local i = 1
 foreach row of local rownames {
-    * Write the row to the LaTeX file
-    file write t_tests_file "`row' & " 
-    file write t_tests_file matrix(t_tests)[`i',1] & " & " 
-    file write t_tests_file matrix(t_tests)[`i',2] & " & " 
-    file write t_tests_file matrix(t_tests)[`i',3] & " & " 
-    file write t_tests_file matrix(t_tests)[`i',4] & " \\\\ \hline" 
-
-    * Increment row index
-    local i = `i' + 1
+	local mean1 = string(el(t_tests, `i', 1), "%9.1f")
+	local mean2 = string(el(t_tests, `i', 2), "%9.1f")
+	local diff  = string(el(t_tests, `i', 3), "%9.1f")
+	local pval  = string(el(t_tests, `i', 4), "%9.3f")
+	file write t_tests_file "`row' & `mean1' & `mean2' & `diff' & `pval' \\" _n
+	local i = `i' + 1
 }
 
-file write t_tests_file "\end{tabular} \end{table}"
+file write t_tests_file "\hline" _n
+file write t_tests_file "\end{tabular}" _n
+file write t_tests_file "\caption{\textbf{One-sample T-test Results by Distance Ring}}" _n
+file write t_tests_file "\label{tab:ttests}" _n
+file write t_tests_file "\end{table}" _n
 file close t_tests_file
- * This should export the file in a tex file, but am having some issues. I will come back to this. 
 
+** End of New try
+ 
 *** Clear any matrices stores in Stata
 
 matrix drop _all
@@ -278,8 +295,8 @@ foreach var of local groups {
    display "CI Upper: `ci_upper'"
    
    *** Store in matrices
-   matrix lci[`row_index', 1] = `ci_lower'
-   matrix uci[`row_index', 1] = `ci_upper'
+   matrix lci[`row_index',1] = `ci_lower'
+   matrix uci[`row_index',1] = `ci_upper'
    
    *** Increment row index
    local row_index = `row_index' + 1
@@ -298,15 +315,17 @@ reshape long dist_group_, i(near_fid) j(Distance)
 
 collapse (mean) dist_group_, by(Distance)
 
+rename dist_group mean
+
 *** Turn the two matrices into seperate variables 
 
 svmat lci, names(lci)
 svmat uci, names(uci)
 
+rename mean Mean 
 
-*** Create a bar graph with confidence interval data on it
-
-graph twoway (bar dist_group_ Distance, lwidth(2)) (rcap lci1 uci1 Distance, lcolor(black)),  ytitle(Mean Calls, angle(horizontal)) legend(label (1 "Mean Calls per Km^2") label(2 "Confidence Intervals"))
+*** Plot the graph
+graph twoway (bar Mean Distance, lwidth(02) color(navy)) (rcap lci1 uci1 Distance, lcolor(black) lwidth(thin)), ytitle("Mean Calls per Km²", angle(horizontal))  xtitle("Distance Groups (m)", size(medsmall))  legend(label (1 "Mean Calls per Km^2") label(2 "95% Confidence Intervals")) graphregion(color(white)) title("Mean Calls by Distance Group with 95% CIs", size(medium))
 
 *** Export Graph
 graph export "Visual Graphics\CI_Graph.png", replace
@@ -460,27 +479,27 @@ matrix t_tests[4, 4] = r(p)     // p-value
 matrix colnames t_tests = "Lower Ring Mean" "Upper Ring Mean" "Mean Difference" "P-Value"
 matrix rownames t_tests = "500m-1000m" "1000m-1500m" "1500m-2000m" "2000m-2500m"
 
-file open t_tests_file using "t_tests_results.tex", write replace
+file open t_tests_file using "larger_t_tests_results.tex", write replace
 file write t_tests_file "{\begin{table}[htbp] \centering \begin{tabular}{|l|c|c|c|} \hline"
 file write t_tests_file "Comparison & Mean 1 & Mean 2 & Difference & p-value \\\\ \hline" 
 
-local rownames "100m-250m 250m-500m 500m-750m 750m-1000m 1000m-1250m 1250m-1500m 1500m-1750m 1750m-2000m 2000m-2250m"
+local rownames 500m-1000m 1000m-1500m 1500m-2000m 2000m-2500m
 
 local i = 1
 foreach row of local rownames {
     * Write the row to the LaTeX file
-    file write t_tests_file "`row' & " 
-    file write t_tests_file matrix(t_tests)[`i',1] & " & " 
-    file write t_tests_file matrix(t_tests)[`i',2] & " & " 
-    file write t_tests_file matrix(t_tests)[`i',3] & " & " 
-    file write t_tests_file matrix(t_tests)[`i',4] & " \\\\ \hline" 
+    file write larger_t_tests_file "`row' & " 
+    file write larger_t_tests_file matrix(t_tests)[`i',1] & " & " 
+    file write larger_t_tests_file matrix(t_tests)[`i',2] & " & " 
+    file write larger_t_tests_file matrix(t_tests)[`i',3] & " & " 
+    file write larger_t_tests_file matrix(t_tests)[`i',4] & " \\\\ \hline" 
 
     * Increment row index
     local i = `i' + 1
 }
 
-file write t_tests_file "\end{tabular} \end{table}"
-file close t_tests_file
+file write larger_t_tests_file "\end{tabular} \end{table}"
+file close larger_t_tests_file
  * This should export the file in a tex file, but am having some issues. I will come back to this. 
 
 
