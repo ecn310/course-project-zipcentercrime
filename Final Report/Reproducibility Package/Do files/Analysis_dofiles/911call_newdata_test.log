@@ -1,0 +1,274 @@
+------------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\regaudre\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Final Report\Repr
+> oducibility Package\Do files\Analysis_dofiles\911call_newdata_test.log
+  log type:  text
+ opened on:  22 Apr 2025, 13:38:01
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. import delimited "update_calls_arcgisFile"
+(encoding automatically selected: UTF-8)
+(2 vars, 254,779 obs)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. drop if near_dist == -1
+(82,598 observations deleted)
+
+. 
+. ssc install outreg2
+checking outreg2 consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. ssc install estout
+checking estout consistency and verifying not already installed...
+all files already exist and are up to date.
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. gen dist_group = 500 if near_dist <= 500
+(148,618 missing values generated)
+
+. replace dist_group = 1000 if (near_dist <= 1000 & near_dist >500)
+(45,011 real changes made)
+
+. replace dist_group = 1500 if (near_dist <= 1500 & near_dist >1000)
+(45,264 real changes made)
+
+. replace dist_group = 2000 if (near_dist <= 2000 & near_dist >1500)
+(33,805 real changes made)
+
+. replace dist_group = 2500 if (near_dist <= 2500 & near_dist >2000)
+(24,538 real changes made)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. gen dist_group2 = 0 if near_dist <= 500 
+(148,618 missing values generated)
+
+. replace dist_group2 = 500 if (near_dist <= 1000 & near_dist >500)
+(45,011 real changes made)
+
+. replace dist_group2 = 1000 if (near_dist <= 1500 & near_dist >1000)
+(45,264 real changes made)
+
+. replace dist_group2 = 1500 if (near_dist <= 2000 & near_dist >1500)
+(33,805 real changes made)
+
+. replace dist_group2 = 2000 if (near_dist <= 2500 & near_dist >2000)
+(24,538 real changes made)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. egen freq = count(near_dist), by(dist_group)
+
+. 
+. ***Then, we found the area for each respective group
+. 
+. gen area = (c(pi) * dist_group^2) - (c(pi) * dist_group2^2) 
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. gen CallxArea = freq / area
+
+. 
+. ***these commands create new seperate variables for each distance group 
+. gen dist_group_500 = 1 if near_dist <= 500
+(148,618 missing values generated)
+
+. gen dist_group_1000 = 1 if (near_dist <= 1000 & near_dist >500)
+(127,170 missing values generated)
+
+. gen dist_group_1500 = 1 if (near_dist <= 1500 & near_dist >1000)
+(126,917 missing values generated)
+
+. gen dist_group_2000 = 1 if (near_dist <= 2000 & near_dist >1500)
+(138,376 missing values generated)
+
+. gen dist_group_2500 = 1 if (near_dist <= 2500 & near_dist >2000)
+(147,643 missing values generated)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. collapse (count) dist_group_500 dist_group_1000 dist_group_1500 dist_group_2000 dist_group_2500, by(near_fid)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. replace dist_group_500 = (dist_group_500 / 589048.6225) * 1000000
+variable dist_group_500 was long now double
+(39 real changes made)
+
+. replace dist_group_1000 = (dist_group_1000 / 1374446.786) * 1000000
+variable dist_group_1000 was long now double
+(43 real changes made)
+
+. replace dist_group_1500 = (dist_group_1500 / 2159844.949) * 1000000
+variable dist_group_1500 was long now double
+(42 real changes made)
+
+. replace dist_group_2000 = (dist_group_2000 / 2945243.113) * 1000000
+variable dist_group_2000 was long now double
+(38 real changes made)
+
+. replace dist_group_2500 = (dist_group_2500 / 3730641.276) * 1000000
+variable dist_group_2500 was long now double
+(30 real changes made)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. egen row_sum = rowtotal(dist_group_500 dist_group_1000 dist_group_1500 dist_group_2000 dist_group_2500)
+
+. summarize row_sum, meanonly
+
+. display r(sum)
+111762.55
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. local vars dist_group_500 dist_group_1000 dist_group_1500 dist_group_2000 dist_group_2500
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. matrix Summary_Results_2 = J(1, 6, .)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. foreach var of local vars {
+  2.    
+.    *** This is to summarize each variable 
+.     summarize `var', detail
+  3.     
+.     *** This will save each of the needed summary stats from the Data
+. 
+.     local N = r(N)
+  4.     local mean = r(mean)
+  5.     local sd = r(sd)
+  6.     local sum = r(sum)
+  7.     local min = r(min)
+  8.     local max = r(max)
+  9.     
+.         *** This adds the captured data into the Matrix
+.     
+.     matrix Summary_Results_2 = Summary_Results_2 \ (`N', `mean', `sd', `sum', `min', `max')
+ 10.         }
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. matrix colnames Summary_Results_2 = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+
+. 
+. *** Delete empty row from matrix
+. 
+. matrix Summary_Results_2 = Summary_Results_2[2..6, 1..colsof(Summary_Results_2)]
+conformability error
+r(503);
+
+end of do-file
+
+r(503);
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. matrix Summary_Results_2 = J(1, 6, .)
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. foreach var of local vars {
+  2.    
+.    *** This is to summarize each variable 
+.     summarize `var', detail
+  3.     
+.     *** This will save each of the needed summary stats from the Data
+. 
+.     local N = r(N)
+  4.     local mean = r(mean)
+  5.     local sd = r(sd)
+  6.     local sum = r(sum)
+  7.     local min = r(min)
+  8.     local max = r(max)
+  9.     
+.         *** This adds the captured data into the Matrix
+.     
+.     matrix Summary_Results_2 = Summary_Results_2 \ (`N', `mean', `sd', `sum', `min', `max')
+ 10.         }
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. matrix colnames Summary_Results_2 = "Obs" "Mean" "Std. dev." "Sum" "Min" "Max"
+
+. 
+end of do-file
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. matrix Summary_Results_2 = Summary_Results_2[2..6, 1..colsof(Summary_Results_2)]
+conformability error
+r(503);
+
+end of do-file
+
+r(503);
+
+. do "C:\Users\regaudre\AppData\Local\Temp\STD2dfc_000000.tmp"
+
+. matrix rownames Summary_Results_2 = "500m" "1000m" "1500m" "2000m" "2500m"
+conformability error
+r(503);
+
+end of do-file
+
+r(503);
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\regaudre\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Final Report\Repr
+> oducibility Package\Do files\Analysis_dofiles\911call_newdata_test.log
+  log type:  text
+ closed on:  22 Apr 2025, 14:00:26
+------------------------------------------------------------------------------------------------------------------------------
