@@ -1,7 +1,7 @@
 
 *** First, connect the pathway to where all these files are stored
 
-cd "C:\Users\regaudre\OneDrive - Syracuse University\documents\GitHub\course-project-zipcentercrime\Downloaded_cals"
+cd "C:\Users\regaudre\OneDrive - Syracuse University\documents\GitHub\course-project-zipcentercrime\Downloaded_calls"
 
 *** Then, start log 
 
@@ -139,7 +139,7 @@ matrix list Summary_Results
 
 *** Export table
 
-esttab matrix(Summary_Results) using "Visual Graphics\Distance_250_SummaryStats.tex", replaceover
+esttab matrix(Summary_Results) using "Visual_Graphics_Downloaded_calls\Distance_250_SummaryStats.tex", replace
 
 *** Do one-sample t-tests for every adjacent ring
 
@@ -214,7 +214,7 @@ matrix colnames t_tests = "Lower Ring Mean" "Upper Ring Mean" "Mean Difference" 
 matrix rownames t_tests = "250m-500m" "500m-750m" "750m-1000m" "1000m-1250m" "1250m-1500m" "1500m-1750m" "1750m-2000m" "2000m-2250m"
  
  **Now, put the matrix into a .tex file named t_tests 
-file open t_tests_file using "Visual Graphics\250_t_tests.tex", write replace
+file open t_tests_file using "Visual_Graphics_Downloaded_calls\250_t_tests.tex", write replace
 file write t_tests_file "\begin{table}[htbp]" _n
 file write t_tests_file "\centering" _n
 file write t_tests_file "\begin{tabular}{l|c c c c}" _n
