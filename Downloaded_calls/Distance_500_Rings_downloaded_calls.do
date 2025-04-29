@@ -5,7 +5,7 @@
 cd "C:\Users\regaudre\OneDrive - Syracuse University\documents\GitHub\course-project-zipcentercrime\Downloaded_calls"
 *** Then, start log 
 
-log using "C:\Users\regaudre\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\911call_newdata_test.log", replace
+log using "C:\Users\regaudre\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Downloaded_calls\Distances_by_500.log", replace
 
 *** Then, import the dataset
 
@@ -118,7 +118,7 @@ matrix rownames Summary_Results_2 = "500m" "1000m" "1500m" "2000m" "2500m"
 matrix list Summary_Results_2
 
 *** Export table
-esttab matrix(Summary_Results_2) using "Visual_Graphics_Downloaded_calls\Dist_4_Summary_Stats.tex", replace
+esttab matrix(Summary_Results_2) using "Visual_Graphics_Downloaded_calls\Distance_500_SummaryStats.tex", replace
 
 *** Do one-sample t-tests for every adjacent ring
 
@@ -158,7 +158,7 @@ matrix colnames t_tests = "Lower Ring Mean" "Upper Ring Mean" "Mean Difference" 
 matrix rownames t_tests = "500m-1000m" "1000m-1500m" "1500m-2000m" "2000m-2500m"
 
 * Now, craete the tex file we will put the t-tests in 
-file open t_tests_four using "Visual_Graphics_Downloaded_calls\4_t_tests_results.tex", write replace
+file open t_tests_four using "Visual_Graphics_Downloaded_calls\500_t_tests.tex", write replace
 file write t_tests_four "\begin{table}[htbp]" _n
 file write t_tests_four "\centering" _n
 file write t_tests_four "\begin{tabular}{l|c c c c}" _n
@@ -273,7 +273,7 @@ rename mean Mean
 graph twoway (bar Mean Distance, lwidth(02) color(navy)) (rcap lci1 uci1 Distance, lcolor(black) lwidth(thin)), ytitle("Mean Calls per Km²", angle(horizontal))  xtitle("Distance Groups (m)", size(medsmall))  legend(label (1 "Mean Calls per Km^2") label(2 "95% Confidence Intervals")) graphregion(color(white)) title("Mean Calls by Distance Group with 95% CIs", size(medium))
 
 *** Export Graph
-graph export "Visual_Graphics_Downloaded_calls\2CI_Graph.png", replace name(Graph)
+graph export "Visual_Graphics_Downloaded_calls\500_CI_Graph.png", replace name(Graph)
 
 
 log close
