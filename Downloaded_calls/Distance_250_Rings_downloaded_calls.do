@@ -330,7 +330,7 @@ rename mean Mean
 graph twoway (bar Mean Distance, lwidth(02) color(navy)) (rcap lci1 uci1 Distance, lcolor(black) lwidth(thin)), ytitle("Mean Calls per Km²", angle(horizontal))  xtitle("Distance Groups (m)", size(medsmall))  legend(label (1 "Mean Calls per Km^2") label(2 "95% Confidence Intervals")) graphregion(color(white)) title("Mean Calls by Distance Group with 95% CIs", size(medium))
 
 *** Export Graph
-graph export "Visual_Graphics_DOwnloaded_calls\250_CI_Graph.png", replace
+graph export "Visual_Graphics_Downloaded_calls\250_CI_Graph.png", replace
 
 
 log close
