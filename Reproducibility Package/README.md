@@ -4,11 +4,17 @@ Everything below will be run using a combination of Stata 18 and ArcGIS Pro.
 # Sourcing the Data 
 Using these steps you will be able to access all of the raw data used for our analysis.
 ### 911 Calls
+Follow this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/911Call_data_testing.R) or click Downloaded_calls/911Call_data_testing.R to see our comparison analysis between the original data set of 911 Calls sent to us directly by Prof. Deza compared to the data set we downloaded directly from the Detroit Open Data Portal. To run this file change the working directory in line 9 to where both 911 call data sets were downloaded to on your local machine
+#### Original 911 Call Data Set
 1. Follow [THIS link](https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&dl=0) and download the calls_final.csv file to get the raw 911 Call data.
 2. Select the download option at the top of the page.
 3. A menu will apear to select the format for the data. Select CSV to download the data as a .csv file.
+#### Downloaded 911 Call Data Set
+1. The data set can be downloaded off of the Detroit Open Data Portal Website through [this link](https://data.detroitmi.gov/datasets/5868975fa1e7444cae8ca5240fc77c5b_0/explore?location=42.663161%2C-83.705810%2C9.84). (Download as a .csv file)
+2. The exact file we used to do analysis on the 911 calls we downloaded from the Open Data Portal can be accessed through [this link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/RawData/Downloaded_911Calls_exact_data_set.md)
 ### Treatment Centers
 1. Follow [THIS link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/RawData/detroit_samhsa_sud_2015_2021.dta) to the raw treatment center data and download the raw data file.
+
 # Limiting Data Set
 Follow these steps to limit the data sets to data from 2017.
 ### 2017 911 Calls
@@ -22,6 +28,10 @@ Follow these steps to limit the data sets to data from 2017.
 3. Change the working directory in line 9 to where the calls_final.csv file is stored locally on your computer.
 4. Running the do file will create a data set comprised of only 911 calls made in 2017 that are related to crimes.
 5. Please note that this do file uses the raw 911 call data set, not the 2017 911 call data set.
+### 2017 Downloaded 911 Calls
+1. Open create_2017_downloaded_calls.R through [this link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/create_2017_downloaded_calls.R) or by opening Downloaded_calls/create_2017_downloaded_calls.R
+2. Change the working directory in line 11 to where the where you downloaded the 911 Call Data set from the Detroit Open Data Portal
+3. Running this file will create a data set comprosed only of 911 calls made in 2017 from this data set
 ### 2017 Treatment Centers
 1. Open create_2017_treatment_center_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Treatment%20Center%20by%20year/create_2017_treatment_center_data.do) or by clicking Do Files\Treatment Center by year\create_2017_treatment_center_data.do.
 2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
@@ -69,9 +79,9 @@ near dist: This is the distance in meters the 911 call observation is from the S
 2. Select Expot Map option
 3. Change the file type to jpeg
 4. Set a name and select a location to store your file
-5. Cick Export
+5. Click Export
 
-Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime.
+Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime. Again, repeart the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Downloaded_911Calls.csv file to geocode data downloaded directly from the Detroit Open Data Portal which we titled downloaded_calls_arcgisFile.csv 
 
 # Summary Statistics
 ### Raw Data 
@@ -91,3 +101,11 @@ Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using
 2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
 3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
 4. This do file has all of our data analysis work done from the 2017 data for onyl crime related 911 calls exported from ArcGIS Pro including making the graphs.
+
+## Downloaded 911 Calls
+1. Open Distance_250_Rings_downloaded_calls.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/Distance_250_Rings_downloaded_calls.do) or by clicking Downloaded_calls/Distance_250_Rings_downloaded_calls.do
+3. Edit the working directory in line 4 to the place where this repository is stored locally on your computer.
+5. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
+6. Open Distance_500_rings.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Distance_500_Rings.do) or by clicking Downloaded_Calls\2017_CrimeData_Do.do.
+3. Edit the working directory in line 5 to the place where this repository is stored locally on your computer.
+4. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
