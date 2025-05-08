@@ -5,7 +5,7 @@
 cd "C:\Users\regaudre\OneDrive - Syracuse University\documents\GitHub\course-project-zipcentercrime\Downloaded_calls"
 *** Then, start log 
 
-log using "C:\Users\regaudre\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Downloaded_calls\Distances_by_500.log", replace
+log using "Log_Files\Distances_by_500.log", text replace
 
 *** Then, import the dataset
 

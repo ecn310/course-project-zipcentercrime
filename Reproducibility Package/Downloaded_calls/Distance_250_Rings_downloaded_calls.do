@@ -5,7 +5,7 @@ cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project
 
 *** Then, start log 
 
-log using "C:\Users\sgortizh\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility Package\Do files\Analysis_dofiles\Distance_Rings_250.log", replace
+log using "Log_Files\Distance_Rings_250.log", text replace
 
 *** Then, import the dataset
 
