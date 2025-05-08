@@ -1,5 +1,5 @@
 # Full Reproduibility ReadMe: ZipCenterCrime
-Everything below will be run using a combination of Stata 18 and ArcGIS Pro.
+Everything below will be run using a combination of Stata 18, R, and ArcGIS Pro.
 
 # Sourcing the Data 
 Using these steps you will be able to access all of the raw data used for our analysis.
