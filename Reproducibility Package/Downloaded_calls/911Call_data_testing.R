@@ -6,6 +6,7 @@ library(tidyverse)
 library(readxl)
 library(arsenal)
 
+setwd("C://Users/rachelgaudreau/")
 
 calls <- read_csv("Downloads/calls_final.csv")
 View(calls)
@@ -95,7 +96,7 @@ View(calls_summary)
 total_calls <- nrow(calls)
 # Calculate the number of calls which appear in each zip code per total number of 911 calls from the original data set
 calls_summary <- calls_summary %>%
-  mutate(proportion = count / total_updated_calls)
+  mutate(proportion = count / total_calls)
 
 # Create Summary of the new 911 Call data set zip codes
 # Create Data Frame to display the number of times a zip code appears in the new 911 Call data set
@@ -133,7 +134,7 @@ View(calls_summary_description)
 total_calls <- nrow(calls)
 # Calculate the number of calls which appear in each zip code per total number of 911 calls from the original data set
 calls_summary_description <- calls_summary_description %>%
-  mutate(proportion = count / total_updated_calls)
+  mutate(proportion = count / total_calls)
 
 # Create Summary of the new 911 Call data set zip codes
 # Create Data Frame to display the number of times a zip code appears in the new 911 Call data set
