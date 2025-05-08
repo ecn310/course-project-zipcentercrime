@@ -5,7 +5,7 @@
 > bility Package\Downloaded_calls\Log_Files\Distance_Rings
 > _250.log
   log type:  text
- opened on:   8 May 2025, 00:00:39
+ opened on:   8 May 2025, 00:03:57
 
 . 
 . *** Then, import the dataset
@@ -590,9 +590,6 @@ Summary_Results[10,6]
 . 
 . esttab matrix(Summary_Results) using "Visual_Graphics_Do
 > wnloaded_calls\250_Summary_Stats.tex", replace
-(file
-    Visual_Graphics_Downloaded_calls\250_Summary_Stats.t
-    > ex not found)
 (output written to Visual_Graphics_Downloaded_calls\250_Su
 > mmary_Stats.tex)
 
@@ -1563,13 +1560,13 @@ dist_group_250 dist_group_500 ... dist_group_2500->dist_gr
 
 . 
 . *** Plot the graph
-. graph twoway (bar Mean Distance, lwidth(02) color(ltblue
-> %60)) (rcap lci1 uci1 Distance, lcolor(black) lwidth(thi
-> n)), ytitle("Mean Calls per Km²", angle(horizontal))  xt
-> itle("Distance Groups (m)", size(medsmall))  legend(labe
-> l (1 "Mean Calls per Km^2") label(2 "95% Confidence Inte
-> rvals")) graphregion(color(white)) title("Mean Calls by 
-> Distance Group with 95% CIs", size(medium))
+. graph twoway (bar Mean Distance, lwidth(02) color(blue%4
+> 0)) (rcap lci1 uci1 Distance, lcolor(black) lwidth(thin)
+> ), ytitle("Mean Calls per Km²", angle(horizontal))  xtit
+> le("Distance Groups (m)", size(medsmall))  legend(label 
+> (1 "Mean Calls per Km^2") label(2 "95% Confidence Interv
+> als")) graphregion(color(white)) title("Mean Calls by Di
+> stance Group with 95% CIs", size(medium))
 
 . 
 . *** Export Graph
@@ -1587,5 +1584,5 @@ file Visual_Graphics_Downloaded_calls\250_CI_Graph.png
 > bility Package\Downloaded_calls\Log_Files\Distance_Rings
 > _250.log
   log type:  text
- closed on:   8 May 2025, 00:00:55
+ closed on:   8 May 2025, 00:04:01
 ----------------------------------------------------------
