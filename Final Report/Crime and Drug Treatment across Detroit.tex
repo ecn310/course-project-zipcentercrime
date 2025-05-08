@@ -23,7 +23,7 @@
 \usepackage{booktabs} 
 \usepackage[margin=1in]{geometry} 
 \usepackage{float}
-
+\usepackage{needspace}
 
 
 % enable hyperlinks and table of contents
@@ -201,35 +201,30 @@ The results of the t-tests in Table~\ref{tab:ttests_500} support the rejection o
 
 Every p-value in Table~\ref{tab:ttests_500} is smaller than the p-value in Table~\ref{tab:ttests_250}. The first group of Table~\ref{tab:ttests_500} has a weaker significance compared to the latter groups in the table, but this pattern lines up with p-values seen in the 500m-750m and 750m-1000m groups of Table~\ref{tab:ttests_250}. The p-value of group 500m-1000m in table~\ref{tab:ttests_500} is 0.035, just half of the p-value of group 500m-750m in table~\ref{tab:ttests_500}. The overall stronger statistical evidence in the second t-test table could be due to having more observations within each group, enhancing differences in means. This increases the confidence in the significance meaning of a difference in average calls.
 
-\begin{figure}[htbp]
+\begin{figure}[H]
     \centering
 \includegraphics[width=0.75\linewidth]{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/250_CI_Graph.png}
-    \caption{\textbf{Mean Calls per SATC per Distance Group}}
+    \caption{\textbf{Mean Calls per SATC per Distance Group (250 meters)}}
      \label{fig:Figure3}
-     \centering\small{This figure shows mean calls per kilometer squared and 90\% confidence levels. The x-axis consists of the different distance groups used (100m, 250m, 500 m...2500m). Distance measured in meters.}
-    \centering\small{Notes: The y-axis is measured in mean calls per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
+    \centering\small{Notes: This figure shows mean calls per SATC per kilometer squared and 95\% confidence intervals. The x-axis consists of the different distance groups used (500, 1000, 1500, 2000, and 2500). Distance measured in meters. The y-axis is measured in mean calls per SATC per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
 \end{figure}
 
 Figure~\ref{fig:Figure3} represents the mean calls per SATC per kilometer squared by 250-meter distance groups in a bar graph. Figure~\ref{fig:Figure3} uses the same data as Table~\ref{tab:ttests_250}. Figure~\ref{fig:Figure4} represents the mean calls per SATC per square kilometer by 500-meter distance groups in a bar graph. Figure~\ref{fig:Figure4} uses the same data as Table~\ref{tab:ttests_500}. The confidence level of 95\% for mean calls is overlaid on top of their respective distance groups. 
 
 In Figure~\ref{fig:Figure3}, the confidence intervals of 500 meters up until 2,500 meters significantly overlap. The significant overlap is due to the confidence interval of the farther distance group overlapping the mean and the confidence interval of the closer distance group. Since we conducted one-sample t-tests,  and the standard deviations seen in Table~\ref{tabl:Table1} are relatively close together, some overlap is to be expected. However, the large difference between 250 meters and 500 meters could further prove that, at least extremely close to SATCs, there is a significant increase in 911 calls. This indicates that there is some relationship between SATCs and the number of 911 calls extremely close to them, although the relationship may get hazier farther away from SATCs.
 
-The other confidence intervals do have some overlap with the sequential intervals, but not as much. These confidence intervals in Figure~\ref{fig:Figure3} include 100-250 meters, 500-750 meters, 1000-1250 meters, 1250-1500 meters, 1500-1750 meters, 1750-2000 meters, 2000-2250 meters, and 2250-2750 meters. Due to the size of the graph, the last three confidence intervals are hard to visually identify, so looking at the p-values is crucial. 
-
 \begin{figure}[H]
     \centering
 \includegraphics[width=0.75\linewidth]{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_CI_Graph.png}
-    \caption{\textbf{Mean Calls per SATC per distance group}}
+    \caption{\textbf{Mean Calls per SATC per Distance Group (500 meters)}}
     \label{fig:Figure4}
-       {This figure shows mean calls per kilometer squared and 90\% confidence levels. The x-axis consists of the different distance groups used (100m, 250m, 500 m...2500m). Distance measured in meters.}
-    \centering\small{Notes: The y-axis is measured in mean calls per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The calls are a smaller observation pool within total 2017 911 calls. The mean calls are counted to the upper bound of their ring.}
+    \centering\small{Notes: This figure shows mean calls per SATC per kilometer squared and 95\% confidence levels. The x-axis consists of the distance rings, increasing from 250 meters to 2,500 meters in distance. This is by 250 intervals. Distance measured in meters. The y-axis is measured in mean calls per SATC per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
 \end{figure}
 
-Figure~\ref{fig:Figure4} also follows a similar, but less drastic, overlapping of confidence intervals. Since the means of the distance rings are more distance from each other. None of the confidence intervals in Figure~\ref{fig:Figure4} overlap with the means of adjacent distance groups. Since there are more observations for fewer groups, a more robust visual significance is to be expected. However, this figure further supports the strong negative correlation between 911 calls and proximity to SATCs. 
-
+Figure~\ref{fig:Figure4} also follows a similar, but less drastic, overlapping of confidence intervals. Since the means of the distance rings are more distinct, none of the confidence intervals in Figure~\ref{fig:Figure4} overlap with the means of adjacent distance groups. Since there are more observations for fewer groups, a more robust visual significance is to be expected. However, this figure further supports the strong negative correlation between 911 calls and proximity to SATCs. 
 
 %Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
-\break
+
 \section{Discussion}
 \label{sec:discussion}
 
@@ -283,7 +278,7 @@ We originally ran this project using the 911 call dataset Professor Deza gave us
 
 We also performed an analysis of only the crime-related calls. We used the variable call description to identify what calls could be considered to relate to crime. There are 466,219 observations in this subset. The purpose of this analysis is to focus on activities that drugs could cause. The 9-1-1 emergency telephone hotline is used for more than just crimes; it is used for any civil issue classified as an emergency. By focusing only on crime-related calls, we thought we could narrow down the issues to better estimate the impact of SATCs in an area. We theorized that if all calls to emergency services were considered, the results could be diluted by prioritizing areas with higher population densities. These people are not counted because they are unaffected by a SATC. Our analysis of this showed the same statistical patterns, so we conclude that the non-crime related calls don't dilute the where calls are being taken. 
 
-The data files, code, and documentation for this project are found in the zipcentercrime \href{https://github.com/ecn310/course-project-zipcentercrime}{GitHub Repository}. All information and files necessary to reproduce these results can be accessed by this: \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package}{reproducibility package}. The code can be found in the \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/Do%20files}{Do Files Folder}, and access the figures from this the \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/Visual%20Graphics}{Visual Folder}. 
+The data files, code, and documentation for this project are found in the zipcentercrime \href{https://github.com/ecn310/course-project-zipcentercrime}{GitHub Repository}. All information and files necessary to reproduce these results can be accessed by this: \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package}{reproducibility package}. The code can be found in the \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/Downloaded_calls/Do_files}{Do Files Folder}, and access the figures from this the \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/Downloaded_calls/Visual_Graphics_Downloaded_calls}{Visual Folder}. 
 
 Use Stata 18.0 to isolate data to the year 2017 and for the final data analysis. Use ArcGIS Pro to geo-code the call points and SATC points. 
 
