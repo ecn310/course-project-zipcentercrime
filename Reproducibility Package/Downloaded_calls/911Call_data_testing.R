@@ -1,3 +1,4 @@
+## Read needed packages ----
 library(readr)
 library(dplyr)
 library(lubridate)
@@ -6,82 +7,44 @@ library(tidyverse)
 library(readxl)
 library(arsenal)
 
+# Set working directory to where the downloaded 911 call files are stored ----
 setwd("C://Users/rachelgaudreau/")
-
+###  Import the original data set of 911 Calls from Prof. Deza -----
 calls <- read_csv("Downloads/calls_final.csv")
 View(calls)
 
+### Import 911 call data set downloaded from the Detroit Open Data Source ----
 updated_calls <- read_csv("Downloads/Police_Serviced_911_Calls_6235174473015125577.csv")
 View(updated_calls)
 
+# Clean both data sets ----
+
+### Delete unnecessary variables from the original data set----
 calls <- select(calls, -agency, -priority, -callcode, -intaketime, -dispatchtime, -traveltime, -totalresponsetime, -time_on_scene, -totaltime, -block_id, -oid)
 updated_calls <- select(updated_calls, -"Call Source", -Priority, -"Nature Code", -"Call Group", -"Intake Time", -"Dispatch Time", -"Travel Time", -"On Scene Time", -"Total Response Time", -"Total Time", -ESRI_OID)
+### Delete unnecessary variables from the downloaded data set, and rename certain varaibles to improve efficiency ----
 updated_calls <- updated_calls %>%
   rename(priority = Priority)
   rename(calldescription = `Code Description`)
   rename(zip_code = "Zip Code")
+  rename(incident_id = "Incident ID")
 
-# Create Year Variable
+# Create Year Variable ----
+### in the original data set ----
 calls$call_timestamp <- ymd_hms(calls$call_timestamp)  # Convert to datetime format
 calls$date_only <- as.Date(calls$call_timestamp)
 calls$year <- year(calls$call_timestamp)  # Extract the year
-
-matching_calls$call_timestamp <- ymd_hms(matching_calls$call_timestamp)  # Convert to datetime format
-matching_calls$date_only <- as.Date(matching_calls$call_timestamp)
-# Assuming your dataset is named 'updated_calls' and the column is 'Call Time'
-
-# Create year variable in updated_calls
+### in the downloaded data set ----
 updated_calls$`Call Time` <- mdy_hms(updated_calls$`Call Time`)
 updated_calls$year <- year(updated_calls$`Call Time`)
 
-# Filter the dataset to keep only rows where 'year' is 2017
+### Filter the dataset to keep only rows where 'year' is 2017 ----
 updated_calls <- updated_calls %>% filter(year == 2017)
 calls <- calls %>% filter(year == 2017)
 
 
-updated_calls <- updated_calls %>%
-  rename(incident_id = "Incident ID")
-
-merged_calls <- full_join(calls, updated_calls, by = "incident_id")
-View(merged_calls)
-
-matching_calls <- inner_join(calls, updated_calls, by = "incident_id")
-View(matching_calls)
-
-
-comparison_result <- matching_calls$longitude == matching_calls$Longitude
-
-# Check if the two variables are identical across the entire dataset
-identical(matching_calls$longitude, matching_calls$x)
-
-# Find rows where 'variable1' does not match 'variable2'
-non_matching_rows <- matching_calls %>% filter(longitude != Longitude, latitude != Latitude)
-non_matching_rows <- select(non_matching_rows, incident_id, longitude, Longitude, latitude, Latitude, calldescription, `Code Description`)
-
-identical(matching_calls$call_timestamp, matching_calls$`Call Time`)
-identical(matching_calls$calldescription, matching_calls$`Code Description`)
-
-# compare the two dataframes and output a list of all the discrepancies between them
-DDE_output = comparedf(calls, updated_calls)
-discrepancies = diffs(DDE_output)
-
-
-# Find rows in `calls` that are NOT in `updated_calls`
-not_merged <- anti_join(updated_calls, matching_calls)
-
-duplicates <- matching_calls[
-  duplicated(matching_calls[, c("incident_address", "date_only")]) |
-    duplicated(matching_calls[, c("incident_address", "date_only")], fromLast = TRUE),
-]
-
-
-sum(is.na(updated_calls$"Nearest Intersection"))
-
-not_merged_calls <- anti_join(calls, matching_calls)
-
-
-# Ratio Tests 
-## Ratio test of zip codes
+# Ratio Tests ----
+### Ratio test of zip codes ----
 
 options(scipen = 999) #prevent scientific notation
 
@@ -124,7 +87,7 @@ merged_summary <- merged_summary %>%
   mutate(proportion_diff = proportion.x - proportion.y)
 
 
-### Ratio test by call description
+### Ratio test by call description ----
 calls_summary_description <- calls %>%
   group_by(calldescription) %>%
   summarise(count = n()) %>%
@@ -161,7 +124,7 @@ merged_summary_description <- merged_summary_description %>%
 merged_summary_description <- merged_summary_description %>%
   mutate(proportion_diff = proportion.x - proportion.y)
 
-### Ratio test by priority
+### Ratio test by priority ----
 calls_summary_priority <- calls %>%
   group_by(priority) %>%
   summarise(count = n()) %>%
