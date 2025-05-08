@@ -1,11 +1,11 @@
 
 *** First, connect the pathway to where all these files are stored
 
-cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcentercrime\Downloaded_calls"
+cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcentercrime\Reproducibility Package\Downloaded_calls"
 
 *** Then, start log 
 
-log using "C:\Users\sgortizh\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\Distance_Rings_250.log", replace
+log using "C:\Users\sgortizh\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Reproducibility Package\Do files\Analysis_dofiles\Distance_Rings_250.log", replace
 
 *** Then, import the dataset
 
