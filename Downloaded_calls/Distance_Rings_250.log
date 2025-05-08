@@ -1,0 +1,30 @@
+----------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\sgortizh\OneDrive - Syracuse Univers
+> ity\EconResearch\course-project-zipcentercrime\Downloade
+> d_calls\Distance_Rings_250.log
+  log type:  text
+ opened on:   7 May 2025, 22:48:19
+
+. 
+. *** Then, import the dataset
+. 
+. import delimited "2017_Downloaded_911Calls.csv"
+file 2017_Downloaded_911Calls.csv not found
+r(601);
+
+end of do-file
+
+r(601);
+
+. do "C:\Users\sgortizh\AppData\Local\Temp\STD4920_000000.
+> tmp"
+
+. import delimited "update_calls_arcgisFile.csv"
+file update_calls_arcgisFile.csv not found
+r(601);
+
+end of do-file
+
+r(601);
+

@@ -5,11 +5,12 @@ cd "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project
 
 *** Then, start log 
 
-log using "C:\Users\sgortizh\OneDrive - Syracuse University\Documents\GitHub\course-project-zipcentercrime\Final Report\Reproducibility Package\Do files\Analysis_dofiles\Distance_Rings_250.log", replace
+log using "C:\Users\sgortizh\OneDrive - Syracuse University\EconResearch\course-project-zipcentercrime\Downloaded_calls\Distance_Rings_250.log", replace
 
 *** Then, import the dataset
 
-import delimited "update_calls_arcgisFile"
+import delimited "update_calls_arcgisFile.csv"
+
  
 *** Then, drop any values that were further than 2500 meters from any treatment center
 
