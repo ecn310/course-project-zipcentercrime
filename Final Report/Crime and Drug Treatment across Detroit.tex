@@ -100,7 +100,9 @@ This data comes from the City of Detroit Open Data Portal's   \href{https://data
 
 We isolated our data from Police Serviced 911 Calls to one year, 2017, so we could perform cross-sectional analysis. There are 620,359 observations in 2017 alone. We chose observations from 2017 since the year a) overlaps with the second set of data and b) is before COVID-19, where crime rate statistics shifted in general \citealp{covid_and_crime}. This is to eliminate COVID-19 effects from affecting our data analysis. Years 2016, 2018, and 2019 could also work for cross-sectional analysis, but for simplicity, we only analyze one year in this report. Cross-sectional analysis should be applied to more years in the future. The data includes latitude and longitude variables, which we use to geocode each call to a single point in space. The longitudes and latitudes of just 911 calls in 2017 are geo-coded in Figure~\ref{fig:Figure2}. They are color-coded green. 
 
-We also perform an analysis of only the crime-related calls. We used the variable call description to identify what calls could be considered to relate to crime. There are 466,219 observations in this subset. The purpose of this analysis is to focus on activities that drugs could cause. The 9-1-1 emergency telephone hotline is used for more than just crimes; it is used for any civil issue classified as an emergency. By focusing only on crime related calls, we narrow down the issues to better estimate the impact of SATCs in an area. We theorized that if all calls to emergency services were considered, the results could be diluted by prioritizing areas with higher population densities. These people are not counted because they are unaffected by a SATC.
+The original 911 call dataset we analyzed had 620,359 observations, with 415,216 observations usable for analysis, since those points fell within at least one of our distance rings. However, when we went back to the City of Detroit Open Portal website, the corresponding Police Serviced 991 Calls dataset had less observations. The new dataset had 254,779 usable 911 calls.  We look at the data for these companies and conclude that calls from specific non-criminal categories were omitted on the more recently updated website. The geographical locations of the 2017 911 calls held similar proportional patterns, ruling out geographical reasons that might alter data analysis. Since the omitted calls were non-criminal categories, and geo-spatial proportions hold true, we believe that our results will be robust despite smaller dataset to analyze. 
+
+We also perform an analysis of only the crime-related calls. We used the variable call description to identify what calls could be considered to relate to crime. There are 466,219 observations in this subset. The purpose of this analysis is to focus on activities that drugs could cause. The 9-1-1 emergency telephone hotline is used for more than just crimes; it is used for any civil issue classified as an emergency. By focusing only on crime-related calls, we narrow down the issues to better estimate the impact of SATCs in an area. We theorized that if all calls to emergency services were considered, the results could be diluted by prioritizing areas with higher population densities. These people are not counted because they are unaffected by a SATC.
 
 \subsection{Substance Abuse Treatment Centers (SATCs) in Detroit Area (Dataset 2)}
 
@@ -138,13 +140,12 @@ This data is from the Substance Abuse and Mental Health Services Administration 
 
 We use layered data sets to map the 911 calls and SATC locations. We then create distance rings, referred to as distance groups, which are visualized in Figure~\ref{fig:Figure1}, to perform our analysis. After, we also normalize the data to account for differences in total area of a distance group that may alter results. We did this by dividing the total count of 911 calls in each distance group by their respective areas in square meters.
 
-We created concentric rings around each SATC. Each 911 point falls within one circle for a given treatment center.  The circles are referred to as a distance rings or distance groups. Each 911 point is  counted towards the SATC in its circle's center. If the distance rings overlap each other, thereby overlapping the 911 calls it can be counted under, we count the data point only once and towards the SATC it is closer to. Our data is organized by SATC. There are 620,359 observations in total, but only 415,216 observations fall within at least one of our distance rings. Thus, we only analyze the 415,216 calls. 
-
+We created concentric rings around each SATC. Each 911 point falls within one circle for a given treatment center.  The circles are referred to as a distance rings or distance groups. Each 911 point is counted towards the SATC in its circle's center. If the distance rings overlap each other, thereby overlapping the 911 calls it can be counted under, we count the data point only once and towards the SATC it is closer to. Our data is organized by SATC. We measured call points up to 2,500 meters away from a SATC. With this parameter, we analyze a total of 254,779 observations in 2017. We analyze the calls twice. First, we isolate and analyze 911 calls by 250-meter buckets. Then we conduct the same experiment, but with the observations organized by 500-meter concentric rings. This is to see if our resulting  relationships are robust or not. 
 \begin{table}[h]
 \centering
 \scalebox{0.8}{
 \centering
-\input{Final Report/Reproducibility Package/Visual Graphics/New_Call_Summary_Stats}
+\input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/250_Summary_Stats}
 }
 \caption{\textbf{Summary Statistics of 2017 Calls in 250 meter intervals}}
 \label{tabl:Table}
@@ -153,10 +154,9 @@ We created concentric rings around each SATC. Each 911 point falls within one ci
 
 \begin{table}[h]
 \centering
-\scalebox{0.8}{
+\scalebox{0.8}
 \centering
-\input{Final Report/Reproducibility Package/Visual Graphics/Dist_4_Summary_Stats}
-}
+\input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_Summary_Stats}
 \caption{\textbf{Summary Statistics of 2017 Calls in 500 meter intervals}}
 \label{tabl:Table}
 \centering\textit{In this table, we show the summary statistics of all 2017 Detroit 911 calls by distance group per substance abuse treatment center in the area. There are 11 distance groups, or "rings", ranging 500 meters apart from each other until 2500 meters in 500 meter intervals. Counts are normalized by the area of their rings, measured in kilometers squared. }
@@ -187,10 +187,11 @@ This paper hypothesizes that as the distance from a SATC facility increases, the
 
 We conduct two pairwise one-sample t-tests to examine the statistical likelihood that one distance ring has a greater mean number of calls per SATC than the next larger ring. The first set of pairwise comparisons are in Table~\ref{tabl:Table1}. These one-sample t-tests examine the mean calls per SATC between each distance adjacent distance group for all 2017 calls. The mean calls are normalized by the ring area. 
 
-\input{Final Report/Reproducibility Package/Visual Graphics/t_tests_results}
+\input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/250_t_tests}
+
 
 The results of the majority of one sample t-tests in Table~\ref{tabl:Table1} support the rejection of the null hypothesis for eight of the one-sampled t-tests. Five of the paired t-tests exhibit a p-value less than 0.01, indicating statistical significance between these sequential distance rings. In addition, two of the tests show p-values less than 0.05, and one test presents a p-value less than 0.10. These are still statistically significant, although less strong than the groups mentioned above. 
-\input{Final Report/Reproducibility Package/Visual Graphics/4_t_tests_results}
+\input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_t_tests}
 
 For two of the one-sample t-tests, we cannot reject the null hypothesis as the null hypothesis value falls within the 90\% confidence interval. The 250-500 meter and 750-1000 meter ring tests exhibit p-values of 0.491 and 0.392, respectively. These high p-values indicate there is little evidence that the mean values of the distance rings are statistically significant. These results could be due to smaller mean differences, as seen in the column "Difference". Smaller difference values might mean that the data doesn't vary enough to make a meaningful difference. Having larger data samples might smooth out this issue. However, the lack of significance found could be caused by the range of distance parameters chosen. A change of distance of 250 meters might not be enough of a geo-spatial distance to properly isolate and identify distance trends around the SATC.
 
@@ -204,7 +205,7 @@ With the exception of the 100-250 meter group (p-value change from 0.056 to 0.04
 
 \begin{figure}[htbp]
     \centering
-\includegraphics[width=0.75\linewidth]{Reproducibility Package/Visual Graphics/CI_Graph.png}
+\includegraphics[width=0.75\linewidth]{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/250_CI_Graph.png}
     \caption{Mean Calls per SATC per distance group}
      \label{fig:Figure3}
      \textit{This figure shows mean calls per kilometer squared and 90\% confidence levels. The x-axis consists of the different distance groups used (100m, 250m, 500 m...2500m). Distance measured in meters.}
@@ -214,7 +215,7 @@ With the exception of the 100-250 meter group (p-value change from 0.056 to 0.04
 
 \begin{figure}[htbp]
     \centering
-\includegraphics[width=0.75\linewidth]{Reproducibility Package/Visual Graphics/Crime_CI_Graph.png}
+\includegraphics[width=0.75\linewidth]{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_CI_Graph.png}
     \caption{Mean Crime Calls per SATC per distance group}
     \label{fig:Figure4}
        {This figure shows mean crime calls per kilometer squared and 90\% confidence levels. The x-axis consists of the different distance groups used (100m, 250m, 500 m...2500m). Distance measured in meters.}
@@ -227,7 +228,7 @@ The confidence intervals of 250-500 meters and 750-1000 meters significantly ove
 
 \begin{table}[h!]
 \begin{center}
-\input{Reproducibility Package/Visual Graphics/Crime_t_test}
+\input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_t_tests}
 \end{center}
 
 
@@ -292,6 +293,8 @@ Our replication package:
 We originally ran this project using the 911 call dataset Professor Deza gave us. She told us where to find the original off of the City of Detroit's Open Data Portal: \href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{Police Serviced 911 Calls}. This dataset did not match the dataset Professor Deza gave us completely. There were less observations in the 911 call dataset on the website than the dataset she provided us. However, the variables and years were all the same. We ran the analysis with this new dataset, but besides there being less overall oberservations, the statistical trends were the same. The do files in this reproducibility project follow the dataset we accessed online.
 Include where we think the differences stand - specific categorty 
 results are robust to both datasets used 
+
+We also perform an analysis of only the crime-related calls. We used the variable call description to identify what calls could be considered to relate to crime. There are 466,219 observations in this subset. The purpose of this analysis is to focus on activities that drugs could cause. The 9-1-1 emergency telephone hotline is used for more than just crimes; it is used for any civil issue classified as an emergency. By focusing only on crime-related calls, we narrow down the issues to better estimate the impact of SATCs in an area. We theorized that if all calls to emergency services were considered, the results could be diluted by prioritizing areas with higher population densities. These people are not counted because they are unaffected by a SATC.
 
 The data files, code, and documentation for this project are found in the zipcentercrime \href{https://github.com/ecn310/course-project-zipcentercrime}{GitHub Repository}. All information and files necessary to reproduce these results can be accessed by this: \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package}{reproducibility package}. The code can be found in the \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/Do%20files}{Do Files Folder}, and access the figures from this the \href{https://github.com/ecn310/course-project-zipcentercrime/tree/main/Reproducibility%20Package/Visual%20Graphics}{Visual Folder}. 
 
