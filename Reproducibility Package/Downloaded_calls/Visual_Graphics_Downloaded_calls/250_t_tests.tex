@@ -1,0 +1,20 @@
+\begin{table}[htbp]
+\centering
+\begin{tabular}{l|c c c c}
+\hline
+Comparison & Mean 1 & Mean 2 & Difference & P-value \\
+\hline
+250m-500m & 1086.6 & 626.0 & 460.5 & 0.000 \\
+500m-750m & 626.0 & 517.2 & 108.8 & 0.071 \\
+750m-1000m & 517.2 & 392.1 & 125.1 & 0.019 \\
+1000m-1250m & 392.1 & 337.7 & 54.4 & 0.011 \\
+1250m-1500m & 337.7 & 211.1 & 126.7 & 0.000 \\
+1500m-1750m & 211.1 & 165.8 & 45.3 & 0.002 \\
+1750m-2000m & 165.8 & 123.2 & 42.5 & 0.005 \\
+2000m-2250m & 123.2 & 98.2 & 25.0 & 0.007 \\
+\hline
+\end{tabular}
+\caption{\textbf{One-sample T-test Results by 250 meter Distance Rings}}
+\label{tab:ttests_250}  
+\centering\small{Notes: This table shows one sample t-test in the difference of mean 911 calls per SATC per distance group. We chose to do one-sample t-tests instead of two-sample tests due to the large sample sizes we have and the spatial dependent aspect of our data analysis. We test at a confidence level of 95\%. We got the means for each group by first assigning every 911 call a respective distance bucket based on the SATC they are geographically closest to. Distance buckets are spaced 250 meters apart, up to 2,500 meters. Afterward, we divide each ring by its concentric ring's area, then multiply by 1,000,000. We multiplied by 1,000,000 to offset the amount of negative number spaces seen when we divide total calls by their large areas. This way, our total and mean calls per area are not in the negatives so they are easier to see in the table.}
+\end{table}
