@@ -3,17 +3,18 @@ Everything below will be run using a combination of Stata 18, R, and ArcGIS Pro.
 
 # Sourcing the Data 
 Using these steps you will be able to access all of the raw data used for our analysis.
-### 911 Calls
-Follow this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/911Call_data_testing.R) or click Downloaded_calls/911Call_data_testing.R to see our comparison analysis between the original data set of 911 Calls sent to us directly by Prof. Deza compared to the data set we downloaded directly from the Detroit Open Data Portal. To run this file change the working directory in line 9 to where both 911 call data sets were downloaded to on your local machine
-#### Original 911 Call Data Set
-1. Follow [THIS link](https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&dl=0) and download the calls_final.csv file to get the raw 911 Call data.
-2. Select the download option at the top of the page.
-3. A menu will apear to select the format for the data. Select CSV to download the data as a .csv file.
-#### Downloaded 911 Call Data Set
+### Downloaded 911 Call Data Set
 1. The data set can be downloaded off of the Detroit Open Data Portal Website through [this link](https://data.detroitmi.gov/datasets/5868975fa1e7444cae8ca5240fc77c5b_0/explore?location=42.663161%2C-83.705810%2C9.84). (Download as a .csv file)
 2. The exact file we used to do analysis on the 911 calls we downloaded from the Open Data Portal can be accessed through [this link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/RawData/Downloaded_911Calls_exact_data_set.md)
+#### *The below 911 Call Data Sets are not needed for final paper replication.*
+#### 911 Calls
+1. Follow this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/911Call_data_testing.R) or click Downloaded_calls/911Call_data_testing.R to see our comparison analysis between the original data set of 911 Calls sent to us directly by Prof. Deza compared to the data set we downloaded directly from the Detroit Open Data Portal. To run this file change the working directory in line 9 to where both 911 call data sets were downloaded to on your local machine
+##### Original 911 Call Data Set
+1. Follow this [link](https://www.dropbox.com/scl/fi/mvlni30fz74qx4fclofmc/calls_final.csv?rlkey=drs9rkqlgyo9i8gsf9823prof&dl=0) and download the calls_final.csv file to get the raw 911 Call data.
+2. Select the download option at the top of the page.
+3. A menu will apear to select the format for the data. Select CSV to download the data as a .csv file.
 ### Treatment Centers
-1. Follow [THIS link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/RawData/detroit_samhsa_sud_2015_2021.dta) to the raw treatment center data and download the raw data file.
+1. Follow this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/RawData/detroit_samhsa_sud_2015_2021.dta) to the raw treatment center data and download the raw data file.
 
 # Limiting Data Set
 Follow these steps to limit the data sets to data from 2017.
