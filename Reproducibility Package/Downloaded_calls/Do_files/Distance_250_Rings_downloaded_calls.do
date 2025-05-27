@@ -242,7 +242,7 @@ foreach row of local rownames {
 
 file write t_tests_file "\hline" _n
 file write t_tests_file "\end{tabular}" _n
-file write t_tests_file "\caption{\textbf{One-sample T-test Results by Distance Ring}}" _n
+file write t_tests_file "\caption{\textbf{One-sample T-test Results by 250 meter Distance Rings}}" _n
 file write t_tests_file "\label{tab:ttests}" _n
 file write t_tests_file "\end{table}" _n
 file close t_tests_file

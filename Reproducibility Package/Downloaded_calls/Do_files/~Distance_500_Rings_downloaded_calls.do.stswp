@@ -188,7 +188,7 @@ foreach row of local rownames {
 
 file write t_tests_four "\hline" _n
 file write t_tests_four "\end{tabular}" _n
-file write t_tests_four "\caption{\textbf{One-sample T-test Results by Distance Rings}}" _n
+file write t_tests_four "\caption{\textbf{One-sample T-test Results by 500 meter Distance Rings}}" _n
 file write t_tests_four "\label{tab:ttests}" _n
 file write t_tests_four "\end{table}" _n
 file close t_tests_four
