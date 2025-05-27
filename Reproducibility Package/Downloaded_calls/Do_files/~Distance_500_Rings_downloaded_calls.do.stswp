@@ -116,6 +116,13 @@ matrix Summary_Results_2 = Summary_Results_2[2..6, 1..colsof(Summary_Results_2)]
 *** Rename the rows
 matrix rownames Summary_Results_2 = "500m" "1000m" "1500m" "2000m" "2500m"
 
+*** Round all values to 1 decimal place
+forvalues i = 1/`=rowsof(Summary_Results_2)' {
+    forvalues j = 1/`=colsof(Summary_Results_2)' {
+        matrix Summary_Results_2[`i', `j'] = round(Summary_Results_2[`i', `j'], 0.1)
+    }
+}
+
 matrix list Summary_Results_2
 
 *** Export table

@@ -135,11 +135,18 @@ matrix Summary_Results = Summary_Results[2..11, 1..colsof(Summary_Results)]
 *** Rename the rows
 matrix rownames Summary_Results = "250m" "500m" "750m" "1000m" "1250m" "1500m" "1750m" "2000m" "2250m" "2500m"
 
+*** Round all values to 1 decimal place
+forvalues i = 1/`=rowsof(Summary_Results)' {
+    forvalues j = 1/`=colsof(Summary_Results)' {
+        matrix Summary_Results[`i', `j'] = round(Summary_Results[`i', `j'], 0.1)
+    }
+}
+
 matrix list Summary_Results
 
 *** Export table
 
-esttab matrix(Summary_Results) using "Visual_Graphics_Downloaded_calls\250_Summary_Stats.tex", replace
+esttab matrix(Summary_Results) using "Visual_Graphics_Downloaded_calls\250_Summary_Stats.tex", replace 
 
 *** Do one-sample t-tests for every adjacent ring
 
@@ -334,4 +341,3 @@ graph export "Visual_Graphics_Downloaded_calls\250_CI_Graph.png", replace
 
 
 log close
-======
