@@ -4,7 +4,7 @@
 > -project-zipcentercrime\Reproducibility Package\Downloaded_calls\Log_Files\Dist
 > ances_by_500.log
   log type:  text
- opened on:  27 May 2025, 02:21:44
+ opened on:  27 May 2025, 02:35:43
 
 . 
 . *** Then, import the dataset
@@ -281,23 +281,6 @@ variable dist_group_2500 was long now double
 
 . 
 . *** Round all values to 1 decimal place
-. forvalues i = 1/`=rowsof(Summary_Results)' {
-  2.     forvalues j = 1/`=colsof(Summary_Results)' {
-  3.         matrix Summary_Results[`i', `j'] = round(Summary_Results[`i', `j'], 
-> 0.1)
-  4.     }
-  5. }
-Summary_Results not found
-invalid syntax
-r(198);
-
-end of do-file
-
-r(198);
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2b08_000000.tmp"
-
-. *** Round all values to 1 decimal place
 . forvalues i = 1/`=rowsof(Summary_Results_2)' {
   2.     forvalues j = 1/`=colsof(Summary_Results_2)' {
   3.         matrix Summary_Results_2[`i', `j'] = round(Summary_Results_2[`i', `j
@@ -306,10 +289,6 @@ r(198);
   5. }
 
 . 
-end of do-file
-
-. do "C:\Users\sgortizh\AppData\Local\Temp\STD2b08_000000.tmp"
-
 . matrix list Summary_Results_2
 
 Summary_Results_2[5,6]
@@ -488,8 +467,8 @@ dis~2500 |      43    152.9633    29.98127    196.6004    92.45863     213.468
 
 . file write t_tests_four "\end{tabular}" _n
 
-. file write t_tests_four "\caption{\textbf{One-sample T-test Results by Distance
->  Rings}}" _n
+. file write t_tests_four "\caption{\textbf{One-sample T-test Results by 500 mete
+> r Distance Rings}}" _n
 
 . file write t_tests_four "\label{tab:ttests}" _n
 
@@ -768,5 +747,5 @@ file Visual_Graphics_Downloaded_calls\500_CI_Graph.png saved as PNG format
 > -project-zipcentercrime\Reproducibility Package\Downloaded_calls\Log_Files\Dist
 > ances_by_500.log
   log type:  text
- closed on:  27 May 2025, 02:22:25
+ closed on:  27 May 2025, 02:35:46
 ---------------------------------------------------------------------------------

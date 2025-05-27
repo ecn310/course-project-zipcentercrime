@@ -4,7 +4,7 @@
 > -project-zipcentercrime\Reproducibility Package\Downloaded_calls\Log_Files\Dist
 > ances_by_250.log
   log type:  text
- opened on:  27 May 2025, 02:20:58
+ opened on:  27 May 2025, 02:35:27
 
 . 
 . *** Then, import the dataset
@@ -751,8 +751,8 @@ dis~2500 |      43    65.09885    13.44677    88.17634    37.96218    92.23552
 
 . file write t_tests_file "\end{tabular}" _n
 
-. file write t_tests_file "\caption{\textbf{One-sample T-test Results by Distance
->  Ring}}" _n
+. file write t_tests_file "\caption{\textbf{One-sample T-test Results by 250 mete
+> r Distance Rings}}" _n
 
 . file write t_tests_file "\label{tab:ttests}" _n
 
@@ -1163,5 +1163,5 @@ file Visual_Graphics_Downloaded_calls\250_CI_Graph.png saved as PNG format
 > -project-zipcentercrime\Reproducibility Package\Downloaded_calls\Log_Files\Dist
 > ances_by_250.log
   log type:  text
- closed on:  27 May 2025, 02:21:10
+ closed on:  27 May 2025, 02:35:30
 ---------------------------------------------------------------------------------
