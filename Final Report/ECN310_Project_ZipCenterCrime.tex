@@ -24,7 +24,10 @@
 \usepackage[margin=1in]{geometry} 
 \usepackage{float}
 \usepackage{needspace}
-
+\documentclass{article}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{lipsum}
 
 % enable hyperlinks and table of contents
 \usepackage[pdftex,
@@ -123,35 +126,34 @@ Figure~\ref{fig:Figure2} shows the plotted points from the data sets of all 911 
 \subsection{Measuring Distance of each 911 Call to each SATC}
  
 
-
-\begin{wrapfigure}[15]{r}{0.3\textwidth} 
- \begin{tikzpicture}
-% Define the radii corresponding to the first 3 distances (in meters)
-
-\centering
-\def\radiusOne{0.5}
-\def\radiusTwo{1}
-\def\radiusThree{1.75}
-
-
-% Draw the concentric circles
-\foreach \r/\label in {\radiusOne/, 
-    \radiusTwo/,
-    \radiusThree/,}
- {
-\draw[thick] (0,0) circle (\r);
-    \node at (\r, 0) {\label};
-    }   
-    \fill (0,0) circle (2pt);
-\end{tikzpicture}
-\caption{\textbf{Concentric Distance Rings}}
-\label{fig:Figure1}
-\small{Notes: The figure represents the first three distance rings (250m, 500m, and 750m). Center dot marks the SATC.}
-\end{wrapfigure}
-
  We used a geographic information system to map the locations of the 911 calls and SATCs. We then create distance rings, referred to as distance groups, which are visualized in Figure~\ref{fig:Figure1}, to perform our analysis. After, we also normalize the data to account for differences in total area of a distance group that may alter results. We did this by dividing the total count of 911 calls in each distance ring by their respective areas in square meters. Then, we multiply by 1,000,000 to get the calls into count per kilometer squared.
 
-We created concentric rings around each SATC. Each 911 point falls within one circle for a given treatment center.  The circles are referred to as distance rings or distance groups. Each 911 point is counted towards the SATC in its circle's center. If a 911 call falls within multiple SATCs' distance rings, we count the data point only once, and towards the SATC it is the closest to. Our data is organized by SATC. We measured call points up to 2,500 meters away from a SATC. We have 254,779 crime-related calls that are within 2,500 meters of at least one SATC. We analyze the calls twice. First, we isolate and analyze 911 calls by 250-meter buckets. Then we conduct the same experiment, but with the observations organized by 500-meter concentric rings. This is to see if our resulting relationships are robust to the size of the ring. The groups are named by the outer boundary of their ring. So, in the first data analysis, group 500-meter includes all calls from 250-500 meters from the SATC, while group 500 in the second part of data analysis would include all calls from 0-500 meters. We chose 250-meter intervals and 500-meter intervals since we wanted the distances to be of walking distance to a SATC, and for easy interpretation and comparison of the intervals. 
+We created concentric rings around each SATC. Each 911 point falls within one circle for a given treatment center.  The circles are referred to as distance rings or distance groups. Each 911 point is counted towards the SATC in its circle's center. If a 911 call falls within multiple SATCs' distance rings, we count the data point only once, and towards the SATC it is the closest to. Our data is organized by SATC. We measured call points up to 2,500 meters away from a SATC.  
+\begin{center}
+    \begin{tikzpicture}
+        % Define the radii corresponding to the first 3 distances (in meters)
+        \def\radiusOne{0.5}
+        \def\radiusTwo{1}
+        \def\radiusThree{1.5}
+
+        % Draw the concentric circles
+        \foreach \r/\label in {\radiusOne/, 
+            \radiusTwo/,
+            \radiusThree/,}
+        {
+            \draw[thick] (0,0) circle (\r);
+            \node at (\r, 0) {\label};
+        }
+
+        \fill (0,0) circle (2pt);
+    \end{tikzpicture}
+
+    \vspace{0.5em}
+    \textbf{Concentric Distance Rings}
+
+    {\small Notes: The figure represents the first three distance rings (250m, 500m, and 750m). Center dot marks the SATC.}
+\end{center}
+ We have 254,779 crime-related calls that are within 2,500 meters of at least one SATC. We analyze the calls twice. First, we isolate and analyze 911 calls by 250-meter buckets. Then we conduct the same experiment, but with the observations organized by 500-meter concentric rings. This is to see if our resulting relationships are robust to the size of the ring. The groups are named by the outer boundary of their ring. So, in the first data analysis, group 500-meter includes all calls from 250-500 meters from the SATC, while group 500 in the second part of data analysis would include all calls from 0-500 meters. We chose 250-meter intervals and 500-meter intervals since we wanted the distances to be of walking distance to a SATC, and for easy interpretation and comparison of the intervals. 
 \begin{table}[H]
 \centering
 \scalebox{0.8}{
@@ -187,41 +189,39 @@ Table~\ref{tabl:Table2} includes the mean, standard deviation, total calls, and 
 
 This paper hypothesizes that as the distance from a SATC facility increases, the number of 911 calls also increases. This means that the farther someone is from a SATC, the less access they have to treat drug addiction, so the more likely they would exhibit drug-induced behavior that results in someone calling 911. Our null hypothesis is that there is no relation between distance to an SATC and the likelihood of calling 911.
 \input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/250_t_tests} 
-We conduct two pairwise one-sample t-tests to examine the statistical likelihood that one distance ring has a greater mean number of calls per SATC than the next larger ring. We chose to do one-sample t-tests instead of two-sample tests due to the dependent nature of our spatial data analysis and the large sample size we have. The first set of one-sample t-tests comparisons are in Table~\ref{tab:ttests_250}. These one-sample t-tests examine the mean calls per SATC between each adjacent distance group for all 2017 calls. We test at a confidence interval of 95\%. The mean calls are normalized by the ring area. 
+We conduct two pairwise one-sample t-tests to examine the statistical likelihood that one distance ring has a greater mean number of calls per SATC than the next larger ring. We chose to do one-sample t-tests instead of two-sample tests due to the dependent nature of our spatial data analysis and the large sample size we have. The first set of one-sample t-tests comparisons are in Table~\ref{tab:ttests_250}. These one-sample t-tests examine the mean calls per SATC per kilometer squared between each adjacent distance group for all 2017 calls. We test at a confidence interval of 95\%.
 
-The results of the majority of one-sample t-tests in Table~\ref{tab:ttests_250} support the rejection of the null hypothesis for seven of the eight one-sample t-tests. Five of the paired t-tests exhibit a p-value less than 0.01, indicating strong statistical significance between these sequential distance rings. In addition, two of the tests result in p-values less than 0.05, while one test (500-750meters) presents a p-value greater than 0.05, but less than 0.10. Although less strong than the groups mentioned above, it this shows some statistical significance. 
+The results of the one-sample t-tests in Table~\ref{tab:ttests_250} support the rejection of the null hypothesis for seven of the eight one-sample t-tests. Five of the paired t-tests exhibit a p-value less than 0.01, indicating strong statistical significance between these sequential distance rings. In addition, two of the tests result in p-values less than 0.05, while one test (500-750meters) presents a p-value greater than 0.05, but less than 0.10. 
 \input{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_t_tests}
 \label{tabl:Table4}
 
-For one of the one-sample t-tests, we cannot reject the null hypothesis as the p-value falls within the 95\% confidence interval. The 500-750 meter ring exhibits the p-value of 0.071. This high p-values indicates there is little evidence that the mean values of these distance rings are statistically significant. These results could be due to smaller mean differences, as seen in the column "Difference" when compared to the difference values in the t-test before and after it. Smaller difference values might mean that the data doesn't vary enough to make a meaningful difference. Having larger data samples might smooth out this issue. However, the lack of significance found could be caused by the range of distance parameters chosen. A change of distance of 250 meters might not be enough of a geo-spatial distance to properly isolate and identify distance trends around the SATC. 
+For one of the one-sample t-tests, we cannot reject the null hypothesis as the p-value falls within the 95\% confidence interval. The 500-750 meter ring exhibits the p-value of 0.071. This slightly weaker result could be caused by the range of distance parameters chosen. A change of distance of 250 meters might not be enough of a geo-spatial distance to properly isolate and identify distance trends around the SATC. 
 
-This is why we conduct a one-sample t-test on larger distance intervals, the 500-meter interval set. The one-sample t-test comparison table is seen in Table~\ref{tab:ttests_500}. 
+This is why we conduct a one-sample t-test on larger distance intervals, the 500-meter interval set. The one-sample t-test comparison table is seen in Table~\ref{tab:ttests_500}. The results of the t-tests in Table~\ref{tab:ttests_500} support the rejection of the null hypothesis for the four t-tests conducted and further support the results identified in Table~\ref{tab:ttests_250}. Three of the tests reveal p-values equal to or less than 0.01, and the first one has a p-value of less than 0.05. Thus, all the t-tests in the 500-meter rings support the rejection of the null hypothesis, indicating there is a relationship between the variables. 
 
-The results of the t-tests in Table~\ref{tab:ttests_500} support the rejection of the null hypothesis for the four t-tests conducted and further support the results identified in Table~\ref{tab:ttests_250}. Three of the tests reveal p-values equal to or less than 0.01, and the first one has a p-value of less than 0.05. Thus, all the t-tests in the 500-meter rings support the rejection of the null hypothesis, indicating there is a relationship between the variables. 
-
-Every p-value in Table~\ref{tab:ttests_500} is smaller than the p-value in Table~\ref{tab:ttests_250}. The first group of Table~\ref{tab:ttests_500} has a weaker significance compared to the latter groups in the table, but this pattern lines up with p-values seen in the 500m-750m and 750m-1000m groups of Table~\ref{tab:ttests_250}. The p-value of group 500m-1000m in table~\ref{tab:ttests_500} is 0.035, just half of the p-value of group 500m-750m in table~\ref{tab:ttests_500}. The overall stronger statistical evidence in the second t-test table could be due to having more observations within each group, enhancing differences in means. This increases the confidence in the significance meaning of a difference in average calls.
+Every p-value in Table~\ref{tab:ttests_500} is smaller than the p-value in Table~\ref{tab:ttests_250}. The first group of Table~\ref{tab:ttests_500} has a weaker significance compared to the latter groups in the table, but this pattern lines up with p-values seen in the 500m-750m and 750m-1000m groups of Table~\ref{tab:ttests_250}. The p-value of group 500m-1000m in table~\ref{tab:ttests_500} is 0.035, just half of the p-value of group 500m-750m in table~\ref{tab:ttests_500}. The overall stronger statistical evidence in the second t-test table could be due to having more observations within each group, enhancing differences in means.
 
 \begin{figure}[H]
     \centering
 \includegraphics[width=0.75\linewidth]{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/250_CI_Graph.png}
     \caption{\textbf{Mean Calls per SATC per Distance Group (250 meters)}}
      \label{fig:Figure3}
-    \centering\footnotesize{Notes: This figure shows mean calls per SATC per kilometer squared and 95\% confidence intervals. The x-axis consists of the different distance groups used (500, 1000, 1500, 2000, and 2500). Distance measured in meters. The y-axis is measured in mean calls per SATC per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
+    \centering\footnotesize{Notes: This figure shows mean calls per SATC per kilometer squared and 95\% confidence intervals. The x-axis consists of the different distance groups used. The y-axis is measured in mean calls per SATC per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
 \end{figure}
 
 Figure~\ref{fig:Figure3} represents the mean calls per SATC per kilometer squared by 250-meter distance groups in a bar graph. Figure~\ref{fig:Figure3} uses the same data as Table~\ref{tab:ttests_250}. Figure~\ref{fig:Figure4} represents the mean calls per SATC per square kilometer by 500-meter distance groups in a bar graph. Figure~\ref{fig:Figure4} uses the same data as Table~\ref{tab:ttests_500}. The confidence level of 95\% for mean calls is overlaid on top of their respective distance groups. 
 
-In Figure~\ref{fig:Figure3}, the confidence intervals of 500 meters up until 2,500 meters significantly overlap. The significant overlap is due to the confidence interval of the farther distance group overlapping the mean and the confidence interval of the closer distance group. Since we conducted one-sample t-tests,  and the standard deviations seen in Table~\ref{tabl:Table1} are relatively close together, some overlap is to be expected. However, the large difference between 250 meters and 500 meters could further prove that, at least extremely close to SATCs, there is a significant increase in 911 calls. This indicates that there is some relationship between SATCs and the number of 911 calls extremely close to them, although the relationship may get hazier farther away from SATCs.
+Although it's not clear that every successive ring has an economically significant decline in calls per kilometer squared, the large difference between 250 meters and 500 meters could further support that there may be some relationship between SATCs and the number of 911 calls extremely close to them. However, this relationship gets hazier the farther away from SATCs.
 
 \begin{figure}[H]
     \centering
 \includegraphics[width=0.75\linewidth]{Reproducibility Package/Downloaded_calls/Visual_Graphics_Downloaded_calls/500_CI_Graph.png}
     \caption{\textbf{Mean Calls per SATC per Distance Group (500 meters)}}
     \label{fig:Figure4}
-    \centering\footnotesize{Notes: This figure shows mean calls per SATC per kilometer squared and 95\% confidence levels. The x-axis consists of the distance rings, increasing from 250 meters to 2,500 meters in distance. This is by 250 intervals. Distance measured in meters. The y-axis is measured in mean calls per SATC per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
+    \centering\footnotesize{Notes: This figure shows mean calls per SATC per kilometer squared and 95\% confidence levels. The x-axis consists of the distance rings, increasing from 250 meters to 2,500 meters in distance. The y-axis is measured in mean calls per SATC per kilometer squared. Each call was assigned one distance group for one SATC, so there is no double counting. The mean calls are counted to the upper bound of their ring.}
 \end{figure}
 
-Figure~\ref{fig:Figure4} also follows a similar, but less drastic, overlapping of confidence intervals. Since the means of the distance rings are more distinct, none of the confidence intervals in Figure~\ref{fig:Figure4} overlap with the means of adjacent distance groups. Since there are more observations for fewer groups, a more robust visual significance is to be expected. However, this figure further supports the strong negative correlation between 911 calls and proximity to SATCs. 
+Figure~\ref{fig:Figure4} also follows a similar distribution. Since the means of the distance rings are more distinct, none of the confidence intervals in Figure~\ref{fig:Figure4} overlap with the means of adjacent distance groups. Since there are more observations for fewer groups, a more robust visual relationship is to be expected. This figure further supports the strong negative correlation between 911 calls and proximity to SATCs. 
 
 %Explain what analyses you did, provide evidence (like in the descriptive stats exercise, but refined and clear) and then explain what your results mean.
 
@@ -240,7 +240,7 @@ Moreover, one significant limitation was the inability to fine-tune 911 call dat
     
 Another limitation is the population density of this urban sample. The observed pattern of 911 calls can be influenced by higher population density in more highly populated neighborhoods in Detroit. A population in these areas naturally increases the number of emergency calls. However, specific information on the population density at the address level is not publicly available. Therefore, to precisely consider population density in relation to the number of 911 calls, we would need to geographically expand our area of analysis. However, expanding the geographical unit of analysis would not accurately allow us to study the effects an SATC has on the community immediately surrounding it. 
 
-We analyzes data only from the year 2017. However, considering more years in our analysis would likely give us more statistical power. Therefore, we see future research supporting these findings or a stronger pattern through two possible ways. Firstly, by utilizing cross-sectional data for more than one year. The increase in data would likely strengthen the correlational relationships we found in this paper. Secondly, by analyzing time series data based on the openings and closings of SATCs. This option could identify a causal impact of the presence of a SATC in a neighborhood regarding 911 calls as a proxy for crime rates. These results could impact policymaking decisions regarding where to fund and support the placement of SATC to serve populations in need. 
+We analyze data only from the year 2017. However, considering more years in our analysis would likely give us more statistical power. Therefore, we see future research supporting these findings or a stronger pattern through two possible ways. First, cross-sectional data involving multiple years would increase the amount of data, strengthening the correlational relationships found in this paper. Second, panel data that leverages the openings and closings of SATCs could identify a causal impact of the presence of a SATC in a neighborhood regarding 911 calls as a proxy for crime rates. These results could impact policymaking decisions regarding where to fund and support the placement of SATC to serve populations in need. 
 
 
 
@@ -274,7 +274,7 @@ Our replication package:
 
 % essentially, we should have a bunch of links to our files in the appendix section. 
 
-\We originally ran this project using the 911 call dataset Professor Deza gave us. She told us where to find the original off of the City of Detroit's Open Data Portal: \href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{Police Serviced 911 Calls}. This dataset did not match the dataset Professor Deza gave us completely. There were fewer observations in the 911 call dataset on the website than the dataset she provided us. In that dataset,there were 5,238,111 total observations, while the online dataset included 2,452,212. However, the variables and years were all the same. We ran the analysis with this new dataset, but besides there being fewer overall values, the statistical trends were the same. The confidence interval graphs followed the same trends, and the p-values seen from Table~ref/{Table}. We believe that the differences were due to the omission of specific call categories. Each 911 call gets assigned a category that it falls under, from assault and battery to traffic violations and check in class. We believe that most of the omitted calls were ones with non-criminal bearing. Additionally, the number of calls left was proportional to the amount of calls from before. The datasets, do files, and logs in this reproducibility project follow the dataset we accessed online. overall, our data analysis was robust under both datasets. the one sample t-tests and confidence intervals supported the same trends and significance levels. 
+\We originally ran this project using the 911 call dataset Professor Deza gave us. She told us where to find the original off of the City of Detroit's Open Data Portal: \href{https://data.detroitmi.gov/datasets/detroitmi::police-serviced-911-calls/about}{Police Serviced 911 Calls}. This dataset did not match the dataset Professor Deza gave us completely. There were fewer observations in the 911 call dataset on the website than the dataset she provided us. In that dataset, there were 5,238,111 total observations, while the online dataset included 2,468,559 total. However, the variables and years were all the same. We ran the analysis with this new dataset, but besides there being fewer overall values, the statistical trends were the same. The confidence interval graphs followed the same trends, and the p-values seen from table~\ref{tab:ttests_250} and table~\ref{tab:ttests_500}. We believe that the differences were due to the omission of specific call categories. Each 911 call gets assigned a category that it falls under, from assault and battery to traffic violations and check in class. The vast majority of the omitted calls were ones with non-criminal categories. The datasets, do files, and logs in this reproducibility project follow the dataset we accessed online. Overall, our data analysis was robust under both datasets. The one-sample t-tests and confidence intervals supported the same trends and significance levels. 
 
 We also performed an analysis of only the crime-related calls. We used the variable call description to identify what calls could be considered to relate to crime. There are 466,219 observations in this subset. The purpose of this analysis is to focus on activities that drugs could cause. The 9-1-1 emergency telephone hotline is used for more than just crimes; it is used for any civil issue classified as an emergency. By focusing only on crime-related calls, we thought we could narrow down the issues to better estimate the impact of SATCs in an area. We theorized that if all calls to emergency services were considered, the results could be diluted by prioritizing areas with higher population densities. These people are not counted because they are unaffected by a SATC. Our analysis of this showed the same statistical patterns, so we conclude that the non-crime related calls don't dilute the where calls are being taken. 
 
