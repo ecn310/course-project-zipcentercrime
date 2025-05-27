@@ -139,7 +139,7 @@ matrix list Summary_Results
 
 *** Export table
 
-esttab matrix(Summary_Results) using "Visual_Graphics_Downloaded_calls\250_Summary_Stats.tex", replace
+esttab matrix(Summary_Results) using "Visual_Graphics_Downloaded_calls\250_Summary_Stats.tex", replace fmt(%9.1f)
 
 *** Do one-sample t-tests for every adjacent ring
 
