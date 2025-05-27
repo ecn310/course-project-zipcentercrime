@@ -18,21 +18,22 @@ Using these steps you will be able to access all of the raw data used for our an
 
 # Limiting Data Set
 Follow these steps to limit the data sets to data from 2017.
-### 2017 911 Calls
+### 2017 Downloaded 911 Calls
+1. Open create_2017_downloaded_calls.R through [this link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/create_2017_downloaded_calls.R) or by opening Downloaded_calls/create_2017_downloaded_calls.R
+2. Change the working directory in line 11 to where the where you downloaded the 911 Call Data set from the Detroit Open Data Portal
+3. Running this file will create a data set comprosed only of 911 calls made in 2017 from this data set
+#### *The below 911 call do files are not needed for final paper replication.*
+#### 2017 911 Calls
 1. Open Create_2017_911_call_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/911%20Call%20data%20by%20year/Create_2017_911_call_data.do) or by clicking Do Files\911 Call data by year\Create_2017_911_call_data.do.
 2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
 3. Edit the working directory in line 11 to where the 911 call raw data set is saved on your computer.
 4. Running the do file creates the 2017_911_call_data.csv file.
-### 2017 911 Calls only related to Crime
+#### 2017 911 Calls only related to Crime
 1. Open Crime_911Calls.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Crime_911calls.do) or by opening Do files\Analysis_dofile\Crime_911Calls.do.
 2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
 3. Change the working directory in line 9 to where the calls_final.csv file is stored locally on your computer.
 4. Running the do file will create a data set comprised of only 911 calls made in 2017 that are related to crimes.
 5. Please note that this do file uses the raw 911 call data set, not the 2017 911 call data set.
-### 2017 Downloaded 911 Calls
-1. Open create_2017_downloaded_calls.R through [this link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/create_2017_downloaded_calls.R) or by opening Downloaded_calls/create_2017_downloaded_calls.R
-2. Change the working directory in line 11 to where the where you downloaded the 911 Call Data set from the Detroit Open Data Portal
-3. Running this file will create a data set comprosed only of 911 calls made in 2017 from this data set
 ### 2017 Treatment Centers
 1. Open create_2017_treatment_center_data.do through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Treatment%20Center%20by%20year/create_2017_treatment_center_data.do) or by clicking Do Files\Treatment Center by year\create_2017_treatment_center_data.do.
 2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
@@ -84,16 +85,17 @@ near dist: This is the distance in meters the 911 call observation is from the S
 
 Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Crime_911calls.csv data set instead of the 2017_911_call_data.csv data to analize data specifically related to crime. Again, repeart the steps under Set Up, Data Manipulation, and Export Geocoded Data using the 2017_Downloaded_911Calls.csv file to geocode data downloaded directly from the Detroit Open Data Portal which we titled downloaded_calls_arcgisFile.csv 
 
-# Summary Statistics
-### Raw Data 
-1. Open Raw_data_summary.do [here](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Summary_dofiles/Raw_data_summary.do), or by navigating to the Summary Do Files in the Do Files folder
-2. This program has been tested in Stata16 and Stata18. If your using Stata16 it will likely take a few minutes to load the data due to the size of the raw data set.
-3. Change the working directory in line 9 to where the calls_final.csv file is stored locally on your computer and again to where you have detroit_samhsa_sud_2015_2021.dta.
-4. Running the do file will create a table of summary statistics for the Raw Call and Center Data.
-5. Please note that this do file uses the raw 911 call data set, not the 2017 911 call data set.
-
 # Data Analysis
-## Original 911 Call Data Set sent by Prof. Deza
+## Downloaded 911 Calls
+1. Open Distance_250_Rings_downloaded_calls.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/Distance_250_Rings_downloaded_calls.do) or by clicking Downloaded_calls/Distance_250_Rings_downloaded_calls.do
+3. Edit the working directory in line 4 to the place where this repository is stored locally on your computer.
+5. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
+6. Open Distance_500_rings.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Distance_500_Rings.do) or by clicking Downloaded_Calls\2017_CrimeData_Do.do.
+3. Edit the working directory in line 5 to the place where this repository is stored locally on your computer.
+4. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
+
+#### *The below do files are not needed for final paper replication.*
+### Original 911 Call Data Set sent by Prof. Deza
 1. Open Distance_250_Rings.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Distance_250_Rings.do) or by clicking Do files\Analysis_dofile\Distance_250_Rings.do.
 2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
 3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
@@ -102,11 +104,3 @@ Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using
 2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
 3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
 4. This do file has all of our data analysis work done from the 2017 data for onyl crime related 911 calls exported from ArcGIS Pro including making the graphs.
-
-## Downloaded 911 Calls
-1. Open Distance_250_Rings_downloaded_calls.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Downloaded_calls/Distance_250_Rings_downloaded_calls.do) or by clicking Downloaded_calls/Distance_250_Rings_downloaded_calls.do
-3. Edit the working directory in line 4 to the place where this repository is stored locally on your computer.
-5. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
-6. Open Distance_500_rings.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Distance_500_Rings.do) or by clicking Downloaded_Calls\2017_CrimeData_Do.do.
-3. Edit the working directory in line 5 to the place where this repository is stored locally on your computer.
-4. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
