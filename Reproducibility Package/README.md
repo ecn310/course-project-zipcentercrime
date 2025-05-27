@@ -95,7 +95,7 @@ Repeat the steps under Set Up, Data Manipulation, and Export Geocoded Data using
 4. This do file has all of our data analysis work done from the 2017 data downloaded directly from the Detroit Open Data Portal and then exported from ArcGIS Pro including making the graphs.
 
 #### *The below do files are not needed for final paper replication.*
-### Original 911 Call Data Set sent by Prof. Deza
+#### Original 911 Call Data Set sent by Prof. Deza
 1. Open Distance_250_Rings.do file through this [link](https://github.com/ecn310/course-project-zipcentercrime/blob/main/Reproducibility%20Package/Do%20files/Analysis_dofiles/Distance_250_Rings.do) or by clicking Do files\Analysis_dofile\Distance_250_Rings.do.
 2. This do file does not correctly import the data from ArcGIS in Stata16. Therefore, we have limited the version used to run this program to Stata18.
 3. Edit the working directory in line 10 to the place where this repository is stored locally on your computer.
