@@ -245,6 +245,10 @@ file write t_tests_file "\end{tabular}" _n
 file write t_tests_file "\caption{\textbf{One-sample T-test Results by 250 meter Distance Rings}}" _n
 file write t_tests_file "\label{tab:ttests_250}" _n
 file write t_tests_file "\end{table}" _n
+file write t_tests_file "\centering\footnotesize{ Notes: This table shows one sample t-test in the difference of mean 911 calls per SATC per distance group.We test at a confidence level of 95\%. We got the means
+ for each group by first assigning every 911 call a respective distance bucket based on the SATC they are
+ geographically closest to. Distance buckets are spaced 250 meters apart, up to 2,500 meters. Afterward, we
+ divide each ring by its concentric ring’s area, then multiply by 1,000,000.}" _n
 file close t_tests_file
 
 * Test out the matrix
