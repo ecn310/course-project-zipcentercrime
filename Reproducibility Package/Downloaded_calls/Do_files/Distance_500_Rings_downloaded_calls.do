@@ -190,6 +190,7 @@ file write t_tests_four "\hline" _n
 file write t_tests_four "\end{tabular}" _n
 file write t_tests_four "\caption{\textbf{One-sample T-test Results by 500 meter Distance Rings}}" _n
 file write t_tests_four "\label{tab:ttests_500}" _n
+file write t_tests_four "\centering\footnotesize{This table shows one sample t-test in the difference of mean all calls per SATC per distance group by 500 meter intervals.}" _n
 file write t_tests_four "\end{table}" _n
 file close t_tests_four
  
